@@ -1,8 +1,13 @@
 {
   "name": "@rxap/schematics-router",
-  "version": "12.0.4",
+  "version": "12.0.5",
   "peerDependencies": {
-    "@rxap/schematics-xml-parser": "^12.0.2"
+    "@nrwl/workspace": "^12.3.6",
+    "@rxap/schematics": "^12.0.3",
+    "@rxap/schematics-ts-morph": "^12.0.3",
+    "@rxap/schematics-xml-parser": "^12.0.3",
+    "@rxap/utilities": "^12.0.3",
+    "@rxap/xml-parser": "^12.0.3"
   },
   "dependencies": {
     "tslib": "^2.0.0"
@@ -12,7 +17,11 @@
     "migrations": "./schematics/migration.json",
     "packageGroup": [
       "@rxap/schematics-router",
-      "@rxap/schematics-xml-parser"
+      "@rxap/schematics",
+      "@rxap/schematics-ts-morph",
+      "@rxap/schematics-xml-parser",
+      "@rxap/utilities",
+      "@rxap/xml-parser"
     ]
   },
   "publishConfig": {
@@ -30,7 +39,7 @@
   "author": "Merzough Münker",
   "private": false,
   "bugs": {
-    "url": "https://gitlab.com/rxap/packages/-/issues",
+    "url": "https://gitlab.com/rxap/plugins/-/issues",
     "email": "incoming+rxap-packages-14898188-issue-@incoming.gitlab.com"
   }
 }
