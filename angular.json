@@ -54,6 +54,7 @@
           "options": {
             "targets": [
               "utilities:update-package-group",
+              "utilities:readme",
               "utilities:build"
             ]
           }
@@ -64,6 +65,9 @@
             "buildTarget": "utilities:build",
             "preTarget": "utilities:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     },
@@ -117,6 +121,7 @@
           "options": {
             "targets": [
               "router:update-package-group",
+              "router:readme",
               "router:build"
             ]
           }
@@ -130,6 +135,9 @@
             "buildTarget": "router:build",
             "preTarget": "router:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     },
@@ -183,6 +191,7 @@
           "options": {
             "targets": [
               "table:update-package-group",
+              "table:readme",
               "table:build"
             ]
           }
@@ -196,6 +205,9 @@
             "buildTarget": "table:build",
             "preTarget": "table:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     },
@@ -249,6 +261,7 @@
           "options": {
             "targets": [
               "shared:update-package-group",
+              "shared:readme",
               "shared:build"
             ]
           }
@@ -262,6 +275,9 @@
             "buildTarget": "shared:build",
             "preTarget": "shared:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     },
@@ -326,6 +342,7 @@
           "options": {
             "targets": [
               "form:update-package-group",
+              "form:readme",
               "form:build"
             ]
           }
@@ -339,6 +356,9 @@
             "buildTarget": "form:build",
             "preTarget": "form:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     },
@@ -388,6 +408,7 @@
           "options": {
             "targets": [
               "ts-morph:update-package-group",
+              "ts-morph:readme",
               "ts-morph:build"
             ]
           }
@@ -401,6 +422,9 @@
             "buildTarget": "ts-morph:build",
             "preTarget": "ts-morph:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     },
@@ -450,6 +474,7 @@
           "options": {
             "targets": [
               "html:update-package-group",
+              "html:readme",
               "html:build"
             ]
           }
@@ -463,6 +488,9 @@
             "buildTarget": "html:build",
             "preTarget": "html:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     },
@@ -512,6 +540,7 @@
           "options": {
             "targets": [
               "xml-parser:update-package-group",
+              "xml-parser:readme",
               "xml-parser:build"
             ]
           }
@@ -525,6 +554,9 @@
             "buildTarget": "xml-parser:build",
             "preTarget": "xml-parser:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     },
@@ -574,6 +606,7 @@
           "options": {
             "targets": [
               "open-api:update-package-group",
+              "open-api:readme",
               "open-api:build"
             ]
           }
@@ -587,6 +620,9 @@
             "buildTarget": "open-api:build",
             "preTarget": "open-api:pack"
           }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
         }
       }
     }
