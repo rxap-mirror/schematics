@@ -1,0 +1,55 @@
+{
+  "npmScope": "@rxap/plugins",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "utilities": {
+      "tags": []
+    },
+    "router": {
+      "tags": []
+    },
+    "table": {
+      "tags": []
+    },
+    "form": {
+      "tags": []
+    },
+    "shared": {
+      "tags": []
+    },
+    "ts-morph": {
+      "tags": []
+    },
+    "html": {
+      "tags": []
+    },
+    "xml-parser": {
+      "tags": []
+    },
+    "open-api": {
+      "tags": []
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "packages": [
+    "libs/*"
+  ],
+  "version": "independent",
+  "command": {
+    "version": {
+      "message": "chore: lerna version",
+      "conventionalCommits": true
+    }
+  }
+}

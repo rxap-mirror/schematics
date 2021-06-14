@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "generate-view": {
+      "description": "Generates a form component from a template file",
+      "factory": "./src/schematics/generate-view/index",
+      "schema": "./src/schematics/generate-view/schema.json"
+    },
+    "generate": {
+      "description": "Generates a form definition from a xml specification",
+      "factory": "./src/schematics/generate/index",
+      "schema": "./src/schematics/generate/schema.json"
+    }
+  }
+}

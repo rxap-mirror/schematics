@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "generate": {
+      "description": "Generates a table component from a template",
+      "factory": "./src/schematics/generate/index",
+      "schema": "./src/schematics/generate/schema.json"
+    }
+  }
+}
