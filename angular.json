@@ -86,8 +86,19 @@
             "main": "libs/router/src/index.ts",
             "srcRootForCompilationRoot": "libs/router",
             "assets": [
-              "libs/router/*.md"
-            ]
+              "libs/router/*.md",
+              {
+                "input": "./libs/router",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/router",
+                "glob": "migration.json",
+                "output": "."
+              }
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           },
           "outputs": [
             "{options.outputPath}"
@@ -156,8 +167,19 @@
             "main": "libs/table/src/index.ts",
             "srcRootForCompilationRoot": "libs/table",
             "assets": [
-              "libs/table/*.md"
-            ]
+              "libs/table/*.md",
+              {
+                "input": "./libs/table",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/table",
+                "glob": "migration.json",
+                "output": "."
+              }
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           },
           "outputs": [
             "{options.outputPath}"
@@ -226,8 +248,19 @@
             "main": "libs/shared/src/index.ts",
             "srcRootForCompilationRoot": "libs/shared",
             "assets": [
-              "libs/shared/*.md"
-            ]
+              "libs/shared/*.md",
+              {
+                "input": "./libs/shared",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/shared",
+                "glob": "migration.json",
+                "output": "."
+              }
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
           },
           "outputs": [
             "{options.outputPath}"
