@@ -179,4 +179,5 @@ export interface PackageJson {
       /** Packages to block from hoisting to the workspace root. Currently only supported in Yarn only. */
       nohoist?: Array<string>;
     };
+  [key: string]: any;
 }

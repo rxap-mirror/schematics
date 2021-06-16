@@ -6,4 +6,4 @@ export * from './lib/nx-json';
 export * from './lib/json-file';
 export * from './lib/package-json-file';
 export * from './lib/package-json';
-export * from './lib/get-project-prefix';
+export * from './lib/get-project';
