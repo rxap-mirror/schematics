@@ -14,11 +14,7 @@ export interface Project {
   /** The root of the source files, assets and index.html file structure. */
   sourceRoot?: string;
   /** Project type. */
-  projectType: string;
-  architect?: {
-      '[key: string]': Target;
-    };
-  targets?: {
-      '[key: string]': Target;
-    };
+  projectType: 'application' | 'library';
+  architect?: Record<string,Target>;
+  targets?: Record<string,Target>;
 }

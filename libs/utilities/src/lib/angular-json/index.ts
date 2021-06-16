@@ -12,7 +12,5 @@ export interface AngularJson {
   newProjectRoot?: string;
   /** Default project name used in commands. */
   defaultProject?: string;
-  projects?: {
-      '[key: string]': Project;
-    };
+  projects?: Record<string,Project>;
 }

@@ -6,9 +6,7 @@ export interface DevServer {
   /** Host to listen on. */
   host?: string;
   /** Custom HTTP headers to be added to all responses. */
-  headers?: {
-      '[key: string]': string;
-    };
+  headers?: Record<string,string>;
   /** Proxy configuration file. */
   proxyConfig?: string;
   /** Serve using HTTPS. */
@@ -43,23 +41,11 @@ export interface DevServer {
       scripts?: boolean;
       /** Enable optimization of the styles output. */
       styles?: boolean;
-    } | boolean | {
-      /** Enable optimization of the scripts output. */
-      scripts?: boolean;
-      /** Enable optimization of the styles output. */
-      styles?: boolean;
     } | boolean;
   /** Build using ahead-of-time compilation. */
   aot?: boolean;
   /** Output source maps for scripts and styles. For more information, see https://angular.io/guide/workspace-config#source-map-configuration. */
   sourceMap?: {
-      /** Output source maps for all scripts. */
-      scripts?: boolean;
-      /** Output source maps for all styles. */
-      styles?: boolean;
-      /** Resolve vendor packages source maps. */
-      vendor?: boolean;
-    } | boolean | {
       /** Output source maps for all scripts. */
       scripts?: boolean;
       /** Output source maps for all styles. */

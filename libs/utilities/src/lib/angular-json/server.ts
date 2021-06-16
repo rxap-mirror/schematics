@@ -18,11 +18,6 @@ export type Server = {
         scripts?: boolean;
         /** Enables optimization of the styles output. */
         styles?: boolean;
-      } | boolean | {
-        /** Enables optimization of the scripts output. */
-        scripts?: boolean;
-        /** Enables optimization of the styles output. */
-        styles?: boolean;
       } | boolean;
     /** Replace compilation source files with other compilation source files in the build. */
     fileReplacements?: Array<FileReplacement>;
@@ -32,15 +27,6 @@ export type Server = {
     resourcesOutputPath?: string;
     /** Output source maps for scripts and styles. For more information, see https://angular.io/guide/workspace-config#source-map-configuration. */
     sourceMap?: {
-        /** Output source maps for all scripts. */
-        scripts?: boolean;
-        /** Output source maps for all styles. */
-        styles?: boolean;
-        /** Output source maps used for error reporting tools. */
-        hidden?: boolean;
-        /** Resolve vendor packages source maps. */
-        vendor?: boolean;
-      } | boolean | {
         /** Output source maps for all scripts. */
         scripts?: boolean;
         /** Output source maps for all styles. */
@@ -63,7 +49,7 @@ export type Server = {
     i18nLocale?: string;
     i18nMissingTranslation?: MissingTranslation;
     /** Define the output filename cache-busting hashing mode. */
-    outputHashing?: string;
+    outputHashing?: 'none' | 'all' | 'media' | 'bundles';
     /** delete-output-path */
     deleteOutputPath?: boolean;
     /** Do not use the real path when resolving modules. */
@@ -75,7 +61,7 @@ export type Server = {
     /** Use file name for lazy loaded chunks. */
     namedChunks?: boolean;
     /** Available on server platform only. Which external dependencies to bundle into the module. By default, all of node_modules will be bundled. */
-    bundleDependencies?: boolean | string | boolean | string;
+    bundleDependencies?: boolean | 'none' | 'all';
     /** Exclude the listed external dependencies from being bundled into the bundle. Instead, the created bundle relies on these dependencies to be available during runtime. */
     externalDependencies?: Array<string>;
     /** Generates a 'stats.json' file which can be analyzed using tools such as 'webpack-bundle-analyzer'. */

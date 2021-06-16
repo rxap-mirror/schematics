@@ -1,7 +1,7 @@
 export interface SchematicOptions {
   '@schematics/angular:component'?: {
       /** Specifies the change detection strategy. */
-      changeDetection?: string;
+      changeDetection?: 'Default' | 'OnPush';
       /** Specifies if the style will contain `:host { display: block; }`. */
       displayBlock?: boolean;
       /** Specifies if the component is an entry component of declaring module. */
@@ -23,9 +23,9 @@ export interface SchematicOptions {
       /** Flag to skip the module import. */
       skipImport?: boolean;
       /** The file extension or preprocessor to use for style files. */
-      style?: string;
+      style?: 'css' | 'scss' | 'sass' | 'less' | 'styl';
       /** Specifies the view encapsulation strategy. */
-      viewEncapsulation?: string;
+      viewEncapsulation?: 'Emulated' | 'Native' | 'None' | 'ShadowDom';
       /** Do not create test files. */
       skipTests?: boolean;
     };
@@ -49,7 +49,7 @@ export interface SchematicOptions {
       /** Generates a routing module. */
       routing?: boolean;
       /** The scope for the generated routing. */
-      routingScope?: string;
+      routingScope?: 'Child' | 'Root';
       /** Flag to indicate if a directory is created. */
       flat?: boolean;
       /** Flag to control whether the CommonModule is imported. */

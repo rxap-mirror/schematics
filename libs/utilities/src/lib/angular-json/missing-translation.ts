@@ -1,1 +1,1 @@
-export type MissingTranslation = string;
+export type MissingTranslation = 'warning' | 'error' | 'ignore';

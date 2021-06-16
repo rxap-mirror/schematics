@@ -29,13 +29,6 @@ export interface Karma {
       styles?: boolean;
       /** Resolve vendor packages source maps. */
       vendor?: boolean;
-    } | boolean | {
-      /** Output source maps for all scripts. */
-      scripts?: boolean;
-      /** Output source maps for all styles. */
-      styles?: boolean;
-      /** Resolve vendor packages source maps. */
-      vendor?: boolean;
     } | boolean;
   /** Log progress to the console while building. */
   progress?: boolean;
@@ -53,12 +46,6 @@ export interface Karma {
   codeCoverageExclude?: Array<string>;
   /** Replace compilation source files with other compilation source files in the build. */
   fileReplacements?: Array<{
-      src: string;
-      replaceWith: string;
-    } | {
-      replace: string;
-      with: string;
-    } | {
       src: string;
       replaceWith: string;
     } | {

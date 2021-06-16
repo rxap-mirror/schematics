@@ -1,6 +1,6 @@
 export interface Budget {
   /** The type of budget. */
-  type: string;
+  type: 'all' | 'allScript' | 'any' | 'anyScript' | 'anyComponentStyle' | 'bundle' | 'initial';
   /** The name of the bundle. */
   name?: string;
   /** The baseline size for comparison. */

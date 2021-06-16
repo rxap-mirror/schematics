@@ -33,40 +33,9 @@ export type Browser = {
             minify?: boolean;
             /** Extract and inline critical CSS definitions to improve first paint time. */
             inlineCritical?: boolean;
-          } | boolean | {
-            /** Minify CSS definitions by removing extraneous whitespace and comments, merging identifiers and minimizing values. */
-            minify?: boolean;
-            /** Extract and inline critical CSS definitions to improve first paint time. */
-            inlineCritical?: boolean;
           } | boolean;
         /** Enables optimization for fonts. This option requires internet access. `HTTPS_PROXY` environment variable can be used to specify a proxy server. */
         fonts?: {
-            /** Reduce render blocking requests by inlining external Google fonts and icons CSS definitions in the application's HTML index file. This option requires internet access. `HTTPS_PROXY` environment variable can be used to specify a proxy server. */
-            inline?: boolean;
-          } | boolean | {
-            /** Reduce render blocking requests by inlining external Google fonts and icons CSS definitions in the application's HTML index file. This option requires internet access. `HTTPS_PROXY` environment variable can be used to specify a proxy server. */
-            inline?: boolean;
-          } | boolean;
-      } | boolean | {
-        /** Enables optimization of the scripts output. */
-        scripts?: boolean;
-        /** Enables optimization of the styles output. */
-        styles?: {
-            /** Minify CSS definitions by removing extraneous whitespace and comments, merging identifiers and minimizing values. */
-            minify?: boolean;
-            /** Extract and inline critical CSS definitions to improve first paint time. */
-            inlineCritical?: boolean;
-          } | boolean | {
-            /** Minify CSS definitions by removing extraneous whitespace and comments, merging identifiers and minimizing values. */
-            minify?: boolean;
-            /** Extract and inline critical CSS definitions to improve first paint time. */
-            inlineCritical?: boolean;
-          } | boolean;
-        /** Enables optimization for fonts. This option requires internet access. `HTTPS_PROXY` environment variable can be used to specify a proxy server. */
-        fonts?: {
-            /** Reduce render blocking requests by inlining external Google fonts and icons CSS definitions in the application's HTML index file. This option requires internet access. `HTTPS_PROXY` environment variable can be used to specify a proxy server. */
-            inline?: boolean;
-          } | boolean | {
             /** Reduce render blocking requests by inlining external Google fonts and icons CSS definitions in the application's HTML index file. This option requires internet access. `HTTPS_PROXY` environment variable can be used to specify a proxy server. */
             inline?: boolean;
           } | boolean;
@@ -81,15 +50,6 @@ export type Browser = {
     aot?: boolean;
     /** Output source maps for scripts and styles. For more information, see https://angular.io/guide/workspace-config#source-map-configuration. */
     sourceMap?: {
-        /** Output source maps for all scripts. */
-        scripts?: boolean;
-        /** Output source maps for all styles. */
-        styles?: boolean;
-        /** Output source maps used for error reporting tools. */
-        hidden?: boolean;
-        /** Resolve vendor packages source maps. */
-        vendor?: boolean;
-      } | boolean | {
         /** Output source maps for all scripts. */
         scripts?: boolean;
         /** Output source maps for all styles. */
@@ -124,7 +84,7 @@ export type Browser = {
     /** Run build when files change. */
     watch?: boolean;
     /** Define the output filename cache-busting hashing mode. */
-    outputHashing?: string;
+    outputHashing?: 'none' | 'all' | 'media' | 'bundles';
     /** Enable and define the file watching poll time period in milliseconds. */
     poll?: number;
     /** Delete the output path before building. */
@@ -151,11 +111,6 @@ export type Browser = {
         input: string;
         /** The output path of the application's generated HTML index file. The full provided path will be used and will be considered relative to the application's configured output path. */
         output?: string;
-      } | string | {
-        /** The path of a file to use for the application's generated HTML index. */
-        input: string;
-        /** The output path of the application's generated HTML index file. The full provided path will be used and will be considered relative to the application's configured output path. */
-        output?: string;
       };
     /** Generates a 'stats.json' file which can be analyzed using tools such as 'webpack-bundle-analyzer'. */
     statsJson?: boolean;
@@ -168,7 +123,7 @@ export type Browser = {
     /** TypeScript configuration for Web Worker modules. */
     webWorkerTsConfig?: string;
     /** Define the crossorigin attribute setting of elements that provide CORS support. */
-    crossOrigin?: string;
+    crossOrigin?: 'none' | 'anonymous' | 'use-credentials';
     /** Concatenate modules with Rollup before bundling them with Webpack. */
     experimentalRollupPass?: boolean;
     /** A list of CommonJS packages that are allowed to be used without a build time warning. */

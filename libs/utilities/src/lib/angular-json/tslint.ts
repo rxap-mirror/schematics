@@ -2,7 +2,7 @@ export interface Tslint {
   /** The name of the TSLint configuration file. */
   tslintConfig?: string;
   /** The name of the TypeScript configuration file. */
-  tsConfig?: string | Array<string> | string | Array<string>;
+  tsConfig?: string | Array<string>;
   /** Fixes linting errors (may overwrite linted files). */
   fix?: boolean;
   /** Controls the type check for linting. */
