@@ -7,5 +7,32 @@
       "@rxap/schematics"
     ]
   },
-  "schematics": "./collection.json"
+  "schematics": "./collection.json",
+  "peerDependencies": {
+    "@nrwl/workspace": "^12.3.6"
+  },
+  "dependencies": {
+    "@rxap/schematics-utilities": "^12.1.0",
+    "@rxap/utilities": "^12.0.3",
+    "@rxap/xml-parser": "^12.0.3",
+    "ts-morph": "^11.0.0",
+    "typescript": "^4.2.4",
+    "@rxap/schematics-ts-morph": "^12.0.4"
+  },
+  "license": "MIT",
+  "keywords": [
+    "rxap",
+    "schematics"
+  ],
+  "publishConfig": {
+    "directory": "../../dist/libs/schematics"
+  },
+  "repository": "git@gitlab.com:rxap/packages.git",
+  "homepage": "https://gitlab.com/rxap/packages",
+  "author": "Merzough Münker",
+  "private": false,
+  "bugs": {
+    "url": "https://gitlab.com/rxap/plugins/-/issues",
+    "email": "incoming+rxap-packages-14898188-issue-@incoming.gitlab.com"
+  }
 }

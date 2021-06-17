@@ -16,7 +16,7 @@
 # Installation
 
 ```
-yarn add @rxap/schematics-table @rxap/schematics-xml-parser@^12.0.2
+yarn add @rxap/schematics-table
 ```
 
 # Schematics

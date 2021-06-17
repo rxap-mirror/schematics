@@ -15,6 +15,6 @@
 # Installation
 
 ```
-yarn add @rxap/schematics-open-api
+yarn add @rxap/schematics-open-api @rxap/utilities@^12.0.3
 ```
 

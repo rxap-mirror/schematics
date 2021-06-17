@@ -18,20 +18,20 @@ const projectGraph: ProjectGraph = createProjectGraph();
 const ExcludeNpmDependencies = ([ name, _ ]: [ string, any ]) => !name.match(/^npm:/);
 
 const blackListNpmPeerDependencies: RegExp[] = [
-  /npm:@angular-devkit\//,
-  /npm:ramda/,
-  /npm:uuid/,
-  /npm:jest-preset-angular/,
-  /npm:ts-morph/,
-  /npm:@storybook/,
-  /npm:across-tabs/,
-  /npm:openapi-types/,
-  /npm:ajv-oai/,
-  /npm:@apidevtools\/json-schema-ref-parser/,
+  /@angular-devkit\//,
+  /ramda/,
+  /uuid/,
+  /jest-preset-angular/,
+  /semver/,
+  /@storybook/,
+  /across-tabs/,
+  /openapi-types/,
+  /ajv-oai/,
+  /@apidevtools\/json-schema-ref-parser/,
   /json-schema-to-typescript/,
-  /npm:xmldom/,
-  /npm:handlebars/,
-  /npm:axios/
+  /xmldom/,
+  /handlebars/,
+  /axios/
 ];
 
 function FlattenDependencies(knownDependencies: string[]): string[] {
@@ -109,10 +109,14 @@ async function GetNewProjectVersion(projectName: string): Promise<string> {
         }
 
         const releaseType = data.releaseType ?? 'patch';
-        const newVersion  = inc(version, releaseType);
+        const newVersion = inc(version, releaseType);
 
         if (newVersion !== version) {
           projectNewVersion.set(projectName, [ version, newVersion ]);
+        }
+
+        if (!newVersion) {
+          throw new Error('Could not resolve the new version');
         }
 
         resolve(newVersion);
@@ -295,17 +299,24 @@ async function Update({ dryRun, all }: { dryRun?: boolean, all?: boolean } = {})
 
     const flattenDependencies = FlattenDependencies(dependencies);
 
-    const peerDependencies          = flattenDependencies.filter(dependency => !blackListNpmPeerDependencies.some(regex => dependency.match(regex)));
-    const blackListPeerDependencies = flattenDependencies.filter(dependency => blackListNpmPeerDependencies.some(regex => dependency.match(regex)));
-
     const packageJson = GetProjectPackageJson(name);
+
+    const localBlackListNpmPeerDependencies = [
+      ...blackListNpmPeerDependencies,
+      ...Object.keys((packageJson.dependencies ?? {})).map(dep => new RegExp(`${dep.replace(/\//g, '\\/')}`))
+    ];
+
+    console.log(flattenDependencies);
+
+    const peerDependencies = flattenDependencies.filter(dependency => !localBlackListNpmPeerDependencies.some(regex => GetPackageName(dependency).match(regex)));
+    const blackListPeerDependencies = flattenDependencies.filter(dependency => localBlackListNpmPeerDependencies.some(regex => GetPackageName(dependency).match(regex)));
 
     packageJson.peerDependencies
       = (await Promise.all(peerDependencies.map(async peerDependency => [ GetPackageName(peerDependency), await GetDependencyVersion(peerDependency) ])))
       .sort((aItem, bItem) => {
 
-        const a = aItem[ 0 ];
-        const b = bItem[ 0 ];
+        const a = aItem[0];
+        const b = bItem[0];
 
         if (a.match(/^@/)) {
           if (b.match(/^@/)) {
