@@ -685,6 +685,11 @@
                 "input": "./libs/schematics",
                 "glob": "migration.json",
                 "output": "."
+              },
+              {
+                "input": "./libs/schematics",
+                "glob": "**/*.!(ts)",
+                "output": "."
               }
             ],
             "buildableProjectDepsInPackageJsonType": "dependencies"
