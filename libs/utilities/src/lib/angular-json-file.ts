@@ -1,11 +1,10 @@
-import { Rule, Tree } from '@angular-devkit/schematics';
+import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { AngularJson } from './angular-json';
-import { GetJsonFile, UpdateJsonFile } from './json-file';
+import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
 import { Project } from './angular-json/project';
 import { CliOptions } from './angular-json/cli-options';
 import { SchematicOptions } from './angular-json/schematic-options';
 import { I18n } from './angular-json/i18n';
-import { SchematicsException } from '@angular-devkit/schematics';
 import { Target } from './angular-json/target';
 
 export function GetAngularJson(host: Tree): AngularJson {
@@ -50,11 +49,11 @@ export class AngularProjectTargetConfigurationsMap {
 
 export class AngularProjectTarget {
 
-  public get builder(): string {
+  public get builder(): string | undefined {
     return this._target.builder;
   }
 
-  public set builder(builder: string) {
+  public set builder(builder: string | undefined) {
     this._target.builder = builder;
   }
 
@@ -66,11 +65,11 @@ export class AngularProjectTarget {
     this._target.options = options;
   }
 
-  public get configurations(): Record<string, Record<string, any>> {
+  public get configurations(): Record<string, Record<string, any>> | undefined {
     return this._target.configurations;
   }
 
-  public set configurations(configurations: Record<string, Record<string, any>>) {
+  public set configurations(configurations: Record<string, Record<string, any>> | undefined) {
     this._target.configurations = configurations;
   }
 
@@ -160,7 +159,7 @@ export class AngularProject {
     if (!this._project.targets && !this._project.architect) {
       this._project.targets = {} as any
     }
-    this.targets = new AngularProjectTargetMap(this._project.architect ?? this._project.targets);
+    this.targets = new AngularProjectTargetMap(this._project.architect ?? this._project.targets ?? {});
   }
 }
 
@@ -216,9 +215,13 @@ export class Angular {
   }
 }
 
+export interface UpdateAngularJsonFileOptions extends UpdateJsonFileOptions {
+
+}
+
 export function UpdateAngularJson(
   updater: (angular: Angular) => void | PromiseLike<void>,
-  space: string | number = 2
+  options?: UpdateAngularJsonFileOptions
 ): Rule {
   return UpdateJsonFile(
     async (angularJson: AngularJson) => {
@@ -231,6 +234,6 @@ export function UpdateAngularJson(
       }
     },
     'angular.json',
-    space
+    options
   );
 }

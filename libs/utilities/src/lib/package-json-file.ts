@@ -1,42 +1,40 @@
-import {
-  Tree,
-  Rule
-} from '@angular-devkit/schematics';
+import { chain, externalSchematic, Rule, Tree } from '@angular-devkit/schematics';
 import { PackageJson } from './package-json';
-import { join } from 'path';
-import {
-  GetJsonFile,
-  UpdateJsonFile
-} from './json-file';
+import { dirname, join } from 'path';
+import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
 import { CoerceProperty } from '@rxap/utilities';
 import { exec } from 'child_process';
+import gt from 'semver/functions/gt';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { CollectionJson } from './collection-json';
 
 export function GetPackageJson(host: Tree, basePath: string = ''): PackageJson {
   return GetJsonFile(host, join(basePath, 'package.json'));
 }
 
+export interface UpdatePackageJsonOptions extends UpdateJsonFileOptions {
+  basePath?: string;
+}
+
 
 export function UpdatePackageJson(
   updaterOrJsonFile: PackageJson | ((packageJson: PackageJson) => void | PromiseLike<void>),
-  basePath: string = '',
-  space: string | number = 2,
+  options?: UpdatePackageJsonOptions,
 ): Rule {
-  return UpdateJsonFile(updaterOrJsonFile, join(basePath, 'package.json'), space);
+  return UpdateJsonFile(updaterOrJsonFile, join(options?.basePath ?? '', 'package.json'), options);
 }
 
 export function AddPackageJsonScript(
   scriptName: string,
   script: string,
-  basePath: string = '',
-  space: string | number = 2,
+  options?: UpdatePackageJsonOptions,
 ): Rule {
   return UpdatePackageJson(
     packageJson => {
       CoerceProperty(packageJson, 'scripts', {});
       packageJson.scripts![scriptName] = script;
     },
-    basePath,
-    space
+    options
   );
 }
 
@@ -52,11 +50,17 @@ export function GetLatestPackageVersion(packageName: string): Promise<string> {
   });
 }
 
+export interface AddPackageJsonDependencyOptions extends UpdatePackageJsonOptions {
+  /**
+   * true - only update the dependency if not already exists or greater then the current version
+   */
+  soft?: boolean;
+}
+
 export function AddPackageJsonDependency(
   packageName: string,
   packageVersion: string | 'latest' = 'latest',
-  basePath: string                  = '',
-  space: string | number            = 2
+  options?: AddPackageJsonDependencyOptions,
 ): Rule {
   return async () => {
     if (packageVersion === 'latest') {
@@ -68,8 +72,7 @@ export function AddPackageJsonDependency(
         CoerceProperty(packageJson, 'dependencies', {});
         packageJson.dependencies![ packageName ] = packageVersion;
       },
-      basePath,
-      space
+      options
     );
   };
 }
@@ -77,8 +80,7 @@ export function AddPackageJsonDependency(
 export function AddPackageJsonDevDependency(
   packageName: string,
   packageVersion: string | 'latest' = 'latest',
-  basePath: string                  = '',
-  space: string | number            = 2
+  options?: AddPackageJsonDependencyOptions,
 ): Rule {
   return async () => {
 
@@ -91,8 +93,7 @@ export function AddPackageJsonDevDependency(
         CoerceProperty(packageJson, 'devDependencies', {});
         packageJson.devDependencies![ packageName ] = packageVersion;
       },
-      basePath,
-      space
+      options,
     );
 
   };

@@ -1,15 +1,17 @@
 import { Tree } from '@angular-devkit/schematics';
 import { NxJson } from './nx-json';
-import { GetJsonFile, UpdateJsonFile } from './json-file';
-import { PackageJson } from './package-json';
+import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
 
 export function GetNxJson(host: Tree): NxJson {
   return GetJsonFile(host, 'nx.json');
 }
 
+export interface UpdateNxJsonOptions extends UpdateJsonFileOptions {
+}
+
 export function UpdateNxJson(
   updaterOrJsonFile: NxJson | ((nxJson: NxJson) => void | PromiseLike<void>),
-  space: string | number = 2
+  options?: UpdateNxJsonOptions,
 ) {
-  return UpdateJsonFile(updaterOrJsonFile, 'nx.json', space);
+  return UpdateJsonFile(updaterOrJsonFile, 'nx.json', options);
 }

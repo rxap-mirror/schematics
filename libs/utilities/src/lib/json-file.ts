@@ -1,20 +1,24 @@
-import { Tree, Rule } from '@angular-devkit/schematics';
+import { Rule, Tree } from '@angular-devkit/schematics';
 import { CoerceFile } from './coerce-file';
 import { IsFunction } from '@rxap/utilities';
 
 export function GetJsonFile<T = any>(host: Tree, filePath: string): T {
 
   if (!host.exists(filePath)) {
-    throw new Error('Could not find nx json file');
+    throw new Error(`A json file at path '${filePath}' does not exists`);
   }
 
   return JSON.parse(host.read(filePath)!.toString());
 }
 
+export interface UpdateJsonFileOptions {
+  space?: string | number;
+}
+
 export function UpdateJsonFile<T extends Record<string, any> = Record<string, any>>(
   updaterOrJsonFile: T | ((jsonFile: T) => void | PromiseLike<void>),
   filePath: string,
-  space: string | number = 2,
+  options?: UpdateJsonFileOptions,
 ): Rule {
   return async tree => {
 
@@ -29,7 +33,7 @@ export function UpdateJsonFile<T extends Record<string, any> = Record<string, an
       jsonFile = updaterOrJsonFile;
     }
 
-    CoerceFile(tree, filePath, JSON.stringify(jsonFile, undefined, space));
+    CoerceFile(tree, filePath, JSON.stringify(jsonFile, undefined, options?.space ?? 2));
 
   }
 }
