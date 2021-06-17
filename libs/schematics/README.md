@@ -21,7 +21,25 @@ yarn add @rxap/schematics
 
 # Schematics
 
+## config-ng-add
+
+> Add required configs and files to a project for ng add support.
+
+```
+ng g @rxap/schematics:config-ng-add
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+name | string |  | Library name
+save | string | dependencies |
+
+| Required |
+| --- |
+| name |
+
 ## component-module
+
 > Creates a new generic component module in the given or default project.
 
 ```

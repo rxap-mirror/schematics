@@ -1,6 +1,11 @@
 {
-  "$schema": "../src/schematics/../src/schematics/node_modules/@angular-devkit/schematics/collection-schema.json",
+  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
+    "config-ng-add": {
+      "factory": "./src/schematics/config-ng-add",
+      "schema": "./src/schematics/config-ng-add/schema.json",
+      "description": "Add required configs and files to a project for ng add support."
+    },
     "component-module": {
       "factory": "./src/schematics/component-module",
       "schema": "./src/schematics/component-module/schema.json",
