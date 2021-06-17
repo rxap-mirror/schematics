@@ -71,9 +71,9 @@ export default function (options: Schema): Rule {
     return chain([
       hasSchematics ? mergeWith(apply(url('./files'), [
         applyTemplates({
-          id: strings.dasherize(projectPackageJson.name),
+          id: strings.dasherize(projectPackageJson.name!),
         }),
-        move(schematicRoot),
+        move(schematicRoot!),
         forEach(entry => {
           if (host.exists(entry.path)) {
             return null
@@ -93,7 +93,9 @@ export default function (options: Schema): Rule {
           packageJson['ng-add'].save = options.save ?? true;
         }
 
-      }, projectRoot)
+      }, {
+        basePath: projectRoot
+      })
     ]);
 
   }

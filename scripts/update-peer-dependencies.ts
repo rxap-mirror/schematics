@@ -31,7 +31,8 @@ const blackListNpmPeerDependencies: RegExp[] = [
   /json-schema-to-typescript/,
   /xmldom/,
   /handlebars/,
-  /axios/
+  /axios/,
+  /parse5/
 ];
 
 function FlattenDependencies(knownDependencies: string[]): string[] {

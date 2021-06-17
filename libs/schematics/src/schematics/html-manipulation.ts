@@ -8,7 +8,7 @@
 
 import { SchematicsException, Tree, } from '@angular-devkit/schematics';
 import { getChildElementIndentation } from './parse5-element';
-import { DefaultTreeDocument, DefaultTreeElement, parse as parseHtml, } from 'parse5';
+import { parse as parseHtml, } from 'parse5';
 
 /** Appends the given element HTML fragment to the `<head>` element of the specified HTML file. */
 export function appendHtmlElementToHead(host: Tree, htmlFilePath: string, elementHtml: string) {
@@ -44,7 +44,7 @@ export function appendHtmlElementToHead(host: Tree, htmlFilePath: string, elemen
 }
 
 /** Parses the given HTML file and returns the head element if available. */
-export function getHtmlHeadTagElement(htmlContent: string): DefaultTreeElement | null {
+export function getHtmlHeadTagElement(htmlContent: string) {
   return getElementByTagName('head', htmlContent);
 }
 
@@ -63,10 +63,10 @@ export function addBodyClass(host: Tree, htmlFilePath: string, className: string
     throw Error(`Could not find <body> element in HTML file: ${htmlFileBuffer}`);
   }
 
-  const classAttribute = body.attrs.find(attribute => attribute.name === 'class');
+  const classAttribute = body.attrs.find((attribute: any) => attribute.name === 'class');
 
   if (classAttribute) {
-    const hasClass = classAttribute.value.split(' ').map(part => part.trim()).includes(className);
+    const hasClass = classAttribute.value.split(' ').map((part: any) => part.trim()).includes(className);
 
     if (!hasClass) {
       const classAttributeLocation = body.sourceCodeLocation!.attrs.class;
@@ -84,13 +84,12 @@ export function addBodyClass(host: Tree, htmlFilePath: string, className: string
 }
 
 /** Finds an element by its tag name. */
-function getElementByTagName(tagName: string, htmlContent: string):
-  DefaultTreeElement | null {
-  const document  = parseHtml(htmlContent, { sourceCodeLocationInfo: true }) as DefaultTreeDocument;
+function getElementByTagName(tagName: string, htmlContent: string) {
+  const document = parseHtml(htmlContent, { sourceCodeLocationInfo: true });
   const nodeQueue = [ ...document.childNodes ];
 
   while (nodeQueue.length) {
-    const node = nodeQueue.shift() as DefaultTreeElement;
+    const node: any = nodeQueue.shift();
 
     if (node.nodeName.toLowerCase() === tagName) {
       return node;
