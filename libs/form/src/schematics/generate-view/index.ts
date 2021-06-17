@@ -1,24 +1,15 @@
 import { GenerateSchema } from './schema';
-import {
-  chain,
-  Rule,
-  Tree,
-  noop,
-  externalSchematic,
-} from '@angular-devkit/schematics';
+import { chain, externalSchematic, noop, Rule, SchematicsException, Tree, } from '@angular-devkit/schematics';
 import { formatFiles } from '@nrwl/workspace';
 import { Elements } from './elements/elements';
 import { join } from 'path';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { strings } from '@angular-devkit/core';
 import { FormElement } from './elements/form.element';
-import {
-  ApplyTsMorphProject,
-  FixMissingImports,
-} from '@rxap/schematics-ts-morph';
-import { IndentationText, QuoteKind, Project } from 'ts-morph';
-import { readAngularJsonFile } from '@rxap/schematics/utilities';
+import { ApplyTsMorphProject, FixMissingImports, } from '@rxap/schematics-ts-morph';
+import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import { ParseTemplate } from '@rxap/schematics-xml-parser';
+import { GetAngularJson } from '@rxap/schematics-utilities';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
@@ -55,13 +46,20 @@ export default function (options: GenerateSchema): Rule {
     });
 
     if (!options.openApiModule) {
-      const angularJson = readAngularJsonFile(host);
+      const angularJson = GetAngularJson(host);
+      if (!angularJson.projects) {
+        angularJson.projects = {}
+      }
       if (Object.keys(angularJson.projects).includes('open-api')) {
         options.openApiModule = `@${angularJson.projects['open-api'].prefix}/open-api`;
       } else {
-        options.openApiModule = `@${
-          angularJson.projects[angularJson.defaultProject].prefix
-        }/open-api`;
+        if (angularJson.defaultProject) {
+          options.openApiModule = `@${
+            angularJson.projects[angularJson.defaultProject].prefix
+          }/open-api`;
+        } else {
+          throw new SchematicsException('The default project is not defined');
+        }
       }
     }
 

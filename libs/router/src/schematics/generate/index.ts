@@ -1,39 +1,43 @@
-import { chain, noop, Rule, Tree } from '@angular-devkit/schematics';
+import { chain, noop, Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { formatFiles } from '@nrwl/workspace';
 import { strings } from '@angular-devkit/core';
 import { RoutingSchema } from './schema';
 import { HandelTemplate } from './elements/utils';
-import { readAngularJsonFile } from '@rxap/schematics/utilities';
 import { Elements } from './elements/elements';
-import { OrganizeImports, FixMissingImports } from '@rxap/schematics-ts-morph';
+import { FixMissingImports, OrganizeImports } from '@rxap/schematics-ts-morph';
 import { join } from 'path';
+import { GetAngularJson, GetProjectPrefix, GetProjectSourceRoot } from '@rxap/schematics-utilities';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
 export default function (options: RoutingSchema): Rule {
   return async (host: Tree) => {
     if (!options.prefix) {
-      const angularJson = readAngularJsonFile(host);
-      options.prefix = angularJson.projects[options.project].prefix;
+      options.prefix = GetProjectPrefix(host, options.project);
     }
 
     const extendedElements = Elements;
 
     if (!options.openApiModule) {
-      const angularJson = readAngularJsonFile(host);
+      const angularJson = GetAngularJson(host);
+      if (!angularJson.projects) {
+        angularJson.projects = {}
+      }
       if (Object.keys(angularJson.projects).includes('open-api')) {
         options.openApiModule = `@${angularJson.projects['open-api'].prefix}/open-api`;
       } else {
-        options.openApiModule = `@${
-          angularJson.projects[angularJson.defaultProject].prefix
-        }/open-api`;
+        if (angularJson.defaultProject) {
+          options.openApiModule = `@${
+            angularJson.projects[angularJson.defaultProject].prefix
+          }/open-api`;
+        } else {
+          throw new SchematicsException('The default project is not defined');
+        }
       }
     }
 
     if (options.project && !options.path) {
-      const angularJson = readAngularJsonFile(host);
-      const project = angularJson.projects[options.project];
-      options.path = join(project.sourceRoot, 'app');
+      options.path = join(GetProjectSourceRoot(host, options.project), 'app');
     }
 
     console.log(

@@ -1,19 +1,15 @@
-import { Rule, Tree, chain, noop } from '@angular-devkit/schematics';
+import { chain, noop, Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { join } from 'path';
 import { GenerateSchema } from './schema';
 import { FormElement } from './elements/form.element';
-import { Project, QuoteKind, IndentationText } from 'ts-morph';
+import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { formatFiles } from '@nrwl/workspace';
 import { Elements } from './elements/elements';
-import { readAngularJsonFile } from '@rxap/schematics/utilities';
-import {
-  AddDir,
-  ApplyTsMorphProject,
-  FixMissingImports,
-} from '@rxap/schematics-ts-morph';
+import { AddDir, ApplyTsMorphProject, FixMissingImports, } from '@rxap/schematics-ts-morph';
 import { ParseTemplate } from '@rxap/schematics-xml-parser';
+import { GetAngularJson } from '@rxap/schematics-utilities';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -30,13 +26,20 @@ export default function (options: GenerateSchema): Rule {
     }
 
     if (!options.openApiModule) {
-      const angularJson = readAngularJsonFile(host);
+      const angularJson = GetAngularJson(host);
+      if (!angularJson.projects) {
+        angularJson.projects = {}
+      }
       if (Object.keys(angularJson.projects).includes('open-api')) {
         options.openApiModule = `@${angularJson.projects['open-api'].prefix}/open-api`;
       } else {
-        options.openApiModule = `@${
-          angularJson.projects[angularJson.defaultProject].prefix
-        }/open-api`;
+        if (angularJson.defaultProject) {
+          options.openApiModule = `@${
+            angularJson.projects[angularJson.defaultProject].prefix
+          }/open-api`;
+        } else {
+          throw new SchematicsException('The default project is not defined');
+        }
       }
     }
 
