@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@12.0.3...@rxap/schematics-open-api@12.0.4) (2021-06-17)
+
+
+### Bug Fixes
+
+* set correct peerDependencies and dependencies ([92c5eae](https://gitlab.com/rxap/packages/commit/92c5eae7eb84c65381ed005da1900ce5f0ce80a3))
+
+
+
+
+
 ## 12.0.3 (2021-06-14)
 
 **Note:** Version bump only for package @rxap/schematics-open-api

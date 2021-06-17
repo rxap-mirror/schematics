@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.0.6...@rxap/schematics-utilities@12.1.0) (2021-06-17)
+
+
+### Features
+
+* add collection.json type ([96bf079](https://gitlab.com/rxap/packages/commit/96bf079337826bba4da19a6bd7e4352344c06845))
+* add function DeleteRecursive ([438840b](https://gitlab.com/rxap/packages/commit/438840bf7806973f08cb77a6c7fe39f1cba231a3))
+* add soft option to package json dependency updater ([196cc72](https://gitlab.com/rxap/packages/commit/196cc72aa91f1ef988d2ed961427b50cce043a26))
+* use options property to propagate json update settings ([4aa0783](https://gitlab.com/rxap/packages/commit/4aa078391367fe14d10d28afb5794bda5de49a3b))
+
+
+
+
+
 ## 12.0.6 (2021-06-14)
 
 **Note:** Version bump only for package @rxap/schematics-utilities

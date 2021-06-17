@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.6](https://gitlab.com/rxap/packages/compare/@rxap/schematics-table@12.0.5...@rxap/schematics-table@12.0.6) (2021-06-17)
+
+
+### Bug Fixes
+
+* remove @rxap/schematics/utilities import ([dc14bb5](https://gitlab.com/rxap/packages/commit/dc14bb58e150a82f9b32f99a97ecf8af0fde3421))
+* set correct peerDependencies and dependencies ([92c5eae](https://gitlab.com/rxap/packages/commit/92c5eae7eb84c65381ed005da1900ce5f0ce80a3))
+
+
+
+
+
 ## 12.0.5 (2021-06-14)
 
 **Note:** Version bump only for package @rxap/schematics-table
