@@ -41,7 +41,7 @@ export function AddPackageJsonScript(
 export function GetLatestPackageVersion(packageName: string): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     exec(`npm view ${packageName} version`, (err, stdout, stderr) => {
-      if(err) {
+      if (err) {
         reject(stderr);
       } else {
         resolve(stdout.trim());
@@ -70,7 +70,14 @@ export function AddPackageJsonDependency(
     return UpdatePackageJson(
       packageJson => {
         CoerceProperty(packageJson, 'dependencies', {});
-        packageJson.dependencies![ packageName ] = packageVersion;
+        if (options?.soft) {
+          if (packageJson.dependencies![packageName]) {
+            if (gt(packageJson.dependencies![packageName], packageVersion)) {
+              return;
+            }
+          }
+        }
+        packageJson.dependencies![packageName] = packageVersion;
       },
       options
     );
@@ -91,10 +98,54 @@ export function AddPackageJsonDevDependency(
     return UpdatePackageJson(
       packageJson => {
         CoerceProperty(packageJson, 'devDependencies', {});
-        packageJson.devDependencies![ packageName ] = packageVersion;
+        if (options?.soft) {
+          if (packageJson.dependencies![packageName]) {
+            if (gt(packageJson.dependencies![packageName], packageVersion)) {
+              return;
+            }
+          }
+        }
+        packageJson.devDependencies![packageName] = packageVersion;
       },
       options,
     );
 
   };
 }
+
+export function InstallPeerDependencies(): Rule {
+  return (host, context) => {
+    const packageDirname = dirname(require.resolve(join(context.schematic.description.collection.name, 'package.json')));
+
+    const packageJson = GetPackageJson(host, packageDirname);
+
+    const peerDependencies = packageJson.peerDependencies ?? {};
+
+    return chain([
+      chain(Object.entries(peerDependencies).map(([ name, version ]) => {
+        if (packageJson['ng-add']?.save === 'devDependency') {
+          return AddPackageJsonDevDependency(name, version);
+        } else {
+          return AddPackageJsonDependency(name, version);
+        }
+      })),
+      (_, context) => {
+        context.addTask(new NodePackageInstallTask());
+      },
+      chain(Object.keys(peerDependencies).map(name => (tree) => {
+        const peerPackageDirname = dirname(require.resolve(join(name, 'package.json')));
+        const peerPackageJson = GetPackageJson(host, packageDirname);
+        if (peerPackageJson.schematics) {
+          const peerCollectionJsonFilePath = join(peerPackageDirname, peerPackageJson.schematics);
+          if (tree.exists(peerCollectionJsonFilePath)) {
+            const collectionJson = GetJsonFile<CollectionJson>(tree, peerCollectionJsonFilePath);
+            if (collectionJson.schematics['ng-add']) {
+              return externalSchematic(name, 'ng-add', {});
+            }
+          }
+        }
+      }))
+    ]);
+  }
+}
+
