@@ -50,6 +50,9 @@
     },
     "open-api": {
       "tags": []
+    },
+    "schematics": {
+      "tags": []
     }
   }
 }

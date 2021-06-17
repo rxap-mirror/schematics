@@ -1,0 +1,11 @@
+{
+  "name": "@rxap/schematics",
+  "version": "0.0.1",
+  "ng-update": {
+    "migrations": "./migration.json",
+    "packageGroup": [
+      "@rxap/schematics"
+    ]
+  },
+  "schematics": "./collection.json"
+}

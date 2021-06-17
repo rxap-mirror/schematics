@@ -658,6 +658,69 @@
           "builder": "@rxap/plugin-readme-generator:library"
         }
       }
+    },
+    "schematics": {
+      "root": "libs/schematics",
+      "sourceRoot": "libs/schematics/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/schematics",
+            "tsConfig": "libs/schematics/tsconfig.lib.json",
+            "packageJson": "libs/schematics/package.json",
+            "main": "libs/schematics/src/index.ts",
+            "assets": [
+              "libs/schematics/*.md",
+              {
+                "input": "./libs/schematics",
+                "glob": "collection.json",
+                "output": "."
+              },
+              {
+                "input": "./libs/schematics",
+                "glob": "migration.json",
+                "output": "."
+              }
+            ],
+            "buildableProjectDepsInPackageJsonType": "dependencies"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/schematics/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/schematics"
+          ],
+          "options": {
+            "jestConfig": "libs/schematics/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "pack": {
+          "builder": "@rxap/plugin-pack:build",
+          "options": {
+            "targets": [
+              "schematics:readme",
+              "schematics:build"
+            ]
+          }
+        },
+        "readme": {
+          "builder": "@rxap/plugin-readme-generator:library"
+        }
+      }
     }
   },
   "cli": {
