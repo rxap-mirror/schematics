@@ -1,0 +1,19 @@
+@import '../../../libs/shared/src/index';
+@import '../../../libs/feature/index';
+/* IMPORT */
+
+@mixin app-theme($theme) {
+
+  @include shared-theme($theme);
+  @include feature-theme($theme);
+  /* THEME_INCLUDE */
+
+}
+
+@mixin app-typography($config) {
+
+  @include shared-typography($config);
+  @include feature-typography($typography);
+  /* TYPOGRAPHY_INCLUDE */
+
+}

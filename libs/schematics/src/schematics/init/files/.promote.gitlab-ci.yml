@@ -1,0 +1,30 @@
+variables:
+  CI_CONFIG_VERSION: 'v4.6.1'
+
+include:
+  - project: 'rxap/gitlab-ci'
+    ref: v4.6.1
+    file: '/templates/app-engine/deploy.yml'
+  - project: 'rxap/gitlab-ci'
+    ref: v4.6.1
+    file: '/templates/nrwl/run.yml'
+  - project: 'rxap/gitlab-ci'
+    ref: v4.6.1
+    file: '/templates/artifacts.yml'
+
+stages:
+  - build
+  - deploy
+
+pwa:build:production:
+  extends: .artifacts
+
+pwa:deploy:
+  tags:
+    - script
+  extends: .app:deploy:version
+  variables:
+    VERSION: "${ENVIRONMENT_NAME}"
+    GCP_APP_ENGINE_DEPLOY_CONFIG: dist/apps/pwa/app.yaml
+  needs:
+    - pwa:build:production

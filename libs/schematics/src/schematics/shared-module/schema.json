@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "shared-module",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the component shared module",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "component": {
+      "type": "boolean",
+      "default": false,
+      "description": "Weather the new module is a component module"
+    },
+    "selector": {
+      "type": "string",
+      "description": "The HTML selector to use for this component."
+    },
+    "input": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of component inputs",
+      "default": []
+    },
+    "output": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of component outputs",
+      "default": []
+    },
+    "import": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of module imports",
+      "default": []
+    },
+    "template": {
+      "type": "string",
+      "description": "The initial component template"
+    },
+    "inputOutput": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of component 2 way data binding input/output's",
+      "default": []
+    },
+    "hostBinding": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of component host bindings",
+      "default": []
+    },
+    "hostListener": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of component host listener",
+      "default": []
+    },
+    "zeplinName": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "storybook": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

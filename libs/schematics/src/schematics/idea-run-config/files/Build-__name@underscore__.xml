@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Build <%= classify(name) %>" type="js.build_tools.npm">
+    <package-json value="<%= packageJsonPath %>"/>
+    <command value="run" />
+    <scripts>
+      <script value="build"/>
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

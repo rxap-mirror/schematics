@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+
+@mixin <%= prefix %>-<%= dasherize(name) %>-theme($theme) {
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $isDark: map-get($theme, is-dark);
+
+  .<%= prefix %>-<%= dasherize(name) %> { }
+
+}
+
+@mixin <%= prefix %>-<%= dasherize(name) %>-typography($config) {
+  .<%= prefix %>-<%= dasherize(name) %> { }
+}

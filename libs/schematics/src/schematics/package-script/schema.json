@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "package script",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "scss-bundle": {
+      "type": "boolean",
+      "description": "Weather the project has custom themes",
+      "default": false
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

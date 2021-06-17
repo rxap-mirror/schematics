@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "feature-module",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "parentModule": {
+      "type": "string",
+      "alias": "parent-module",
+      "description": "",
+      "default": "apps/pwa/src/app/app-routing.module.ts"
+    },
+    "storybook": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

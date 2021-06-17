@@ -1,0 +1,13 @@
+/* IMPORT */
+
+@mixin <%= project %>-theme($theme) {
+
+  /* THEME_INCLUDE */
+
+}
+
+@mixin <%= project %>-typography($config) {
+
+  /* TYPOGRAPHY_INCLUDE */
+
+}

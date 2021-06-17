@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "library-shared",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "storybook": {
+      "type": "boolean",
+      "description": "Add storybook support",
+      "default": false
+    }
+  },
+  "required": []
+}

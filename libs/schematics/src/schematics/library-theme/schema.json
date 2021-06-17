@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "module-theme",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "bundle": {
+      "type": "boolean",
+      "description": "Add the scss-bundle target",
+      "default": false
+    }
+  },
+  "required": []
+}

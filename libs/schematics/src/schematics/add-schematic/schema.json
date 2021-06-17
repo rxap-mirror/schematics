@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "add-schematic",
+  "type": "object",
+  "description": "Options for the add schematic",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the new schematic",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The absolute path to the schematic folder or the relative path from the project root",
+      "visible": false
+    },
+    "project": {
+      "type": "string",
+      "description": "The project where the schematic should be added",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the new schematic",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      }
+    }
+  },
+  "required": [
+    "name",
+    "description"
+  ]
+}

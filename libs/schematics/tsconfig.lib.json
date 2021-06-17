@@ -4,12 +4,14 @@
     "module": "commonjs",
     "outDir": "../../dist/out-tsc",
     "declaration": true,
+    "esModuleInterop": true,
     "types": [
       "node"
     ]
   },
   "exclude": [
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "**/files/**"
   ],
   "include": [
     "**/*.ts"

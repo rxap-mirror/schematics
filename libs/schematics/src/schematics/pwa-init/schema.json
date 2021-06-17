@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "pwa-init",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Project name",
+      "default": "pwa"
+    }
+  },
+  "required": []
+}

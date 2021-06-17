@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "view-component",
+  "type": "object",
+  "description": "Creates a new generic view component with module for the view system in the given or default project.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Form control name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path at which to create the view component file, relative to the current workspace.",
+      "visible": false
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "prefix": {
+      "type": "string",
+      "description": "View component name"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

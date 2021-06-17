@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "idea run config",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Project name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "basePath": {
+      "type": "string",
+      "description": "Project name"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

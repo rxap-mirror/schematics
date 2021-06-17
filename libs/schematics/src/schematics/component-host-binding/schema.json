@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "component-host-binding",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "component": {
+      "type": "string",
+      "description": ""
+    },
+    "property": {
+      "type": "string",
+      "description": ""
+    },
+    "hostPropertyName": {
+      "type": "string",
+      "description": ""
+    },
+    "type": {
+      "type": "string",
+      "description": ""
+    },
+    "typeImport": {
+      "type": "string",
+      "description": ""
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "",
+      "visible": false
+    },
+    "initial": {
+      "type": "string",
+      "description": ""
+    },
+    "project": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "projectName"
+      }
+    }
+  },
+  "required": [
+    "component",
+    "property",
+    "hostPropertyName",
+    "type",
+    "initial"
+  ]
+}

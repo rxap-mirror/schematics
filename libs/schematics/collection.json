@@ -1,4 +1,160 @@
 {
-  "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "schematics": {}
+  "$schema": "../src/schematics/../src/schematics/node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "component-module": {
+      "factory": "./src/schematics/component-module",
+      "schema": "./src/schematics/component-module/schema.json",
+      "description": "Creates a new generic component module in the given or default project.",
+      "aliases": [
+        "componentModule"
+      ]
+    },
+    "formControlComponent": {
+      "factory": "./src/schematics/form-control-component",
+      "schema": "./src/schematics/form-control-component/schema.json",
+      "description": "Creates a new generic form control component module in the given or default project.",
+      "aliases": [
+        "form-control-component"
+      ]
+    },
+    "viewComponent": {
+      "factory": "./src/schematics/view-component",
+      "schema": "./src/schematics/view-component/schema.json",
+      "description": "Creates a new generic view component with module for the view system in the given or default project.",
+      "aliases": [
+        "view-component"
+      ]
+    },
+    "ideaRunConfig": {
+      "factory": "./src/schematics/idea-run-config",
+      "schema": "./src/schematics/idea-run-config/schema.json",
+      "description": "Create Idea lib run configurations",
+      "aliases": [
+        "idea-run-config"
+      ]
+    },
+    "packageScript": {
+      "factory": "./src/schematics/package-script",
+      "schema": "./src/schematics/package-script/schema.json",
+      "description": "Add all build scripts to lib package.json",
+      "aliases": [
+        "package-script"
+      ]
+    },
+    "libraryDependencies": {
+      "factory": "./src/schematics/library-dependencies",
+      "schema": "./src/schematics/library-dependencies/schema.json",
+      "description": "Updates the package peer dependencies",
+      "aliases": [
+        "library-dependencies",
+        "package-dependencies"
+      ]
+    },
+    "addSubPackage": {
+      "factory": "./src/schematics/add-sub-package",
+      "schema": "./src/schematics/add-sub-package/schema.json",
+      "description": "Creates a sub ngPackage",
+      "aliases": [
+        "add-sub-package"
+      ]
+    },
+    "addSchematic": {
+      "factory": "./src/schematics/add-schematic",
+      "schema": "./src/schematics/add-schematic/schema.json",
+      "description": "Add a new schematic to the collection",
+      "aliases": [
+        "add-schematic"
+      ]
+    },
+    "component-stories": {
+      "description": "add a story book file to the component",
+      "factory": "./src/schematics/component-stories/index",
+      "schema": "./src/schematics/component-stories/schema.json"
+    },
+    "feature-module": {
+      "description": "Create a new feature module. Adds a new nx library and setup the routing",
+      "factory": "./src/schematics/feature-module/index",
+      "schema": "./src/schematics/feature-module/schema.json"
+    },
+    "shared-module": {
+      "description": "Create a new shared module. Adds a new nx library if not already created",
+      "factory": "./src/schematics/shared-module/index",
+      "schema": "./src/schematics/shared-module/schema.json"
+    },
+    "library-storybook-configuration": {
+      "description": "Add a storybook configuration to a library",
+      "factory": "./src/schematics/library-storybook-configuration/index",
+      "schema": "./src/schematics/library-storybook-configuration/schema.json"
+    },
+    "link-component-to-zeplin": {
+      "description": "Add the specified component to the zeplin components.json.",
+      "factory": "./src/schematics/link-component-to-zeplin/index",
+      "schema": "./src/schematics/link-component-to-zeplin/schema.json"
+    },
+    "component-theme": {
+      "description": "add the component scss theme",
+      "factory": "./src/schematics/component-theme/index",
+      "schema": "./src/schematics/component-theme/schema.json"
+    },
+    "component-input": {
+      "description": "Add an input to the specified component",
+      "factory": "./src/schematics/component-input/index",
+      "schema": "./src/schematics/component-input/schema.json"
+    },
+    "component-output": {
+      "description": "Add an output to the specified component",
+      "factory": "./src/schematics/component-output/index",
+      "schema": "./src/schematics/component-output/schema.json"
+    },
+    "component-input-output": {
+      "description": "Add an 2 way databinding input/output to the specified component",
+      "factory": "./src/schematics/component-input-output/index",
+      "schema": "./src/schematics/component-input-output/schema.json"
+    },
+    "component-host-binding": {
+      "description": "adds a host binding to the component",
+      "factory": "./src/schematics/component-host-binding/index",
+      "schema": "./src/schematics/component-host-binding/schema.json"
+    },
+    "component-host-listener": {
+      "description": "adds a host listner to the component",
+      "factory": "./src/schematics/component-host-listener/index",
+      "schema": "./src/schematics/component-host-listener/schema.json"
+    },
+    "init": {
+      "description": "create a new angular workspace",
+      "factory": "./src/schematics/init/index",
+      "schema": "./src/schematics/init/schema.json"
+    },
+    "library-theme": {
+      "description": "add index theme to library",
+      "factory": "./src/schematics/library-theme/index",
+      "schema": "./src/schematics/library-theme/schema.json"
+    },
+    "zeplin-configuration": {
+      "description": "adds zeplin connect support to the porject",
+      "factory": "./src/schematics/zeplin-configuration/index",
+      "schema": "./src/schematics/zeplin-configuration/schema.json"
+    },
+    "storybook-configuration": {
+      "description": "adds storybook support to the project",
+      "factory": "./src/schematics/storybook-configuration/index",
+      "schema": "./src/schematics/storybook-configuration/schema.json"
+    },
+    "library-shared": {
+      "description": "adds the shared library",
+      "factory": "./src/schematics/library-shared/index",
+      "schema": "./src/schematics/library-shared/schema.json"
+    },
+    "pwa-init": {
+      "description": "Init a application for pwa use",
+      "factory": "./src/schematics/pwa-init/index",
+      "schema": "./src/schematics/pwa-init/schema.json"
+    },
+    "library": {
+      "description": "Adds an angular library project",
+      "factory": "./src/schematics/library/index",
+      "schema": "./src/schematics/library/schema.json"
+    }
+  }
 }

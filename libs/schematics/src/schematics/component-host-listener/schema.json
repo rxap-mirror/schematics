@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "component-host-listener",
+  "type": "object",
+  "description": "",
+  "properties": {
+    "component": {
+      "type": "string",
+      "description": ""
+    },
+    "property": {
+      "type": "string",
+      "description": ""
+    },
+    "eventName": {
+      "type": "string",
+      "description": ""
+    },
+    "description": {
+      "type": "string",
+      "description": ""
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "",
+      "visible": false
+    },
+    "project": {
+      "type": "string",
+      "description": "",
+      "$default": {
+        "$source": "projectName"
+      }
+    }
+  },
+  "required": [
+    "component",
+    "property",
+    "eventName"
+  ]
+}

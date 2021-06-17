@@ -1,0 +1,5 @@
+!files/
+*.js
+*.d.ts
+*.js.map
+!schema.d.ts
