@@ -1,10 +1,8 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { join, relative } from 'path';
+import { relative } from 'path';
 import { Angular, AngularProject, GetAngularJson } from './angular-json-file';
 import { PackageJson } from './package-json';
 import { GetPackageJson } from './package-json-file';
-import { CollectionJson } from './collection-json';
-import { GetJsonFile } from './json-file';
 
 export function GetProject(host: Tree, projectName: string): AngularProject {
 
@@ -97,24 +95,6 @@ export function AssertProjectType(host: Tree, projectName: string, type: 'librar
   if (!IsProjectType(host, projectName, type)) {
     throw new SchematicsException(`The project '${projectName}' has not the type '${type}'.`);
   }
-}
-
-export function GetProjectCollectionJson(host: Tree, projectName: string): CollectionJson {
-
-  const projectPackageJson = GetProjectPackageJson(host, projectName);
-  const projectRoot = GetProjectRoot(host, projectName);
-
-  if (projectPackageJson.schematics) {
-    const collectionJsonPath = join(projectRoot, projectPackageJson.schematics);
-    if (host.exists(collectionJsonPath)) {
-      return GetJsonFile(host, collectionJsonPath);
-    } else {
-      throw new SchematicsException(`The collection.json path for the project '${projectName}' does not exists`);
-    }
-  } else {
-    throw new SchematicsException(`The project '${projectName}' does not have a schematics property in the package.json`);
-  }
-
 }
 
 export function GetProjectPeerDependencies(host: Tree, projectName: string): Record<string, string> {

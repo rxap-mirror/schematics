@@ -13,3 +13,5 @@ export * from './lib/guess-schematic-root';
 export * from './lib/workspace';
 export * from './lib/guess-project-root';
 export * from './lib/guess-project-name';
+export * from './lib/collection-json-file';
+export * from './lib/collection-json';
