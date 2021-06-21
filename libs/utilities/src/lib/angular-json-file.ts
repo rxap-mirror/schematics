@@ -263,3 +263,27 @@ export function UpdateAngularJson(
     options
   );
 }
+
+export interface UpdateAngularProjectOptions extends UpdateAngularJsonFileOptions {
+  projectName: string;
+}
+
+export function UpdateAngularProject(
+  updater: (project: AngularProject) => void | PromiseLike<void>,
+  options: UpdateAngularProjectOptions
+): Rule {
+  return UpdateAngularJson(
+    async (angular: Angular) => {
+      if (angular.projects.has(options.projectName)) {
+        throw new SchematicsException(`The project '${options.projectName}' does not exists.`);
+      }
+      const project = angular.projects.get(options.projectName)!;
+      try {
+        await updater(project);
+      } catch (e) {
+        throw new SchematicsException(`Could not update the project '${options.projectName}'`);
+      }
+    },
+    options,
+  )
+}
