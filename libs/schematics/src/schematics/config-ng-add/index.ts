@@ -1,45 +1,14 @@
 import { Schema } from './schema';
-import {
-  apply,
-  applyTemplates,
-  chain,
-  forEach,
-  mergeWith,
-  move,
-  noop,
-  Rule,
-  Tree,
-  url
-} from '@angular-devkit/schematics';
+import { apply, applyTemplates, chain, forEach, mergeWith, move, noop, Rule, url } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
 import {
   AssertProjectType,
-  GetProjectCollectionJson,
   GetProjectPackageJson,
   GetProjectRoot,
+  GuessSchematicRoot,
   UpdatePackageJson
 } from '@rxap/schematics-utilities';
 import { dirname, join } from 'path';
-
-export function GuessSchematicRoot(host: Tree, projectName: string): string {
-
-  const collectionJson = GetProjectCollectionJson(host, projectName);
-
-  if (Object.keys(collectionJson.schematics).length) {
-    const firstSchematic = collectionJson.schematics[Object.keys(collectionJson.schematics)[0]];
-    const basePathSegmentList: string[] = [];
-    for (const segment of firstSchematic.factory.split('/')) {
-      basePathSegmentList.push(segment);
-      if (segment === 'schematics' || segment === 'schematic') {
-        break;
-      }
-    }
-    return basePathSegmentList.join('/');
-  }
-
-  return 'src/schematics';
-
-}
 
 export default function (options: Schema): Rule {
   return (host, context) => {
