@@ -12,7 +12,6 @@ import { GetProjectCollectionJson } from '@rxap/schematics-utilities';
  *
  * @param host
  * @param projectName
- * @constructor
  */
 export function GuessSchematicRoot(host: Tree, projectName: string): string {
 
