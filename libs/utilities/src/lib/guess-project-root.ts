@@ -16,7 +16,7 @@ import { IsDefined } from '@rxap/utilities';
 export function GuessProjectRoot(host: Tree, { path, project }: { path?: string, project?: string }): string {
 
   if (!path && !project) {
-    throw new SchematicsException('The options path and project are not defined.');
+    throw new SchematicsException('The options path and project are not defined. At least one of them must be defined');
   }
 
   if (project) {

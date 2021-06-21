@@ -12,3 +12,4 @@ export * from './lib/check-if-packages-are-installed'
 export * from './lib/guess-schematic-root';
 export * from './lib/workspace';
 export * from './lib/guess-project-root';
+export * from './lib/guess-project-name';
