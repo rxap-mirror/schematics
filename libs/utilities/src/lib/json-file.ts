@@ -2,10 +2,14 @@ import { Rule, Tree } from '@angular-devkit/schematics';
 import { CoerceFile } from './coerce-file';
 import { IsFunction } from '@rxap/utilities';
 
-export function GetJsonFile<T = any>(host: Tree, filePath: string): T {
+export function GetJsonFile<T = any>(host: Tree, filePath: string, create: boolean = false): T {
 
   if (!host.exists(filePath)) {
-    throw new Error(`A json file at path '${filePath}' does not exists`);
+    if (!create) {
+      throw new Error(`A json file at path '${filePath}' does not exists`);
+    } else {
+      host.create(filePath, '{}');
+    }
   }
 
   return JSON.parse(host.read(filePath)!.toString());
@@ -13,6 +17,7 @@ export function GetJsonFile<T = any>(host: Tree, filePath: string): T {
 
 export interface UpdateJsonFileOptions {
   space?: string | number;
+  create?: boolean;
 }
 
 export function UpdateJsonFile<T extends Record<string, any> = Record<string, any>>(
@@ -25,7 +30,7 @@ export function UpdateJsonFile<T extends Record<string, any> = Record<string, an
     let jsonFile: T;
 
     if (IsFunction(updaterOrJsonFile)) {
-      jsonFile = GetJsonFile<T>(tree, filePath);
+      jsonFile = GetJsonFile<T>(tree, filePath, options?.create);
       await updaterOrJsonFile(jsonFile);
     } else if (typeof updaterOrJsonFile === 'function') {
       throw new Error('FATAL: the update function was not a function');
