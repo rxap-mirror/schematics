@@ -1,8 +1,8 @@
-import { SchematicsException, Tree } from '@angular-devkit/schematics';
+import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { relative } from 'path';
 import { Angular, AngularProject, GetAngularJson } from './angular-json-file';
 import { PackageJson } from './package-json';
-import { GetPackageJson } from './package-json-file';
+import { GetPackageJson, UpdatePackageJson, UpdatePackageJsonOptions } from './package-json-file';
 
 export function GetProject(host: Tree, projectName: string): AngularProject {
 
@@ -103,4 +103,21 @@ export function GetProjectPeerDependencies(host: Tree, projectName: string): Rec
 
   return projectPackageJson.peerDependencies ?? {};
 
+}
+
+export interface UpdateProjectPackageJsonOptions extends Omit<UpdatePackageJsonOptions, 'basePath'> {
+  projectName: string;
+}
+
+export function UpdateProjectPackageJson(updater: (packageJson: PackageJson) => void | PromiseLike<void>, options: UpdateProjectPackageJsonOptions): Rule {
+  return tree => {
+
+    const projectRoot = GetProjectRoot(tree, options.projectName);
+
+    return UpdatePackageJson(updater, {
+      ...options,
+      basePath: projectRoot
+    });
+
+  }
 }
