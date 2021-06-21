@@ -47,7 +47,7 @@ export class AngularProjectTargetConfigurationsMap {
 
 }
 
-export class AngularProjectTarget {
+export class AngularProjectTarget<Options extends Record<string, any> = Record<string, any>> {
 
   public get builder(): string | undefined {
     return this._target.builder;
@@ -57,29 +57,30 @@ export class AngularProjectTarget {
     this._target.builder = builder;
   }
 
-  public get options(): Record<string, any> {
+  public get options(): Options {
     return this._target.options;
   }
 
-  public set options(options: Record<string, any>) {
+  public set options(options: Options) {
     this._target.options = options;
   }
 
-  public get configurations(): Record<string, Record<string, any>> | undefined {
-    return this._target.configurations;
+  public get configurations(): Record<string, Options> | undefined {
+    return this._target.configurations as any;
   }
 
-  public set configurations(configurations: Record<string, Record<string, any>> | undefined) {
+  public set configurations(configurations: Record<string, Options> | undefined) {
     this._target.configurations = configurations;
   }
 
-  constructor(private _target: Target) {}
+  constructor(private _target: Target) {
+  }
 
 }
 
 export class AngularProjectTargetMap {
 
-  private readonly _map = new Map<string, AngularProjectTarget>();
+  private readonly _map = new Map<string, AngularProjectTarget<any>>();
 
   constructor(private readonly _targetMap: Record<string, Target>) {
     for (const [name, target] of Object.entries(_targetMap)) {
@@ -96,7 +97,7 @@ export class AngularProjectTargetMap {
     this._targetMap[name] = target;
   }
 
-  public get(name: string): AngularProjectTarget | undefined {
+  public get<Options extends Record<string, any> = Record<string, any>>(name: string): AngularProjectTarget<Options> | undefined {
     return this._map.get(name);
   }
 
