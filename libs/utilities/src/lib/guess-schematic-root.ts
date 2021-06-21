@@ -1,5 +1,6 @@
 import { Tree } from '@angular-devkit/schematics';
-import { GetProjectCollectionJson } from '@rxap/schematics-utilities';
+import { GetProjectCollectionJson, GetProjectRoot } from '@rxap/schematics-utilities';
+import { join } from 'path';
 
 /**
  * Tries to guess the schematic root of a project.
@@ -8,7 +9,7 @@ import { GetProjectCollectionJson } from '@rxap/schematics-utilities';
  * 2. check if the collection.json contains schematics - else default
  * 3. resolve based on the first found schematic config the schematics root folder - else default
  *
- * default: src/schematics
+ * default: [projectRoot]/src/schematics
  *
  * @param host
  * @param projectName
@@ -16,6 +17,7 @@ import { GetProjectCollectionJson } from '@rxap/schematics-utilities';
 export function GuessSchematicRoot(host: Tree, projectName: string): string {
 
   const collectionJson = GetProjectCollectionJson(host, projectName);
+  const projectRoot = GetProjectRoot(host, projectName);
 
   if (Object.keys(collectionJson.schematics).length) {
     const firstSchematic = collectionJson.schematics[Object.keys(collectionJson.schematics)[0]];
@@ -26,9 +28,10 @@ export function GuessSchematicRoot(host: Tree, projectName: string): string {
         break;
       }
     }
-    return basePathSegmentList.join('/');
+    return join(projectRoot, basePathSegmentList.join('/'));
   }
 
-  return 'src/schematics';
+  console.warn('Could not guess the schematic root.');
+  return join(projectRoot, 'src/schematics');
 
 }
