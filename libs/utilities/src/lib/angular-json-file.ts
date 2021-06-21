@@ -113,6 +113,18 @@ export class AngularProjectTargetMap {
     return success;
   }
 
+  public keys(): IterableIterator<string> {
+    return this._map.keys();
+  }
+
+  public values(): IterableIterator<AngularProjectTarget> {
+    return this._map.values();
+  }
+
+  public entries(): IterableIterator<[ string, AngularProjectTarget ]> {
+    return this._map.entries();
+  }
+
 }
 
 export class AngularProject {
@@ -197,6 +209,19 @@ export class AngularProjectMap {
     }
     return success;
   }
+
+  public keys(): IterableIterator<string> {
+    return this._map.keys();
+  }
+
+  public values(): IterableIterator<AngularProject> {
+    return this._map.values();
+  }
+
+  public entries(): IterableIterator<[ string, AngularProject ]> {
+    return this._map.entries();
+  }
+
 }
 
 export class Angular {
