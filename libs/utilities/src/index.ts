@@ -9,3 +9,4 @@ export * from './lib/package-json';
 export * from './lib/get-project';
 export * from './lib/file';
 export * from './lib/check-if-packages-are-installed'
+export * from './lib/guess-schematic-root';
