@@ -160,6 +160,11 @@
       "description": "Adds an angular library project",
       "factory": "./src/schematics/library/index",
       "schema": "./src/schematics/library/schema.json"
+    },
+    "config-ng-update": {
+      "description": "Adds the ng-update feature to the specified project.",
+      "factory": "./src/schematics/config-ng-update/index",
+      "schema": "./src/schematics/config-ng-update/schema.json"
     }
   }
 }
