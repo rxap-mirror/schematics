@@ -1,14 +1,14 @@
 {
   "name": "@rxap/schematics-table",
-  "version": "12.0.7",
+  "version": "12.0.8",
   "peerDependencies": {
     "@nrwl/workspace": "^12.3.6"
   },
   "dependencies": {
-    "@rxap/schematics": "^12.2.0",
-    "@rxap/schematics-html": "^12.0.4",
-    "@rxap/schematics-ts-morph": "^12.0.5",
-    "@rxap/schematics-xml-parser": "^12.0.5",
+    "@rxap/schematics": "^12.3.0",
+    "@rxap/schematics-html": "^12.0.5",
+    "@rxap/schematics-ts-morph": "^12.0.6",
+    "@rxap/schematics-xml-parser": "^12.0.6",
     "@rxap/utilities": "^12.0.3",
     "@rxap/xml-parser": "^12.0.3",
     "ts-morph": "^11.0.0",
