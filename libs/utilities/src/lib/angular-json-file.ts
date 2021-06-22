@@ -274,7 +274,7 @@ export function UpdateAngularProject(
 ): Rule {
   return UpdateAngularJson(
     async (angular: Angular) => {
-      if (angular.projects.has(options.projectName)) {
+      if (!angular.projects.has(options.projectName)) {
         throw new SchematicsException(`The project '${options.projectName}' does not exists.`);
       }
       const project = angular.projects.get(options.projectName)!;
