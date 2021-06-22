@@ -22,7 +22,6 @@ yarn add @rxap/schematics
 # Schematics
 
 ## config-ng-add
-
 > Add required configs and files to a project for ng add support.
 
 ```
@@ -32,14 +31,13 @@ ng g @rxap/schematics:config-ng-add
 Option | Type | Default | Description
 --- | --- | --- | ---
 project | string |  | The project name.
-save | string | dependencies |
+save | string | dependencies | 
 
 | Required |
 | --- |
 | project |
 
 ## schematic-project
-
 > Creates a project for schematic distribution.
 
 ```
@@ -64,6 +62,7 @@ pascalCaseFiles | boolean | false | Use pascal case file names.
 js | boolean | false | Generate JavaScript files rather than TypeScript files.
 strict | boolean | false | Whether to enable tsconfig strict mode or not.
 builders | boolean | false | Whether the project should have builders
+
 
 ## component-module
 > Creates a new generic component module in the given or default project.
@@ -530,8 +529,8 @@ Option | Type | Default | Description
 --- | --- | --- | ---
 project | string | pwa | Project name
 
-## library
 
+## library
 > Adds an angular library project
 
 ```
@@ -540,10 +539,10 @@ ng g @rxap/schematics:library
 
 Option | Type | Default | Description
 --- | --- | --- | ---
-name | string |  |
-importPath | string |  |
-theming | boolean | false |
-directory | string |  |
+name | string |  | 
+importPath | string |  | 
+theming | boolean | false | 
+directory | string |  | 
 
 | Required |
 | --- |
@@ -551,7 +550,6 @@ directory | string |  |
 | importPath |
 
 ## plugin-project
-
 > Adds a plugin project to the workspace.
 
 ```
@@ -577,6 +575,7 @@ js | boolean | false | Generate JavaScript files rather than TypeScript files.
 strict | boolean | false | Whether to enable tsconfig strict mode or not.
 defaultBuilder | string |  | The name of the default builder
 defaultTarget | string |  | The name of the default target
+
 
 ## add-plugin-config-schematic
 > Adds the default plugin builder config schematic to the project.
