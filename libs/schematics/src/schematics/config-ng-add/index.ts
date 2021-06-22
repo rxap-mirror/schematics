@@ -18,10 +18,10 @@ import {
   CheckIfPackagesAreInstalled,
   GetProjectPackageJson,
   GetProjectRoot,
+  GetSchematicRoot,
   UpdatePackageJson
 } from '@rxap/schematics-utilities';
 import { dirname, join } from 'path';
-import { GetSchematicRoot } from './get-schematic-root';
 
 export default function (options: Schema): Rule {
   return (host, context) => {
