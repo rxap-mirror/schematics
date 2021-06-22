@@ -75,7 +75,7 @@ export function GetRelativePathToProjectRoot(host: Tree, projectName: string): s
 
   const projectRoot = GetProjectRoot(host, projectName);
 
-  return relative(projectRoot, '/');
+  return relative('/' + projectRoot, '/');
 
 }
 
