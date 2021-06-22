@@ -9,6 +9,30 @@ export enum CollectionJsonType {
   MIGRATIONS = 'migrations'
 }
 
+export function HasProjectCollectionJsonFile(host: Tree, projectName: string, type: CollectionJsonType = CollectionJsonType.SCHEMATICS): boolean {
+
+  const projectPackageJson = GetProjectPackageJson(host, projectName);
+  const projectRoot = GetProjectRoot(host, projectName);
+
+  let collectionPath: string | undefined = undefined;
+
+  switch (type) {
+    case CollectionJsonType.SCHEMATICS:
+      collectionPath = projectPackageJson.schematics;
+      break;
+    case CollectionJsonType.MIGRATIONS:
+      collectionPath = projectPackageJson['ng-update']?.migrations;
+      break;
+
+    default:
+      throw new SchematicsException(`The collection json type '${type}' is not supported`);
+
+  }
+
+  return !!collectionPath && host.exists(join(projectRoot, collectionPath));
+
+}
+
 export function GetProjectCollectionJsonFilePath(host: Tree, projectName: string, type: CollectionJsonType = CollectionJsonType.SCHEMATICS, create?: boolean): string {
 
   const projectPackageJson = GetProjectPackageJson(host, projectName);
