@@ -8,6 +8,7 @@
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [
+      "@rxap/json-schema-to-typescript",
       "@rxap/schematics-open-api",
       "@rxap/utilities"
     ]

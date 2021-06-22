@@ -34,7 +34,6 @@
   },
   "ng-update": {
     "packageGroup": [
-      "@rxap/schematics-ts-morph",
       "@rxap/schematics-xml-parser",
       "@rxap/utilities",
       "@rxap/xml-parser"
