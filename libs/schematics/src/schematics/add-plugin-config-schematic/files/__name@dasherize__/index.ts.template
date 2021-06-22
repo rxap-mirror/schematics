@@ -1,0 +1,30 @@
+import {
+  Rule,
+  Tree,
+  chain,
+} from '@angular-devkit/schematics';
+import { <%= classify(name) %>Schema } from './schema';
+import { UpdateAngularProject } from '@rxap/schematics-utilities';
+
+export default function(options: <%= classify(name) %>Schema): Rule {
+
+  return async (host: Tree) => {
+
+    return chain([
+      UpdateAngularProject((project) => {
+        if (!project.targets.has('<%= defaultTarget %>')) {
+
+          project.targets.add('<%= defaultTarget %>', {
+            builder: '<%= packageName %>:<%= defaultBuilder %>',
+            options: {}
+          });
+
+        } else {
+          console.warn(`The project '${options.project}' has already the builder <%= defaultTarget %>.`);
+        }
+      }, { projectName: options.project })
+    ]);
+
+  };
+
+}
