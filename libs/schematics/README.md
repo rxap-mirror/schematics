@@ -31,12 +31,39 @@ ng g @rxap/schematics:config-ng-add
 
 Option | Type | Default | Description
 --- | --- | --- | ---
-name | string |  | Library name
+project | string |  | The project name.
 save | string | dependencies |
 
 | Required |
 | --- |
-| name |
+| project |
+
+## schematic-project
+
+> Creates a project for schematic distribution.
+
+```
+ng g @rxap/schematics:schematic-project
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+name | string |  | Library name
+project | string |  | Only update an exiting schematic project
+directory | string |  | A directory where the lib is placed
+linter | string | eslint | The tool to use for running lint checks.
+unitTestRunner | string | jest | Test runner to use for unit tests
+tags | string |  | Add tags to the library (used for linting)
+skipFormat | boolean | false | Skip formatting files
+skipTsConfig | boolean | false | Do not update tsconfig.base.json for development experience.
+importPath | string |  | The library name used to import it, like @myorg/my-awesome-lib. Must be a valid npm name.
+rootDir | string |  | Sets the rootDir for TypeScript compilation. When not defined, it uses the project&#x27;s root property, or srcRootForCompilationRoot if it is defined.
+testEnvironment | string | jsdom | The test environment to use if unitTestRunner is set to jest
+babelJest | boolean | false | Use babel instead ts-jest
+pascalCaseFiles | boolean | false | Use pascal case file names.
+js | boolean | false | Generate JavaScript files rather than TypeScript files.
+strict | boolean | false | Whether to enable tsconfig strict mode or not.
+builders | boolean | false | Whether the project should have builders
 
 ## component-module
 
@@ -514,13 +541,97 @@ ng g @rxap/schematics:library
 
 Option | Type | Default | Description
 --- | --- | --- | ---
-name | string |  | 
-importPath | string |  | 
-theming | boolean | false | 
-directory | string |  | 
+name | string |  |
+importPath | string |  |
+theming | boolean | false |
+directory | string |  |
 
 | Required |
 | --- |
 | name |
 | importPath |
+
+## plugin-project
+
+> Adds a plugin project to the workspace.
+
+```
+ng g @rxap/schematics:plugin-project
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+name | string |  | Library name
+project | string |  | Only update an exiting schematic project
+directory | string |  | A directory where the lib is placed
+linter | string | eslint | The tool to use for running lint checks.
+unitTestRunner | string | jest | Test runner to use for unit tests
+tags | string |  | Add tags to the library (used for linting)
+skipFormat | boolean | false | Skip formatting files
+skipTsConfig | boolean | false | Do not update tsconfig.base.json for development experience.
+importPath | string |  | The library name used to import it, like @myorg/my-awesome-lib. Must be a valid npm name.
+rootDir | string |  | Sets the rootDir for TypeScript compilation. When not defined, it uses the project&#x27;s root property, or srcRootForCompilationRoot if it is defined.
+testEnvironment | string | jsdom | The test environment to use if unitTestRunner is set to jest
+babelJest | boolean | false | Use babel instead ts-jest
+pascalCaseFiles | boolean | false | Use pascal case file names.
+js | boolean | false | Generate JavaScript files rather than TypeScript files.
+strict | boolean | false | Whether to enable tsconfig strict mode or not.
+defaultBuilder | string |  | The name of the default builder
+defaultTarget | string |  | The name of the default target
+
+## add-plugin-config-schematic
+
+> Adds the default plugin builder config schematic to the project.
+
+```
+ng g @rxap/schematics:add-plugin-config-schematic
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+name | string |  | The name of the new schematic
+path | string |  | The absolute path to the schematic folder or the relative path from the project root
+project | string |  | The project where the schematic should be added
+description | string |  | The description of the new schematic
+defaultBuilder | string |  | The name of the default builder
+defaultTarget | string |  | The name of the default target
+
+| Required |
+| --- |
+| name |
+| defaultBuilder |
+| defaultTarget |
+
+## add-builder
+
+> Adds a builder to the specified project.
+
+```
+ng g @rxap/schematics:add-builder
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+name | string |  | The name of the new builder
+path | string |  | The absolute path to the builder folder or the relative path from the project root
+project | string |  | The project where the builder should be added
+description | string |  | The description of the new builder
+
+| Required |
+| --- |
+| name |
+| description |
+
+## config-plugin-ng-add
+
+> Add required configs and files to a project for ng add support specific for plugins.
+
+```
+ng g @rxap/schematics:config-plugin-ng-add
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+project | string |  | The project name.
+
 

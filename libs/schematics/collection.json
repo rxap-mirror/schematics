@@ -6,6 +6,11 @@
       "schema": "./src/schematics/config-ng-add/schema.json",
       "description": "Add required configs and files to a project for ng add support."
     },
+    "schematic-project": {
+      "factory": "./src/schematics/schematic-project",
+      "schema": "./src/schematics/schematic-project/schema.json",
+      "description": "Creates a project for schematic distribution."
+    },
     "component-module": {
       "factory": "./src/schematics/component-module",
       "schema": "./src/schematics/component-module/schema.json",
@@ -161,10 +166,25 @@
       "factory": "./src/schematics/library/index",
       "schema": "./src/schematics/library/schema.json"
     },
-    "config-ng-update": {
-      "description": "Adds the ng-update feature to the specified project.",
-      "factory": "./src/schematics/config-ng-update/index",
-      "schema": "./src/schematics/config-ng-update/schema.json"
+    "plugin-project": {
+      "description": "Adds a plugin project to the workspace.",
+      "factory": "./src/schematics/plugin-project/index",
+      "schema": "./src/schematics/plugin-project/schema.json"
+    },
+    "add-plugin-config-schematic": {
+      "description": "Adds the default plugin builder config schematic to the project.",
+      "factory": "./src/schematics/add-plugin-config-schematic/index",
+      "schema": "./src/schematics/add-plugin-config-schematic/schema.json"
+    },
+    "add-builder": {
+      "description": "Adds a builder to the specified project.",
+      "factory": "./src/schematics/add-builder/index",
+      "schema": "./src/schematics/add-builder/schema.json"
+    },
+    "config-plugin-ng-add": {
+      "description": "Add required configs and files to a project for ng add support specific for plugins.",
+      "factory": "./src/schematics/config-plugin-ng-add/index",
+      "schema": "./src/schematics/config-plugin-ng-add/schema.json"
     }
   }
 }

@@ -1,14 +1,8 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "rxap-schematics-schematic-project",
-  "title": "Create a Node Library for Nx",
+  "$id": "schematics-plugin-project",
+  "title": "PluginProject",
   "type": "object",
-  "examples": [
-    {
-      "command": "g lib mylib --directory=myapp",
-      "description": "Generate libs/myapp/mylib"
-    }
-  ],
   "properties": {
     "name": {
       "type": "string",
@@ -19,11 +13,9 @@
       },
       "x-prompt": "What name would you like to use for the library?"
     },
-    "update": {
-      "type": "boolean",
-      "default": false,
-      "description": "Only update an exiting schematic project",
-      "alias": "u"
+    "project": {
+      "type": "string",
+      "description": "Only update an exiting schematic project"
     },
     "directory": {
       "type": "string",
@@ -101,9 +93,17 @@
       "type": "boolean",
       "description": "Whether to enable tsconfig strict mode or not.",
       "default": false
+    },
+    "defaultBuilder": {
+      "type": "string",
+      "description": "The name of the default builder",
+      "x-prompt": "What name has the default builder?"
+    },
+    "defaultTarget": {
+      "type": "string",
+      "description": "The name of the default target",
+      "x-prompt": "What target has the default builder?"
     }
   },
-  "required": [
-    "name"
-  ]
+  "required": []
 }
