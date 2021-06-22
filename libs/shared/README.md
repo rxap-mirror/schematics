@@ -11,10 +11,26 @@
 > 
 
 - [Installation](#installation)
+- [Schematics](#schematics)
 
 # Installation
 
 ```
-yarn add @rxap/schematics-shared
+ng add @rxap/schematics-shared
 ```
+
+*Setup the package @rxap/schematics-shared for the workspace.*
+
+# Schematics
+
+## ng-add
+> Setup the package @rxap/schematics-shared for the workspace.
+
+```
+ng g @rxap/schematics-shared:ng-add
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+
 

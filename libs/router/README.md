@@ -16,8 +16,10 @@
 # Installation
 
 ```
-yarn add @rxap/schematics-router
+ng add @rxap/schematics-router
 ```
+
+*Setup the package @rxap/schematics-router for the workspace.*
 
 # Schematics
 
@@ -44,4 +46,15 @@ feature | string |  |
 | --- |
 | template |
 | project |
+
+## ng-add
+> Setup the package @rxap/schematics-router for the workspace.
+
+```
+ng g @rxap/schematics-router:ng-add
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+
 

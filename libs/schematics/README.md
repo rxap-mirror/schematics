@@ -630,3 +630,18 @@ Option | Type | Default | Description
 project | string |  | The project name.
 
 
+## config-package-json
+> Updates the project package.json.
+
+```
+ng g @rxap/schematics:config-package-json
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+project | string |  | The project name.
+
+| Required |
+| --- |
+| project |
+

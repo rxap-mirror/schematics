@@ -16,8 +16,10 @@
 # Installation
 
 ```
-yarn add @rxap/schematics-table
+ng add @rxap/schematics-table
 ```
+
+*Setup the package @rxap/schematics-table for the workspace.*
 
 # Schematics
 
@@ -47,4 +49,15 @@ format | boolean | true |
 | --- |
 | template |
 | project |
+
+## ng-add
+> Setup the package @rxap/schematics-table for the workspace.
+
+```
+ng g @rxap/schematics-table:ng-add
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+
 

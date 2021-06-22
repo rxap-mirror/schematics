@@ -16,8 +16,10 @@
 # Installation
 
 ```
-yarn add @rxap/schematics-form
+ng add @rxap/schematics-form
 ```
+
+*Setup the package @rxap/schematics-form for the workspace.*
 
 # Schematics
 
@@ -69,5 +71,16 @@ fixImports | boolean | true |
 format | boolean | true | 
 overwrite | boolean | true | 
 skipTsFiles | boolean | false | 
+
+
+## ng-add
+> Setup the package @rxap/schematics-form for the workspace.
+
+```
+ng g @rxap/schematics-form:ng-add
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
 
 
