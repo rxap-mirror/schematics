@@ -21,29 +21,27 @@ export default function (options: ConfigPluginNgAddSchema): Rule {
 
     const projectPackageJson = GetProjectPackageJson(host, options.project);
 
-    let schematicRoot: string | null = null;
-
     return chain([
       schematic('config-ng-add', {}),
       tree => {
-        schematicRoot = GetSchematicRoot(tree, options.project);
+        const schematicRoot = GetSchematicRoot(tree, options.project);
         if (!schematicRoot) {
           throw new SchematicsException('The schematic root could not be determined.');
         }
+        return mergeWith(apply(url('./files'), [
+          applyTemplates({
+            packageName: projectPackageJson.name,
+          }),
+          move(schematicRoot),
+          forEach(entry => {
+            if (host.exists(entry.path)) {
+              host.overwrite(entry.path, entry.content);
+              return null
+            }
+            return entry;
+          })
+        ]), MergeStrategy.Overwrite)
       },
-      mergeWith(apply(url('./files'), [
-        applyTemplates({
-          packageName: projectPackageJson.name,
-        }),
-        move(schematicRoot!),
-        forEach(entry => {
-          if (host.exists(entry.path)) {
-            host.overwrite(entry.path, entry.content);
-            return null
-          }
-          return entry;
-        })
-      ]), MergeStrategy.Overwrite),
     ]);
 
   };

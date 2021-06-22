@@ -30,7 +30,6 @@ export default function (options: AddSchematic): Rule {
   return async (host: Tree) => {
 
     const projectName = GuessProjectName(host, options);
-    let schematicRoot: string | null = null;
     const projectRoot = GetProjectRoot(host, projectName);
 
     return chain([
@@ -46,34 +45,36 @@ export default function (options: AddSchematic): Rule {
             type: 'schematics'
           }
         ),
-        tree => {
-          schematicRoot = GuessSchematicRoot(tree, projectName);
-          if (!schematicRoot) {
-            throw new SchematicsException('The schematic root could not be determined.');
-          }
-        }
       ]),
-      mergeWith(apply(url('./files'), [
-        applyTemplates({
-          ...strings,
-          ...options,
-          schemaId: [ dasherize(projectName), dasherize(options.name) ].join('-'),
-        }),
-        move(schematicRoot!)
-      ])),
-      UpdateCollectionJson(collection => {
-
-        if (!collection.schematics) {
-          collection.schematics = {};
+      tree => {
+        const schematicRoot = GuessSchematicRoot(tree, projectName);
+        if (!schematicRoot) {
+          throw new SchematicsException('The schematic root could not be determined.');
         }
+        return chain([
+          mergeWith(apply(url('./files'), [
+            applyTemplates({
+              ...strings,
+              ...options,
+              schemaId: [ dasherize(projectName), dasherize(options.name) ].join('-'),
+            }),
+            move(schematicRoot)
+          ])),
+          UpdateCollectionJson(collection => {
 
-        collection.schematics[dasherize(options.name)] = {
-          description: options.description,
-          factory: `./${relative(projectRoot, schematicRoot!)}/${dasherize(options.name)}/index`,
-          schema: `./${relative(projectRoot, schematicRoot!)}/${dasherize(options.name)}/schema.json`
-        };
+            if (!collection.schematics) {
+              collection.schematics = {};
+            }
 
-      }, { projectName }),
+            collection.schematics[dasherize(options.name)] = {
+              description: options.description,
+              factory: `./${relative(projectRoot, schematicRoot)}/${dasherize(options.name)}/index`,
+              schema: `./${relative(projectRoot, schematicRoot)}/${dasherize(options.name)}/schema.json`
+            };
+
+          }, { projectName }),
+        ])
+      },
     ]);
 
   };

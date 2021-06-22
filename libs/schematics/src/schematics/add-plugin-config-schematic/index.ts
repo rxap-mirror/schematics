@@ -7,6 +7,7 @@ import {
   move,
   Rule,
   schematic,
+  SchematicsException,
   Tree,
   url,
 } from '@angular-devkit/schematics';
@@ -20,7 +21,6 @@ export default function (options: AddPluginConfigSchematicSchema): Rule {
 
     const projectName = GuessProjectName(host, options);
     const projectPackageJson = GetProjectPackageJson(host, projectName);
-    const schematicRoot = GuessSchematicRoot(host, projectName);
 
     return chain([
       schematic('add-schematic', {
@@ -29,14 +29,20 @@ export default function (options: AddPluginConfigSchematicSchema): Rule {
         path: options.path,
         description: options.description ?? `Adds the builder ${projectPackageJson.name}:${options.defaultBuilder} to the specified project`,
       }),
-      mergeWith(apply(url('./files'), [
-        applyTemplates({
-          ...strings,
-          ...options,
-          packageName: projectPackageJson.name,
-        }),
-        move(schematicRoot)
-      ]), MergeStrategy.Overwrite),
+      tree => {
+        const schematicRoot = GuessSchematicRoot(tree, projectName);
+        if (!schematicRoot) {
+          throw new SchematicsException('The schematic root could not be determined.');
+        }
+        return mergeWith(apply(url('./files'), [
+          applyTemplates({
+            ...strings,
+            ...options,
+            packageName: projectPackageJson.name,
+          }),
+          move(schematicRoot)
+        ]), MergeStrategy.Overwrite);
+      }
     ]);
 
   };
