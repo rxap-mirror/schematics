@@ -14,7 +14,7 @@ export enum CollectionJsonType {
   MIGRATIONS = 'migrations'
 }
 
-export function GetProjectCollectionJsonFilePath(host: Tree, projectName: string, type: CollectionJsonType = CollectionJsonType.SCHEMATICS): string {
+export function GetProjectCollectionJsonFilePath(host: Tree, projectName: string, type: CollectionJsonType = CollectionJsonType.SCHEMATICS, create?: boolean): string {
 
   const projectPackageJson = GetProjectPackageJson(host, projectName);
   const projectRoot = GetProjectRoot(host, projectName);
@@ -39,7 +39,12 @@ export function GetProjectCollectionJsonFilePath(host: Tree, projectName: string
     if (host.exists(collectionJsonPath)) {
       return collectionJsonPath;
     } else {
-      throw new SchematicsException(`The collection json path of type '${type}' for the project '${projectName}' does not exists`);
+      if (create) {
+        host.create(collectionJsonPath, '{}');
+        return collectionJsonPath;
+      } else {
+        throw new SchematicsException(`The collection json path of type '${type}' for the project '${projectName}' does not exists`);
+      }
     }
   } else {
     throw new SchematicsException(`The project '${projectName}' does not have a '${type}' property in the package.json`);
@@ -47,9 +52,9 @@ export function GetProjectCollectionJsonFilePath(host: Tree, projectName: string
 
 }
 
-export function GetProjectCollectionJson(host: Tree, projectName: string, type: CollectionJsonType = CollectionJsonType.SCHEMATICS): CollectionJson {
+export function GetProjectCollectionJson(host: Tree, projectName: string, type: CollectionJsonType = CollectionJsonType.SCHEMATICS, create?: boolean): CollectionJson {
 
-  const collectionJsonFilePath = GetProjectCollectionJsonFilePath(host, projectName, type);
+  const collectionJsonFilePath = GetProjectCollectionJsonFilePath(host, projectName, type, create);
 
   return GetJsonFile(host, collectionJsonFilePath);
 
@@ -66,7 +71,7 @@ export function UpdateCollectionJson(
 ): Rule {
   return tree => {
 
-    const collectionJsonFilePath = GetProjectCollectionJsonFilePath(tree, options.projectName, options.type);
+    const collectionJsonFilePath = GetProjectCollectionJsonFilePath(tree, options.projectName, options.type, options.create);
 
     return UpdateJsonFile(updater, collectionJsonFilePath, options);
 
