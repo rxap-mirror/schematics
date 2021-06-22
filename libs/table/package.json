@@ -32,12 +32,15 @@
     "schematics",
     "table"
   ],
-  "repository": "git@gitlab.com:rxap/packages.git",
-  "homepage": "https://gitlab.com/rxap/packages",
+  "repository": "git@gitlab.com:rxap/schematics.git",
+  "homepage": "https://gitlab.com/rxap/schematics/libs/table",
   "author": "Merzough Münker",
   "private": false,
   "bugs": {
-    "url": "https://gitlab.com/rxap/plugins/-/issues",
-    "email": "incoming+rxap-packages-14898188-issue-@incoming.gitlab.com"
+    "url": "https://gitlab.com/rxap/schematics/-/issues",
+    "email": "incoming+rxap-schematics-27428931-issue-@incoming.gitlab.com"
+  },
+  "ng-add": {
+    "save": "dependencies"
   }
 }

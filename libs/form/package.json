@@ -15,7 +15,7 @@
     "tslib": "^2.0.0"
   },
   "ng-add": {
-    "save": "devDependencies"
+    "save": "dependencies"
   },
   "main": "src/index.js",
   "schematics": "./collection.json",
@@ -36,13 +36,13 @@
     "schematics",
     "form"
   ],
-  "repository": "git@gitlab.com:rxap/packages.git",
-  "homepage": "https://gitlab.com/rxap/packages",
+  "repository": "git@gitlab.com:rxap/schematics.git",
+  "homepage": "https://gitlab.com/rxap/schematics/libs/form",
   "author": "Merzough Münker",
   "private": false,
   "bugs": {
-    "url": "https://gitlab.com/rxap/plugins/-/issues",
-    "email": "incoming+rxap-packages-14898188-issue-@incoming.gitlab.com"
+    "url": "https://gitlab.com/rxap/schematics/-/issues",
+    "email": "incoming+rxap-schematics-27428931-issue-@incoming.gitlab.com"
   },
   "gitHead": "e97bbc8cd889c25c0e1b134eeb74fd5ea3a19981"
 }

@@ -5,6 +5,11 @@
       "description": "Generates a the router and feature module configuration",
       "factory": "./src/schematics/generate/index",
       "schema": "./src/schematics/generate/schema.json"
+    },
+    "ng-add": {
+      "description": "Setup the package @rxap/schematics-router for the workspace.",
+      "factory": "./src/schematics/ng-add/index",
+      "schema": "./src/schematics/ng-add/schema.json"
     }
   }
 }

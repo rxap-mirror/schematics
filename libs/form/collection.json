@@ -10,6 +10,11 @@
       "description": "Generates a form definition from a xml specification",
       "factory": "./src/schematics/generate/index",
       "schema": "./src/schematics/generate/schema.json"
+    },
+    "ng-add": {
+      "description": "Setup the package @rxap/schematics-form for the workspace.",
+      "factory": "./src/schematics/ng-add/index",
+      "schema": "./src/schematics/ng-add/schema.json"
     }
   }
 }
