@@ -5,7 +5,6 @@
     "tslib": "^2.0.0"
   },
   "peerDependencies": {
-    "@rxap/schematics-ts-morph": "^12.0.4",
     "@rxap/utilities": "^12.0.3",
     "@rxap/xml-parser": "^12.0.3",
     "ts-morph": "^11.0.0"

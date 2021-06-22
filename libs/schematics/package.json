@@ -9,7 +9,8 @@
   },
   "schematics": "./collection.json",
   "peerDependencies": {
-    "@nrwl/workspace": "^12.3.6"
+    "@nrwl/workspace": "^12.3.6",
+    "parse5": "^6.0.1"
   },
   "dependencies": {
     "@rxap/schematics-ts-morph": "^12.0.4",
