@@ -15,3 +15,7 @@ export * from './lib/guess-project-root';
 export * from './lib/guess-project-name';
 export * from './lib/collection-json-file';
 export * from './lib/collection-json';
+export * from './lib/ts-config';
+export * from './lib/ts-config-file';
+export * from './lib/builders-json';
+export * from './lib/builders-json-file';
