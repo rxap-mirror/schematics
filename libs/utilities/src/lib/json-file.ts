@@ -1,6 +1,6 @@
 import { Rule, Tree } from '@angular-devkit/schematics';
 import { CoerceFile } from './coerce-file';
-import { IsFunction } from '@rxap/utilities';
+import { equals, IsFunction } from '@rxap/utilities';
 
 export function GetJsonFile<T = any>(host: Tree, filePath: string, create: boolean = false): T {
 
@@ -38,7 +38,11 @@ export function UpdateJsonFile<T extends Record<string, any> = Record<string, an
       jsonFile = updaterOrJsonFile;
     }
 
-    CoerceFile(tree, filePath, JSON.stringify(jsonFile, undefined, options?.space ?? 2));
+    const currentJsonFile = GetJsonFile<T>(tree, filePath, options?.create);
+
+    if (!equals(jsonFile, currentJsonFile)) {
+      CoerceFile(tree, filePath, JSON.stringify(jsonFile, undefined, options?.space ?? 2));
+    }
 
   }
 }
