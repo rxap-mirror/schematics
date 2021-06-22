@@ -28,16 +28,16 @@ export default function (options: Schema): Rule {
 
     console.log(join(dirname(require.resolve(join(context.schematic.description.collection.name, 'package.json'))), 'package.json'));
 
-    AssertProjectType(host, options.name, 'library');
+    AssertProjectType(host, options.project, 'library');
 
-    const projectRoot = GetProjectRoot(host, options.name);
+    const projectRoot = GetProjectRoot(host, options.project);
 
-    const projectPackageJson = GetProjectPackageJson(host, options.name);
+    const projectPackageJson = GetProjectPackageJson(host, options.project);
 
-    let schematicRoot: string | null = GetSchematicRoot(host, options.name);
+    let schematicRoot: string | null = GetSchematicRoot(host, options.project);
 
     if (schematicRoot) {
-      console.log(`The project ${options.name} has schematics. The ng-add schematic will be added if not exists.`);
+      console.log(`The project ${options.project} has schematics. The ng-add schematic will be added if not exists.`);
     }
 
     return chain([
@@ -49,12 +49,12 @@ export default function (options: Schema): Rule {
           '@rxap/plugin-library',
           'config-schematics',
           {
-            project: options.name,
+            project: options.project,
             type: 'schematics'
           }
         ),
         tree => {
-          schematicRoot = GetSchematicRoot(tree, options.name);
+          schematicRoot = GetSchematicRoot(tree, options.project);
           if (!schematicRoot) {
             throw new SchematicsException('The schematic root could not be determined.');
           }

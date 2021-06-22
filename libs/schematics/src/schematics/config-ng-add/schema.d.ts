@@ -1,4 +1,4 @@
 export interface Schema {
-  name: string;
+  project: string;
   save: 'dependencies' | 'devDependencies' | 'false'
 }

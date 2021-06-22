@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "$id": "rxap-schematics-config-ng-add",
+  "$id": "schematics-config-plugin-ng-add",
+  "title": "ConfigPluginNgAdd",
   "type": "object",
   "properties": {
     "project": {
@@ -11,19 +12,7 @@
         "index": 0
       },
       "x-prompt": "What project should be configured with ng add support?"
-    },
-    "save": {
-      "type": "string",
-      "enum": [
-        "dependencies",
-        "devDependencies",
-        "false"
-      ],
-      "default": "dependencies",
-      "x-prompt": "How should the package be saved in the workspace?"
     }
   },
-  "required": [
-    "project"
-  ]
+  "required": []
 }
