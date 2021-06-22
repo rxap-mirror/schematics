@@ -1,0 +1,30 @@
+import { BuilderContext, BuilderOutput, createBuilder } from '@angular-devkit/architect';
+import { <%= classify(name) %>Schema } from './schema'
+
+export class Builder {
+
+  public static Run(
+    options: <%= classify(name) %>Schema,
+    context: BuilderContext
+  ) {
+    return new Builder(options, context).run();
+  }
+
+  public static Create(): any {
+    return createBuilder(Builder.Run);
+  }
+
+  constructor(
+    public readonly options: <%= classify(name) %>Schema,
+    public readonly context: BuilderContext
+  ) {}
+
+  public async run(): Promise<BuilderOutput> {
+
+    return { success: true };
+
+  }
+
+}
+
+export default Builder.Create();
