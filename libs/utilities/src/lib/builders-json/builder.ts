@@ -3,10 +3,10 @@ export type Builder = {
   schema: string;
   /** Builder description. */
   description: string;
-} & {
+} & ({
   /** The next generation builder module. */
   implementation: string;
 } | {
   /** The builder class module. */
   class: string;
-};
+});
