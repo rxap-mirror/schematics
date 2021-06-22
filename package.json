@@ -4,8 +4,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "jest": "jest",
-    "preversion": "ts-node scripts/update-peer-dependencies.ts",
-    "version": "nx affected --target=pack --with-deps",
+    "version": "bash version.sh",
     "test:ci": "jest --coverage --ci --reporters default --reporters jest-junit",
     "lerna": "env-cmd lerna",
     "lerna:version": "yarn lerna version --create-release gitlab",
@@ -82,5 +81,12 @@
     "ts-jest": "26.5.5",
     "ts-node": "~9.1.1",
     "typescript": "~4.2.4"
+  },
+  "repository": "git@gitlab.com:rxap/schematics.git",
+  "homepage": "https://gitlab.com/rxap/schematics",
+  "author": "Merzough Münker",
+  "bugs": {
+    "url": "https://gitlab.com/rxap/schematics/-/issues",
+    "email": "incoming+rxap-schematics-27428931-issue-@incoming.gitlab.com"
   }
 }
