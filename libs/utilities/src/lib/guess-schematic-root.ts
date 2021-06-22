@@ -1,7 +1,7 @@
 import { Tree } from '@angular-devkit/schematics';
 import { join } from 'path';
 import { GetProjectRoot } from './get-project';
-import { GetProjectCollectionJson } from './collection-json-file';
+import { GetProjectCollectionJson, HasProjectCollectionJsonFile } from './collection-json-file';
 
 /**
  * Tries to guess the schematic root of a project.
@@ -17,19 +17,22 @@ import { GetProjectCollectionJson } from './collection-json-file';
  */
 export function GuessSchematicRoot(host: Tree, projectName: string): string {
 
-  const collectionJson = GetProjectCollectionJson(host, projectName);
   const projectRoot = GetProjectRoot(host, projectName);
 
-  if (Object.keys(collectionJson.schematics).length) {
-    const firstSchematic = collectionJson.schematics[Object.keys(collectionJson.schematics)[0]];
-    const basePathSegmentList: string[] = [];
-    for (const segment of firstSchematic.factory.split('/')) {
-      basePathSegmentList.push(segment);
-      if (segment === 'schematics' || segment === 'schematic') {
-        break;
+  if (HasProjectCollectionJsonFile(host, projectName)) {
+    const collectionJson = GetProjectCollectionJson(host, projectName);
+
+    if (Object.keys(collectionJson.schematics).length) {
+      const firstSchematic = collectionJson.schematics[Object.keys(collectionJson.schematics)[0]];
+      const basePathSegmentList: string[] = [];
+      for (const segment of firstSchematic.factory.split('/')) {
+        basePathSegmentList.push(segment);
+        if (segment === 'schematics' || segment === 'schematic') {
+          break;
+        }
       }
+      return join(projectRoot, basePathSegmentList.join('/'));
     }
-    return join(projectRoot, basePathSegmentList.join('/'));
   }
 
   console.warn('Could not guess the schematic root.');
