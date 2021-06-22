@@ -185,6 +185,11 @@
       "description": "Add required configs and files to a project for ng add support specific for plugins.",
       "factory": "./src/schematics/config-plugin-ng-add/index",
       "schema": "./src/schematics/config-plugin-ng-add/schema.json"
+    },
+    "config-package-json": {
+      "description": "Updates the project package.json.",
+      "factory": "./src/schematics/config-package-json/index",
+      "schema": "./src/schematics/config-package-json/schema.json"
     }
   }
 }

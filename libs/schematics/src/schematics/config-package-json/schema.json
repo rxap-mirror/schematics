@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "schematics-config-package-json",
+  "title": "ConfigPackageJson",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The project name.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Which project package.json should be updated?"
+    }
+  },
+  "required": [
+    "project"
+  ]
+}
