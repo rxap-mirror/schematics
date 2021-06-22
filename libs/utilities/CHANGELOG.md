@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.1.0...@rxap/schematics-utilities@12.3.0) (2021-06-22)
+
+
+### Bug Fixes
+
+* add missing path prefix ([9e68f21](https://gitlab.com/rxap/packages/commit/9e68f210f428f5d4c8c6f1fbda38353b1c391b38))
+* check if collection.json exists ([1277962](https://gitlab.com/rxap/packages/commit/12779624a12e77ce136e87abf68f74ad6c47db4a))
+* only update json file if changed ([1fb779e](https://gitlab.com/rxap/packages/commit/1fb779e681e44cbe5c1698011780d6240589dad1))
+* **angular-json-file:** invert project exists check ([1bd19c1](https://gitlab.com/rxap/packages/commit/1bd19c14c8ac0c79b8ad5945fc819cd6d5b05429))
+* **collection-json-file:** add support for create updates ([0b75874](https://gitlab.com/rxap/packages/commit/0b75874e2a3a162ed51ba0ff456f88b84ee8dd31))
+* **guess-schematic-root:** prefix the schematic root with the project root ([96f9a8f](https://gitlab.com/rxap/packages/commit/96f9a8f19d165344f5081dedd8fc846cf32eba19))
+* add dynamic type for the target options and configurations ([18c96a3](https://gitlab.com/rxap/packages/commit/18c96a3434878b5812cf88c5b621bb4950eb0513))
+* add missing keys, values and entries methods ([2e22b45](https://gitlab.com/rxap/packages/commit/2e22b45c51c426576f586a42bc9d95763fe5778f))
+
+
+### Features
+
+* add builders utility functions ([7036080](https://gitlab.com/rxap/packages/commit/70360804929c521036940bd3ccff2ed3fa8bf0a3))
+* add collection.json utility functions ([a9907bc](https://gitlab.com/rxap/packages/commit/a9907bc773450b0d7ece4d9aad22a40bf5f31d04))
+* add function CheckIfPackagesAreInstalled ([dc43f36](https://gitlab.com/rxap/packages/commit/dc43f366cd3d469ea7d5d58dd34633925a87f861))
+* add function GetSchematicRoot ([d112107](https://gitlab.com/rxap/packages/commit/d11210797205c870d29b4bbbea7f3fabb1069fe8))
+* add function GetWorkspace ([8b44dcf](https://gitlab.com/rxap/packages/commit/8b44dcfa105f0b603fd07f4a0e09fee1a611a501))
+* add function GuessBuilderRoot ([7d7a888](https://gitlab.com/rxap/packages/commit/7d7a888741406ba6f41eca7b50f44cdd92bc8b6e))
+* add function GuessProjectName ([3531c50](https://gitlab.com/rxap/packages/commit/3531c50905e53bb0e3f17455fec75e47708438cb))
+* add function GuessProjectRoot ([5280297](https://gitlab.com/rxap/packages/commit/5280297f61938fca2183d2278ab0007066fe5be4))
+* add function GuessSchematicRoot ([bdbe34e](https://gitlab.com/rxap/packages/commit/bdbe34e43052adec53c95ddd25641ab439ede8d4))
+* add function UpdateAngularProject ([5024074](https://gitlab.com/rxap/packages/commit/50240743d1ea64a820718f52def7e6d196310dd8))
+* add function UpdateProjectPackageJson ([9df03ea](https://gitlab.com/rxap/packages/commit/9df03ea2127f54182461c86cdf0af45e83cb1bec))
+* add HasProjectCollectionJsonFile function ([e965add](https://gitlab.com/rxap/packages/commit/e965add58cc181711505412a4f22b9395197d381))
+* add tsConfig utility functions ([d482a91](https://gitlab.com/rxap/packages/commit/d482a91decd3905218620ca453136e325750bd18))
+* **collection-json-file:** support migration.json ([2b37709](https://gitlab.com/rxap/packages/commit/2b37709b0ea523cb4d3085d884ae6dc777614b08))
+* **update-json-file:** add create option ([6da34be](https://gitlab.com/rxap/packages/commit/6da34be60fd3ed5261261e1596a2881d564153d8))
+
+
+
+
+
 # [12.1.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.0.6...@rxap/schematics-utilities@12.1.0) (2021-06-17)
 
 
