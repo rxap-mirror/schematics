@@ -1,14 +1,27 @@
 import { Schema } from './schema';
-import { apply, applyTemplates, chain, forEach, mergeWith, move, noop, Rule, url } from '@angular-devkit/schematics';
+import {
+  apply,
+  applyTemplates,
+  chain,
+  externalSchematic,
+  forEach,
+  mergeWith,
+  move,
+  noop,
+  Rule,
+  SchematicsException,
+  url
+} from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
 import {
   AssertProjectType,
+  CheckIfPackagesAreInstalled,
   GetProjectPackageJson,
   GetProjectRoot,
-  GuessSchematicRoot,
   UpdatePackageJson
 } from '@rxap/schematics-utilities';
 import { dirname, join } from 'path';
+import { GetSchematicRoot } from './get-schematic-root';
 
 export default function (options: Schema): Rule {
   return (host, context) => {
@@ -21,24 +34,33 @@ export default function (options: Schema): Rule {
 
     const projectPackageJson = GetProjectPackageJson(host, options.name);
 
-    let hasSchematics = false;
-    let schematicRoot: string | null = null;
+    let schematicRoot: string | null = GetSchematicRoot(host, options.name);
 
-    if (projectPackageJson.schematics) {
-      if (host.exists(join(projectRoot, projectPackageJson.schematics))) {
-        hasSchematics = true;
-        schematicRoot = join(projectRoot, GuessSchematicRoot(host, options.name));
-      }
-    }
-
-    if (hasSchematics) {
+    if (schematicRoot) {
       console.log(`The project ${options.name} has schematics. The ng-add schematic will be added if not exists.`);
-    } else {
-      console.warn(`The project ${options.name} does **not** have schematics. The ng-add schematic will **not** ne added.`);
     }
 
     return chain([
-      hasSchematics ? mergeWith(apply(url('./files'), [
+      schematicRoot ? noop() : chain([
+        CheckIfPackagesAreInstalled([
+          '@rxap/plugin-library'
+        ]),
+        externalSchematic(
+          '@rxap/plugin-library',
+          'config-schematics',
+          {
+            project: options.name,
+            type: 'schematics'
+          }
+        ),
+        tree => {
+          schematicRoot = GetSchematicRoot(tree, options.name);
+          if (!schematicRoot) {
+            throw new SchematicsException('The schematic root could not be determined.');
+          }
+        }
+      ]),
+      mergeWith(apply(url('./files'), [
         applyTemplates({
           id: strings.dasherize(projectPackageJson.name!),
         }),
@@ -49,7 +71,7 @@ export default function (options: Schema): Rule {
           }
           return entry;
         })
-      ])) : noop(),
+      ])),
       UpdatePackageJson(packageJson => {
 
         if (!packageJson['ng-add']) {
