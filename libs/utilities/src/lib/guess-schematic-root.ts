@@ -1,6 +1,7 @@
 import { Tree } from '@angular-devkit/schematics';
-import { GetProjectCollectionJson, GetProjectRoot } from '@rxap/schematics-utilities';
 import { join } from 'path';
+import { GetProjectRoot } from './get-project';
+import { GetProjectCollectionJson } from './collection-json-file';
 
 /**
  * Tries to guess the schematic root of a project.

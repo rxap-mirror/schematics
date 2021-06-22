@@ -1,5 +1,5 @@
 import { Rule, SchematicsException } from '@angular-devkit/schematics';
-import { UpdatePackageJson } from '@rxap/schematics-utilities';
+import { UpdatePackageJson } from './package-json-file';
 
 /**
  * Checks if all provided packages are installed and listed as dependencies

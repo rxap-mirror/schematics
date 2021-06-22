@@ -1,7 +1,8 @@
 import { Rule, Tree } from '@angular-devkit/schematics';
-import { GetJsonFile, GetProjectRoot, UpdateJsonFile, UpdateJsonFileOptions } from '@rxap/schematics-utilities';
 import { TsConfigJson } from './ts-config';
 import { join } from 'path';
+import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
+import { GetProjectRoot } from './get-project';
 
 export function GetTsConfigJson(host: Tree, infix?: string): TsConfigJson {
   return GetJsonFile(host, infix ? `tsconfig.${infix}.json` : 'tsconfig.json');

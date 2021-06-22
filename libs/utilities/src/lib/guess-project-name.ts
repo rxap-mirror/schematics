@@ -1,5 +1,6 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { GetWorkspace, GuessProjectRoot } from '@rxap/schematics-utilities';
+import { GuessProjectRoot } from './guess-project-root';
+import { GetWorkspace } from './workspace';
 
 /**
  * Tries to guess the project name.

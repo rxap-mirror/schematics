@@ -1,5 +1,6 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { Angular, GetJsonFile } from '@rxap/schematics-utilities';
+import { GetJsonFile } from './json-file';
+import { Angular } from './angular-json-file';
 
 export function GetWorkspace(host: Tree) {
 

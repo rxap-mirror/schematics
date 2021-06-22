@@ -1,13 +1,8 @@
 import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { join } from 'path';
-import {
-  GetJsonFile,
-  GetProjectPackageJson,
-  GetProjectRoot,
-  UpdateJsonFile,
-  UpdateJsonFileOptions
-} from '@rxap/schematics-utilities';
 import { BuildersJson } from './builders-json';
+import { GetProjectPackageJson, GetProjectRoot } from './get-project';
+import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
 
 export enum BuildersJsonType {
   BUILDERS = 'builders'

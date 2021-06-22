@@ -2543,6 +2543,14 @@
     "@angular-devkit/core" "9"
     "@angular-devkit/schematics" "9"
 
+"@rxap/plugin-library@^12.0.1":
+  version "12.0.1"
+  resolved "https://registry.yarnpkg.com/@rxap/plugin-library/-/plugin-library-12.0.1.tgz#1f4c37b566d08df989db72e617bb25849da9b364"
+  integrity sha512-iOMV95v4NDHB+OGRJJ3W4N/IaA2ESJbRsrr16VOagJscP9fmXc/YPebAEP1N/epVt2G2zYU1kgI5l7yCF4WCTA==
+  dependencies:
+    "@angular-devkit/architect" "0.1200.3"
+    "@angular-devkit/schematics" "12.0.3"
+
 "@rxap/plugin-pack@^12.1.7":
   version "12.1.7"
   resolved "https://registry.yarnpkg.com/@rxap/plugin-pack/-/plugin-pack-12.1.7.tgz#d66e3829896436dbd819604716b7ae523b9d1f23"

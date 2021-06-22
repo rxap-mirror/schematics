@@ -39,6 +39,7 @@
       "@rxap/schematics-ts-morph",
       "@rxap/utilities",
       "@rxap/xml-parser"
-    ]
+    ],
+    "migrations": "./migration.json"
   }
 }

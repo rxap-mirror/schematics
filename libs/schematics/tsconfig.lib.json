@@ -11,7 +11,9 @@
   },
   "exclude": [
     "**/*.spec.ts",
-    "**/files/**"
+    "**/files/**",
+    "src/schematics/**",
+    "src/migrations/**"
   ],
   "include": [
     "**/*.ts"

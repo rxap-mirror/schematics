@@ -66,7 +66,6 @@ strict | boolean | false | Whether to enable tsconfig strict mode or not.
 builders | boolean | false | Whether the project should have builders
 
 ## component-module
-
 > Creates a new generic component module in the given or default project.
 
 ```
@@ -531,8 +530,8 @@ Option | Type | Default | Description
 --- | --- | --- | ---
 project | string | pwa | Project name
 
-
 ## library
+
 > Adds an angular library project
 
 ```
@@ -580,7 +579,6 @@ defaultBuilder | string |  | The name of the default builder
 defaultTarget | string |  | The name of the default target
 
 ## add-plugin-config-schematic
-
 > Adds the default plugin builder config schematic to the project.
 
 ```
@@ -603,7 +601,6 @@ defaultTarget | string |  | The name of the default target
 | defaultTarget |
 
 ## add-builder
-
 > Adds a builder to the specified project.
 
 ```
@@ -623,7 +620,6 @@ description | string |  | The description of the new builder
 | description |
 
 ## config-plugin-ng-add
-
 > Add required configs and files to a project for ng add support specific for plugins.
 
 ```

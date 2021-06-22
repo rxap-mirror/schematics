@@ -6,7 +6,7 @@
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {
-    "migrations": "./schematics/migration.json",
+    "migrations": "./migration.json",
     "packageGroup": [
       "@rxap/schematics-open-api",
       "@rxap/utilities"

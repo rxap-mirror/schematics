@@ -1,6 +1,7 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { GetProjectRoot, GetWorkspace } from '@rxap/schematics-utilities';
 import { IsDefined } from '@rxap/utilities';
+import { GetProjectRoot } from './get-project';
+import { GetWorkspace } from './workspace';
 
 /**
  * Tries to guess the project root from the option path and project

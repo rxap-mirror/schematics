@@ -1,13 +1,8 @@
 import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { join } from 'path';
-import {
-  GetJsonFile,
-  GetProjectPackageJson,
-  GetProjectRoot,
-  UpdateJsonFile,
-  UpdateJsonFileOptions
-} from '@rxap/schematics-utilities';
 import { CollectionJson } from './collection-json';
+import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
+import { GetProjectPackageJson, GetProjectRoot } from './get-project';
 
 export enum CollectionJsonType {
   SCHEMATICS = 'schematics',
