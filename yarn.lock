@@ -2543,19 +2543,16 @@
     "@angular-devkit/core" "9"
     "@angular-devkit/schematics" "9"
 
-"@rxap/plugin-library@^12.2.0":
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/@rxap/plugin-library/-/plugin-library-12.2.0.tgz#3d2911d7348b3660917bb9f1be4182903598aa0c"
-  integrity sha512-2ThNqp/+UDPteTxUfP9E0qtX4Oq0lTsufefX9L8cIPXjP2DEdPAk+yKyPl5a9IDhdUO58UKq7tyr/DfKqb460A==
+"@rxap/plugin-library@^12.3.0":
+  version "12.3.0"
+  resolved "https://registry.yarnpkg.com/@rxap/plugin-library/-/plugin-library-12.3.0.tgz#b3be41f2af2b7b113166ff1c39f4b13a300a8391"
+  integrity sha512-3Nt/jETFRjccr6MWSv8sHK0CoSnsxsc/F/2DFVwtoVVCtISFQusA2wJJa24IqDfhBW8IWXrMBVji1LyOGhnfzA==
   dependencies:
     "@angular-devkit/architect" "^0.1200.3"
     "@angular-devkit/core" "^12.0.3"
     "@angular-devkit/schematics" "^12.0.3"
-    "@lerna/collect-updates" "^4.0.0"
-    "@lerna/package-graph" "^4.0.0"
-    "@lerna/project" "^4.0.0"
     "@nrwl/workspace" "^12.3.6"
-    "@rxap/schematics-utilities" "^12.0.5"
+    "@rxap/schematics-utilities" "^12.3.3"
     "@rxap/utilities" "^12.0.3"
 
 "@rxap/plugin-pack@^12.1.11":
@@ -2579,7 +2576,7 @@
     "@rxap/schematics-utilities" "^12.0.5"
     handlebars "^4.7.7"
 
-"@rxap/schematics-utilities@^12.0.5":
+"@rxap/schematics-utilities@^12.0.5", "@rxap/schematics-utilities@^12.3.3":
   version "12.3.3"
   resolved "https://registry.yarnpkg.com/@rxap/schematics-utilities/-/schematics-utilities-12.3.3.tgz#2dd8cbf394a8af195b50da99bc496957fae4c0b6"
   integrity sha512-efIOdfUdviN/XM2DavO0nilmfi+CxxHuwe1Y+1AQ64gOCT5qlf4vWUCrMAKeFwuIY9m+CxyGbstmHwHC5SOXKg==
