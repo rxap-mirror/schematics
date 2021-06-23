@@ -1,9 +1,7 @@
 {
   "name": "@rxap/schematics-html",
-  "version": "12.0.5",
-  "dependencies": {
-    "tslib": "^2.0.0"
-  },
+  "version": "12.0.6",
+  "dependencies": {},
   "publishConfig": {
     "directory": "../../dist/libs/html",
     "access": "public"
@@ -31,5 +29,6 @@
     "packageGroup": [
       "@rxap/schematics-html"
     ]
-  }
+  },
+  "peerDependencies": {}
 }
