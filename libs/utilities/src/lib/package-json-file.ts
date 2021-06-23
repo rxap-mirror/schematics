@@ -115,14 +115,12 @@ export function AddPackageJsonDevDependency(
 
 export function InstallPeerDependencies(): Rule {
   return (host, context) => {
-    const packageDirname = dirname(require.resolve(join(context.schematic.description.collection.name, 'package.json')));
-
-    const packageJson = GetPackageJson(host, packageDirname);
+    const packageJson = require(join(context.schematic.description.collection.name, 'package.json'));
 
     const peerDependencies = packageJson.peerDependencies ?? {};
 
     return chain([
-      chain(Object.entries(peerDependencies).map(([ name, version ]) => {
+      chain(Object.entries(peerDependencies as Record<string, string>).map(([ name, version ]: [ string, string ]) => {
         if (packageJson['ng-add']?.save === 'devDependency') {
           return AddPackageJsonDevDependency(name, version);
         } else {
@@ -134,7 +132,7 @@ export function InstallPeerDependencies(): Rule {
       },
       chain(Object.keys(peerDependencies).map(name => (tree) => {
         const peerPackageDirname = dirname(require.resolve(join(name, 'package.json')));
-        const peerPackageJson = GetPackageJson(host, packageDirname);
+        const peerPackageJson = require(join(name, 'package.json'));
         if (peerPackageJson.schematics) {
           const peerCollectionJsonFilePath = join(peerPackageDirname, peerPackageJson.schematics);
           if (tree.exists(peerCollectionJsonFilePath)) {
