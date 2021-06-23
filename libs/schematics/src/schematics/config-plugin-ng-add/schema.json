@@ -12,6 +12,16 @@
         "index": 0
       },
       "x-prompt": "What project should be configured with ng add support?"
+    },
+    "save": {
+      "type": "string",
+      "enum": [
+        "dependencies",
+        "devDependencies",
+        "false"
+      ],
+      "default": "dependencies",
+      "x-prompt": "How should the package be saved in the workspace?"
     }
   },
   "required": []

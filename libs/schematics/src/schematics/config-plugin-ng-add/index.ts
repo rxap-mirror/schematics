@@ -13,7 +13,10 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import { ConfigPluginNgAddSchema } from './schema'
-import { GetProjectPackageJson, GetSchematicRoot } from '@rxap/schematics-utilities';
+import { GetProjectPackageJson, GuessSchematicRoot } from '@rxap/schematics-utilities';
+import { strings } from '@angular-devkit/core';
+
+const { dasherize } = strings;
 
 export default function (options: ConfigPluginNgAddSchema): Rule {
 
@@ -22,15 +25,19 @@ export default function (options: ConfigPluginNgAddSchema): Rule {
     const projectPackageJson = GetProjectPackageJson(host, options.project);
 
     return chain([
-      schematic('config-ng-add', {}),
+      schematic('config-ng-add', {
+        project: options.project,
+        save: options.save,
+      }),
       tree => {
-        const schematicRoot = GetSchematicRoot(tree, options.project);
+        const schematicRoot = GuessSchematicRoot(tree, options.project);
         if (!schematicRoot) {
           throw new SchematicsException('The schematic root could not be determined.');
         }
         return mergeWith(apply(url('./files'), [
           applyTemplates({
             packageName: projectPackageJson.name,
+            schemaId: [ dasherize(options.project), dasherize('ng-add') ].join('-'),
           }),
           move(schematicRoot),
           forEach(entry => {
