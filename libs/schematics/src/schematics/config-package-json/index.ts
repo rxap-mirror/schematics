@@ -29,7 +29,7 @@ export default function (options: ConfigPackageJsonSchema): Rule {
       packageJson.keywords.push(...(rootPackageJson.keywords ?? []));
       packageJson.keywords = packageJson.keywords.filter(unique());
 
-      if (packageJson.license) {
+      if (!packageJson.license) {
         packageJson.license = rootPackageJson.license;
       }
 
