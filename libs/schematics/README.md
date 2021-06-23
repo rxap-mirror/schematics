@@ -8,7 +8,7 @@
 ![npm](https://img.shields.io/npm/dm/@rxap/schematics)
 ![NPM](https://img.shields.io/npm/l/@rxap/schematics)
 
-> 
+> A collection of utility schematics for RxAP.
 
 - [Installation](#installation)
 - [Schematics](#schematics)

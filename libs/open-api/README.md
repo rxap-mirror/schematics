@@ -15,6 +15,6 @@
 # Installation
 
 ```
-yarn add @rxap/schematics-open-api @rxap/json-schema-to-typescript@^12.0.2 @rxap/utilities@^12.0.3
+yarn add @rxap/schematics-open-api
 ```
 
