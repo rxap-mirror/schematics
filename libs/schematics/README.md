@@ -649,3 +649,30 @@ project | string |  | The project name.
 | --- |
 | project |
 
+## angular-library-project
+> Adds an angular library project to the workspace.
+
+```
+ng g @rxap/schematics:angular-library-project
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+name | string |  | Library name
+project | string |  | Only update an exiting angular library project
+overwrite | boolean |  | Whether to overwrite existing files.
+directory | string |  | A directory where the lib is placed
+prefix | string |  | The prefix to apply to generated selectors.
+skipFormat | boolean | false | Skip formatting files
+simpleModuleName | boolean | false | Keep the module name simple (when using --directory)
+addModuleSpec | boolean | false | Add a module spec file.
+skipPackageJson | boolean | false | Do not add dependencies to package.json.
+skipTsConfig | boolean | false | Do not update tsconfig.json for development experience.
+tags | string |  | Add tags to the library (used for linting)
+unitTestRunner | string | jest | Test runner to use for unit tests
+importPath | string |  | The library name used to import it, like @myorg/my-awesome-lib. Must be a valid npm name.
+strict | boolean | true | Creates a library with stricter type checking and build optimization options.
+linter | string | eslint | The tool to use for running lint checks.
+enableIvy | boolean | false | Enable Ivy for library in tsconfig.lib.prod.json. Should not be used with publishable libraries.
+
+
