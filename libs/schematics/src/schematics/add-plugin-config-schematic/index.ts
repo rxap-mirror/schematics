@@ -15,6 +15,8 @@ import { AddPluginConfigSchematicSchema } from './schema'
 import { strings } from '@angular-devkit/core';
 import { GetProjectPackageJson, GuessProjectName, GuessSchematicRoot } from '@rxap/schematics-utilities';
 
+const { dasherize } = strings;
+
 export default function (options: AddPluginConfigSchematicSchema): Rule {
 
   return async (host: Tree) => {
@@ -39,6 +41,7 @@ export default function (options: AddPluginConfigSchematicSchema): Rule {
             ...strings,
             ...options,
             packageName: projectPackageJson.name,
+            schemaId: [ dasherize(projectName), dasherize(options.name) ].join('-'),
           }),
           move(schematicRoot)
         ]), MergeStrategy.Overwrite);
