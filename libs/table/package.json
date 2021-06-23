@@ -1,11 +1,11 @@
 {
   "name": "@rxap/schematics-table",
-  "version": "12.0.9",
+  "version": "12.0.10",
   "peerDependencies": {
     "@nrwl/workspace": "^12.3.6"
   },
   "dependencies": {
-    "@rxap/schematics": "^12.4.0",
+    "@rxap/schematics": "^12.5.0",
     "@rxap/schematics-html": "^12.0.5",
     "@rxap/schematics-ts-morph": "^12.0.6",
     "@rxap/schematics-xml-parser": "^12.0.6",
