@@ -62,6 +62,7 @@ pascalCaseFiles | boolean | false | Use pascal case file names.
 js | boolean | false | Generate JavaScript files rather than TypeScript files.
 strict | boolean | false | Whether to enable tsconfig strict mode or not.
 builders | boolean | false | Whether the project should have builders
+overwrite | boolean |  | Whether to overwrite existing files.
 
 
 ## component-module
@@ -575,6 +576,8 @@ js | boolean | false | Generate JavaScript files rather than TypeScript files.
 strict | boolean | false | Whether to enable tsconfig strict mode or not.
 defaultBuilder | string |  | The name of the default builder
 defaultTarget | string |  | The name of the default target
+overwrite | boolean |  | Whether to overwrite existing files.
+defaultBuilderDescription | string |  | The description for the default builder
 
 
 ## add-plugin-config-schematic
@@ -586,7 +589,7 @@ ng g @rxap/schematics:add-plugin-config-schematic
 
 Option | Type | Default | Description
 --- | --- | --- | ---
-name | string |  | The name of the new schematic
+name | string | config | The name of the new schematic
 path | string |  | The absolute path to the schematic folder or the relative path from the project root
 project | string |  | The project where the schematic should be added
 description | string |  | The description of the new schematic
@@ -628,6 +631,7 @@ ng g @rxap/schematics:config-plugin-ng-add
 Option | Type | Default | Description
 --- | --- | --- | ---
 project | string |  | The project name.
+save | string | dependencies | 
 
 
 ## config-package-json
