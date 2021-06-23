@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.5.2...@rxap/schematics@12.6.0-next.3) (2021-06-23)
+
+
+### Bug Fixes
+
+* only set license property if undefined ([8a97c42](https://gitlab.com/rxap/packages/commit/8a97c42991c48fea82ece28dcf65c9b8bb380071))
+
+
+### Features
+
+* add angular-library-project schematic ([b15bdda](https://gitlab.com/rxap/packages/commit/b15bdda665637cc8bea255efb5561da7d0910a31))
+
+
+
+
+
 
 
 # [12.6.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.6.0-next.0...@rxap/schematics@12.6.0-next.1) (2021-06-23)

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.5-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.3.4...@rxap/schematics-utilities@12.3.5-next.0) (2021-06-23)
+
+
+### Bug Fixes
+
+* **json-file:** catch json parse error ([a1796e8](https://gitlab.com/rxap/packages/commit/a1796e830837e441c3d6bc230914ec0c9319e60e))
+
+
+
+
+
 ## [12.3.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.3.3...@rxap/schematics-utilities@12.3.4) (2021-06-23)
 
 **Note:** Version bump only for package @rxap/schematics-utilities

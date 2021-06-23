@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-form",
-  "version": "12.0.14",
+  "version": "12.0.15-next.0",
   "peerDependencies": {
     "@nrwl/workspace": "^12.3.6",
     "@rxap/xml-parser": "^12.0.3",
@@ -18,7 +18,6 @@
     "migrations": "./migration.json",
     "packageGroup": [
       "@rxap/schematics-form",
-      "@rxap/schematics-ts-morph",
       "@rxap/xml-parser"
     ]
   },
