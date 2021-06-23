@@ -95,13 +95,19 @@
     },
     "defaultBuilder": {
       "type": "string",
-      "description": "The name of the default builder",
-      "x-prompt": "What name has the default builder?"
+      "description": "The name of the default builder"
     },
     "defaultTarget": {
       "type": "string",
-      "description": "The name of the default target",
-      "x-prompt": "What target has the default builder?"
+      "description": "The name of the default target"
+    },
+    "overwrite": {
+      "type": "boolean",
+      "description": "Whether to overwrite existing files."
+    },
+    "defaultBuilderDescription": {
+      "type": "string",
+      "description": "The description for the default builder"
     }
   },
   "required": []

@@ -1,8 +1,14 @@
 import { chain, externalSchematic, noop, Rule, schematic, SchematicsException, } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
-import { CheckIfPackagesAreInstalled } from '@rxap/schematics-utilities';
+import {
+  CheckIfPackagesAreInstalled,
+  DeleteRecursive,
+  GetProjectCollectionJson,
+  GuessSchematicRoot
+} from '@rxap/schematics-utilities';
 import { AddBuildTarget } from './add-build-target';
 import { SchematicProjectSchema } from './schema';
+import { join } from 'path';
 
 export default function (options: SchematicProjectSchema): Rule {
 
@@ -57,7 +63,20 @@ export default function (options: SchematicProjectSchema): Rule {
         updatePackageGroup: true,
         updatePeerDependencies: true,
       }),
-      schematic('config-ng-add', { project: projectName }),
+      tree => {
+        const collectionJson = GetProjectCollectionJson(tree, projectName);
+        const schematicRoot = GuessSchematicRoot(tree, projectName);
+        const rules: Rule[] = [];
+        if (!collectionJson.schematics['ng-add'] || options.overwrite) {
+          rules.push(schematic('config-ng-add', {
+            project: projectName
+          }));
+          if (collectionJson.schematics['ng-add']) {
+            DeleteRecursive(tree, tree.getDir(join(schematicRoot, 'ng-add')));
+          }
+        }
+        return chain(rules);
+      },
       schematic('config-package-json', { project: projectName }),
     ]);
   }
