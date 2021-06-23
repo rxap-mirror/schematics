@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.3.0...@rxap/schematics@12.5.0) (2021-06-23)
+
+
+### Bug Fixes
+
+* add missing options ([83eb89e](https://gitlab.com/rxap/packages/commit/83eb89ee7ffb494446bb8822bfcecde632e6dea3))
+* add missing template variable ([e29bcd8](https://gitlab.com/rxap/packages/commit/e29bcd885cc5f00a6e5e066c45b1604586b9a04f))
+* remove x-prompt for name property ([5917bf3](https://gitlab.com/rxap/packages/commit/5917bf33302c437488cfa5bd0b9dfe02fda6d8c9))
+* set default name option ([af97673](https://gitlab.com/rxap/packages/commit/af9767354d41cda3bf93c28da17bdb9c54ed27b3))
+
+
+### Features
+
+* add overwrite option ([b7ecd90](https://gitlab.com/rxap/packages/commit/b7ecd90a1b55a50b47bd208dd8a332bfbb20eae2))
+
+
+
+
+
 # [12.3.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.1.0...@rxap/schematics@12.3.0) (2021-06-22)
 
 

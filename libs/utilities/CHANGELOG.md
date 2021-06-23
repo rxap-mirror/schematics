@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.3.0...@rxap/schematics-utilities@12.3.2) (2021-06-23)
+
+
+### Bug Fixes
+
+* remove GetSchematicRoot function ([3222fe8](https://gitlab.com/rxap/packages/commit/3222fe82e868f0416d31c1947e04a1509ea11493))
+
+
+
+
+
 # [12.3.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.1.0...@rxap/schematics-utilities@12.3.0) (2021-06-22)
 
 
