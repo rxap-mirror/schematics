@@ -4,11 +4,11 @@
   "license": "GPL-3.0",
   "scripts": {
     "jest": "jest",
-    "version": "bash scripts/version.sh",
+    "version": "bash scripts/lerna/version.sh",
     "test:ci": "jest --coverage --ci --reporters default --reporters jest-junit",
     "lerna": "env-cmd lerna",
     "lerna:version": "yarn lerna version --create-release gitlab",
-    "lerna:publish": "yarn lerna publish --create-release gitlab",
+    "lerna:publish": "bash scripts/lerna/publish.sh",
     "generate:readme": "node tools/readme-generator/index.js",
     "nx": "nx",
     "start": "ng serve",
