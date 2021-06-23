@@ -52,4 +52,7 @@
   <component name="PreferredVcsStorage">
     <preferredVcsName>ApexVCS</preferredVcsName>
   </component>
+  <component name="WebPackConfiguration">
+    <option name="mode" value="DISABLED" />
+  </component>
 </project>
