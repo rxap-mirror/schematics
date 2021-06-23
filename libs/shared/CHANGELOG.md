@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-shared@12.0.5...@rxap/schematics-shared@12.0.6) (2021-06-23)
+
+**Note:** Version bump only for package @rxap/schematics-shared
+
+
+
+
+
 ## [12.0.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-shared@12.0.3...@rxap/schematics-shared@12.0.5) (2021-06-22)
 
 **Note:** Version bump only for package @rxap/schematics-shared

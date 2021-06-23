@@ -1,9 +1,7 @@
 {
   "name": "@rxap/schematics-open-api",
-  "version": "12.0.6",
-  "dependencies": {
-    "tslib": "^2.0.0"
-  },
+  "version": "12.0.7",
+  "dependencies": {},
   "schematics": "./schematics/collection.json",
   "ng-update": {
     "migrations": "./migration.json",

@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics",
-  "version": "12.5.1",
+  "version": "12.5.2",
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [
@@ -13,8 +13,7 @@
     "parse5": "^6.0.1"
   },
   "dependencies": {
-    "@rxap/schematics-ts-morph": "^12.0.6",
-    "@rxap/schematics-utilities": "^12.3.3",
+    "@rxap/schematics-ts-morph": "^12.0.7",
     "@rxap/utilities": "^12.0.3",
     "@rxap/xml-parser": "^12.0.3",
     "ts-morph": "^11.0.0",
