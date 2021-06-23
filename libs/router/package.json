@@ -1,17 +1,14 @@
 {
   "name": "@rxap/schematics-router",
-  "version": "12.0.11",
+  "version": "12.0.12-next.0",
   "peerDependencies": {
     "@nrwl/workspace": "^12.3.6"
   },
   "dependencies": {
-    "@rxap/schematics": "^12.5.1",
-    "@rxap/schematics-ts-morph": "^12.0.6",
-    "@rxap/schematics-xml-parser": "^12.0.6",
+    "@rxap/schematics-ts-morph": "^12.0.7",
     "@rxap/utilities": "^12.0.3",
     "@rxap/xml-parser": "^12.0.3",
-    "ts-morph": "^11.0.0",
-    "tslib": "^2.0.0"
+    "ts-morph": "^11.0.0"
   },
   "schematics": "./collection.json",
   "ng-update": {
