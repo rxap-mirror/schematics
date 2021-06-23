@@ -2,7 +2,8 @@
   "name": "@rxap/schematics-ts-morph",
   "version": "12.0.6",
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "@rxap/utilities": "^12.0.3"
   },
   "publishConfig": {
     "directory": "../../dist/libs/ts-morph",
@@ -35,7 +36,6 @@
     "migrations": "./migration.json"
   },
   "peerDependencies": {
-    "@rxap/utilities": "^12.0.3",
     "ts-morph": "^11.0.0"
   }
 }

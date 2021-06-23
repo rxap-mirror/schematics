@@ -9,16 +9,16 @@
   },
   "schematics": "./collection.json",
   "peerDependencies": {
-    "@nrwl/linter": "^12.3.6",
-    "@nrwl/workspace": "^12.3.6",
-    "parse5": "^6.0.1"
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "@rxap/schematics-ts-morph": "^12.0.7",
     "@rxap/utilities": "^12.0.3",
     "@rxap/xml-parser": "^12.0.3",
     "ts-morph": "^11.0.0",
-    "typescript": "^4.2.4"
+    "@nrwl/linter": "^12.3.6",
+    "@nrwl/workspace": "^12.3.6",
+    "parse5": "^6.0.1"
   },
   "license": "MIT",
   "keywords": [
@@ -28,6 +28,7 @@
   "publishConfig": {
     "directory": "../../dist/libs/schematics"
   },
+  "description": "A collection of utility schematics for RxAP.",
   "repository": "git@gitlab.com:rxap/packages.git",
   "homepage": "https://gitlab.com/rxap/packages",
   "author": "Merzough Münker",

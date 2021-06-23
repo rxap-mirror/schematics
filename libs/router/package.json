@@ -2,13 +2,13 @@
   "name": "@rxap/schematics-router",
   "version": "12.0.12-next.0",
   "peerDependencies": {
-    "@nrwl/workspace": "^12.3.6"
+    "@nrwl/workspace": "^12.3.6",
+    "@rxap/xml-parser": "^12.0.3",
+    "ts-morph": "^11.0.0",
+    "@rxap/schematics-ts-morph": "^12.0.7"
   },
   "dependencies": {
-    "@rxap/schematics-ts-morph": "^12.0.7",
-    "@rxap/utilities": "^12.0.3",
-    "@rxap/xml-parser": "^12.0.3",
-    "ts-morph": "^11.0.0"
+    "@rxap/utilities": "^12.0.3"
   },
   "schematics": "./collection.json",
   "ng-update": {
