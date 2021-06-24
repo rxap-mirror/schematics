@@ -15,7 +15,7 @@
     "component": {
       "type": "boolean",
       "default": false,
-      "description": "Weather the new module is a component module"
+      "description": "Whether the new module is a component module"
     },
     "selector": {
       "type": "string",

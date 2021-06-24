@@ -13,7 +13,7 @@
     },
     "scss-bundle": {
       "type": "boolean",
-      "description": "Weather the project has custom themes",
+      "description": "Whether the project has custom themes",
       "default": false
     }
   },

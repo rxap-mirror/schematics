@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "component-module",
+  "$id": "rxap-schematics-component-module",
   "type": "object",
   "description": "Creates a new generic component module in the given or default project.",
   "properties": {
@@ -19,7 +19,7 @@
     },
     "routing": {
       "type": "boolean",
-      "description": "Weather the created component should be added to the declaring module"
+      "description": "Whether the created component should be added to the declaring module"
     },
     "route": {
       "type": "string",
@@ -113,18 +113,70 @@
     },
     "theme": {
       "type": "boolean",
-      "description": "Weather this component has a theme scss",
+      "description": "Whether this component has a theme scss",
       "default": true
     },
     "themeImport": {
       "type": "boolean",
-      "description": "Weather the component theme file should be imported by the _index.scss",
+      "description": "Whether the component theme file should be imported by the _index.scss",
       "default": true
     },
     "input": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the class member input"
+          },
+          "required": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether the member input is required"
+          },
+          "type": {
+            "type": "string",
+            "description": "The type of the class member input",
+            "default": "any"
+          },
+          "initializer": {
+            "type": "string",
+            "description": "The initial value of the member input"
+          },
+          "setAccessor": {
+            "type": "boolean",
+            "description": "Whether the member input should be set accessor",
+            "default": false
+          },
+          "imports": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "moduleSpecifier": {
+                  "type": "string",
+                  "description": "Name of the module to import from"
+                },
+                "namedImport": {
+                  "type": "string",
+                  "description": "Name of the type to import"
+                }
+              },
+              "required": [
+                "moduleSpecifier",
+                "namedImport"
+              ]
+            }
+          },
+          "docs": {
+            "type": "string",
+            "description": "The js doc string above the member input"
+          }
+        },
+        "required": [
+          "name"
+        ]
       },
       "description": "A list of component inputs",
       "default": []

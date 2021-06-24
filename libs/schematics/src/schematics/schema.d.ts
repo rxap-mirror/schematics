@@ -75,7 +75,7 @@ export interface ComponentModule {
    */
   project?: string;
   /**
-   * Weather the created component should be added to the declaring module
+   * Whether the created component should be added to the declaring module
    */
   routing?: boolean;
   /**
@@ -124,17 +124,28 @@ export interface ComponentModule {
    */
   debug?: boolean;
   /**
-   * Weather this component has a theme scss
+   * Whether this component has a theme scss
    */
   theme?: boolean;
   /**
-   * Weather the component theme file should be imported by the _index.scss
+   * Whether the component theme file should be imported by the _index.scss
    */
   themeImport?: boolean;
   /**
    * A list of component inputs
    */
-  input?: string[];
+  input?: Array<{
+    name: string;
+    type: string;
+    required?: boolean;
+    initializer?: string;
+    setAccessor?: boolean;
+    docs?: string;
+    imports?: Array<{
+      moduleSpecifier: string;
+      namedImport: string;
+    }>
+  }>;
   /**
    * A list of component outputs
    */
@@ -451,7 +462,7 @@ export interface SharedModule {
    */
   name?: string;
   /**
-   * Weather the new module is a component module
+   * Whether the new module is a component module
    */
   component?: boolean;
   /**
@@ -503,7 +514,7 @@ export interface PackageScript {
    */
   name: string;
   /**
-   * Weather the project has custom themes
+   * Whether the project has custom themes
    */
   'scss-bundle'?: boolean;
 
