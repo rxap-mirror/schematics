@@ -25,7 +25,7 @@ export default function (options: ConfigPackageJsonSchema): Rule {
         console.warn('Can not update the author property. The root package.json does not have the author property.');
       }
       if (rootPackageJson.homepage) {
-        packageJson.homepage = rootPackageJson.homepage + '/' + projectRoot;
+        packageJson.homepage = rootPackageJson.homepage + '/-/blob/master/' + projectRoot;
       } else {
         console.warn('Can not update the homepage property. The root package.json does not have the homepage property.');
       }
