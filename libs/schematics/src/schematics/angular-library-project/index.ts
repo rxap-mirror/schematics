@@ -42,9 +42,6 @@ export default function (options: AngularLibraryProjectSchema): Rule {
           commonModule: false,
 
           prefix: options.prefix,
-          routing: false,
-          lazy: false,
-          parentModule: false,
           tags: options.tags,
           strict: options.strict,
 
