@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.6.0-next.3...@rxap/schematics@12.6.0-next.4) (2021-06-24)
+
+
+### Bug Fixes
+
+* **config-package-json:** add url base path to website link ([33fb111](https://gitlab.com/rxap/packages/commit/33fb1117cf937553b0a7da0dd94b9020332c0078))
+* **config-package-json:** only update package.json properties if defined in root ([8bccf66](https://gitlab.com/rxap/packages/commit/8bccf667e3e39671bdcfa3ed7018ea47484a17d7))
+* **config-package-json:** set the publish config registry if defined in the root ([705fd09](https://gitlab.com/rxap/packages/commit/705fd09f57aa51359997afa209f5ead0feac862b))
+
+
+
+
+
 # [12.6.0-next.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.5.2...@rxap/schematics@12.6.0-next.3) (2021-06-23)
 
 
