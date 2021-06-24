@@ -19,9 +19,21 @@ export default function (options: ConfigPackageJsonSchema): Rule {
     return UpdateProjectPackageJson(packageJson => {
 
       packageJson.private = false;
-      packageJson.author = rootPackageJson.author;
-      packageJson.homepage = rootPackageJson.homepage + '/' + projectRoot;
-      packageJson.repository = rootPackageJson.repository;
+      if (rootPackageJson.author) {
+        packageJson.author = rootPackageJson.author;
+      } else {
+        console.warn('Can not update the author property. The root package.json does not have the author property.');
+      }
+      if (rootPackageJson.homepage) {
+        packageJson.homepage = rootPackageJson.homepage + '/' + projectRoot;
+      } else {
+        console.warn('Can not update the homepage property. The root package.json does not have the homepage property.');
+      }
+      if (rootPackageJson.repository) {
+        packageJson.repository = rootPackageJson.repository;
+      } else {
+        console.warn('Can not update the repository property. The root package.json does not have the repository property.');
+      }
 
       if (!packageJson.keywords) {
         packageJson.keywords = [];
@@ -33,7 +45,11 @@ export default function (options: ConfigPackageJsonSchema): Rule {
         packageJson.license = rootPackageJson.license;
       }
 
-      packageJson.bugs = rootPackageJson.bugs;
+      if (rootPackageJson.bugs) {
+        packageJson.bugs = rootPackageJson.bugs;
+      } else {
+        console.warn('Can not update the bugs property. The root package.json does not have the bugs property.');
+      }
       packageJson.publishConfig = {
         directory: join(GetRelativePathToProjectRoot(host, options.project), 'dist', projectRoot),
         access: 'public'
