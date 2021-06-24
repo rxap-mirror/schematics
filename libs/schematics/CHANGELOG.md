@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.5](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.6.0-next.4...@rxap/schematics@12.6.0-next.5) (2021-06-24)
+
+
+### Bug Fixes
+
+* **angular-library-project:** remove unused options ([acf2804](https://gitlab.com/rxap/packages/commit/acf2804b6f07d2bdf774e5679b89f930b84a8db9))
+
+
+### Features
+
+* **component-module:** use new input option concept ([c2c7fd6](https://gitlab.com/rxap/packages/commit/c2c7fd621e3ef05d66867cdbf56b556af9acab19))
+
+
+
+
+
 # [12.6.0-next.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.6.0-next.3...@rxap/schematics@12.6.0-next.4) (2021-06-24)
 
 

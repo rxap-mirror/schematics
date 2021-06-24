@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.0.8-next.0...@rxap/schematics-ts-morph@12.1.0-next.0) (2021-06-24)
+
+
+### Features
+
+* **add-component-input:** add support for setAccessor and docs ([ecd326f](https://gitlab.com/rxap/packages/commit/ecd326f2162d67bba701e58bd40f703ef928b189))
+
+
+
+
+
 ## [12.0.8-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.0.7...@rxap/schematics-ts-morph@12.0.8-next.0) (2021-06-23)
 
 **Note:** Version bump only for package @rxap/schematics-ts-morph
