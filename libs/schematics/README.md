@@ -76,7 +76,7 @@ Option | Type | Default | Description
 --- | --- | --- | ---
 path | string |  | The path at which to create the component file, relative to the current workspace. Default is a folder with the same name as the component in the project root.
 project | string |  | The name of the project.
-routing | boolean |  | Weather the created component should be added to the declaring module
+routing | boolean |  | Whether the created component should be added to the declaring module
 route | string |  | The route for this component
 name | string |  | The name of the component.
 stories | boolean | true | 
@@ -88,8 +88,8 @@ prefix | string |  | The prefix to apply to the generated component selector.
 style | string | scss | The file extension or preprocessor to use for style files.
 type | string | Component | Adds a developer-defined type to the filename, in the format &quot;name.type.ts&quot;.
 debug | boolean | false | If in debug mode. the resulting component will be printed to stout
-theme | boolean | true | Weather this component has a theme scss
-themeImport | boolean | true | Weather the component theme file should be imported by the _index.scss
+theme | boolean | true | Whether this component has a theme scss
+themeImport | boolean | true | Whether the component theme file should be imported by the _index.scss
 input | array |  | A list of component inputs
 output | array |  | A list of component outputs
 hostBinding | array |  | A list of component host bindings
@@ -173,7 +173,7 @@ ng g @rxap/schematics:packageScript
 Option | Type | Default | Description
 --- | --- | --- | ---
 name | string |  | Project name
-scss-bundle | boolean | false | Weather the project has custom themes
+scss-bundle | boolean | false | Whether the project has custom themes
 
 | Required |
 | --- |
@@ -269,7 +269,7 @@ ng g @rxap/schematics:shared-module
 Option | Type | Default | Description
 --- | --- | --- | ---
 name | string |  | The name of the component shared module
-component | boolean | false | Weather the new module is a component module
+component | boolean | false | Whether the new module is a component module
 selector | string |  | The HTML selector to use for this component.
 input | array |  | A list of component inputs
 output | array |  | A list of component outputs
