@@ -22,6 +22,7 @@ import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import * as ts from 'typescript';
 import { ComponentModule } from '../schema';
 import { addImportsToModule } from '../utilities';
+import { AddComponentInput, ApplyTsMorphProject } from '@rxap/schematics-ts-morph';
 
 const { dasherize, classify } = strings;
 
@@ -229,9 +230,9 @@ export default function(options: ComponentModule): Rule {
       addImportToParentModule(options, `/${modulePath}`),
       options.theme ? schematic('component-theme', {
         project: options.project,
-        name:    options.name,
-        path:    componentThemePath,
-        prefix:  options.prefix,
+        name: options.name,
+        path: componentThemePath,
+        prefix: options.prefix,
       }) : noop(),
       mergeWith(apply(url('./files'), [
         applyTemplates({
@@ -240,38 +241,52 @@ export default function(options: ComponentModule): Rule {
         }),
         move(componentPath)
       ]), MergeStrategy.Overwrite),
-      ...(options.input || []).map(input => {
-        const componentSplit = input.split('#');
-        const propertySplit  = componentSplit[ 0 ].split(';');
-        const split          = propertySplit[ 0 ].split(':');
-        const description    = componentSplit[ 1 ];
-        const property       = split[ 0 ];
-        const type           = split[ 1 ];
-        const initial        = split[ 2 ];
-        const typeImport     = propertySplit[ 1 ];
-        return schematic('component-input', {
-          project:   options.project,
-          component: options.name,
-          path:      componentPath.replace(/^\//, ''),
-          property,
-          type,
-          typeImport,
-          description,
-          initial
+      tree => {
+
+        const project = new Project({
+          manipulationSettings: { indentationText: IndentationText.TwoSpaces },
+          useInMemoryFileSystem: true
         });
-      }),
+
+        const componentFile = componentFilePath + '.ts';
+
+        const sourceFile = project.createSourceFile(componentFile, tree.read(componentFile)?.toString());
+
+        for (const input of options.input ?? []) {
+
+          AddComponentInput(
+            sourceFile,
+            {
+              name: input.name,
+              type: input.type,
+              required: input.required,
+              initializer: input.initializer,
+              docs: input.docs ? [ input.docs ] : [],
+              setAccessor: input.setAccessor,
+            },
+            (input.imports ?? []).map(imp => ({
+              namedImports: [ imp.namedImport ],
+              moduleSpecifier: imp.moduleSpecifier
+            })),
+          );
+
+        }
+
+        return ApplyTsMorphProject(project);
+
+      },
       ...(options.output || []).map(input => {
         const componentSplit = input.split('#');
-        const propertySplit  = componentSplit[ 0 ].split(';');
-        const split          = propertySplit[ 0 ].split(':');
-        const description    = componentSplit[ 1 ];
-        const property       = split[ 0 ];
-        const type           = split[ 1 ];
-        const typeImport     = propertySplit[ 1 ];
+        const propertySplit = componentSplit[0].split(';');
+        const split = propertySplit[0].split(':');
+        const description = componentSplit[1];
+        const property = split[0];
+        const type = split[1];
+        const typeImport = propertySplit[1];
         return schematic('component-output', {
-          project:   options.project,
+          project: options.project,
           component: options.name,
-          path:      componentPath.replace(/^\//, ''),
+          path: componentPath.replace(/^\//, ''),
           property,
           type,
           typeImport,
