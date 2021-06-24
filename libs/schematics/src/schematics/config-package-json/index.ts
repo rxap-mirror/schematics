@@ -52,7 +52,8 @@ export default function (options: ConfigPackageJsonSchema): Rule {
       }
       packageJson.publishConfig = {
         directory: join(GetRelativePathToProjectRoot(host, options.project), 'dist', projectRoot),
-        access: 'public'
+        access: rootPackageJson.publishConfig?.access ?? 'public',
+        registry: rootPackageJson.publishConfig?.registry ?? undefined,
       };
 
     }, { projectName: options.project });
