@@ -1,11 +1,4 @@
-import {
-  ObjectLiteralExpression,
-  OptionalKind,
-  ImportDeclarationStructure,
-  SourceFile,
-  PropertyAssignment,
-  ArrayLiteralExpression
-} from 'ts-morph';
+import { ArrayLiteralExpression, ObjectLiteralExpression, PropertyAssignment } from 'ts-morph';
 
 export function AddControlValidator(
   validator: string,
@@ -15,18 +8,14 @@ export function AddControlValidator(
   let validatorPropertyAssignment = controlOptions.getProperty('validators');
 
   if (!validatorPropertyAssignment) {
-    throw new Error('The validator property is not a assignment type!');
+    validatorPropertyAssignment = controlOptions.addPropertyAssignment({
+      name: 'validators',
+      initializer: '[]'
+    });
   }
 
   if (!(validatorPropertyAssignment instanceof PropertyAssignment)) {
     throw new Error('The validator property is not a assignment type!');
-  }
-
-  if (!validatorPropertyAssignment) {
-    validatorPropertyAssignment = controlOptions.addPropertyAssignment({
-      name:        'validators',
-      initializer: '[]'
-    });
   }
 
   const validatorProperty = validatorPropertyAssignment.getInitializer();
