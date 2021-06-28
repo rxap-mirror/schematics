@@ -1,53 +1,37 @@
-import {
-  ElementAttribute,
-  ElementDef,
-  ElementExtends,
-} from '@rxap/xml-parser/decorators';
-import { DisplayColumn, FeatureElement } from './feature.element';
+import { ElementChildren, ElementDef, ElementExtends, } from '@rxap/xml-parser/decorators';
+import { DisplayColumn, FeatureElement } from '../feature.element';
 import { SourceFile } from 'ts-morph';
-import { TableElement } from '../table.element';
+import { TableElement } from '../../table.element';
 import { strings } from '@angular-devkit/core';
 import { coerceArray } from '@rxap/utilities';
 import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ColumnMenuFeatureElement } from './features/column-menu-feature.element';
 
-const { dasherize, classify, camelize, capitalize } = strings;
+const { capitalize } = strings;
 
 @ElementExtends(FeatureElement)
 @ElementDef('column-menu')
 export class ColumnMenuElement extends FeatureElement {
   public __parent!: TableElement;
 
-  @ElementAttribute()
-  public showArchived?: boolean;
+  @ElementChildren(ColumnMenuFeatureElement, { group: 'features' })
+  public features?: ColumnMenuFeatureElement[];
 
   public handleComponentModule({
-    sourceFile,
-    project,
-    options,
-  }: ToValueContext & { sourceFile: SourceFile }) {
-    // TODO : mv TableColumnMenuComponentModule to rxap
+                                 sourceFile,
+                                 project,
+                                 options,
+                               }: ToValueContext & { sourceFile: SourceFile }) {
     AddNgModuleImport(
       sourceFile,
       'TableColumnMenuComponentModule',
       '@rxap/material-table-system'
     );
-    if (this.showArchived) {
-      AddNgModuleImport(
-        sourceFile,
-        'DateCellComponentModule',
-        '@rxap/material-table-system'
-      );
-      AddNgModuleImport(
-        sourceFile,
-        'MatDividerModule',
-        '@angular/material/divider'
-      );
-      AddNgModuleImport(
-        sourceFile,
-        'TableShowArchivedSlideComponentModule',
-        '@rxap/material-table-system'
-      );
-    }
+    this.features?.forEach(feature => feature.handleComponentModule({
+      sourceFile,
+      project,
+      options,
+    }));
   }
 
   public displayColumn(): DisplayColumn | null {
@@ -59,24 +43,17 @@ export class ColumnMenuElement extends FeatureElement {
   }
 
   public columnTemplateFilter(): string {
-    if (this.showArchived) {
-      return FeatureElement.ColumnNoFilter('removedAt');
-    }
-    return super.columnTemplateFilter();
+    return [
+      ...(this.features ?? []).map(feature => feature.columnTemplateFilter()),
+      super.columnTemplateFilter()
+    ].filter(Boolean).join('\n');
   }
 
   public columnTemplate(): string {
-    if (this.showArchived) {
-      return `
-      <ng-container matColumnDef="removedAt">
-        <th mat-header-cell *matHeaderCellDef>
-          <ng-container i18n>Removed At</ng-container>
-        </th>
-        <td mat-cell [rxap-date-cell]="element.__removedAt" *matCellDef="let element"></td>
-      </ng-container>
-      `;
-    }
-    return super.columnTemplate();
+    return [
+      ...(this.features ?? []).map(feature => feature.columnTemplate()),
+      super.columnTemplate()
+    ].filter(Boolean).join('\n');
   }
 
   public headerTemplate(): string {
@@ -112,14 +89,7 @@ export class ColumnMenuElement extends FeatureElement {
       }
     }
 
-    if (this.showArchived) {
-      template += `
-      <mat-divider></mat-divider>
-      <span mat-menu-item>
-        <mfd-table-show-archived-slide></mfd-table-show-archived-slide>
-      </span>
-      `;
-    }
+    this.features?.forEach(feature => template += feature.headerTemplate())
     template += '</rxap-table-column-menu>';
     return template;
   }
