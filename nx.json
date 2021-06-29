@@ -3,14 +3,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "implicitDependencies": {
-    "package.json": {
-      "version": "*",
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    ".eslintrc.json": "*"
-  },
+  "implicitDependencies": {},
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
