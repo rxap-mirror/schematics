@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.1.0-next.0...@rxap/schematics-ts-morph@12.1.0-next.1) (2021-06-29)
+
+
+### Bug Fixes
+
+* **add-control-validator:** only throw if the validator property is not an instance of PropertyAssignment ([8933899](https://gitlab.com/rxap/packages/commit/8933899a981706a20e56802668574bebaaf400ad))
+
+
+
+
+
 # [12.1.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.0.8-next.0...@rxap/schematics-ts-morph@12.1.0-next.0) (2021-06-24)
 
 
