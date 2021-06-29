@@ -1,13 +1,7 @@
 import { FormFieldElement } from './form-field.element';
-import {
-  ElementDef,
-  ElementExtends
-} from '@rxap/xml-parser/decorators';
+import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { NodeElement } from '../../node.element';
-import {
-  ToValueContext,
-  AddNgModuleImport
-} from '@rxap/schematics-ts-morph';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { NodeFactory } from '@rxap/schematics-html';
@@ -27,7 +21,7 @@ export class TextareaControlElement extends FormFieldElement {
       `formControlName="${this.name}"`,
       'rxapRequired',
       `placeholder="Enter ${camelize(this.name)}"`,
-      `i18n-placeholder="@@form.${this.controlPath}.placeholder"`,
+      `i18n-placeholder`,
       ...this.innerAttributes
     )('\n');
   }

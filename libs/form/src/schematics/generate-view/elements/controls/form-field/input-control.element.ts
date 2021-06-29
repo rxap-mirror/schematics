@@ -1,16 +1,9 @@
-import {
-  ElementAttribute,
-  ElementDef,
-  ElementExtends
-} from '@rxap/xml-parser/decorators';
+import { ElementAttribute, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 
 import { strings } from '@angular-devkit/core';
 import { NodeElement } from '../../node.element';
 import { FormFieldElement } from './form-field.element';
-import {
-  ToValueContext,
-  AddNgModuleImport
-} from '@rxap/schematics-ts-morph';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
 import { LeafFactory } from '@rxap/schematics-html';
 
@@ -31,7 +24,7 @@ export class InputControlElement extends FormFieldElement {
       `type="${this.type}"`,
       `placeholder="Enter ${camelize(this.name)}"`,
       'rxapRequired',
-      `i18n-placeholder="@@form.${this.controlPath}.placeholder"`,
+      `i18n-placeholder`,
       ...this.innerAttributes
     ];
 
