@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.15](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.0.15-next.1...@rxap/schematics-form@12.0.15) (2021-06-29)
+
+
+### Bug Fixes
+
+* **generate-view:** remove i18n ids ([a40db93](https://gitlab.com/rxap/schematics/commit/a40db938fb54bda530f5aec201f049064b3ec40d))
+
+
+
+
+
 ## [12.0.15-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.0.15-next.0...@rxap/schematics-form@12.0.15-next.1) (2021-06-29)
 
 
