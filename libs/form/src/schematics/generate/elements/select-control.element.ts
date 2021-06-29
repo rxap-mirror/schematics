@@ -1,38 +1,20 @@
+import { ControlElement, ControlElementToValueContext, ControlTypeElement } from './control.element';
 import {
-  ControlElement,
-  ControlElementToValueContext,
-  ControlTypeElement
-} from './control.element';
-import {
-  ElementDef,
+  ElementAttribute,
   ElementChild,
-  ElementRequired,
-  ElementChildTextContent,
   ElementChildren,
-  ElementTextContent,
-  ElementExtends,
+  ElementChildTextContent,
   ElementClearParser,
-  ElementAttribute
+  ElementDef,
+  ElementExtends,
+  ElementRequired,
+  ElementTextContent
 } from '@rxap/xml-parser/decorators';
 import { OptionsElement } from '@rxap/xml-parser/elements';
-import {
-  ParsedElement,
-  ElementFactory
-} from '@rxap/xml-parser';
-import {
-  WriterFunction,
-  Writers,
-  PropertyDeclaration,
-  Project,
-  SourceFile
-} from 'ts-morph';
+import { ElementFactory, ParsedElement } from '@rxap/xml-parser';
+import { Project, PropertyDeclaration, SourceFile, WriterFunction, Writers } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
-import {
-  OverwriteDecorator,
-  AddToArray,
-  AddToFormProviders,
-  ToValueContext
-} from '@rxap/schematics-ts-morph';
+import { AddToArray, AddToFormProviders, OverwriteDecorator, ToValueContext } from '@rxap/schematics-ts-morph';
 import { GenerateSchema } from '../schema';
 
 const { dasherize, classify, camelize } = strings;
@@ -405,7 +387,7 @@ export class SelectOptionsElement extends OptionsElement implements ParsedElemen
                     value:   option.value === undefined ? w => w.quote(option.display.toString()) : option.value,
                     display: w => {
                       if (option.i18n) {
-                        w.write(`$localize\`:@@form.${this.__parent.controlPath}.${option.i18n}:${option.display.toString()}\``);
+                        w.write(`$localize\`${option.display.toString()}\``);
                       } else {
                         w.quote(option.display.toString());
                       }
