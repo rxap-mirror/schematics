@@ -2,8 +2,15 @@ import { DirEntry } from '@angular-devkit/schematics';
 import { Project } from 'ts-morph';
 import { join } from 'path';
 
-export function AddDir(dir: DirEntry, project: Project, parentPath: string = '', filter: ((pathFragment: string) => boolean) = () => true) {
-  for (const pathFragment of dir.subfiles.filter(filter)) {
+/**
+ * Adds all files recursively from a specify DirEntry to the project.
+ * @param dir A schematic DirEntry instance
+ * @param project A ts-morph Project instance
+ * @param parentPath The base dir for the sourceFiles in the ts-morph Project
+ * @param filter A filter function base on the pathFragment and dirEntry
+ */
+export function AddDir(dir: DirEntry, project: Project, parentPath: string = '', filter: ((pathFragment: string, dirEntry: DirEntry) => boolean) = () => true) {
+  for (const pathFragment of dir.subfiles.filter(pf => filter(pf, dir))) {
     const fileEntry = dir.file(pathFragment);
     if (fileEntry) {
       const filePath = join(parentPath, pathFragment);
