@@ -26,6 +26,10 @@
         "$source": "projectName"
       }
     },
+    "group": {
+      "type": "string",
+      "description": "The group name of the schematic"
+    },
     "description": {
       "type": "string",
       "description": "The description of the new schematic",

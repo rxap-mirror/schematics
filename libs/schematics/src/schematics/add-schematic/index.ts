@@ -21,7 +21,7 @@ import {
   HasProjectCollectionJsonFile,
   UpdateCollectionJson
 } from '@rxap/schematics-utilities';
-import { relative } from 'path';
+import { join, relative } from 'path';
 
 const { dasherize } = strings;
 
@@ -51,14 +51,20 @@ export default function (options: AddSchematic): Rule {
         if (!schematicRoot) {
           throw new SchematicsException('The schematic root could not be determined.');
         }
+        let schematicName = dasherize(options.name);
+        let schematicBasePath = '';
+        if (options.group) {
+          schematicBasePath = dasherize(options.group);
+          schematicName = [ schematicName, dasherize(options.group) ].join('-');
+        }
         return chain([
           mergeWith(apply(url('./files'), [
             applyTemplates({
               ...strings,
               ...options,
-              schemaId: [ dasherize(projectName), dasherize(options.name) ].join('-'),
+              schemaId: [ dasherize(projectName), dasherize(schematicName) ].join('-'),
             }),
-            move(schematicRoot)
+            move(join(schematicRoot, schematicBasePath))
           ])),
           UpdateCollectionJson(collection => {
 
@@ -66,10 +72,10 @@ export default function (options: AddSchematic): Rule {
               collection.schematics = {};
             }
 
-            collection.schematics[dasherize(options.name)] = {
+            collection.schematics[schematicName] = {
               description: options.description,
-              factory: `./${relative(projectRoot, schematicRoot)}/${dasherize(options.name)}/index`,
-              schema: `./${relative(projectRoot, schematicRoot)}/${dasherize(options.name)}/schema.json`
+              factory: `./${join(relative(projectRoot, schematicRoot), schematicBasePath)}/${dasherize(options.name)}/index`,
+              schema: `./${join(relative(projectRoot, schematicRoot), schematicBasePath)}/${dasherize(options.name)}/schema.json`
             };
 
           }, { projectName }),

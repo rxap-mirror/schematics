@@ -447,7 +447,9 @@ export interface AddSchematic {
    */
   description: string;
 
-  [ k: string ]: any;
+  group?: string;
+
+  [k: string]: any;
 }
 /* tslint:disable */
 /**
