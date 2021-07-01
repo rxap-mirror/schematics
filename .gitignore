@@ -12,7 +12,7 @@ migrations.json
 /documentation.json
 openapi.json
 
-test.js
+test.*
 .idea/vcs.xml
 
 junit.xml
