@@ -55,7 +55,7 @@ export default function (options: AddSchematic): Rule {
         let schematicBasePath = '';
         if (options.group) {
           schematicBasePath = dasherize(options.group);
-          schematicName = [ schematicName, dasherize(options.group) ].join('-');
+          schematicName = [ dasherize(options.group), schematicName ].join('-');
         }
         return chain([
           mergeWith(apply(url('./files'), [
