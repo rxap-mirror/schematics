@@ -72,7 +72,7 @@ export function AddPackageJsonDependency(
         CoerceProperty(packageJson, 'dependencies', {});
         if (options?.soft && packageVersion !== 'latest') {
           if (packageJson.dependencies![packageName]) {
-            if (gt(packageJson.dependencies![packageName], packageVersion)) {
+            if (gt(packageJson.dependencies![packageName].replace(/^(~|\^|>|<|<=|>=)/, ''), packageVersion)) {
               return;
             }
           }
@@ -100,7 +100,7 @@ export function AddPackageJsonDevDependency(
         CoerceProperty(packageJson, 'devDependencies', {});
         if (options?.soft && packageVersion !== 'latest') {
           if (packageJson.dependencies![packageName]) {
-            if (gt(packageJson.dependencies![packageName], packageVersion)) {
+            if (gt(packageJson.dependencies![packageName].replace(/^(~|^|>|<|<=|>=)/, ''), packageVersion)) {
               return;
             }
           }
