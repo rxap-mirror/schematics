@@ -70,7 +70,7 @@ export function AddPackageJsonDependency(
     return UpdatePackageJson(
       packageJson => {
         CoerceProperty(packageJson, 'dependencies', {});
-        if (options?.soft) {
+        if (options?.soft && packageVersion !== 'latest') {
           if (packageJson.dependencies![packageName]) {
             if (gt(packageJson.dependencies![packageName], packageVersion)) {
               return;
@@ -98,7 +98,7 @@ export function AddPackageJsonDevDependency(
     return UpdatePackageJson(
       packageJson => {
         CoerceProperty(packageJson, 'devDependencies', {});
-        if (options?.soft) {
+        if (options?.soft && packageVersion !== 'latest') {
           if (packageJson.dependencies![packageName]) {
             if (gt(packageJson.dependencies![packageName], packageVersion)) {
               return;
