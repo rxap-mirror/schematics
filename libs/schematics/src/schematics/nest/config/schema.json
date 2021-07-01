@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "schematics-nest-config",
+  "title": "Config",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The absolute path to the app.module folder",
+      "visible": false
+    }
+  },
+  "required": [
+    "path"
+  ]
+}
