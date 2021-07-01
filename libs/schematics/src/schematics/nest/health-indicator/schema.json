@@ -18,10 +18,16 @@
       "format": "path",
       "description": "The absolute path to the destination folder",
       "visible": false
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
     }
   },
   "required": [
-    "name",
-    "path"
+    "name"
   ]
 }

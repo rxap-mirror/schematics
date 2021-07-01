@@ -1,22 +1,27 @@
 import { chain, Rule, Tree, } from '@angular-devkit/schematics';
 import { HealthIndicatorSchema } from './schema'
-import { IndentationText, Project, QuoteKind, Scope } from 'ts-morph';
-import { strings } from '@angular-devkit/core';
-import { CoerceSuffix } from '@rxap/utilities';
+import { IndentationText, Project, QuoteKind } from 'ts-morph';
+import { AddDir, ApplyTsMorphProject, } from '@rxap/schematics-ts-morph';
 import {
-  AddDir,
-  AddNestModuleProvider,
-  ApplyTsMorphProject,
-  FindNestModuleSourceFile,
-} from '@rxap/schematics-ts-morph';
-import { AddPackageJsonDependency, InstallNodePackages } from '@rxap/schematics-utilities';
+  AddPackageJsonDependency,
+  GetProjectSourceRoot,
+  GuessProjectName,
+  InstallNodePackages
+} from '@rxap/schematics-utilities';
 import { formatFiles } from '@nrwl/workspace';
+import { CoerceHealthModule } from './coerce-health-module';
+import { CoerceHealthController } from './coerce-health-controller';
+import { AddHealthIndicator } from './add-health-indicator';
+import { AddHealthEndpoint } from './add-health-endpoint';
+import { AddToGlobalHealthEndpoint } from './add-to-global-health-endpoint';
 
-const { dasherize, classify } = strings;
 
 export default function (options: HealthIndicatorSchema): Rule {
 
   return async (host: Tree) => {
+
+    const projectName = GuessProjectName(host, options);
+    const projectSourceRoot = GetProjectSourceRoot(host, projectName);
 
     const project = new Project({
       manipulationSettings: {
@@ -26,69 +31,16 @@ export default function (options: HealthIndicatorSchema): Rule {
       useInMemoryFileSystem: true
     });
 
-    const indicatorSourceFile = project.createSourceFile(`${dasherize(options.name)}.health-indicator.ts`);
+    AddDir(host.getDir(projectSourceRoot), project);
 
-    const indicatorClassName = CoerceSuffix(classify(options.name), 'HealthIndicator')
-
-    indicatorSourceFile.addClass({
-      name: indicatorClassName,
-      isExported: true,
-      decorators: [
-        {
-          name: 'Injectable',
-          arguments: []
-        }
-      ],
-      extends: 'HealthIndicator',
-      ctors: [
-        {
-          parameters: [],
-          statements: 'super();'
-        }
-      ],
-      methods: [
-        {
-          name: 'isHealthy',
-          isAsync: true,
-          scope: Scope.Public,
-          returnType: 'Promise<HealthIndicatorResult>',
-          statements: [
-            `throw new HealthCheckError('Not yet implemented!', this.getStatus('${dasherize(options.name)}', false))`,
-          ]
-        }
-      ]
-    });
-
-    indicatorSourceFile.addImportDeclarations([
-      {
-        namedImports: [ 'Injectable' ],
-        moduleSpecifier: '@nestjs/common'
-      },
-      {
-        namedImports: [ 'HealthCheckError', 'HealthIndicator', 'HealthIndicatorResult' ],
-        moduleSpecifier: '@nestjs/terminus'
-      }
-    ]);
-
-    AddDir(host.getDir(options.path), project);
-
-    const moduleSourceFile = FindNestModuleSourceFile(project, '/');
-
-    if (moduleSourceFile) {
-      AddNestModuleProvider(
-        moduleSourceFile,
-        indicatorClassName,
-        [
-          {
-            namedImports: [ indicatorClassName ],
-            moduleSpecifier: `./${dasherize(options.name)}.health-indicator`
-          }
-        ]
-      );
-    }
+    CoerceHealthModule(project);
+    const controllerSourceFile = CoerceHealthController(project);
+    AddHealthIndicator(project, options.name);
+    AddHealthEndpoint(controllerSourceFile, options.name);
+    AddToGlobalHealthEndpoint(controllerSourceFile, options.name);
 
     return chain([
-      ApplyTsMorphProject(project, options.path),
+      ApplyTsMorphProject(project, projectSourceRoot),
       AddPackageJsonDependency('@nestjs/terminus', 'latest', { soft: true }),
       InstallNodePackages(),
       formatFiles()
