@@ -9,6 +9,7 @@ import {
   ApplyTsMorphProject,
   FindNestModuleSourceFile,
 } from '@rxap/schematics-ts-morph';
+import { AddPackageJsonDependency, InstallNodePackages } from '@rxap/schematics-utilities';
 
 const { dasherize, classify } = strings;
 
@@ -87,6 +88,8 @@ export default function (options: HealthIndicatorSchema): Rule {
 
     return chain([
       ApplyTsMorphProject(project, options.path),
+      AddPackageJsonDependency('@nestjs/terminus', 'latest', { soft: true }),
+      InstallNodePackages()
     ]);
 
   };
