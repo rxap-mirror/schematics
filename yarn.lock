@@ -2534,6 +2534,14 @@
     "@apidevtools/json-schema-ref-parser" "9.0.7"
     tslib "2.0.1"
 
+"@rxap/mixin@^12.0.6":
+  version "12.0.6"
+  resolved "https://registry.yarnpkg.com/@rxap/mixin/-/mixin-12.0.6.tgz#aa0e2cbe3457f41e70428e111b3ed57c9dd3cee7"
+  integrity sha512-BKdVyg92t1RQu5ajS+w3LDV9z3sclpDwmgTLJQUxkTde43D4qWyKT5aiAgavztgE4JsvPrX1UlLCL41gNmQ36w==
+  dependencies:
+    "@rxap/schematics-utilities" "^12.1.0"
+    tslib "^2.2.0"
+
 "@rxap/plugin-library-schematics@^12.0.4":
   version "12.0.4"
   resolved "https://registry.yarnpkg.com/@rxap/plugin-library-schematics/-/plugin-library-schematics-12.0.4.tgz#eae46650bb0d3c5e3246519c595dd638f86a36ff"
@@ -2582,6 +2590,14 @@
   integrity sha512-efIOdfUdviN/XM2DavO0nilmfi+CxxHuwe1Y+1AQ64gOCT5qlf4vWUCrMAKeFwuIY9m+CxyGbstmHwHC5SOXKg==
   dependencies:
     tslib "^2.0.0"
+
+"@rxap/schematics-utilities@^12.1.0":
+  version "12.3.5"
+  resolved "https://registry.yarnpkg.com/@rxap/schematics-utilities/-/schematics-utilities-12.3.5.tgz#9fb3b240bcda46dcfdf7f5dd64b18cf80ca20671"
+  integrity sha512-+oMllduEAsjI8TjPkz5KY0JyuIFN2mFHxwzr0u7G8jggPYqYXyDvE9IDIbPfMhdvm6JPiXZcqvNjGvzWOgM3eQ==
+  dependencies:
+    "@rxap/utilities" "^12.0.3"
+    semver "^7.3.5"
 
 "@rxap/schematics@^12.0.3":
   version "12.0.3"
@@ -10589,6 +10605,11 @@ tslib@^2.0.0, tslib@^2.1.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
   integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
+
+tslib@^2.2.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
+  integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
 
 tsutils@^3.17.1, tsutils@^3.21.0:
   version "3.21.0"
