@@ -35,3 +35,17 @@ export * from './lib/get-component-options-object';
 export * from './lib/get-ng-module-options-object';
 export * from './lib/handle-component';
 export * from './lib/handle-component-module';
+export * from './lib/get-class-decorator-arguments';
+
+// region nestjs
+
+export * from './lib/nestjs/add-nest-module-provider';
+export * from './lib/nestjs/add-nest-provider-to-array';
+export * from './lib/nestjs/find-nest-module-declaration';
+export * from './lib/nestjs/find-nest-module-source-file';
+export * from './lib/nestjs/get-nest-module-metadata';
+export * from './lib/nestjs/has-nest-module-class';
+export * from './lib/nestjs/is-nest-module-class';
+export * from './lib/nestjs/nest-provider-object';
+
+// endregion
