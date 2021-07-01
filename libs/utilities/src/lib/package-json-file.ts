@@ -113,6 +113,12 @@ export function AddPackageJsonDevDependency(
   };
 }
 
+export function InstallNodePackages(): Rule {
+  return (_, context) => {
+    context.addTask(new NodePackageInstallTask());
+  }
+}
+
 export function InstallPeerDependencies(): Rule {
   return (host, context) => {
     const packageJson = require(join(context.schematic.description.collection.name, 'package.json'));
