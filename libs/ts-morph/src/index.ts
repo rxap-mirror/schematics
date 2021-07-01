@@ -39,6 +39,7 @@ export * from './lib/get-class-decorator-arguments';
 
 // region nestjs
 
+export * from './lib/nestjs/add-nest-module-import';
 export * from './lib/nestjs/add-nest-module-provider';
 export * from './lib/nestjs/add-nest-provider-to-array';
 export * from './lib/nestjs/find-nest-module-declaration';
