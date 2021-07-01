@@ -7,18 +7,10 @@ import {
   ElementRequired,
 } from '@rxap/xml-parser/decorators';
 import { ElementFactory, ParsedElement } from '@rxap/xml-parser';
-import {
-  ClassDeclaration,
-  ImportDeclarationStructure,
-  OptionalKind,
-  ParameterDeclarationStructure,
-  Project,
-  Scope,
-  SourceFile,
-  Writers,
-} from 'ts-morph';
+import { Project, Scope, SourceFile, } from 'ts-morph';
 import {
   AddComponentProvider,
+  AddDependencyInjection,
   AddNgModuleImport,
   ToValueContext,
 } from '@rxap/schematics-ts-morph';
@@ -29,82 +21,6 @@ import { NodeElement } from '../node.element';
 import { IconElement, PrefixElement } from './form-field/prefix.element';
 import { SelectControlElement } from './form-field/select-control.element';
 import { GenerateSchema } from '../../schema';
-
-export interface InjectionDefinition {
-  injectionToken: string;
-  parameterName: string;
-  optional?: boolean;
-  type?: string;
-  scope?: Scope;
-}
-
-export function CoerceClassConstructor(classDeclaration: ClassDeclaration) {
-  const constructorDeclarations = classDeclaration.getConstructors();
-  if (constructorDeclarations.length === 0) {
-    constructorDeclarations.push(
-      classDeclaration.addConstructor({
-        parameters: [],
-      })
-    );
-  }
-  return constructorDeclarations;
-}
-
-export function AddDependencyInjection(
-  sourceFile: SourceFile,
-  definition: InjectionDefinition,
-  structures: ReadonlyArray<OptionalKind<ImportDeclarationStructure>> = []
-) {
-  const classDeclaration = sourceFile.getClasses()[0];
-
-  if (!classDeclaration) {
-    throw new Error('Could not find class declaration');
-  }
-
-  const constructorDeclarations = CoerceClassConstructor(classDeclaration);
-  const constructorDeclaration = constructorDeclarations[0];
-
-  if (constructorDeclaration.getParameter(definition.parameterName)) {
-    return;
-  }
-
-  const constructorParameter: OptionalKind<ParameterDeclarationStructure> = {
-    name: definition.parameterName,
-    type: definition.type ?? definition.injectionToken,
-    scope: definition.scope ?? Scope.Public,
-    isReadonly: true,
-    decorators: [
-      {
-        name: 'Inject',
-        arguments: [definition.injectionToken],
-      },
-    ],
-  };
-
-  if (definition.optional) {
-    constructorParameter.decorators?.unshift({
-      name: 'Optional',
-      arguments: [],
-    });
-    constructorParameter.type = Writers.intersectionType(
-      definition.type ?? definition.injectionToken,
-      'null'
-    );
-    sourceFile.addImportDeclaration({
-      namedImports: ['Optional'],
-      moduleSpecifier: '@angular/core',
-    });
-  }
-
-  constructorDeclaration.addParameter(constructorParameter);
-
-  sourceFile.addImportDeclaration({
-    namedImports: ['Inject'],
-    moduleSpecifier: '@angular/core',
-  });
-
-  sourceFile.addImportDeclarations(structures);
-}
 
 const { dasherize, classify, camelize, capitalize } = strings;
 

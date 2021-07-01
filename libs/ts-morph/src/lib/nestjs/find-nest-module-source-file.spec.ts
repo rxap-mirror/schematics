@@ -3,7 +3,7 @@ import { FindNestModuleSourceFile } from './find-nest-module-source-file';
 
 describe('@rxap/schematics-ts-morph', () => {
 
-  describe('nestjs', () => {
+  describe('nest', () => {
 
     describe('FindNestjsModuleSourceFile', () => {
 

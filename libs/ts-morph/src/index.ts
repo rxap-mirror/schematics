@@ -36,9 +36,14 @@ export * from './lib/get-ng-module-options-object';
 export * from './lib/handle-component';
 export * from './lib/handle-component-module';
 export * from './lib/get-class-decorator-arguments';
+export * from './lib/coerce-class-constructor';
+export * from './lib/add-dependency-injection';
+export * from './lib/coerce-class-method';
 
 // region nestjs
 
+export * from './lib/nestjs/add-nest-controller';
+export * from './lib/nestjs/add-nest-module-controller';
 export * from './lib/nestjs/add-nest-module-import';
 export * from './lib/nestjs/add-nest-module-provider';
 export * from './lib/nestjs/add-nest-provider-to-array';

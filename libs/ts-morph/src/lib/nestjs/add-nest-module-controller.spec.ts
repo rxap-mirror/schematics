@@ -1,12 +1,12 @@
 import { Project, PropertyAssignment, Writers } from 'ts-morph';
-import { AddNestModuleProvider } from './add-nest-module-provider';
 import { GetNestModuleMetadata } from './get-nest-module-metadata';
+import { AddNestModuleController } from './add-nest-module-controller';
 
 describe('@rxap/schematics-ts-morph', () => {
 
   describe('nest', () => {
 
-    describe('AddNestModuleProvider', () => {
+    describe('AddNestModuleController', () => {
 
       it('should add module provider', () => {
 
@@ -30,12 +30,12 @@ describe('@rxap/schematics-ts-morph', () => {
           moduleSpecifier: '@nestjs/common'
         });
 
-        AddNestModuleProvider(sourceFile, 'Test');
+        AddNestModuleController(sourceFile, 'TestController');
 
         const metadata = GetNestModuleMetadata(sourceFile);
 
         expect(metadata.getProperties()).toHaveLength(1);
-        expect((metadata.getProperties()[0] as PropertyAssignment).getInitializer()?.getFullText().trim()).toEqual('[Test]');
+        expect((metadata.getProperties()[0] as PropertyAssignment).getInitializer()?.getFullText().trim()).toEqual('[TestController]');
 
 
       });

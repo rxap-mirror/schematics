@@ -4,9 +4,9 @@ import { AddNestModuleImport } from './add-nest-module-import';
 
 describe('@rxap/schematics-ts-morph', () => {
 
-  describe('nestjs', () => {
+  describe('nest', () => {
 
-    describe('FindNestjsModuleDeclaration', () => {
+    describe('AddNestModuleImport', () => {
 
       it('should add module import', () => {
 
