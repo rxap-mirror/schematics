@@ -9,7 +9,7 @@ import { join } from 'path';
  * @param parentPath The base dir for the sourceFiles in the ts-morph Project
  * @param filter A filter function base on the pathFragment and dirEntry
  */
-export function AddDir(dir: DirEntry, project: Project, parentPath: string = '', filter: ((pathFragment: string, dirEntry: DirEntry) => boolean) = () => true) {
+export function AddDir(dir: DirEntry, project: Project, parentPath: string = '', filter: ((pathFragment: string, dirEntry: DirEntry) => boolean) = pathFragment => !!pathFragment.match(/\.ts$/)) {
   for (const pathFragment of dir.subfiles.filter(pf => filter(pf, dir))) {
     const fileEntry = dir.file(pathFragment);
     if (fileEntry) {
