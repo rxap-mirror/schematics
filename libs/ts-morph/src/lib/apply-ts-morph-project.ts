@@ -13,6 +13,7 @@ export function ApplyTsMorphProject(project: Project, basePath: string = '', org
     }
 
     console.debug(`write '${project.getSourceFiles().length}' ts files to tree`);
+    let written = 0;
     project
       .getSourceFiles()
       .forEach(sourceFile => {
@@ -20,12 +21,20 @@ export function ApplyTsMorphProject(project: Project, basePath: string = '', org
         const filePath = join(basePath, sourceFile.getFilePath());
 
         if (tree.exists(filePath)) {
-          tree.overwrite(filePath, sourceFile.getFullText());
+          const currentContent = tree.read(filePath)!.toString('utf-8');
+          const newContent = sourceFile.getFullText();
+          if (currentContent.trim() !== newContent.trim()) {
+            written++;
+            tree.overwrite(filePath, newContent);
+          }
         } else {
           tree.create(filePath, sourceFile.getFullText());
+          written++;
         }
 
       });
+
+    console.log('written: ' + written);
 
   };
 }
