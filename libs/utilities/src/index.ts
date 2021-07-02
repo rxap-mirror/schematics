@@ -20,3 +20,4 @@ export * from './lib/ts-config-file';
 export * from './lib/builders-json';
 export * from './lib/builders-json-file';
 export * from './lib/guess-builder-root';
+export * from './lib/guess-project-source-root';
