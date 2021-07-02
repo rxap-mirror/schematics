@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.1.0...@rxap/schematics-ts-morph@12.2.0-next.0) (2021-07-02)
+
+
+### Bug Fixes
+
+* only add ts files ([e9c6408](https://gitlab.com/rxap/packages/commit/e9c64086d23eb3d7c01fbc9998ba8690bc2c4af8))
+* only overwrite changed files ([99e623e](https://gitlab.com/rxap/packages/commit/99e623eefd0d28ec43fe6250f3e597e6fadf858b))
+
+
+### Features
+
+* add function AddNestModuleImport ([03191e8](https://gitlab.com/rxap/packages/commit/03191e82499e29bbea7fb1b836173b83b77bbd8e))
+* add nest utility functions ([9f9cee4](https://gitlab.com/rxap/packages/commit/9f9cee45459388f82536a35c70e27b835ab727df))
+* add nestjs utility functions ([81cefb1](https://gitlab.com/rxap/packages/commit/81cefb12b140c3bdc7e2b8c67561107d6ba4b92f))
+
+
+
+
+
 # [12.1.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.1.0-next.1...@rxap/schematics-ts-morph@12.1.0) (2021-06-29)
 
 **Note:** Version bump only for package @rxap/schematics-ts-morph

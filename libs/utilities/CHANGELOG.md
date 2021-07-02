@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.3.5...@rxap/schematics-utilities@12.4.0-next.0) (2021-07-02)
+
+
+### Bug Fixes
+
+* only soft update dependencies if not set to latest ([d33e0ef](https://gitlab.com/rxap/packages/commit/d33e0ef54e5217a6c8b46df41add597547008c31))
+* remove version prefix ([ed107bd](https://gitlab.com/rxap/packages/commit/ed107bdb6f7a7da6041dedaae09c552658892909))
+
+
+### Features
+
+* add function GuessProjectSourceRoot ([59fd9b2](https://gitlab.com/rxap/packages/commit/59fd9b223c94e7f543c488d696409ebc23336585))
+* add function InstallNodePackages ([2c85cfe](https://gitlab.com/rxap/packages/commit/2c85cfe692aafc91e4cd42cdc68517e9011788f8))
+
+
+
+
+
 ## [12.3.5](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.3.5-next.0...@rxap/schematics-utilities@12.3.5) (2021-06-29)
 
 **Note:** Version bump only for package @rxap/schematics-utilities

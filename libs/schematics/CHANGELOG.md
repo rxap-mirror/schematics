@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.7.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.6.0...@rxap/schematics@12.7.0-next.0) (2021-07-02)
+
+
+### Bug Fixes
+
+* format changed files ([c4d2591](https://gitlab.com/rxap/packages/commit/c4d2591dede0b9e6cd9ce9564a1c2e99ebe4425b))
+* move nest schematics to @rxap/nest ([d136192](https://gitlab.com/rxap/packages/commit/d13619257551ffbc8c4aaa3dce09ed8baecc894c))
+* remove the path option ([f68562c](https://gitlab.com/rxap/packages/commit/f68562ceccaaa9faa89711a3800e9f2f6ee0375d))
+* **nest-health-indicator:** install required dependencies ([0cf475b](https://gitlab.com/rxap/packages/commit/0cf475b3263383e6e8f81f2520ff7ab83e347d80))
+* reorder schematicName creation ([966787f](https://gitlab.com/rxap/packages/commit/966787ff701fb0cf6c21493316df7353096f026a))
+
+
+### Features
+
+* add health system init ([a58cb82](https://gitlab.com/rxap/packages/commit/a58cb82235628ae1b6a00788b5eff996d8992991))
+* add nest-config schematic ([9422bf6](https://gitlab.com/rxap/packages/commit/9422bf6a231b15368efd2b6bd29845b42cddfb3b))
+* add project config and extend the config file ([a7ed905](https://gitlab.com/rxap/packages/commit/a7ed90531f347124db8a1469936b4de5ee29a947))
+* add schematic nest-health-indicator ([3b40f30](https://gitlab.com/rxap/packages/commit/3b40f303a38891c5586234a68990836e1489be79))
+* **add-schematic:** add the group option ([fc0fb20](https://gitlab.com/rxap/packages/commit/fc0fb202f148a357152176f5dcd39af423072622))
+
+
+
+
+
 # [12.6.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.6.0-next.6...@rxap/schematics@12.6.0) (2021-06-29)
 
 **Note:** Version bump only for package @rxap/schematics
