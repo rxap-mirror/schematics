@@ -1,13 +1,16 @@
-import { chain, Rule, Tree, } from '@angular-devkit/schematics';
+import { apply, applyTemplates, chain, forEach, mergeWith, move, Rule, Tree, url, } from '@angular-devkit/schematics';
 import { ConfigSchema } from './schema'
-import { AddPackageJsonDependency, InstallNodePackages } from '@rxap/schematics-utilities';
+import { AddPackageJsonDependency, GetProjectSourceRoot, InstallNodePackages } from '@rxap/schematics-utilities';
 import { IndentationText, Project, QuoteKind, Writers } from 'ts-morph';
 import { AddDir, AddNestModuleImport, ApplyTsMorphProject } from '@rxap/schematics-ts-morph';
 import { formatFiles } from '@nrwl/workspace';
+import { join } from 'path';
 
 export default function (options: ConfigSchema): Rule {
 
   return async (host: Tree) => {
+
+    const projectSourceRoot = GetProjectSourceRoot(host, options.project);
 
     const project = new Project({
       manipulationSettings: {
@@ -17,27 +20,9 @@ export default function (options: ConfigSchema): Rule {
       useInMemoryFileSystem: true
     });
 
-    const sourceFile = project.createSourceFile('configuration.ts');
+    AddDir(host.getDir(projectSourceRoot), project);
 
-    sourceFile.addInterface({
-      isExported: true,
-      name: 'Config'
-    });
-
-    sourceFile.addFunction({
-      isExported: true,
-      name: 'LoadConfig',
-      returnType: 'Config',
-      statements: [
-        'const config: Config = {};',
-        'console.log(JSON.stringify(config, undefined, 2));',
-        'return config;'
-      ]
-    })
-
-    AddDir(host.getDir(options.path), project);
-
-    const appModule = project.getSourceFile('/app.module.ts');
+    const appModule = project.getSourceFile('/app/app.module.ts');
 
     if (appModule) {
       AddNestModuleImport(
@@ -45,7 +30,7 @@ export default function (options: ConfigSchema): Rule {
         'ConfigModule',
         [
           {
-            namedImports: [ 'LoadConfig' ],
+            namedImports: [ 'loadConfig', 'validate' ],
             moduleSpecifier: './configuration'
           },
           {
@@ -58,16 +43,30 @@ export default function (options: ConfigSchema): Rule {
           w.write('.forRoot(');
           Writers.object({
             isGlobal: 'true',
+            validate: 'validate',
             load: '[ loadConfig ]'
-          });
+          })(w);
           w.write(')');
         }
       );
     }
 
     return chain([
-      ApplyTsMorphProject(project, options.path),
+      mergeWith(apply(url('./files'), [
+        applyTemplates({}),
+        move(join(projectSourceRoot, 'app')),
+        forEach(entry => {
+          if (host.exists(entry.path)) {
+            return null
+          }
+          return entry;
+        })
+      ])),
+      ApplyTsMorphProject(project, projectSourceRoot),
       AddPackageJsonDependency('@nestjs/config', 'latest', { soft: true }),
+      AddPackageJsonDependency('class-validator', 'latest', { soft: true }),
+      AddPackageJsonDependency('class-transformer', 'latest', { soft: true }),
+      AddPackageJsonDependency('@rxap/utilities', 'latest', { soft: true }),
       InstallNodePackages(),
       formatFiles()
     ]);

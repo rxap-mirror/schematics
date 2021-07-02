@@ -4,14 +4,16 @@
   "title": "Config",
   "type": "object",
   "properties": {
-    "path": {
+    "project": {
       "type": "string",
-      "format": "path",
-      "description": "The absolute path to the app.module folder",
-      "visible": false
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      },
+      "x-prompt": "For which project should the config concept be added?"
     }
   },
   "required": [
-    "path"
+    "project"
   ]
 }
