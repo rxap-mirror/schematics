@@ -1,5 +1,5 @@
 {
-  "npmScope": "@rxap/plugins",
+  "npmScope": "rxap",
   "affected": {
     "defaultBase": "master"
   },
@@ -10,9 +10,15 @@
       "options": {
         "cacheableOperations": [
           "build",
-          "lint",
+          "pack",
           "test",
-          "e2e"
+          "lint",
+          "e2e",
+          "build-storybook"
+        ],
+        "strictlyOrderedTargets": [
+          "build",
+          "pack"
         ]
       }
     }

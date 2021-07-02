@@ -923,7 +923,7 @@
     }
   },
   "cli": {
-    "defaultCollection": "@nrwl/workspace",
+    "defaultCollection": "@rxap/schematics",
     "packageManager": "yarn"
   }
 }

@@ -195,16 +195,6 @@
       "description": "Adds an angular library project to the workspace.",
       "factory": "./src/schematics/angular-library-project/index",
       "schema": "./src/schematics/angular-library-project/schema.json"
-    },
-    "nest-health-indicator": {
-      "description": "Adds a indicator class to the app.",
-      "factory": "./src/schematics/nest/health-indicator/index",
-      "schema": "./src/schematics/nest/health-indicator/schema.json"
-    },
-    "nest-config": {
-      "description": "Adds all files to support the @nestjs/config package.",
-      "factory": "./src/schematics/nest/config/index",
-      "schema": "./src/schematics/nest/config/schema.json"
     }
   }
 }
