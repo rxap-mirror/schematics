@@ -16,7 +16,8 @@
             "main": "libs/utilities/src/index.ts",
             "srcRootForCompilationRoot": "libs/utilities",
             "assets": [
-              "libs/utilities/*.md"
+              "libs/utilities/*.md",
+              "libs/utilities/LICENSE"
             ]
           },
           "outputs": [
@@ -101,6 +102,7 @@
             "srcRootForCompilationRoot": "libs/router",
             "assets": [
               "libs/router/*.md",
+              "libs/router/LICENSE",
               {
                 "input": "./libs/router",
                 "glob": "collection.json",
@@ -206,6 +208,7 @@
             "srcRootForCompilationRoot": "libs/table",
             "assets": [
               "libs/table/*.md",
+              "libs/table/LICENSE",
               {
                 "input": "./libs/table",
                 "glob": "collection.json",
@@ -311,6 +314,7 @@
             "srcRootForCompilationRoot": "libs/shared",
             "assets": [
               "libs/shared/*.md",
+              "libs/shared/LICENSE",
               {
                 "input": "./libs/shared",
                 "glob": "collection.json",
@@ -417,6 +421,7 @@
             "buildableProjectDepsInPackageJsonType": "dependencies",
             "assets": [
               "libs/form/*.md",
+              "libs/form/LICENSE",
               {
                 "input": "./libs/form",
                 "glob": "collection.json",
@@ -520,7 +525,8 @@
             "main": "libs/ts-morph/src/index.ts",
             "srcRootForCompilationRoot": "libs/ts-morph",
             "assets": [
-              "libs/ts-morph/*.md"
+              "libs/ts-morph/*.md",
+              "libs/ts-morph/LICENSE"
             ]
           },
           "outputs": [
@@ -600,7 +606,8 @@
             "main": "libs/html/src/index.ts",
             "srcRootForCompilationRoot": "libs/html",
             "assets": [
-              "libs/html/*.md"
+              "libs/html/*.md",
+              "libs/html/LICENSE"
             ]
           },
           "outputs": [
@@ -680,7 +687,8 @@
             "main": "libs/xml-parser/src/index.ts",
             "srcRootForCompilationRoot": "libs/xml-parser",
             "assets": [
-              "libs/xml-parser/*.md"
+              "libs/xml-parser/*.md",
+              "libs/xml-parser/LICENSE"
             ]
           },
           "outputs": [
@@ -760,7 +768,8 @@
             "main": "libs/open-api/src/index.ts",
             "srcRootForCompilationRoot": "libs/open-api",
             "assets": [
-              "libs/open-api/*.md"
+              "libs/open-api/*.md",
+              "libs/open-api/LICENSE"
             ]
           },
           "outputs": [
@@ -842,6 +851,7 @@
             "main": "libs/schematics/src/index.ts",
             "assets": [
               "libs/schematics/*.md",
+              "libs/schematics/LICENSE",
               {
                 "input": "./libs/schematics",
                 "glob": "collection.json",
