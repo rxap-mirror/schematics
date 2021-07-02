@@ -220,6 +220,7 @@ Option | Type | Default | Description
 name | string |  | The name of the new schematic
 path | string |  | The absolute path to the schematic folder or the relative path from the project root
 project | string |  | The project where the schematic should be added
+group | string |  | The group name of the schematic
 description | string |  | The description of the new schematic
 
 | Required |
