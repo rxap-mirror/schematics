@@ -2,12 +2,7 @@ import { chain, Rule, Tree, } from '@angular-devkit/schematics';
 import { HealthIndicatorSchema } from './schema'
 import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import { AddDir, ApplyTsMorphProject, } from '@rxap/schematics-ts-morph';
-import {
-  AddPackageJsonDependency,
-  GetProjectSourceRoot,
-  GuessProjectName,
-  InstallNodePackages
-} from '@rxap/schematics-utilities';
+import { AddPackageJsonDependency, GetProjectSourceRoot, InstallNodePackages } from '@rxap/schematics-utilities';
 import { formatFiles } from '@nrwl/workspace';
 import { CoerceHealthModule } from './coerce-health-module';
 import { CoerceHealthController } from './coerce-health-controller';
@@ -20,8 +15,7 @@ export default function (options: HealthIndicatorSchema): Rule {
 
   return async (host: Tree) => {
 
-    const projectName = GuessProjectName(host, options);
-    const projectSourceRoot = GetProjectSourceRoot(host, projectName);
+    const projectSourceRoot = GetProjectSourceRoot(host, options.project);
 
     const project = new Project({
       manipulationSettings: {
