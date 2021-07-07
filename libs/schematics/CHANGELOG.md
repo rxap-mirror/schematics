@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.7.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.7.0-next.0...@rxap/schematics@12.7.0-next.1) (2021-07-07)
+
+
+### Bug Fixes
+
+* **plugin-project:** pass the name and importPath option to the schematic-project schematic options ([f1c6819](https://gitlab.com/rxap/packages/commit/f1c681937ab612273493af28b74d008eb6a7a9dc))
+
+
+
+
+
 # [12.7.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.6.0...@rxap/schematics@12.7.0-next.0) (2021-07-02)
 
 
