@@ -28,6 +28,8 @@ export default function (options: PluginProjectSchema): Rule {
         project: options.project,
         builders: true,
         overwrite: options.overwrite,
+        name: options.name,
+        importPath: options.importPath,
       }),
       tree => {
         const collectionJson = GetProjectCollectionJson(tree, projectName);
