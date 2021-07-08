@@ -460,11 +460,7 @@ ng g @rxap/schematics:init
 
 Option | Type | Default | Description
 --- | --- | --- | ---
-zeplin | boolean | false | Add zeplin support
-storybook | boolean | false | Add storybook support
-zeplinProject | array |  | A list of zeplin project ids
-zeplinStyleguide | array |  | A list of zeplin styleguide ids
-zeplinConnectUrl | string |  | The zeplin connect url of the storybook
+overwrite | boolean | false | Whether to overwrite an existing config file.
 
 
 ## library-theme
@@ -675,5 +671,54 @@ importPath | string |  | The library name used to import it, like @myorg/my-awes
 strict | boolean | true | Creates a library with stricter type checking and build optimization options.
 linter | string | eslint | The tool to use for running lint checks.
 enableIvy | boolean | false | Enable Ivy for library in tsconfig.lib.prod.json. Should not be used with publishable libraries.
+
+
+## config-commitlint
+> Add commitlint to the workspace.
+
+```
+ng g @rxap/schematics:config-commitlint
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+extend | string | conventional | Specifies the package that should be used as base config.
+overwrite | boolean | false | Whether to overwrite an existing config file.
+
+
+## config-renovate
+> Create configuration file to support renovate in this workspace.
+
+```
+ng g @rxap/schematics:config-renovate
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+overwrite | boolean | false | Whether to overwrite an existing config file.
+
+
+## config-semantic-release
+> Create config files to support semantic release in the workspace.
+
+```
+ng g @rxap/schematics:config-semantic-release
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+overwrite | boolean | false | Whether to overwrite an existing config file.
+
+
+## config-gitlab-ci
+> Creates gitlab ci configuration for the workspace.
+
+```
+ng g @rxap/schematics:config-gitlab-ci
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+overwrite | boolean | false | Whether to overwrite an existing config file.
 
 
