@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "view-component",
+  "$id": "view-component",
   "type": "object",
   "description": "Creates a new generic view component with module for the view system in the given or default project.",
   "properties": {

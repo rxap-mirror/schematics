@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "link-component-to-zeplin",
+  "$id": "link-component-to-zeplin",
   "type": "object",
   "description": "",
   "properties": {

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "zeplin-configuration",
+  "$id": "zeplin-configuration",
   "type": "object",
   "description": "",
   "properties": {

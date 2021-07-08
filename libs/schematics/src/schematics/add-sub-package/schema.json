@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "add-sub-package",
+  "$id": "add-sub-package",
   "type": "object",
   "description": "Creates a sub ngPackage",
   "properties": {

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "library-storybook-configuration",
+  "$id": "library-storybook-configuration",
   "type": "object",
   "description": "",
   "properties": {

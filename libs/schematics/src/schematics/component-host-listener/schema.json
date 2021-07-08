@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "component-host-listener",
+  "$id": "component-host-listener",
   "type": "object",
   "description": "",
   "properties": {

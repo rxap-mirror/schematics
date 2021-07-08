@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "pwa-init",
+  "$id": "pwa-init",
   "type": "object",
   "description": "",
   "properties": {

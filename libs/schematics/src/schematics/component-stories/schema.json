@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "component-stories",
+  "$id": "component-stories",
   "type": "object",
   "description": "",
   "properties": {

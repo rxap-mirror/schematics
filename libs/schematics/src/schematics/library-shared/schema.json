@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "library-shared",
+  "$id": "library-shared",
   "type": "object",
   "description": "",
   "properties": {

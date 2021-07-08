@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "component-output",
+  "$id": "component-output",
   "type": "object",
   "description": "",
   "properties": {

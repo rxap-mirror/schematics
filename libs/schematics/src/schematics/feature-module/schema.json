@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "feature-module",
+  "$id": "feature-module",
   "type": "object",
   "description": "",
   "properties": {

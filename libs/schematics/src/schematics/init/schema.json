@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "init",
+  "$id": "init",
   "type": "object",
   "description": "",
   "properties": {
