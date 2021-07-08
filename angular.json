@@ -851,22 +851,7 @@
             "main": "libs/schematics/src/index.ts",
             "assets": [
               "libs/schematics/*.md",
-              "libs/schematics/LICENSE",
-              {
-                "input": "./libs/schematics",
-                "glob": "collection.json",
-                "output": "."
-              },
-              {
-                "input": "./libs/schematics",
-                "glob": "migration.json",
-                "output": "."
-              },
-              {
-                "input": "./libs/schematics",
-                "glob": "**/*.!(ts)",
-                "output": "."
-              }
+              "libs/schematics/LICENSE"
             ],
             "buildableProjectDepsInPackageJsonType": "dependencies"
           }
