@@ -4,11 +4,13 @@ import {
   CheckIfPackagesAreInstalled,
   DeleteRecursive,
   GetProjectCollectionJson,
+  GetProjectSourceRoot,
   GuessSchematicRoot
 } from '@rxap/schematics-utilities';
 import { AddBuildTarget } from './add-build-target';
 import { SchematicProjectSchema } from './schema';
 import { join } from 'path';
+import { formatFiles } from '@nrwl/workspace';
 
 export default function (options: SchematicProjectSchema): Rule {
 
@@ -42,6 +44,13 @@ export default function (options: SchematicProjectSchema): Rule {
         buildable: true,
         publishable: true,
       }),
+      options.project ? noop() : tree => {
+        const projectSourceRoot = GetProjectSourceRoot(tree, projectName);
+        if (tree.exists(join(projectSourceRoot, 'index.ts'))) {
+          tree.overwrite(join(projectSourceRoot, 'index.ts'), 'export {}')
+        }
+        DeleteRecursive(tree, tree.getDir(join(projectSourceRoot, 'lib')));
+      },
       AddBuildTarget(projectName),
       CheckIfPackagesAreInstalled([
         '@rxap/plugin-pack',
@@ -78,6 +87,7 @@ export default function (options: SchematicProjectSchema): Rule {
         return chain(rules);
       },
       schematic('config-package-json', { project: projectName }),
+      formatFiles()
     ]);
   }
 }
