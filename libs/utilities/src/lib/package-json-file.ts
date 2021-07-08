@@ -1,4 +1,4 @@
-import { chain, externalSchematic, Rule, Tree } from '@angular-devkit/schematics';
+import { chain, externalSchematic, noop, Rule, Tree } from '@angular-devkit/schematics';
 import { PackageJson } from './package-json';
 import { dirname, join } from 'path';
 import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
@@ -137,8 +137,15 @@ export function InstallPeerDependencies(): Rule {
         context.addTask(new NodePackageInstallTask());
       },
       chain(Object.keys(peerDependencies).map(name => (tree) => {
-        const peerPackageDirname = dirname(require.resolve(join(name, 'package.json')));
-        const peerPackageJson = require(join(name, 'package.json'));
+        let peerPackageDirname: string;
+        let peerPackageJson: PackageJson;
+        try {
+          peerPackageDirname = dirname(require.resolve(join(name, 'package.json')));
+          peerPackageJson = require(join(name, 'package.json'));
+        } catch (e) {
+          console.warn(`Could not resolve the peerDependency '${name}'.`);
+          return noop();
+        }
         if (peerPackageJson.schematics) {
           const peerCollectionJsonFilePath = join(peerPackageDirname, peerPackageJson.schematics);
           if (tree.exists(peerCollectionJsonFilePath)) {
