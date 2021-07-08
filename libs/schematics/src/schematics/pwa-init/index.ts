@@ -17,10 +17,12 @@ import { join } from 'path';
 import { PwaInitSchema } from './schema';
 import {
   AddPackageJsonDependency,
+  AddPackageJsonScript,
   GetNxJson,
   GetProjectPrefix,
   GetProjectRoot,
   HasProject,
+  InstallNodePackages,
   UpdateAngularJson
 } from '@rxap/schematics-utilities';
 import { DeleteExistingApp } from './delete-existing-app';
@@ -31,6 +33,8 @@ const { dasherize } = strings;
 export default function (options: PwaInitSchema): Rule {
 
   return async (host: Tree) => {
+
+    const port = Math.floor(Math.random() * 1000) + 4000;
 
     const projectName = options.project;
     const hasProject = HasProject(host, projectName);
@@ -120,7 +124,10 @@ export default function (options: PwaInitSchema): Rule {
           }
           return entry;
         }),
-      ]))
+      ])),
+      AddPackageJsonScript('start:browser', `chromium --allow-file-access-from-files --disable-web-security --user-data-dir="./chromium-user-data" http://localhost:${port}`),
+      AddPackageJsonScript('start', `nx serve --port ${port}`),
+      InstallNodePackages(),
     ]);
 
   };

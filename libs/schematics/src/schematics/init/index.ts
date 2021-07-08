@@ -12,13 +12,16 @@ import {
   url,
 } from '@angular-devkit/schematics';
 import { InitSchema } from './schema';
-import { AddPackageJsonDevDependency, AddPackageJsonScript, UpdateAngularJson } from '@rxap/schematics-utilities';
+import {
+  AddPackageJsonDevDependency,
+  AddPackageJsonScript,
+  InstallNodePackages,
+  UpdateAngularJson
+} from '@rxap/schematics-utilities';
 
 export default function(options: InitSchema): Rule {
 
   return async (host: Tree) => {
-
-    const port = Math.floor(Math.random() * 1000) + 4000;
 
     return chain([
       externalSchematic('@nrwl/angular', 'init', {
@@ -59,15 +62,14 @@ export default function(options: InitSchema): Rule {
         angular.schematics['@schematics/angular:module'].skipTests = true;
 
       }),
-      AddPackageJsonScript('start:browser', `chromium --allow-file-access-from-files --disable-web-security --user-data-dir="./chromium-user-data" http://localhost:${port}`),
-      AddPackageJsonScript('start', `nx serve --port ${port}`),
       AddPackageJsonScript('jest', 'jest'),
       AddPackageJsonScript('ng', 'env-cmd ng'),
       tree => {
         if (!tree.exists('.env')) {
           tree.overwrite('.env', '');
         }
-      }
+      },
+      InstallNodePackages(),
     ]);
 
   };
