@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "schematics-config-commitlint",
+  "title": "ConfigCommitlint",
+  "type": "object",
+  "properties": {
+    "extend": {
+      "type": "string",
+      "enum": [
+        "lerna",
+        "angular",
+        "conventional"
+      ],
+      "default": "conventional",
+      "description": "Specifies the package that should be used as base config."
+    },
+    "overwrite": {
+      "type": "boolean",
+      "description": "Whether to overwrite an existing config file.",
+      "default": false
+    }
+  },
+  "required": []
+}

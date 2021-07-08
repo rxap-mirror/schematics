@@ -1,0 +1,4 @@
+module.exports = {
+  extends: ['<%= packageName %>'],
+  ignores: [message => message.toLowerCase().startsWith('wip')]
+};

@@ -195,6 +195,11 @@
       "description": "Adds an angular library project to the workspace.",
       "factory": "./src/schematics/angular-library-project/index",
       "schema": "./src/schematics/angular-library-project/schema.json"
+    },
+    "config-commitlint": {
+      "description": "Add commitlint to the workspace.",
+      "factory": "./src/schematics/config-commitlint/index",
+      "schema": "./src/schematics/config-commitlint/schema.json"
     }
   }
 }
