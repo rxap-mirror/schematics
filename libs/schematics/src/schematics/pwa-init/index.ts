@@ -55,14 +55,7 @@ export default function (options: PwaInitSchema): Rule {
           skipTests: true
         }),
       ]),
-      !hasProject || options.overwrite ? chain([
-        DeleteExistingApp(projectSourceRoot),
-        AddPackageJsonDependency('@rxap/config'),
-        AddPackageJsonDependency('@rxap/environment'),
-        AddPackageJsonDependency('normalize.css'),
-        externalSchematic('@rxap/config', 'ng-add', { project: projectName }),
-        externalSchematic('@rxap/environment', 'ng-add', { project: projectName }),
-      ]) : noop(),
+      !hasProject || options.overwrite ? DeleteExistingApp(projectSourceRoot) : noop(),
       AddFeaturesIndexTheme(),
       UpdateAngularJson(angular => {
         const project = angular.projects.get(projectName);
@@ -125,6 +118,13 @@ export default function (options: PwaInitSchema): Rule {
           return entry;
         }),
       ])),
+      !hasProject || options.overwrite ? chain([
+        AddPackageJsonDependency('@rxap/config'),
+        AddPackageJsonDependency('@rxap/environment'),
+        AddPackageJsonDependency('normalize.css'),
+        // externalSchematic('@rxap/config', 'ng-add', { project: projectName }),
+        // externalSchematic('@rxap/environment', 'ng-add', { project: projectName }),
+      ]) : noop(),
       AddPackageJsonScript('start:browser', `chromium --allow-file-access-from-files --disable-web-security --user-data-dir="./chromium-user-data" http://localhost:${port}`),
       AddPackageJsonScript('start', `nx serve --port ${port}`),
       InstallNodePackages(),
