@@ -29,5 +29,40 @@ export interface Environment {
    */
   mergeRequest: boolean;
 
+  /**
+   * The release name of the current build.
+   *
+   * Add on application startup
+   */
+  release?: string;
+
+  /**
+   * The commit hash of the current build.
+   *
+   * Add on application startup
+   */
+  commit?: string;
+
+  /**
+   * The build time of the current build.
+   *
+   * Add on application startup
+   */
+  timestamp?: number;
+
+  /**
+   * The git branch of the current build.
+   *
+   * Add on application startup
+   */
+  branch?: string;
+
+  /**
+   * The git tag of the current build.
+   *
+   * Add on application startup
+   */
+  tag?: string;
+
   [key: string]: any;
 }

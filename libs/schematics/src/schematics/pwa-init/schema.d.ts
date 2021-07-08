@@ -1,3 +1,4 @@
 export interface PwaInitSchema {
-  project: string
+  project: string;
+  overwrite: boolean;
 }
