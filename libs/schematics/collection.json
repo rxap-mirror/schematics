@@ -205,6 +205,16 @@
       "description": "Create configuration file to support renovate in this workspace.",
       "factory": "./src/schematics/config-renovate/index",
       "schema": "./src/schematics/config-renovate/schema.json"
+    },
+    "config-semantic-release": {
+      "description": "Create config files to support semantic release in the workspace.",
+      "factory": "./src/schematics/config-semantic-release/index",
+      "schema": "./src/schematics/config-semantic-release/schema.json"
+    },
+    "config-gitlab-ci": {
+      "description": "Creates gitlab ci configuration for the workspace.",
+      "factory": "./src/schematics/config-gitlab-ci/index",
+      "schema": "./src/schematics/config-gitlab-ci/schema.json"
     }
   }
 }
