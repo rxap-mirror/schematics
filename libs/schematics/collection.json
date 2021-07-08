@@ -200,6 +200,11 @@
       "description": "Add commitlint to the workspace.",
       "factory": "./src/schematics/config-commitlint/index",
       "schema": "./src/schematics/config-commitlint/schema.json"
+    },
+    "config-renovate": {
+      "description": "Create configuration file to support renovate in this workspace.",
+      "factory": "./src/schematics/config-renovate/index",
+      "schema": "./src/schematics/config-renovate/schema.json"
     }
   }
 }
