@@ -225,6 +225,21 @@ export class AngularProjectMap {
 }
 
 export class Angular {
+
+  public get cli(): CliOptions {
+    if (!this._angular.cli) {
+      this._angular.cli = {};
+    }
+    return this._angular.cli;
+  }
+
+  public get schematics(): Record<string, Record<string, any>> {
+    if (!this._angular.schematics) {
+      this._angular.schematics = {};
+    }
+    return this._angular.schematics;
+  }
+
   public get defaultProject(): AngularProject | undefined {
     return this._angular.defaultProject
       ? this.projects.get(this._angular.defaultProject)
