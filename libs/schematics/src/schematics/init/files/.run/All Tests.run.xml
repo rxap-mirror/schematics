@@ -1,0 +1,6 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="All Tests" type="wallaby" factoryName="Wallaby.js" configType="Automatic"
+                 configFolder="$PROJECT_DIR$" wsl="No">
+    <method v="2"/>
+  </configuration>
+</component>

@@ -4,38 +4,10 @@
   "type": "object",
   "description": "",
   "properties": {
-    "zeplin": {
+    "overwrite": {
       "type": "boolean",
-      "description": "Add zeplin support",
+      "description": "Whether to overwrite an existing config file.",
       "default": false
-    },
-    "storybook": {
-      "type": "boolean",
-      "description": "Add storybook support",
-      "default": false
-    },
-    "zeplinProject": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "A list of zeplin project ids",
-      "default": [],
-      "alias": "zeplin-project"
-    },
-    "zeplinStyleguide": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "description": "A list of zeplin styleguide ids",
-      "default": [],
-      "alias": "zeplin-styleguide"
-    },
-    "zeplinConnectUrl": {
-      "type": "string",
-      "description": "The zeplin connect url of the storybook",
-      "alias": "zeplin-connect-url"
     }
   },
   "required": []
