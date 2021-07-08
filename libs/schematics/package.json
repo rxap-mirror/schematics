@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics",
-  "version": "12.7.0-next.1",
+  "version": "12.7.0-next.2",
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [
@@ -18,7 +18,8 @@
     "@rxap/utilities": "^12.0.3",
     "@rxap/xml-parser": "^12.0.3",
     "parse5": "^6.0.1",
-    "ts-morph": "^11.0.0"
+    "ts-morph": "^11.0.0",
+    "tslib": "^2.0.0"
   },
   "license": "MIT",
   "keywords": [

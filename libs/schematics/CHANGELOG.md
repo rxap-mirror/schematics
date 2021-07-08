@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.7.0-next.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.7.0-next.1...@rxap/schematics@12.7.0-next.2) (2021-07-08)
+
+
+### Bug Fixes
+
+* **pwa-init:** add angular material initialization ([38f5791](https://gitlab.com/rxap/packages/commit/38f5791bbbc903b043463130746c3dec9c0eaa16))
+* **pwa-init:** execute ng-add schematics after all required files are added ([4d9c977](https://gitlab.com/rxap/packages/commit/4d9c97763d537957350439972637005b036e12b2))
+* mv add pwa scripts to pwa-init schematic ([6c3d5ac](https://gitlab.com/rxap/packages/commit/6c3d5ac161aa2a12cbba7277847d787ecf795ccc))
+* **schematic-project:** remove project lib files on project init ([0670146](https://gitlab.com/rxap/packages/commit/0670146db85b003590ffb80c3a4419d877492c5b))
+
+
+### Features
+
+* update to new concepts ([36440fd](https://gitlab.com/rxap/packages/commit/36440fd647d33da16603065a6191760a86fe2b56))
+* **init:** split into multiple schematics ([9bdddc0](https://gitlab.com/rxap/packages/commit/9bdddc0bf3f8c64388a44a3cbb1c3711f2e66150))
+* add schematic config-commitlint ([f3bedad](https://gitlab.com/rxap/packages/commit/f3bedad8dcc9946af5028557d5067467ed6eef06))
+* add schematic config-gitlab-ci ([257022f](https://gitlab.com/rxap/packages/commit/257022fe658e007f31af0d52c8aecb047b76db7a))
+* add schematic config-renovate ([3720162](https://gitlab.com/rxap/packages/commit/372016225b4988fbef02e5a7b30b8f54d103409e))
+* add schematic config-semantic-release ([f8b6d30](https://gitlab.com/rxap/packages/commit/f8b6d30ecdb1e236c9b5d2e79d0f988776910396))
+
+
+
+
+
 # [12.7.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.7.0-next.0...@rxap/schematics@12.7.0-next.1) (2021-07-07)
 
 

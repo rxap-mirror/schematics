@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.4.0-next.0...@rxap/schematics-utilities@12.4.0-next.1) (2021-07-08)
+
+
+### Bug Fixes
+
+* **package-json-file:** safe fail if the peer dependency is not install ([f58868c](https://gitlab.com/rxap/packages/commit/f58868c7a09cb0cce57ceec0e4e88b4e18721bfe))
+
+
+### Features
+
+* add function HasProject ([1f21018](https://gitlab.com/rxap/packages/commit/1f210182a7eadf2bd68d5395376acb1f322fd4b5))
+* **angular-json:** add support for cli and schematics property access ([c3ce862](https://gitlab.com/rxap/packages/commit/c3ce862c01372430ac97e2d0c719516d57330177))
+
+
+
+
+
 # [12.4.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.3.5...@rxap/schematics-utilities@12.4.0-next.0) (2021-07-02)
 
 
