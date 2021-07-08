@@ -15,6 +15,11 @@ export function GetProject(host: Tree, projectName: string): AngularProject {
   return angularJson.projects.get(projectName)!;
 }
 
+export function HasProject(host: Tree, projectName: string): boolean {
+  const angularJson = new Angular(GetAngularJson(host));
+  return angularJson.projects.has(projectName);
+}
+
 export function GetProjectPrefix(host: Tree, projectName: string): string {
 
   const project = GetProject(host, projectName);
