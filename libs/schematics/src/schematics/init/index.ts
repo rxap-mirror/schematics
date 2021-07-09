@@ -32,6 +32,7 @@ export default function(options: InitSchema): Rule {
           context.addTask(new RunSchematicTask('@nrwl/angular', 'init', {
             unitTestRunner: 'jest',
             e2eTestRunner: 'cypress',
+            style: 'scss'
           }), [ installTaskId ])
         },
       ]) : noop(),
