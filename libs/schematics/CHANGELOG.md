@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.0...@rxap/schematics@12.8.1) (2021-07-09)
+
+
+### Bug Fixes
+
+* update @rxap/utilities package version ([9c2e26a](https://gitlab.com/rxap/packages/commit/9c2e26a22d4190c343ca2e7ba3091bc0a356dc1a))
+
+
+
+
+
 # [12.8.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.7.0...@rxap/schematics@12.8.0) (2021-07-09)
 
 
