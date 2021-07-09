@@ -24,6 +24,10 @@ export default function(options: InitSchema): Rule {
   return async (host: Tree) => {
 
     return chain([
+      AddPackageJsonDevDependency('webpack-extension-reloader'),
+      AddPackageJsonDevDependency('env-cmd'),
+      AddPackageJsonDevDependency('@nrwl/angular'),
+      InstallNodePackages(),
       externalSchematic('@nrwl/angular', 'init', {
         unitTestRunner: 'jest',
         e2eTestRunner: 'cypress',
@@ -32,8 +36,6 @@ export default function(options: InitSchema): Rule {
       schematic('config-renovate', { overwrite: options.overwrite }),
       schematic('config-semantic-release', { overwrite: options.overwrite }),
       schematic('config-gitlab-ci', { overwrite: options.overwrite }),
-      AddPackageJsonDevDependency('webpack-extension-reloader'),
-      AddPackageJsonDevDependency('env-cmd'),
       mergeWith(apply(url('./files'), [
         template({}),
         forEach(entry => {
@@ -66,10 +68,9 @@ export default function(options: InitSchema): Rule {
       AddPackageJsonScript('ng', 'env-cmd ng'),
       tree => {
         if (!tree.exists('.env')) {
-          tree.overwrite('.env', '');
+          tree.create('.env', '');
         }
       },
-      InstallNodePackages(),
     ]);
 
   };
