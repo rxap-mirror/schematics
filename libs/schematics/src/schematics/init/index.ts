@@ -1,5 +1,6 @@
 import {
   apply,
+  applyTemplates,
   chain,
   forEach,
   MergeStrategy,
@@ -7,7 +8,6 @@ import {
   noop,
   Rule,
   schematic,
-  template,
   Tree,
   url,
 } from '@angular-devkit/schematics';
@@ -25,6 +25,16 @@ export default function(options: InitSchema): Rule {
   return async (host: Tree) => {
 
     return chain([
+      options.preset === 'angular' ? chain([
+        AddPackageJsonDevDependency('@nrwl/angular'),
+        (_, context) => {
+          const installTaskId = context.addTask(new NodePackageInstallTask());
+          context.addTask(new RunSchematicTask('@nrwl/angular', 'init', {
+            unitTestRunner: 'jest',
+            e2eTestRunner: 'cypress',
+          }), [ installTaskId ])
+        },
+      ]) : noop(),
       AddPackageJsonDevDependency('webpack-extension-reloader'),
       AddPackageJsonDevDependency('env-cmd'),
       schematic('config-commitlint', { overwrite: options.overwrite }),
@@ -32,7 +42,7 @@ export default function(options: InitSchema): Rule {
       schematic('config-semantic-release', { overwrite: options.overwrite }),
       schematic('config-gitlab-ci', { overwrite: options.overwrite }),
       mergeWith(apply(url('./files'), [
-        template({}),
+        applyTemplates({}),
         forEach(entry => {
           if (host.exists(entry.path)) {
             host.overwrite(entry.path, entry.content);
@@ -67,16 +77,6 @@ export default function(options: InitSchema): Rule {
         }
       },
       InstallNodePackages(),
-      options.preset === 'angular' ? chain([
-        AddPackageJsonDevDependency('@nrwl/angular'),
-        (_, context) => {
-          const installTaskId = context.addTask(new NodePackageInstallTask());
-          context.addTask(new RunSchematicTask('@nrwl/angular', 'init', {
-            unitTestRunner: 'jest',
-            e2eTestRunner: 'cypress',
-          }), [ installTaskId ])
-        },
-      ]) : noop(),
     ]);
 
   };
