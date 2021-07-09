@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.6](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.5...@rxap/schematics@12.8.6) (2021-07-09)
+
+
+### Bug Fixes
+
+* **ng-add:** add missing schema options ([08239e0](https://gitlab.com/rxap/packages/commit/08239e06987d1072b16e08f26d7b3c65735c0ca3))
+
+
+
+
+
 ## [12.8.5](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.4...@rxap/schematics@12.8.5) (2021-07-09)
 
 
