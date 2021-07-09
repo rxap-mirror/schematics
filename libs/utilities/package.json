@@ -1,9 +1,10 @@
 {
   "name": "@rxap/schematics-utilities",
-  "version": "12.4.1",
+  "version": "12.4.2",
   "dependencies": {
     "@rxap/utilities": "^12.2.0",
-    "semver": "^7.3.5"
+    "semver": "^7.3.5",
+    "tslib": "^2.0.0"
   },
   "publishConfig": {
     "directory": "../../dist/libs/utilities",

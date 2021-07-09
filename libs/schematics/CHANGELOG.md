@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.2...@rxap/schematics@12.8.3) (2021-07-09)
+
+
+### Bug Fixes
+
+* **ng-add:** run install task before init schematics ([1785054](https://gitlab.com/rxap/packages/commit/178505466afcb445e6d13d4e25411a3b9b5f2d34))
+
+
+
+
+
 ## [12.8.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.1...@rxap/schematics@12.8.2) (2021-07-09)
 
 
