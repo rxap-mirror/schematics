@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.5](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.4...@rxap/schematics@12.8.5) (2021-07-09)
+
+
+### Bug Fixes
+
+* **init:** ensure the required schematics are executed in the right order ([951f3b5](https://gitlab.com/rxap/packages/commit/951f3b540909949c9e2a1f481e4c8777feab5e67))
+* **pwa-init:** ensure required packages are installed ([7d7edfa](https://gitlab.com/rxap/packages/commit/7d7edfa32d240cf8f7d1c7a89fca0881de445803))
+
+
+
+
+
 ## [12.8.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.3...@rxap/schematics@12.8.4) (2021-07-09)
 
 
