@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.3...@rxap/schematics@12.8.4) (2021-07-09)
+
+
+### Bug Fixes
+
+* **ng-add:** add prompts ([9182d06](https://gitlab.com/rxap/packages/commit/9182d0618650704a7342adde5c70dcefde4433e2))
+
+
+
+
+
 ## [12.8.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.2...@rxap/schematics@12.8.3) (2021-07-09)
 
 
