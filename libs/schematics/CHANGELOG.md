@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.8.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.7.0...@rxap/schematics@12.8.0) (2021-07-09)
+
+
+### Features
+
+* add ng-add schematic ([64721b0](https://gitlab.com/rxap/packages/commit/64721b0e80f20da6b647aa481188675a31a4354b))
+* remove viewComponent schematic ([ff95bb0](https://gitlab.com/rxap/packages/commit/ff95bb0868733980c3d3141ad1181d54a778cdb3))
+
+
+
+
+
 # [12.7.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.7.0-next.2...@rxap/schematics@12.7.0) (2021-07-08)
 
 **Note:** Version bump only for package @rxap/schematics
