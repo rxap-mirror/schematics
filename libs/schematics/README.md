@@ -720,6 +720,7 @@ Option | Type | Default | Description
 --- | --- | --- | ---
 init | boolean | true | Whether the workspace init schematic should be executed
 overwrite | boolean | false | Whether to overwrite an existing files.
+preset | string |  | Sets the kind of workspace that should be init
 
 
 ## init-custom-material-theme
