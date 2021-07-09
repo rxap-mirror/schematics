@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.1...@rxap/schematics@12.8.2) (2021-07-09)
+
+
+### Bug Fixes
+
+* **init:** install required dependencies ([cfdbc00](https://gitlab.com/rxap/packages/commit/cfdbc0024d3e3ef453e72978b99367007c8c3528))
+
+
+
+
+
 ## [12.8.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.0...@rxap/schematics@12.8.1) (2021-07-09)
 
 
