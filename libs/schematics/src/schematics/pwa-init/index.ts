@@ -2,7 +2,6 @@ import { strings } from '@angular-devkit/core';
 import {
   apply,
   chain,
-  externalSchematic,
   forEach,
   mergeWith,
   move,
@@ -17,16 +16,19 @@ import { join } from 'path';
 import { PwaInitSchema } from './schema';
 import {
   AddPackageJsonDependency,
+  AddPackageJsonDevDependency,
   AddPackageJsonScript,
   GetNxJson,
   GetProjectPrefix,
   GetProjectRoot,
   HasProject,
-  InstallNodePackages,
   UpdateAngularJson
 } from '@rxap/schematics-utilities';
 import { DeleteExistingApp } from './delete-existing-app';
 import { AddFeaturesIndexTheme } from './add-features-index-theme';
+import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
+import { TaskId } from '@angular-devkit/schematics/src/engine';
+import { IsDefined } from '@rxap/utilities';
 
 const { dasherize } = strings;
 
@@ -42,19 +44,31 @@ export default function (options: PwaInitSchema): Rule {
     const projectSourceRoot = hasProject ? GetProjectRoot(host, projectName) : join(projectRoot, 'src');
     const prefix = hasProject ? GetProjectPrefix(host, projectName) : GetNxJson(host).npmScope;
 
+    let installTaskId: TaskId | undefined = undefined;
+
     return chain([
-      schematic('library-shared', {}),
       hasProject ? noop() : chain([
-        externalSchematic('@nrwl/angular', 'application', {
-          name: projectName,
-          enableIvy: true,
-          routing: false,
-          style: 'scss',
-          unitTestRunner: 'jest',
-          e2eTestRunner: 'cypress',
-          skipTests: true
-        }),
+        AddPackageJsonDevDependency('@nrwl/angular'),
+        (_, context) => {
+          installTaskId = context.addTask(new NodePackageInstallTask());
+          context.addTask(new RunSchematicTask('@nrwl/angular', 'application', {
+            name: projectName,
+            enableIvy: true,
+            routing: false,
+            style: 'scss',
+            unitTestRunner: 'jest',
+            e2eTestRunner: 'cypress',
+            skipTests: true
+          }), [ installTaskId ])
+        },
       ]),
+      (_, context) => {
+        if (installTaskId) {
+          context.addTask(new RunSchematicTask('library-shared', {}), [ installTaskId ])
+        } else {
+          return schematic('library-shared', {});
+        }
+      },
       !hasProject || options.overwrite ? DeleteExistingApp(projectSourceRoot) : noop(),
       AddFeaturesIndexTheme(),
       UpdateAngularJson(angular => {
@@ -123,18 +137,20 @@ export default function (options: PwaInitSchema): Rule {
         AddPackageJsonDependency('@rxap/environment'),
         AddPackageJsonDependency('normalize.css'),
         AddPackageJsonDependency('@angular/material'),
-        externalSchematic('@angular/material', 'ng-add', {
-          project: projectName,
-          theme: 'custom',
-          typography: true,
-          animations: true,
-        }),
-        externalSchematic('@rxap/config', 'ng-add', { project: projectName }),
-        externalSchematic('@rxap/environment', 'ng-add', { project: projectName }),
+        (_, context) => {
+          const innerInstallTaskId = context.addTask(new NodePackageInstallTask(), [ installTaskId ].filter(IsDefined));
+          context.addTask(new RunSchematicTask('@angular/material', 'ng-add', {
+            project: projectName,
+            theme: 'custom',
+            typography: true,
+            animations: true,
+          }), [ installTaskId, innerInstallTaskId ].filter(IsDefined));
+          context.addTask(new RunSchematicTask('@rxap/config', 'ng-add', { project: projectName }), [ installTaskId, innerInstallTaskId ].filter(IsDefined));
+          context.addTask(new RunSchematicTask('@rxap/environment', 'ng-add', { project: projectName }), [ installTaskId, innerInstallTaskId ].filter(IsDefined));
+        },
       ]) : noop(),
       AddPackageJsonScript('start:browser', `chromium --allow-file-access-from-files --disable-web-security --user-data-dir="./chromium-user-data" http://localhost:${port}`),
       AddPackageJsonScript('start', `nx serve --port ${port}`),
-      InstallNodePackages(),
     ]);
 
   };
