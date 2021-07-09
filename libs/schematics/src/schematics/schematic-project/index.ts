@@ -10,7 +10,6 @@ import {
 import { AddBuildTarget } from './add-build-target';
 import { SchematicProjectSchema } from './schema';
 import { join } from 'path';
-import { formatFiles } from '@nrwl/workspace';
 
 export default function (options: SchematicProjectSchema): Rule {
 
@@ -87,7 +86,6 @@ export default function (options: SchematicProjectSchema): Rule {
         return chain(rules);
       },
       schematic('config-package-json', { project: projectName }),
-      formatFiles()
     ]);
   }
 }
