@@ -3,7 +3,7 @@ import { strings } from '@angular-devkit/core';
 import { AddSubPackage } from '../schema';
 import { buildDefaultPath, getWorkspace, } from '../utilities';
 import { join, relative, } from 'path';
-import { readNxJson } from '@nrwl/workspace';
+import { GetNxJson } from '@rxap/schematics-utilities';
 
 export default function(schema: AddSubPackage): Rule {
 
@@ -48,7 +48,7 @@ export default function(schema: AddSubPackage): Rule {
 
         } else if (schema.project) {
 
-          const nxJson = readNxJson();
+          const nxJson = GetNxJson(host);
 
           packageName = join(nxJson.npmScope, schema.project);
 

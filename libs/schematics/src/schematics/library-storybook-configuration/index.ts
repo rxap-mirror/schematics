@@ -12,9 +12,9 @@ import {
   url
 } from '@angular-devkit/schematics';
 import { StorybookConfigurationSchema } from './schema';
-import { updateWorkspace } from '@nrwl/workspace';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { join, relative } from 'path';
+import { UpdateAngularJson } from '@rxap/schematics-utilities';
 
 export default function(options: StorybookConfigurationSchema): Rule {
 
@@ -31,7 +31,7 @@ export default function(options: StorybookConfigurationSchema): Rule {
         'storybook-configuration',
         options
       ),
-      updateWorkspace(workspace => {
+      UpdateAngularJson(workspace => {
 
         const project = workspace.projects.get(options.name);
 
