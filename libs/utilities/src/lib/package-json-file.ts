@@ -1,11 +1,11 @@
-import { chain, externalSchematic, noop, Rule, Tree } from '@angular-devkit/schematics';
+import { chain, noop, Rule, Tree } from '@angular-devkit/schematics';
 import { PackageJson } from './package-json';
 import { dirname, join } from 'path';
 import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
 import { CoerceProperty } from '@rxap/utilities';
 import { exec } from 'child_process';
 import gt from 'semver/functions/gt';
-import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import { CollectionJson } from './collection-json';
 
 export function GetPackageJson(host: Tree, basePath: string = ''): PackageJson {
@@ -133,29 +133,29 @@ export function InstallPeerDependencies(): Rule {
           return AddPackageJsonDependency(name, version);
         }
       })),
-      (_, context) => {
-        context.addTask(new NodePackageInstallTask());
-      },
-      chain(Object.keys(peerDependencies).map(name => (tree) => {
-        let peerPackageDirname: string;
-        let peerPackageJson: PackageJson;
-        try {
-          peerPackageDirname = dirname(require.resolve(join(name, 'package.json')));
-          peerPackageJson = require(join(name, 'package.json'));
-        } catch (e) {
-          console.warn(`Could not resolve the peerDependency '${name}'.`);
-          return noop();
-        }
-        if (peerPackageJson.schematics) {
-          const peerCollectionJsonFilePath = join(peerPackageDirname, peerPackageJson.schematics);
-          if (tree.exists(peerCollectionJsonFilePath)) {
-            const collectionJson = GetJsonFile<CollectionJson>(tree, peerCollectionJsonFilePath);
-            if (collectionJson.schematics['ng-add']) {
-              return externalSchematic(name, 'ng-add', {});
+      (tree, context) => {
+        const installTaskId = context.addTask(new NodePackageInstallTask());
+        Object.keys(peerDependencies).map(name => {
+          let peerPackageDirname: string;
+          let peerPackageJson: PackageJson;
+          try {
+            peerPackageDirname = dirname(require.resolve(join(name, 'package.json')));
+            peerPackageJson = require(join(name, 'package.json'));
+          } catch (e) {
+            console.warn(`Could not resolve the peerDependency '${name}'.`);
+            return noop();
+          }
+          if (peerPackageJson.schematics) {
+            const peerCollectionJsonFilePath = join(peerPackageDirname, peerPackageJson.schematics);
+            if (tree.exists(peerCollectionJsonFilePath)) {
+              const collectionJson = GetJsonFile<CollectionJson>(tree, peerCollectionJsonFilePath);
+              if (collectionJson.schematics['ng-add']) {
+                context.addTask(new RunSchematicTask(name, 'ng-add', {}), [ installTaskId ])
+              }
             }
           }
-        }
-      }))
+        })
+      },
     ]);
   }
 }
