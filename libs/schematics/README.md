@@ -16,8 +16,10 @@
 # Installation
 
 ```
-yarn add @rxap/schematics
+ng add @rxap/schematics
 ```
+
+*Setup the package @rxap/schematics for the workspace.*
 
 # Schematics
 
@@ -124,24 +126,6 @@ name | string |  | Form control component name
 path | string |  | The path at which to create the form control component file, relative to the current workspace.
 project | string |  | The name of the project.
 prefix | string |  | Form control component name
-
-| Required |
-| --- |
-| name |
-
-## viewComponent
-> Creates a new generic view component with module for the view system in the given or default project.
-
-```
-ng g @rxap/schematics:viewComponent
-```
-
-Option | Type | Default | Description
---- | --- | --- | ---
-name | string |  | Form control name
-path | string |  | The path at which to create the view component file, relative to the current workspace.
-project | string |  | The name of the project.
-prefix | string |  | View component name
 
 | Required |
 | --- |
@@ -720,5 +704,18 @@ ng g @rxap/schematics:config-gitlab-ci
 Option | Type | Default | Description
 --- | --- | --- | ---
 overwrite | boolean | false | Whether to overwrite an existing config file.
+
+
+## ng-add
+> Setup the package @rxap/schematics for the workspace.
+
+```
+ng g @rxap/schematics:ng-add
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+init | boolean | true | Should the workspace init schematic be executed
+overwrite | boolean | false | Whether to overwrite an existing files.
 
 
