@@ -2,6 +2,7 @@ import { strings } from '@angular-devkit/core';
 import {
   apply,
   chain,
+  externalSchematic,
   forEach,
   mergeWith,
   move,
@@ -16,19 +17,17 @@ import { join } from 'path';
 import { PwaInitSchema } from './schema';
 import {
   AddPackageJsonDependency,
-  AddPackageJsonDevDependency,
   AddPackageJsonScript,
   GetNxJson,
   GetProjectPrefix,
   GetProjectRoot,
+  GetProjectSourceRoot,
   HasProject,
   UpdateAngularJson
 } from '@rxap/schematics-utilities';
 import { DeleteExistingApp } from './delete-existing-app';
-import { AddFeaturesIndexTheme } from './add-features-index-theme';
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 import { TaskId } from '@angular-devkit/schematics/src/engine';
-import { IsDefined } from '@rxap/utilities';
 
 const { dasherize } = strings;
 
@@ -41,41 +40,44 @@ export default function (options: PwaInitSchema): Rule {
     const projectName = options.project;
     const hasProject = HasProject(host, projectName);
     const projectRoot = hasProject ? GetProjectRoot(host, projectName) : join('apps', dasherize(projectName));
-    const projectSourceRoot = hasProject ? GetProjectRoot(host, projectName) : join(projectRoot, 'src');
+    const projectSourceRoot = hasProject ? GetProjectSourceRoot(host, projectName) : join(projectRoot, 'src');
     const prefix = hasProject ? GetProjectPrefix(host, projectName) : GetNxJson(host).npmScope;
 
-    let installTaskId: TaskId | undefined = undefined;
+    const installTaskIdList: TaskId[] = [];
+
+    if (!hasProject) {
+      options.overwrite = true;
+    }
 
     return chain([
       hasProject ? noop() : chain([
-        AddPackageJsonDevDependency('@nrwl/angular'),
-        (_, context) => {
-          installTaskId = context.addTask(new NodePackageInstallTask());
-          context.addTask(new RunSchematicTask('@nrwl/angular', 'application', {
-            name: projectName,
-            enableIvy: true,
-            routing: false,
-            style: 'scss',
-            unitTestRunner: 'jest',
-            e2eTestRunner: 'cypress',
-            skipTests: true
-          }), [ installTaskId ])
-        },
+        externalSchematic('@nrwl/angular', 'application', {
+          name: projectName,
+          enableIvy: true,
+          routing: false,
+          style: 'scss',
+          unitTestRunner: 'jest',
+          e2eTestRunner: 'cypress',
+          skipTests: true
+        })
       ]),
-      (_, context) => {
-        if (installTaskId) {
-          context.addTask(new RunSchematicTask('library-shared', {}), [ installTaskId ])
-        } else {
-          return schematic('library-shared', {});
-        }
-      },
-      !hasProject || options.overwrite ? DeleteExistingApp(projectSourceRoot) : noop(),
-      AddFeaturesIndexTheme(),
+      schematic('library-shared', {}),
+      options.overwrite ? DeleteExistingApp(projectSourceRoot) : noop(),
       UpdateAngularJson(angular => {
         const project = angular.projects.get(projectName);
         if (project) {
           const buildTarget = project.targets.get('build');
           if (buildTarget) {
+            if (!buildTarget.options.assets) {
+              buildTarget.options.assets = [];
+            }
+            const assets: string[] = buildTarget.options.assets;
+            [ 'manifest.webmanifest', 'build.json' ].forEach(file => {
+              const fullPath = join(projectSourceRoot, file);
+              if (!assets.includes(fullPath)) {
+                assets.push(fullPath);
+              }
+            });
             if (!buildTarget.configurations) {
               buildTarget.configurations = {};
             }
@@ -127,26 +129,42 @@ export default function (options: PwaInitSchema): Rule {
         move(projectSourceRoot),
         forEach(entry => {
           if (host.exists(entry.path)) {
+            if (options.overwrite) {
+              host.overwrite(entry.path, entry.content);
+            }
             return null;
           }
           return entry;
         }),
       ])),
-      !hasProject || options.overwrite ? chain([
+      options.overwrite ? chain([
         AddPackageJsonDependency('@rxap/config'),
         AddPackageJsonDependency('@rxap/environment'),
         AddPackageJsonDependency('normalize.css'),
-        AddPackageJsonDependency('@angular/material'),
+        options.material ? AddPackageJsonDependency('@angular/material') : noop(),
         (_, context) => {
-          const innerInstallTaskId = context.addTask(new NodePackageInstallTask(), [ installTaskId ].filter(IsDefined));
-          context.addTask(new RunSchematicTask('@angular/material', 'ng-add', {
-            project: projectName,
-            theme: 'custom',
-            typography: true,
-            animations: true,
-          }), [ installTaskId, innerInstallTaskId ].filter(IsDefined));
-          context.addTask(new RunSchematicTask('@rxap/config', 'ng-add', { project: projectName }), [ installTaskId, innerInstallTaskId ].filter(IsDefined));
-          context.addTask(new RunSchematicTask('@rxap/environment', 'ng-add', { project: projectName }), [ installTaskId, innerInstallTaskId ].filter(IsDefined));
+          installTaskIdList.push(context.addTask(
+            new NodePackageInstallTask(),
+            // slice the array to private any circular dependencies
+            installTaskIdList.slice()
+          ));
+          if (options.material) {
+            installTaskIdList.push(context.addTask(new RunSchematicTask('@angular/material', 'ng-add', {
+                project: projectName,
+                theme: 'custom',
+                typography: true,
+                animations: true,
+              }),
+              // slice the array to private any circular dependencies
+              installTaskIdList.slice())
+            );
+            context.addTask(new RunSchematicTask('init-custom-material-theme', {
+              project: projectName,
+              overwrite: options.overwrite
+            }), installTaskIdList);
+          }
+          context.addTask(new RunSchematicTask('@rxap/config', 'ng-add', { project: projectName }), installTaskIdList);
+          context.addTask(new RunSchematicTask('@rxap/environment', 'ng-add', { project: projectName }), installTaskIdList);
         },
       ]) : noop(),
       AddPackageJsonScript('start:browser', `chromium --allow-file-access-from-files --disable-web-security --user-data-dir="./chromium-user-data" http://localhost:${port}`),

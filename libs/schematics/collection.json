@@ -60,12 +60,12 @@
         "add-sub-package"
       ]
     },
-    "addSchematic": {
+    "add-schematic": {
       "factory": "./src/schematics/add-schematic",
       "schema": "./src/schematics/add-schematic/schema.json",
       "description": "Add a new schematic to the collection",
       "aliases": [
-        "add-schematic"
+        "addSchematic"
       ]
     },
     "component-stories": {
@@ -148,10 +148,13 @@
       "factory": "./src/schematics/library-shared/index",
       "schema": "./src/schematics/library-shared/schema.json"
     },
-    "pwa-init": {
+    "init-pwa": {
       "description": "Init a application for pwa use",
       "factory": "./src/schematics/pwa-init/index",
-      "schema": "./src/schematics/pwa-init/schema.json"
+      "schema": "./src/schematics/pwa-init/schema.json",
+      "aliases": [
+        "pwa-init"
+      ]
     },
     "library": {
       "description": "Adds an angular library project",
@@ -212,6 +215,11 @@
       "description": "Setup the package @rxap/schematics for the workspace.",
       "factory": "./src/schematics/ng-add/index",
       "schema": "./src/schematics/ng-add/schema.json"
+    },
+    "init-custom-material-theme": {
+      "description": "Init the project custom material theme support.",
+      "factory": "./src/schematics/init-custom-material-theme/index",
+      "schema": "./src/schematics/init-custom-material-theme/schema.json"
     }
   }
 }

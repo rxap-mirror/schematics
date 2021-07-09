@@ -8,6 +8,18 @@
       "type": "string",
       "description": "Project name",
       "default": "pwa"
+    },
+    "overwrite": {
+      "type": "boolean",
+      "description": "Whether to overwrite an existing files.",
+      "default": false,
+      "x-prompt": "Should the schematic overwrite existing files?"
+    },
+    "material": {
+      "type": "boolean",
+      "description": "Whether the @angular/material package should be installed.",
+      "default": true,
+      "x-prompt": "Should the @angular/material package be installed?"
     }
   },
   "required": []

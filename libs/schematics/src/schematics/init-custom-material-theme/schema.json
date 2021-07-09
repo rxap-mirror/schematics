@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "schematics-init-custom-material-theme",
+  "title": "InitCustomMaterialTheme",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

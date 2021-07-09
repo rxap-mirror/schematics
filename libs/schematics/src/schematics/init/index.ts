@@ -1,10 +1,10 @@
 import {
   apply,
   chain,
-  externalSchematic,
   forEach,
   MergeStrategy,
   mergeWith,
+  noop,
   Rule,
   schematic,
   template,
@@ -18,6 +18,7 @@ import {
   InstallNodePackages,
   UpdateAngularJson
 } from '@rxap/schematics-utilities';
+import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
 
 export default function(options: InitSchema): Rule {
 
@@ -26,12 +27,6 @@ export default function(options: InitSchema): Rule {
     return chain([
       AddPackageJsonDevDependency('webpack-extension-reloader'),
       AddPackageJsonDevDependency('env-cmd'),
-      AddPackageJsonDevDependency('@nrwl/angular'),
-      InstallNodePackages(),
-      externalSchematic('@nrwl/angular', 'init', {
-        unitTestRunner: 'jest',
-        e2eTestRunner: 'cypress',
-      }),
       schematic('config-commitlint', { overwrite: options.overwrite }),
       schematic('config-renovate', { overwrite: options.overwrite }),
       schematic('config-semantic-release', { overwrite: options.overwrite }),
@@ -71,6 +66,17 @@ export default function(options: InitSchema): Rule {
           tree.create('.env', '');
         }
       },
+      InstallNodePackages(),
+      options.preset === 'angular' ? chain([
+        AddPackageJsonDevDependency('@nrwl/angular'),
+        (_, context) => {
+          const installTaskId = context.addTask(new NodePackageInstallTask());
+          context.addTask(new RunSchematicTask('@nrwl/angular', 'init', {
+            unitTestRunner: 'jest',
+            e2eTestRunner: 'cypress',
+          }), [ installTaskId ])
+        },
+      ]) : noop(),
     ]);
 
   };

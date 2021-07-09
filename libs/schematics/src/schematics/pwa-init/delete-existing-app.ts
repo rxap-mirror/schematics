@@ -8,7 +8,7 @@ export function DeleteExistingApp(projectSourceRoot: string): Rule {
     DeleteRecursive(tree, tree.getDir(join(projectSourceRoot, 'environments')));
     DeleteRecursive(tree, tree.getDir(join(projectSourceRoot, 'assets')));
     DeleteRecursive(tree, tree.getDir(join(projectSourceRoot, 'scss')));
-    [ 'main.ts', 'favicon.ico', 'manifest.webmanifest', 'styles.scss', '_index.scss' ].forEach(file => {
+    [ 'main.ts', 'favicon.ico', 'manifest.webmanifest', 'styles.scss', '_index.scss', 'index.html' ].forEach(file => {
       if (tree.exists(join(projectSourceRoot, file))) {
         tree.delete(join(projectSourceRoot, file));
       }
