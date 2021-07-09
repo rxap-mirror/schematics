@@ -207,6 +207,11 @@
       "description": "Creates gitlab ci configuration for the workspace.",
       "factory": "./src/schematics/config-gitlab-ci/index",
       "schema": "./src/schematics/config-gitlab-ci/schema.json"
+    },
+    "ng-add": {
+      "description": "Setup the package @rxap/schematics for the workspace.",
+      "factory": "./src/schematics/ng-add/index",
+      "schema": "./src/schematics/ng-add/schema.json"
     }
   }
 }

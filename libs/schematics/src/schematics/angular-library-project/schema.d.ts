@@ -1,5 +1,10 @@
-import { Linter } from '@nrwl/linter';
 import { UnitTestRunner } from '@nrwl/angular';
+
+export enum Linter {
+  EsLint = 'eslint',
+  TsLint = 'tslint',
+  None = 'none'
+}
 
 export interface AngularLibraryProjectSchema {
   name?: string;
