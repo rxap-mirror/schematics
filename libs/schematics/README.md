@@ -715,7 +715,7 @@ ng g @rxap/schematics:ng-add
 
 Option | Type | Default | Description
 --- | --- | --- | ---
-init | boolean | true | Should the workspace init schematic be executed
+init | boolean | true | Whether the workspace init schematic should be executed
 overwrite | boolean | false | Whether to overwrite an existing files.
 
 
