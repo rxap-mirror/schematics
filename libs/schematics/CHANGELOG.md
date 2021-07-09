@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.7](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.6...@rxap/schematics@12.8.7) (2021-07-09)
+
+
+### Bug Fixes
+
+* **init:** ensure the .gitignore is copied ([04d3ab1](https://gitlab.com/rxap/packages/commit/04d3ab1f2b3ce6f089326582bca2f081d009299c))
+
+
+
+
+
 ## [12.8.6](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.5...@rxap/schematics@12.8.6) (2021-07-09)
 
 
