@@ -6,7 +6,7 @@ export default function (options: NgAddSchema): Rule {
 
   return chain([
     InstallPeerDependencies(),
-    options.init ? schematic('init', { overwrite: options.overwrite }) : noop(),
+    options.init ? schematic('init', { overwrite: options.overwrite, preset: options.preset }) : noop(),
   ]);
 
 }
