@@ -27,14 +27,6 @@
         "form-control-component"
       ]
     },
-    "viewComponent": {
-      "factory": "./src/schematics/view-component",
-      "schema": "./src/schematics/view-component/schema.json",
-      "description": "Creates a new generic view component with module for the view system in the given or default project.",
-      "aliases": [
-        "view-component"
-      ]
-    },
     "ideaRunConfig": {
       "factory": "./src/schematics/idea-run-config",
       "schema": "./src/schematics/idea-run-config/schema.json",
