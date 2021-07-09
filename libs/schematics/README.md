@@ -192,11 +192,11 @@ path | string |  | The path at which to create the component file, relative to t
 project | string |  | The name of the project.
 
 
-## addSchematic
+## add-schematic
 > Add a new schematic to the collection
 
 ```
-ng g @rxap/schematics:addSchematic
+ng g @rxap/schematics:add-schematic
 ```
 
 Option | Type | Default | Description
@@ -445,6 +445,7 @@ ng g @rxap/schematics:init
 Option | Type | Default | Description
 --- | --- | --- | ---
 overwrite | boolean | false | Whether to overwrite an existing config file.
+preset | string |  | Sets the kind of workspace that should be init
 
 
 ## library-theme
@@ -500,16 +501,18 @@ Option | Type | Default | Description
 storybook | boolean | false | Add storybook support
 
 
-## pwa-init
+## init-pwa
 > Init a application for pwa use
 
 ```
-ng g @rxap/schematics:pwa-init
+ng g @rxap/schematics:init-pwa
 ```
 
 Option | Type | Default | Description
 --- | --- | --- | ---
 project | string | pwa | Project name
+overwrite | boolean | false | Whether to overwrite an existing files.
+material | boolean | true | Whether the @angular/material package should be installed.
 
 
 ## library
@@ -717,5 +720,16 @@ Option | Type | Default | Description
 --- | --- | --- | ---
 init | boolean | true | Whether the workspace init schematic should be executed
 overwrite | boolean | false | Whether to overwrite an existing files.
+
+
+## init-custom-material-theme
+> Init the project custom material theme support.
+
+```
+ng g @rxap/schematics:init-custom-material-theme
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
 
 
