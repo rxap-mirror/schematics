@@ -19,6 +19,7 @@ import {
   UpdateAngularJson
 } from '@rxap/schematics-utilities';
 import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
+import { MergeWithEnvFile } from '../../../../utilities/src';
 
 export default function(options: InitSchema): Rule {
 
@@ -72,11 +73,9 @@ export default function(options: InitSchema): Rule {
       }),
       AddPackageJsonScript('jest', 'jest'),
       AddPackageJsonScript('ng', 'env-cmd ng'),
-      tree => {
-        if (!tree.exists('.env')) {
-          tree.create('.env', '');
-        }
-      },
+      MergeWithEnvFile({
+        'NX_WORKSPACE_ROOT_PATH': process.cwd()
+      }),
       InstallNodePackages(),
     ]);
 
