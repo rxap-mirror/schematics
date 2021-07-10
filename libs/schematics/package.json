@@ -8,15 +8,15 @@
     ]
   },
   "schematics": "./collection.json",
-  "peerDependencies": {
-    "typescript": "^4.2.4"
-  },
+  "peerDependencies": {},
   "dependencies": {
     "@rxap/schematics-ts-morph": "^12.2.0",
+    "@rxap/schematics-utilities": "^12.4.2",
     "@rxap/utilities": "^12.2.0",
     "parse5": "^6.0.1",
     "ts-morph": "^11.0.0",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "typescript": "^4.2.4"
   },
   "license": "MIT",
   "keywords": [
