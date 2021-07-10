@@ -22,3 +22,4 @@ export * from './lib/builders-json-file';
 export * from './lib/guess-builder-root';
 export * from './lib/guess-project-source-root';
 export { InstallPeerDependencies } from './lib/install-peer-dependencies';
+export * from './lib/env-file';
