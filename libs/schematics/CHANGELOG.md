@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.8](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.7...@rxap/schematics@12.8.8) (2021-07-10)
+
+
+### Bug Fixes
+
+* typescript dependency system ([125838a](https://gitlab.com/rxap/packages/commit/125838a448023347ddfe7a8c17181eaaeea38677))
+* **init:** default to style to scss ([cfac77f](https://gitlab.com/rxap/packages/commit/cfac77fc7e9639e19e72b7d0e536488a3a1861ec))
+* **init:** set nx workspace root path env ([357fa18](https://gitlab.com/rxap/packages/commit/357fa18a7c168acd5a47acd0698351254bb51aff))
+
+
+
+
+
 ## [12.8.7](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.6...@rxap/schematics@12.8.7) (2021-07-09)
 
 

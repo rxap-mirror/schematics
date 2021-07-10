@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.4.2...@rxap/schematics-utilities@12.5.0) (2021-07-10)
+
+
+### Features
+
+* add env file utility ([7ef37c6](https://gitlab.com/rxap/packages/commit/7ef37c6e2620c2e082ac475aa356befbcd76a49c))
+
+
+
+
+
 ## [12.4.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.4.1...@rxap/schematics-utilities@12.4.2) (2021-07-09)
 
 
