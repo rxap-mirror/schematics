@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-utilities",
-  "version": "12.4.2",
+  "version": "12.5.0",
   "dependencies": {
     "@rxap/utilities": "^12.2.0",
     "semver": "^7.3.5",
