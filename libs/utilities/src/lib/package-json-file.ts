@@ -1,12 +1,11 @@
-import { chain, noop, Rule, Tree } from '@angular-devkit/schematics';
+import { Rule, Tree } from '@angular-devkit/schematics';
 import { PackageJson } from './package-json';
-import { dirname, join } from 'path';
+import { join } from 'path';
 import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
 import { CoerceProperty } from '@rxap/utilities';
 import { exec } from 'child_process';
 import gt from 'semver/functions/gt';
-import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
-import { CollectionJson } from './collection-json';
+import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 
 export function GetPackageJson(host: Tree, basePath: string = ''): PackageJson {
   return GetJsonFile(host, join(basePath, 'package.json'));
@@ -116,47 +115,6 @@ export function AddPackageJsonDevDependency(
 export function InstallNodePackages(): Rule {
   return (_, context) => {
     context.addTask(new NodePackageInstallTask());
-  }
-}
-
-export function InstallPeerDependencies(): Rule {
-  return (host, context) => {
-    const packageJson = require(join(context.schematic.description.collection.name, 'package.json'));
-
-    const peerDependencies = packageJson.peerDependencies ?? {};
-
-    return chain([
-      chain(Object.entries(peerDependencies as Record<string, string>).map(([ name, version ]: [ string, string ]) => {
-        if (packageJson['ng-add']?.save === 'devDependency') {
-          return AddPackageJsonDevDependency(name, version);
-        } else {
-          return AddPackageJsonDependency(name, version);
-        }
-      })),
-      (tree, context) => {
-        const installTaskId = context.addTask(new NodePackageInstallTask());
-        Object.keys(peerDependencies).map(name => {
-          let peerPackageDirname: string;
-          let peerPackageJson: PackageJson;
-          try {
-            peerPackageDirname = dirname(require.resolve(join(name, 'package.json')));
-            peerPackageJson = require(join(name, 'package.json'));
-          } catch (e) {
-            console.warn(`Could not resolve the peerDependency '${name}'.`);
-            return noop();
-          }
-          if (peerPackageJson.schematics) {
-            const peerCollectionJsonFilePath = join(peerPackageDirname, peerPackageJson.schematics);
-            if (tree.exists(peerCollectionJsonFilePath)) {
-              const collectionJson = GetJsonFile<CollectionJson>(tree, peerCollectionJsonFilePath);
-              if (collectionJson.schematics['ng-add']) {
-                context.addTask(new RunSchematicTask(name, 'ng-add', {}), [ installTaskId ])
-              }
-            }
-          }
-        })
-      },
-    ]);
   }
 }
 
