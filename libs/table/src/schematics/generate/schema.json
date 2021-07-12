@@ -6,11 +6,7 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "",
-      "$default": {
-        "$source": "argv",
-        "index": 0
-      }
+      "description": "The component name for the table component"
     },
     "path": {
       "type": "string",
@@ -20,8 +16,17 @@
     },
     "templateBasePath": {
       "type": "string",
-      "description": "a template base path",
+      "description": "The base path to search for included templates",
       "visible": false
+    },
+    "skipTests": {
+      "type": "boolean",
+      "description": "When true, does not create \"spec.ts\" test files for the new component.",
+      "default": true
+    },
+    "stories": {
+      "type": "boolean",
+      "default": false
     },
     "flat": {
       "type": "boolean",
@@ -30,25 +35,31 @@
     },
     "overwrite": {
       "type": "boolean",
-      "description": "",
+      "description": "Whether existing files and properties should be overwritten",
       "default": false
     },
     "skipTsFiles": {
       "type": "boolean",
-      "description": "",
+      "description": "Skip the creation or update of typescript files",
       "default": false
     },
     "project": {
       "type": "string",
-      "description": ""
+      "description": "The name of the project where the table component should be generated."
     },
     "template": {
       "type": "string",
-      "format": "path"
+      "format": "path",
+      "description": "Path to the table template xml file.",
+      "x-prompt": "Enter the path to the table template xml file:",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
     },
     "openApiModule": {
       "type": "string",
-      "description": ""
+      "description": "The project name for the OpenApi RemoteMethods and Directives"
     },
     "organizeImports": {
       "type": "boolean",
@@ -64,7 +75,6 @@
     }
   },
   "required": [
-    "template",
-    "project"
+    "template"
   ]
 }

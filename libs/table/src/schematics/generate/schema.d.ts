@@ -11,4 +11,6 @@ export interface GenerateSchema {
   fixImports: boolean;
   format: boolean;
   templateBasePath: string | undefined;
+  skipTests: boolean;
+  stories: boolean;
 }

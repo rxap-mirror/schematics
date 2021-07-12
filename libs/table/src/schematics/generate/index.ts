@@ -14,7 +14,6 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { IndentationText, Project, QuoteKind } from 'ts-morph';
@@ -23,21 +22,30 @@ import { TableSystemElements } from './elements/elements';
 import { TableElement } from './elements/table.element';
 import { ApplyTsMorphProject, FixMissingImports, } from '@rxap/schematics-ts-morph';
 import { ParseTemplate } from '@rxap/schematics-xml-parser';
-import { GetAngularJson } from '@rxap/schematics-utilities';
+import { GetAngularJson, GetProjectRoot, GuessProjectName } from '@rxap/schematics-utilities';
 
 const { dasherize } = strings;
 
 export default function (options: GenerateSchema): Rule {
+
   return async (host: Tree) => {
-    const projectRootPath = await createDefaultPath(
-      host,
-      options.project as string
-    );
+    const projectName = GuessProjectName(host, options);
+    const projectRootPath = GetProjectRoot(host, projectName);
+
+    const basePathList: string[] = [];
+
+    if (options.templateBasePath) {
+      basePathList.push(options.templateBasePath);
+    }
+    if (options.path) {
+      // Hack to go out of the templates base folder
+      basePathList.push(join('..', options.path));
+    }
 
     const tableElement = ParseTemplate<TableElement>(
       host,
       options.template,
-      options.templateBasePath,
+      basePathList,
       ...TableSystemElements
     );
 
@@ -97,12 +105,14 @@ export default function (options: GenerateSchema): Rule {
       hasComponentModule
         ? noop()
         : externalSchematic('@rxap/schematics', 'component-module', {
-            path: options.path.replace(/^\//, ''),
-            project: options.project,
-            name: dasherize(options.name) + '-table',
-            theme: false,
-            flat: true,
-          }),
+          path: options.path.replace(/^\//, ''),
+          project: projectName,
+          name: dasherize(options.name) + '-table',
+          theme: false,
+          flat: true,
+          stories: options.stories,
+          skipTests: options.skipTests,
+        }),
       mergeWith(
         apply(url('./files'), [
           applyTemplates({
@@ -127,18 +137,18 @@ export default function (options: GenerateSchema): Rule {
       ),
       tableElement.hasFilter
         ? externalSchematic('@rxap/schematics-form', 'generate', {
-            path: path.replace(/^\//, ''),
-            formElement: tableElement.createFormElement(),
-            component: false,
-            project: options.project,
-            flat: true,
-            organizeImports: false,
-            fixImports: false,
-            format: false,
-            templateBasePath: options.templateBasePath,
-            overwrite: options.overwrite,
-            skipTsFiles: options.skipTsFiles,
-          })
+          path: path.replace(/^\//, ''),
+          formElement: tableElement.createFormElement(),
+          component: false,
+          project: projectName,
+          flat: true,
+          organizeImports: false,
+          fixImports: false,
+          format: false,
+          templateBasePath: options.templateBasePath,
+          overwrite: options.overwrite,
+          skipTsFiles: options.skipTsFiles,
+        })
         : noop(),
       tableElement.toValue({ project, options }),
       options.skipTsFiles
