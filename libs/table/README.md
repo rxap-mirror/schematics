@@ -32,15 +32,17 @@ ng g @rxap/schematics-table:generate
 
 Option | Type | Default | Description
 --- | --- | --- | ---
-name | string |  | 
+name | string |  | The component name for the table component
 path | string |  | 
-templateBasePath | string |  | a template base path
+templateBasePath | string |  | The base path to search for included templates
+skipTests | boolean | true | When true, does not create &quot;spec.ts&quot; test files for the new component.
+stories | boolean | false | 
 flat | boolean | false | 
-overwrite | boolean | false | 
-skipTsFiles | boolean | false | 
-project | string |  | 
-template | string |  | 
-openApiModule | string |  | 
+overwrite | boolean | false | Whether existing files and properties should be overwritten
+skipTsFiles | boolean | false | Skip the creation or update of typescript files
+project | string |  | The name of the project where the table component should be generated.
+template | string |  | Path to the table template xml file.
+openApiModule | string |  | The project name for the OpenApi RemoteMethods and Directives
 organizeImports | boolean | true | 
 fixImports | boolean | true | 
 format | boolean | true | 
@@ -48,7 +50,6 @@ format | boolean | true |
 | Required |
 | --- |
 | template |
-| project |
 
 ## ng-add
 > Setup the package @rxap/schematics-table for the workspace.
