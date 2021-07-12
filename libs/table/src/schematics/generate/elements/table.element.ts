@@ -14,17 +14,17 @@ import { FeatureElement } from './features/feature.element';
 import { GenerateSchema } from '../schema';
 import { AdapterElement } from './adapter.element';
 import {
-  ToValueContext,
-  FindComponentSourceFile,
   AddComponentAnimations,
-  FindComponentModuleSourceFile,
-  AddNgModuleImport,
-  AddDir,
-  AddComponentProvider,
-  AddComponentInput,
   AddComponentFakeProvider,
+  AddComponentInput,
+  AddComponentProvider,
+  AddDir,
+  AddNgModuleImport,
   CoerceMethodClass,
   CoerceSourceFile,
+  FindComponentModuleSourceFile,
+  FindComponentSourceFile,
+  ToValueContext,
 } from '@rxap/schematics-ts-morph';
 import { FormElement } from '@rxap/schematics-form';
 import { chain, Rule } from '@angular-devkit/schematics';
@@ -265,16 +265,13 @@ export class TableElement implements ParsedElement<Rule> {
 
   public toValue({ project, options }: ToValueContext<GenerateSchema>): Rule {
     return chain([
-      (tree) =>
-        AddDir(
-          tree.getDir(options.path!),
-          project,
-          undefined,
-          (pathFragment) => !!pathFragment.match(/\.ts$/)
-        ),
-      chain(this.columns.map((column) => column.toValue({ project, options }))),
-      chain(
-        this.features?.map((node) => node.toValue({ project, options })) ?? []
+      (tree) => AddDir(tree.getDir(options.path!), project),
+      chain(this
+        .columns
+        .map((column) => column.toValue({ project, options }))),
+      chain(this
+        .features
+        ?.map((node) => node.toValue({ project, options })) ?? []
       ),
       () => this.handleComponent(project, options),
       () => this.handleComponentModule(project, options),
