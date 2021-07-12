@@ -304,11 +304,11 @@ export class TableElement implements ParsedElement<Rule> {
         AddComponentFakeProvider(
           sourceFile,
           {
-            provide: 'TABLE_REMOTE_METHOD',
+            provide: 'RXAP_TABLE_METHOD',
             useClass: mockClassName,
           },
           {
-            provide: 'TABLE_REMOTE_METHOD',
+            provide: 'RXAP_TABLE_METHOD',
             useClass: this.method.toValue({ sourceFile, project, options }),
           },
           ['table', this.name].join('.'),
@@ -318,7 +318,7 @@ export class TableElement implements ParsedElement<Rule> {
               namedImports: [mockClassName],
             },
             {
-              namedImports: ['TABLE_REMOTE_METHOD'],
+              namedImports: [ 'RXAP_TABLE_METHOD' ],
               moduleSpecifier: '@rxap/material-table-system',
             },
           ],
@@ -362,12 +362,12 @@ export class TableElement implements ParsedElement<Rule> {
         AddComponentProvider(
           sourceFile,
           {
-            provide: 'TABLE_REMOTE_METHOD',
+            provide: 'RXAP_TABLE_METHOD',
             useClass: this.method.toValue({ sourceFile, project, options }),
           },
           [
             {
-              namedImports: ['TABLE_REMOTE_METHOD'],
+              namedImports: [ 'RXAP_TABLE_METHOD' ],
               moduleSpecifier: '@rxap/material-table-system',
             },
           ],
