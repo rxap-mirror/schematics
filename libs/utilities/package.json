@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-utilities",
-  "version": "12.5.0",
+  "version": "12.5.1-next.0",
   "dependencies": {
     "@rxap/utilities": "^12.2.0",
     "semver": "^7.3.5",
@@ -34,6 +34,5 @@
       "@rxap/utilities"
     ],
     "migrations": "./migration.json"
-  },
-  "peerDependencies": {}
+  }
 }

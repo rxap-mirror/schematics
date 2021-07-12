@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-xml-parser@12.0.8...@rxap/schematics-xml-parser@12.1.0-next.0) (2021-07-12)
+
+
+### Features
+
+* **parse-template:** support multiple base template paths ([24773c4](https://gitlab.com/rxap/packages/commit/24773c426793a0840db06774633be9ccd6383682))
+
+
+
+
+
 ## [12.0.8](https://gitlab.com/rxap/packages/compare/@rxap/schematics-xml-parser@12.0.8-next.0...@rxap/schematics-xml-parser@12.0.8) (2021-06-29)
 
 **Note:** Version bump only for package @rxap/schematics-xml-parser

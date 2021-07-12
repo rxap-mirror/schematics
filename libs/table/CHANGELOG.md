@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.1.0...@rxap/schematics-table@12.2.0-next.0) (2021-07-12)
+
+
+### Bug Fixes
+
+* **generate:** replace deprecated properties ([b19efc3](https://gitlab.com/rxap/schematics/commit/b19efc35f9597236e82ddfba9298c00db26e4b23))
+
+
+### Features
+
+* **generate:** support inline generation ([7de8359](https://gitlab.com/rxap/schematics/commit/7de8359af2312a15f202e573b8ea4fb178ce12f4))
+* **table-element:** remove default method parameters ([18a413e](https://gitlab.com/rxap/schematics/commit/18a413eae374cbe2d65f35ab663f20312f975ff1))
+
+
+
+
+
 # [12.1.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.1.0-next.0...@rxap/schematics-table@12.1.0) (2021-06-29)
 
 **Note:** Version bump only for package @rxap/schematics-table

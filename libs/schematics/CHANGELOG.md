@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.8.9-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.8...@rxap/schematics@12.8.9-next.0) (2021-07-12)
+
+
+### Bug Fixes
+
+* typescript dependency system ([e726d66](https://gitlab.com/rxap/packages/commit/e726d66d29142a952e3af322e9a7c01dc4381c68))
+
+
+
+
+
 ## [12.8.8](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.7...@rxap/schematics@12.8.8) (2021-07-10)
 
 

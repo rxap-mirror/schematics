@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics",
-  "version": "12.8.8",
+  "version": "12.8.9-next.0",
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [
@@ -8,10 +8,8 @@
     ]
   },
   "schematics": "./collection.json",
-  "peerDependencies": {},
   "dependencies": {
     "@rxap/schematics-ts-morph": "^12.2.0",
-    "@rxap/schematics-utilities": "^12.4.2",
     "@rxap/utilities": "^12.2.0",
     "parse5": "^6.0.1",
     "ts-morph": "^11.0.0",
@@ -37,5 +35,9 @@
   },
   "ng-add": {
     "save": "devDependencies"
+  },
+  "peerDependencies": {
+    "@nrwl/storybook": "^12.5.7",
+    "depcheck": "^1.4.2"
   }
 }
