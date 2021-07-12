@@ -1,12 +1,6 @@
-import {
-  ParsedElement,
-  XmlParserService
-} from '@rxap/xml-parser';
-import { Constructor } from '@rxap/utilities';
-import {
-  Tree,
-  DirEntry
-} from '@angular-devkit/schematics';
+import { ParsedElement, XmlParserService } from '@rxap/xml-parser';
+import { coerceArray, Constructor } from '@rxap/utilities';
+import { DirEntry, Tree } from '@angular-devkit/schematics';
 import { join } from 'path';
 
 export function FindTemplate(template: string, host: Tree, basePath: string | undefined, baseDirEntry: DirEntry = host.getDir('templates')): string | null {
@@ -78,18 +72,24 @@ export function FindTemplate(template: string, host: Tree, basePath: string | un
 export function ParseTemplate<T extends ParsedElement>(
   host: Tree,
   template: string,
-  basePath: string | undefined,
+  basePath: string | string[] | undefined,
   ...elements: Array<Constructor<ParsedElement>>
 ): T {
 
   let templateFile: string;
   let filename                        = '__inline__';
   let templateFilePath: string | null = template;
+  const basePathList = coerceArray(basePath);
 
   if (template.match(/\.xml$/)) {
 
     if (!host.exists(template)) {
-      templateFilePath = FindTemplate(template, host, basePath);
+      for (const bp of basePathList) {
+        templateFilePath = FindTemplate(template, host, bp);
+        if (templateFilePath) {
+          break;
+        }
+      }
     }
 
     if (!templateFilePath) {
