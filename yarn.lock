@@ -2468,14 +2468,13 @@
     "@rxap/schematics-utilities" "^12.1.0"
     tslib "^2.2.0"
 
-"@rxap/json-schema-to-typescript@^12.0.7":
-  version "12.0.7"
-  resolved "https://registry.yarnpkg.com/@rxap/json-schema-to-typescript/-/json-schema-to-typescript-12.0.7.tgz#04c57430f834e1c437c2cfbc3e9303f8e5b2543f"
-  integrity sha512-KUg7ArBU34OitWUkW9qePis4P9qG0HWf8GBYIgC81npdC24yz8JiWWygmYCnL+r3CL7g+/7TOSZ7OyOUXB4kYA==
+"@rxap/json-schema-to-typescript@^12.0.8":
+  version "12.0.8"
+  resolved "https://registry.yarnpkg.com/@rxap/json-schema-to-typescript/-/json-schema-to-typescript-12.0.8.tgz#2a1862e83b880a170851245c444a17d2d7026930"
+  integrity sha512-OFawNOSJJbrfKicOpkEkU+KPu89KaAkNoLXQFRHkk+QK+R28ms/YwIC2YwYVh/Ki1CojlgZns9BlsLpaqslIiw==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.7"
-    "@rxap/schematics-utilities" "^12.1.0"
-    ts-morph "^10.1.0"
+    "@rxap/schematics-utilities" "^12.4.0"
     tslib "^2.2.0"
 
 "@rxap/mixin@^12.0.7":
