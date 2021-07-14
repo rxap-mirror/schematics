@@ -1,27 +1,31 @@
 import {
-  SourceFile,
-  OptionalKind,
   ImportDeclarationStructure,
+  OptionalKind,
   Scope,
-  WriterFunction,
-  StatementStructures
+  SourceFile,
+  StatementStructures,
+  TypeParameteredNodeStructure,
+  WriterFunction
 } from 'ts-morph';
 import { CoerceSuffix } from '@rxap/utilities';
 
-export interface AddMethodClassOptions {
+export interface AddMethodClassOptions extends TypeParameteredNodeStructure {
   structures?: ReadonlyArray<OptionalKind<ImportDeclarationStructure>>;
   returnType?: string;
   parameterType?: string;
   isAsync?: boolean;
-  statements?: (string | WriterFunction | StatementStructures)[] | string | WriterFunction | null
+  statements?: (string | WriterFunction | StatementStructures)[] | string | WriterFunction | null;
+  implements?: string[];
 }
 
 export const DEFAULT_ADD_METHOD_CLASS_OPTIONS: Required<AddMethodClassOptions> = {
-  structures:    [],
-  returnType:    'any',
+  structures: [],
+  returnType: 'any',
   parameterType: 'any',
-  isAsync:       false,
-  statements:    null
+  isAsync: false,
+  statements: null,
+  implements: [],
+  typeParameters: [],
 };
 
 export function AddMethodClass(
@@ -35,20 +39,24 @@ export function AddMethodClass(
   name = CoerceSuffix(name, 'Method');
 
   sourceFile.addClass({
-    name:       name,
+    name: name,
     isExported: true,
     decorators: [
       {
-        name:      'Injectable',
+        name: 'Injectable',
         arguments: []
       }
     ],
-    implements: [ `Method<${parameters.returnType}, ${parameters.parameterType}>` ],
-    methods:    [
+    typeParameters: parameters.typeParameters,
+    implements: [
+      `Method<${parameters.returnType}, ${parameters.parameterType}>`,
+      ...parameters.implements,
+    ],
+    methods: [
       {
-        name:       'call',
-        isAsync:    parameters.isAsync,
-        scope:      Scope.Public,
+        name: 'call',
+        isAsync: parameters.isAsync,
+        scope: Scope.Public,
         parameters: [ { name: 'parameters', type: parameters.parameterType } ],
         returnType: parameters.isAsync ? `Promise<${parameters.returnType}>` : parameters.returnType,
         statements: parameters.statements ?? []
@@ -62,7 +70,7 @@ export function AddMethodClass(
     },
     {
       namedImports:    [ 'Method' ],
-      moduleSpecifier: '@rxap/utilities'
+      moduleSpecifier: '@rxap/utilities/rxjs'
     }
   ]);
   sourceFile.addImportDeclarations(parameters.structures);
