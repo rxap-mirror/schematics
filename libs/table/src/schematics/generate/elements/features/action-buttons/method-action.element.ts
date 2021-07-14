@@ -1,27 +1,24 @@
 import { ElementChild } from '@rxap/xml-parser/decorators';
-import { ActionButtonElement } from './action-button.element';
-import {
-  ImportDeclarationStructure,
-  OptionalKind,
-  SourceFile
-} from 'ts-morph';
+import { AbstractActionButtonElement } from './action-button.element';
+import { ImportDeclarationStructure, OptionalKind, SourceFile } from 'ts-morph';
 import { RouterLinkElement } from '../../router-link.element';
 import {
-  ToValueContext,
-  ProviderObject,
+  AddComponentFakeProvider,
   AddComponentProvider,
-  CoerceSourceFile,
   CoerceMethodClass,
-  AddComponentFakeProvider
+  CoerceSourceFile,
+  ProviderObject,
+  ToValueContext
 } from '@rxap/schematics-ts-morph';
 import { CoerceSuffix } from '@rxap/utilities';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { MethodElement } from '@rxap/schematics-xml-parser';
+import { StringOrFactory } from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize } = strings;
 
-export abstract class MethodActionElement extends ActionButtonElement {
+export abstract class MethodActionElement extends AbstractActionButtonElement {
 
   @ElementChild(MethodElement)
   public method?: MethodElement;
@@ -112,6 +109,10 @@ export abstract class MethodActionElement extends ActionButtonElement {
         options.overwrite
       );
     }
+  }
+
+  public template(...attributes: StringOrFactory[]): string {
+    return '';
   }
 
 }

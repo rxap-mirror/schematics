@@ -1,40 +1,32 @@
 import {
+  ElementAttribute,
+  ElementChild,
   ElementDef,
   ElementExtends,
-  ElementChild,
   ElementRequired,
-  ElementTextContent,
-  ElementAttribute
+  ElementTextContent
 } from '@rxap/xml-parser/decorators';
-import { ActionButtonElement } from './action-button.element';
+import { AbstractActionButtonElement } from './action-button.element';
 import { MethodActionElement } from './method-action.element';
 import { ParsedElement } from '@rxap/xml-parser';
 import {
-  HandleComponentModule,
-  HandleComponent,
-  ToValueContext,
-  AddComponentProvider,
   AddComponentFakeProvider,
-  ProviderObject,
+  AddComponentProvider,
+  CoerceMethodClass,
   CoerceSourceFile,
-  CoerceMethodClass
+  HandleComponent,
+  HandleComponentModule,
+  ProviderObject,
+  ToValueContext
 } from '@rxap/schematics-ts-morph';
-import {
-  Rule,
-  chain,
-  noop
-} from '@angular-devkit/schematics';
+import { chain, noop, Rule } from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { GenerateSchema } from '../../../schema';
 import { WindowFormElement } from '../window-form.element';
 import { join } from 'path';
-import { TableElement } from '../../table.element';
 import { CoerceSuffix } from '@rxap/utilities';
-import {
-  OpenApiRemoteMethodElement,
-  ModuleElement
-} from '@rxap/schematics-xml-parser';
+import { ModuleElement, OpenApiRemoteMethodElement } from '@rxap/schematics-xml-parser';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -184,7 +176,7 @@ export class MfdLoaderElement extends EditActionLoaderElement {
 
 }
 
-@ElementExtends(ActionButtonElement)
+@ElementExtends(AbstractActionButtonElement)
 @ElementDef('edit-action')
 export class EditActionElement extends MethodActionElement {
 

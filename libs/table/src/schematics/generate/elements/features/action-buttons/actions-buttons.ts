@@ -4,7 +4,7 @@ import { ArchiveActionElement } from './archive-action.element';
 import { DeleteActionElement } from './delete-action.element';
 import { RestoreActionElement } from './restore-action.element';
 import { ViewActionElement } from './view-action.element';
-import { ActionButtonElement } from './action-button.element';
+import { AbstractActionButtonElement, ActionButtonElement } from './action-button.element';
 import { EditActionElement } from './edit-action.element';
 import { ActionButtonsElement } from './action-buttons.element';
 
@@ -13,6 +13,7 @@ export const ActionsButtons: Array<Constructor<ParsedElement>> = [
   DeleteActionElement,
   RestoreActionElement,
   ViewActionElement,
+  AbstractActionButtonElement,
   ActionButtonElement,
   EditActionElement,
   ActionButtonsElement
