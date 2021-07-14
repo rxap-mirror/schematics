@@ -1,33 +1,21 @@
 import { GroupElement } from './group.element';
 import {
-  ElementDef,
-  ElementExtends,
+  ElementChild,
+  ElementChildRawContent,
   ElementChildren,
   ElementChildTextContent,
-  ElementChild,
+  ElementDef,
+  ElementExtends,
 } from '@rxap/xml-parser/decorators';
 import { NodeElement } from './node.element';
-import {
-  ToValueContext,
-  AddDir,
-  AddNgModuleImport,
-  AddComponentProvider,
-} from '@rxap/schematics-ts-morph';
+import { AddComponentProvider, AddDir, AddNgModuleImport, ToValueContext, } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
-import {
-  chain,
-  Rule,
-  noop,
-  externalSchematic,
-} from '@angular-devkit/schematics';
+import { chain, externalSchematic, noop, Rule, } from '@angular-devkit/schematics';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { GenerateSchema } from '../schema';
 import { FormFeatureElement } from './features/form-feature.element';
-import {
-  SubmitHandleMethod,
-  LoadHandleMethod,
-} from '../../generate/elements/form.element';
+import { LoadHandleMethod, SubmitHandleMethod, } from '../../generate/elements/form.element';
 import { NodeFactory } from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize, capitalize } = strings;
@@ -40,6 +28,11 @@ export class FormElement extends GroupElement {
 
   @ElementChildTextContent()
   public form?: string;
+
+  @ElementChildRawContent({
+    tag: 'template'
+  })
+  public logicTemplate?: string;
 
   @ElementChild(SubmitHandleMethod)
   public submit?: SubmitHandleMethod;
@@ -124,7 +117,7 @@ export class FormElement extends GroupElement {
       externalSchematic('@rxap/schematics-form', 'generate', {
         project: options.project,
         name: options.name,
-        template: join('forms', dasherize(this.form ?? this.name) + '.xml'),
+        template: this.logicTemplate ?? join('forms', dasherize(this.form ?? this.name) + '.xml'),
         path: options.path?.replace(/^\//, '') ?? '',
         flat: true,
         organizeImports: false,
