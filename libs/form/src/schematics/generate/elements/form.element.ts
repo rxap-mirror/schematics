@@ -1,41 +1,31 @@
 import {
-  ElementDef,
-  ElementChildren,
   ElementAttribute,
-  ElementRequired,
-  ElementTextContent,
   ElementChild,
-  ElementChildTextContent
+  ElementChildren,
+  ElementChildTextContent,
+  ElementDef,
+  ElementRequired,
+  ElementTextContent
 } from '@rxap/xml-parser/decorators';
 import { ControlElement } from './control.element';
 import { ParsedElement } from '@rxap/xml-parser';
-import {
-  ClassDeclaration,
-  Scope,
-  SourceFile,
-  Project,
-  OptionalKind,
-  ImportDeclarationStructure
-} from 'ts-morph';
+import { ClassDeclaration, ImportDeclarationStructure, OptionalKind, Project, Scope, SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { FeatureElement } from './features/feature.element';
 import {
-  AddToFormProviders,
-  GetFormProvidersFile,
-  ToValueContext,
-  AddVariableProvider,
-  HandleComponent,
-  AddComponentProvider,
-  ProviderObject,
-  AddVariableFakeProvider,
   AddComponentFakeProvider,
+  AddComponentProvider,
+  AddToFormProviders,
+  AddVariableFakeProvider,
+  AddVariableProvider,
+  CoerceMethodClass,
   CoerceSourceFile,
-  CoerceMethodClass
+  GetFormProvidersFile,
+  HandleComponent,
+  ProviderObject,
+  ToValueContext
 } from '@rxap/schematics-ts-morph';
-import {
-  Rule,
-  noop
-} from '@angular-devkit/schematics';
+import { noop, Rule } from '@angular-devkit/schematics';
 import { GenerateSchema } from '../schema';
 import { HandleFormProviders } from './types';
 import { CoerceSuffix } from '@rxap/utilities';
@@ -392,7 +382,7 @@ export class FormElement implements ParsedElement<ClassDeclaration> {
         // TODO : add return type
         returnType: formName,
         statements: [
-          `return new RxapFormBuilder(${formName}, injector).build(state ?? {});`
+          `return new RxapFormBuilder<I${formName}>(${formName}, injector).build(state ?? {});`
         ]
       });
       formProviderSourceFile.addImportDeclarations([
@@ -454,7 +444,7 @@ export class FormElement implements ParsedElement<ClassDeclaration> {
         // TODO : add return type
         returnType: `RxapFormBuilder<${formName}>`,
         statements: [
-          `return new RxapFormBuilder(${formName}, injector);`
+          `return new RxapFormBuilder<I${formName}>(${formName}, injector);`
         ]
       });
     }
