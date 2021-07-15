@@ -1,9 +1,4 @@
-import {
-  ElementChild,
-  ElementDef,
-  ElementExtends,
-  ElementRequired,
-} from '@rxap/xml-parser/decorators';
+import { ElementChild, ElementDef, ElementExtends, } from '@rxap/xml-parser/decorators';
 import { SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
@@ -11,7 +6,8 @@ import { OptionsElement } from '@rxap/xml-parser/elements';
 import { ElementFactory } from '@rxap/xml-parser';
 import { ColumnElement } from './column.element';
 import { FilterElement } from './filters/filter.element';
-import { NodeFactory } from '@rxap/schematics-html';
+import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
+import { SchematicsException } from '@angular-devkit/schematics';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
@@ -21,46 +17,24 @@ export class OptionsColumnElement extends ColumnElement {
   @ElementChild(OptionsElement)
   public options!: OptionsElement;
 
-  public template(): string {
-    const attributes: Array<string | (() => string)> = [
-      'mat-header-cell',
-      '*matHeaderCellDef',
-    ];
+  public rowAttributeTemplate(): Array<string | (() => string)> {
+    return [ ...super.rowAttributeTemplate(),
+      `[rxap-options-cell]="element${this.valueAccessor}"`, ]
+  }
 
-    if (this.__parent.hasFeature('sort')) {
-      attributes.push('mat-sort-header');
-    }
+  public innerRowTemplate(): Array<Partial<WithTemplate> | string> {
 
     if (!this.options.options) {
-      throw new Error('The options-column has not any defined option');
+      throw new SchematicsException('The options-column has not any defined option');
     }
 
-    return (
+    return this.options.options.map((option) =>
       NodeFactory(
-        'th',
-        ...attributes
-      )(
-        '\n' +
-          '<ng-container i18n>' +
-          capitalize(this.name) +
-          '</ng-container>' +
-          '\n'
-      ) +
-      NodeFactory(
-        'td',
-        'mat-cell',
-        `[rxap-options-cell]="element${this.valueAccessor}"`,
-        '*matCellDef="let element"'
-      )(
-        this.options.options.map((option) =>
-          NodeFactory(
-            'mat-option',
-            typeof option.value === 'string'
-              ? `value="${option.value}"`
-              : `[value]="${option.value}"`
-          )(option.display)
-        )
-      )
+        'mat-option',
+        typeof option.value === 'string'
+          ? `value="${option.value}"`
+          : `[value]="${option.value}"`
+      )(option.display)
     );
   }
 

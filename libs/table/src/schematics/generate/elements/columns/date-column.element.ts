@@ -1,36 +1,41 @@
-import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
+import { ElementAttribute, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { ColumnElement } from './column.element';
 import { SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { WithTemplate } from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
 @ElementExtends(ColumnElement)
 @ElementDef('date-column')
 export class DateColumnElement extends ColumnElement {
-  public template(): string {
-    return `
-    <th mat-header-cell
-    *matHeaderCellDef
-    ${this.__parent.hasFeature('sort') ? 'mat-sort-header' : ''}>
-    <ng-container i18n>${capitalize(this.name)}</ng-container>
-    </th>
-    <td mat-cell
-    [rxap-date-cell]="element${this.valueAccessor}"
-    format="dd.MM.yyyy HH:mm:ss"
-    *matCellDef="let element"></td>
-    `;
+
+  @ElementAttribute({
+    defaultValue: 'dd.MM.yyyy HH:mm:ss'
+  })
+  format?: string;
+
+  public rowAttributeTemplate(): Array<string | (() => string)> {
+    return [
+      ...super.rowAttributeTemplate(),
+      `[rxap-date-cell]="element${this.valueAccessor}"`,
+      `format="${this.format}"`
+    ]
+  }
+
+  public innerRowTemplate(): Array<Partial<WithTemplate> | string> {
+    return []
   }
 
   public templateFilter(): string {
     return `
-    <th mat-header-cell *matHeaderCellDef>
-      <mat-form-field rxapNoPadding>
-        <mat-label i18n>${capitalize(this.name)}</mat-label>
-        <input matInput [matDatepicker]="picker" parentControlContainer formControlName="${camelize(
-          this.name
-        )}">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-form-field rxapNoPadding>
+          <mat-label i18n>${capitalize(this.name)}</mat-label>
+          <input matInput [matDatepicker]="picker" parentControlContainer formControlName="${camelize(
+            this.name
+          )}">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

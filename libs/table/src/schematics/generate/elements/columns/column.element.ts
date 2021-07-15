@@ -1,31 +1,28 @@
 import {
   ElementAttribute,
   ElementChild,
+  ElementChildren,
   ElementDef,
   ElementRequired,
 } from '@rxap/xml-parser/decorators';
 import { FilterElement } from './filters/filter.element';
-import { ParsedElement, ElementFactory } from '@rxap/xml-parser';
+import { ElementFactory, ParsedElement } from '@rxap/xml-parser';
 import { strings } from '@angular-devkit/core';
 import { SourceFile } from 'ts-morph';
 import { TableElement } from '../table.element';
 import { ControlElement } from '@rxap/schematics-form';
-import {
-  HandleComponent,
-  HandleComponentModule,
-  AddNgModuleImport,
-  ToValueContext,
-} from '@rxap/schematics-ts-morph';
-import { Rule } from '@angular-devkit/schematics';
+import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext, } from '@rxap/schematics-ts-morph';
+import { chain, Rule } from '@angular-devkit/schematics';
 import { GenerateSchema } from '../../schema';
 import { DisplayColumn } from '../features/feature.element';
+import { FeatureElement } from './features/feature.element';
+import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
 @ElementDef('column')
 export class ColumnElement
-  implements ParsedElement<Rule>, HandleComponentModule, HandleComponent
-{
+  implements ParsedElement<Rule>, HandleComponentModule, HandleComponent {
   public __tag!: string;
   public __parent!: TableElement;
 
@@ -51,6 +48,9 @@ export class ColumnElement
   @ElementChild(FilterElement)
   public filter?: FilterElement;
 
+  @ElementChildren(FeatureElement, { group: 'features' })
+  public features?: FeatureElement[];
+
   protected _name?: string;
 
   public get valueAccessor(): string {
@@ -65,17 +65,52 @@ export class ColumnElement
     };
   }
 
+  public headerAttributeTemplate(): Array<string | (() => string)> {
+    return [
+      'mat-header-cell',
+      '*matHeaderCellDef',
+    ];
+  }
+
+  public rowAttributeTemplate(): Array<string | (() => string)> {
+    return [
+      'mat-cell',
+      '*matCellDef="let element"',
+    ];
+  }
+
+  public innerRowTemplate(): Array<Partial<WithTemplate> | string> {
+    return [ `{{ element${this.valueAccessor} }}` ]
+  }
+
+  public innerHeaderTemplate(): Array<Partial<WithTemplate> | string> {
+    return [ '<ng-container i18n>' + capitalize(this.name) + '</ng-container>' ];
+  }
+
   public template(): string {
-    return `
-    <th mat-header-cell
-    *matHeaderCellDef
-    ${this.__parent.hasFeature('sort') ? 'mat-sort-header' : ''}>
-    <ng-container i18n>${capitalize(this.name)}</ng-container>
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element${
-      this.valueAccessor
-    } }}</td>
-    `;
+    const headerAttributes: Array<string | (() => string)> = [
+      ...this.headerAttributeTemplate(),
+      ...(this.features?.map(feature => feature.headerAttributeTemplate()) ?? []).reduce((a, b) => [ ...a, ...b ], [])
+    ];
+    const rowAttributes: Array<string | (() => string)> = [
+      ...this.rowAttributeTemplate(),
+      ...(this.features?.map(feature => feature.rowAttributeTemplate()) ?? []).reduce((a, b) => [ ...a, ...b ], [])
+    ];
+
+    if (this.__parent.hasFeature('sort')) {
+      headerAttributes.push('mat-sort-header')
+    }
+
+    return [
+      NodeFactory('th', ...headerAttributes)([
+        ...this.innerHeaderTemplate(),
+        ...(this.features?.map(feature => feature.innerHeaderTemplate()) ?? [])
+      ]),
+      NodeFactory('td', ...rowAttributes)([
+        ...this.innerRowTemplate(),
+        ...(this.features?.map(feature => feature.innerRowTemplate()) ?? [])
+      ]),
+    ].join('\n');
   }
 
   public templateFilter(): string {
@@ -103,7 +138,7 @@ export class ColumnElement
   }
 
   public toValue({ project, options }: ToValueContext<GenerateSchema>): Rule {
-    return () => {};
+    return chain(this.features?.map(feature => feature.toValue({ project, options })) ?? []);
   }
 
   public handleComponentModule({
@@ -134,13 +169,16 @@ export class ColumnElement
         '@rxap/material-directives/form-field'
       );
     }
+    this.features?.forEach(feature => feature.handleComponentModule({ sourceFile, project, options }));
   }
 
   public handleComponent({
-    sourceFile,
-    project,
-    options,
-  }: ToValueContext & { sourceFile: SourceFile }) {}
+                           sourceFile,
+                           project,
+                           options,
+                         }: ToValueContext & { sourceFile: SourceFile }) {
+    this.features?.forEach(feature => feature.handleComponent({ sourceFile, project, options }));
+  }
 
   public createControlElement(): ControlElement {
     if (!this.filter) {
