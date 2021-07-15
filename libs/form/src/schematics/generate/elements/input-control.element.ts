@@ -1,12 +1,5 @@
-import {
-  ControlElement,
-  ControlTypeElement
-} from './control.element';
-import {
-  ElementDef,
-  ElementAttribute,
-  ElementExtends
-} from '@rxap/xml-parser/decorators';
+import { ControlElement, ControlTypeElement } from './control.element';
+import { ElementAttribute, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { coerceArray } from '@rxap/utilities';
 import { ElementFactory } from '@rxap/xml-parser';
 import { IsNumberElement } from './validators/is-number.element';
@@ -15,7 +8,10 @@ import { IsNumberElement } from './validators/is-number.element';
 @ElementDef('input-control')
 export class InputControlElement extends ControlElement {
 
-  @ElementAttribute('type')
+  @ElementAttribute({
+    attribute: 'type',
+    defaultValue: 'text'
+  })
   public inputType?: string;
 
   public postParse() {
