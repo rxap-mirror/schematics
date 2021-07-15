@@ -1,7 +1,4 @@
-import {
-  DisplayColumn,
-  FeatureElement
-} from './feature.element';
+import { DisplayColumn, FeatureElement } from './feature.element';
 import {
   ElementAttribute,
   ElementChild,
@@ -9,19 +6,11 @@ import {
   ElementExtends,
   ElementRequired
 } from '@rxap/xml-parser/decorators';
-import {
-  Scope,
-  SourceFile
-} from 'ts-morph';
+import { Scope, SourceFile } from 'ts-morph';
 import { ParsedElement } from '@rxap/xml-parser';
 import { TableElement } from '../table.element';
 import { strings } from '@angular-devkit/core';
-import {
-  ToValueContext,
-  AddNgModuleImport,
-  HandleComponent,
-  AddComponentProvider
-} from '@rxap/schematics-ts-morph';
+import { AddComponentProvider, AddNgModuleImport, HandleComponent, ToValueContext } from '@rxap/schematics-ts-morph';
 import { GenerateSchema } from '../../schema';
 import { MethodElement } from '@rxap/schematics-xml-parser';
 
@@ -138,7 +127,7 @@ export class ChildElement implements ParsedElement, HandleComponent {
         proxyMethodSourceFile.addImportDeclarations([
           {
             namedImports:    [ 'Node' ],
-            moduleSpecifier: '@rxap/utilities'
+            moduleSpecifier: '@rxap/utilities/rxjs'
           },
           {
             namedImports:    [ 'Injectable', 'Inject' ],
@@ -266,7 +255,7 @@ export class RootElement implements ParsedElement, HandleComponent {
         proxyMethodSourceFile.addImportDeclarations([
           {
             namedImports:    [ 'Node' ],
-            moduleSpecifier: '@rxap/utilities'
+            moduleSpecifier: '@rxap/utilities/rxjs'
           },
           {
             namedImports:    [ 'Injectable', 'Inject' ],

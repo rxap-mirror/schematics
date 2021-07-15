@@ -164,8 +164,8 @@ export class TableSelectControlElement extends SelectControlElement {
     );
     openMethodSourceFile.addImportDeclarations([
       {
-        namedImports: ['Method'],
-        moduleSpecifier: '@rxap/utilities',
+        namedImports: [ 'Method' ],
+        moduleSpecifier: '@rxap/utilities/rxjs',
       },
       {
         namedImports: ['WindowTableSelectOptions', 'WindowTableSelectService'],
