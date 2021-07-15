@@ -71,8 +71,8 @@ export class TableElement implements ParsedElement<Rule> {
     return !!this.features?.find((feature) => feature.__tag === name);
   }
 
-  public getFeature(name: string): FeatureElement | undefined {
-    return this.features?.find((feature) => feature.__tag === name);
+  public getFeature<T extends FeatureElement>(name: string): T | undefined {
+    return this.features?.find((feature) => feature.__tag === name) as T;
   }
 
   public get hasFilter(): boolean {

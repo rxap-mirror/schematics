@@ -6,22 +6,10 @@ import {
   ElementRequired,
   ElementTextContent
 } from '@rxap/xml-parser/decorators';
-import {
-  ToValueContext,
-  HandleComponent,
-  HandleComponentModule,
-  AddNgModuleImport
-} from '@rxap/schematics-ts-morph';
-import {
-  Rule,
-  noop,
-  chain
-} from '@angular-devkit/schematics';
+import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
+import { chain, noop, Rule } from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
-import {
-  NodeFactory,
-  WithTemplate
-} from '@rxap/schematics-html';
+import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
 
 @ElementDef('icon')
 export class IconElement implements ParsedElement<Rule>, HandleComponent, HandleComponentModule, WithTemplate {
@@ -73,7 +61,7 @@ export class PrefixElement implements ParsedElement<Rule>, HandleComponent, Hand
       return this.icon.template('matPrefix', ...this.attributes);
     }
     if (this.button) {
-      return NodeFactory('button', 'mat-icon-button', 'matPrefix', ...this.attributes)(this.button.template());
+      return NodeFactory('button', 'tabindex="-1"', 'mat-icon-button', 'matPrefix', ...this.attributes)(this.button.template());
     }
     return '';
   }
@@ -115,7 +103,7 @@ export class SuffixElement implements ParsedElement<Rule>, HandleComponent, Hand
       return this.icon.template('matPrefix');
     }
     if (this.button) {
-      return NodeFactory('button', 'mat-icon-button', 'matPrefix')(this.button.template());
+      return NodeFactory('button', 'tabindex="-1"', 'mat-icon-button', 'matPrefix')(this.button.template());
     }
     return '';
   }

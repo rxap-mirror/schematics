@@ -1,22 +1,9 @@
-import {
-  ElementParser,
-  ParsedElement,
-  RxapElement,
-  XmlParserService
-} from '@rxap/xml-parser';
+import { ElementParser, ParsedElement, RxapElement, XmlParserService } from '@rxap/xml-parser';
 import { strings } from '@angular-devkit/core';
-import {
-  HandleComponent,
-  HandleComponentModule,
-  ToValueContext,
-  AddNgModuleImport,
-} from '@rxap/schematics-ts-morph';
+import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext, } from '@rxap/schematics-ts-morph';
 import { Rule } from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
-import {
-  NodeFactory,
-  WithTemplate
-} from '@rxap/schematics-html';
+import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
@@ -45,7 +32,9 @@ export class ErrorsElement implements ParsedElement<Rule>, HandleComponent, Hand
   public template(): string {
     let template = '';
     for (const [ error, message ] of Object.entries(this.errors)) {
-      template += NodeFactory('mat-error', `*rxapControlError="let error key '${error}'"`, `data-cy="error.${error}"`)(message);
+      template += NodeFactory('mat-error', `*rxapControlError="let error key '${error}'"`, `data-cy="error.${error}"`)(
+        '<ng-container i18n>' + message + '</ng-container>'
+      );
     }
     return template;
   }

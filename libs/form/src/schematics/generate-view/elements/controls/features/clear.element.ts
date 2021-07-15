@@ -1,13 +1,6 @@
 import { ControlFeatureElement } from './control-feature.element';
-import {
-  ElementDef,
-  ElementExtends,
-  ElementAttribute
-} from '@rxap/xml-parser/decorators';
-import {
-  ToValueContext,
-  AddNgModuleImport
-} from '@rxap/schematics-ts-morph';
+import { ElementAttribute, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
 import { NodeFactory } from '@rxap/schematics-html';
 
@@ -19,7 +12,7 @@ export class ClearElement extends ControlFeatureElement {
   public stopPropagation?: boolean;
 
   public template(): string {
-    const attributes: Array<string | (() => string)> = [ 'matSuffix', 'rxapInputClearButton', 'mat-icon-button' ];
+    const attributes: Array<string | (() => string)> = [ 'matSuffix', 'rxapInputClearButton', 'mat-icon-button', 'tabindex="-1"' ];
     if (this.stopPropagation) {
       attributes.push('rxapStopPropagation');
     }

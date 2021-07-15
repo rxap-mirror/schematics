@@ -11,6 +11,7 @@ import { PaginatorElement } from './paginator.element';
 import { SortElement } from './sort.element';
 import { ExpandableRowElement } from './expandable-row.element';
 import { ColumnMenuFeatures } from './column-menu/features';
+import { WithPopoverEditElement } from './with-popover-edit.element';
 
 export const Features: Array<Constructor<ParsedElement>> = [
   FeatureElement,
@@ -22,6 +23,7 @@ export const Features: Array<Constructor<ParsedElement>> = [
   PaginatorElement,
   SortElement,
   ExpandableRowElement,
+  WithPopoverEditElement,
   ...ActionsButtons,
   ...ColumnMenuFeatures,
 ];

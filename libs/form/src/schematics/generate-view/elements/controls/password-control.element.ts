@@ -1,25 +1,14 @@
 import { strings } from '@angular-devkit/core';
 import { PrefixElement } from './form-field/prefix.element';
-import {
-  ElementChild,
-  ElementChildTextContent,
-  ElementDef,
-  ElementExtends
-} from '@rxap/xml-parser/decorators';
+import { ElementChild, ElementChildTextContent, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { NodeElement } from '../node.element';
 import { ControlElement } from './control.element';
 import { ErrorsElement } from './errors.element';
 import { InputControlElement } from './form-field/input-control.element';
-import {
-  ToValueContext,
-  AddNgModuleImport
-} from '@rxap/schematics-ts-morph';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
 import { ElementFactory } from '@rxap/xml-parser';
-import {
-  chain,
-  Rule
-} from '@angular-devkit/schematics';
+import { chain, Rule } from '@angular-devkit/schematics';
 import { NodeFactory } from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize, capitalize } = strings;
@@ -36,6 +25,7 @@ export class PasswordPrefixElement extends PrefixElement {
       'matPrefix',
       'mat-icon-button',
       'type="button"',
+      'tabindex="-1"',
       `(click)="${this.variable}.type === 'password' ? ${this.variable}.type = 'text' : ${this.variable}.type = 'password'"`
     )([
       NodeFactory('mat-icon', `*ngIf="passwordInput.type === 'password'"`)('\nvisibility\n'),
@@ -110,6 +100,7 @@ export class PasswordControlElement extends ControlElement {
   public handleComponentModule({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
     super.handleComponentModule({ project, sourceFile, options });
     AddNgModuleImport(sourceFile, 'FlexLayoutModule', '@angular/flex-layout');
+    AddNgModuleImport(sourceFile, 'CommonModule', '@angular/common');
     AddNgModuleImport(sourceFile, 'IsEqualToDirectiveModule', '@rxap/form-system');
     this.passwordControl.handleComponentModule({ project, sourceFile, options });
     this.passwordValidateControl.handleComponentModule({ project, sourceFile, options });
