@@ -29,7 +29,7 @@ const { dasherize } = strings;
 export default function (options: GenerateSchema): Rule {
 
   return async (host: Tree) => {
-    const projectName = GuessProjectName(host, options);
+    const projectName = options.project = GuessProjectName(host, options);
     const projectRootPath = GetProjectRoot(host, projectName);
 
     const basePathList: string[] = [];

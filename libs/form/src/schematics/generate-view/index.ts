@@ -3,22 +3,19 @@ import { chain, externalSchematic, noop, Rule, SchematicsException, Tree, } from
 import { formatFiles } from '@nrwl/workspace';
 import { Elements } from './elements/elements';
 import { join } from 'path';
-import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { strings } from '@angular-devkit/core';
 import { FormElement } from './elements/form.element';
 import { ApplyTsMorphProject, FixMissingImports, } from '@rxap/schematics-ts-morph';
 import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import { ParseTemplate } from '@rxap/schematics-xml-parser';
-import { GetAngularJson } from '@rxap/schematics-utilities';
+import { GetAngularJson, GetProjectRoot, GuessProjectName } from '@rxap/schematics-utilities';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
 export default function (options: GenerateSchema): Rule {
   return async (host: Tree, context) => {
-    const projectRootPath = await createDefaultPath(
-      host,
-      options.project as string
-    );
+    const projectName = options.project = GuessProjectName(host, options);
+    const projectRootPath = GetProjectRoot(host, projectName);
 
     let path: string = options.path ?? '';
 
@@ -90,12 +87,12 @@ export default function (options: GenerateSchema): Rule {
       hasComponentTemplate
         ? noop()
         : externalSchematic('@rxap/schematics', 'component-module', {
-            path: options.path.replace(/^\//, ''),
-            project: options.project,
-            name: dasherize(options.name) + '-form',
-            flat: true,
-            theme: false,
-          }),
+          path: options.path.replace(/^\//, ''),
+          project: projectName,
+          name: dasherize(options.name) + '-form',
+          flat: true,
+          theme: false,
+        }),
       formElement.toValue({ project, options }),
       options.skipTsFiles
         ? noop()
