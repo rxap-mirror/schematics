@@ -16,8 +16,8 @@ export class TextareaControlElement extends FormFieldElement {
     return NodeFactory(
       'textarea',
       'matInput',
-      'mat-autosize',
-      'matAutosizeMinRows="3"',
+      '[mat-autosize]="true"',
+      '[matAutosizeMinRows]="3"',
       `formControlName="${this.name}"`,
       'rxapRequired',
       `placeholder="Enter ${camelize(this.name)}"`,
