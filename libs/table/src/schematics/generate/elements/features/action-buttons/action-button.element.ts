@@ -48,16 +48,19 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   public icon!: string;
 
   @ElementChildTextContent()
-  public tooltip!: string;
+  public tooltip?: string;
 
   @ElementAttribute()
-  public confirm!: boolean;
+  public confirm?: boolean;
 
   @ElementChildTextContent()
-  public color!: string;
+  public color?: string;
 
   @ElementAttribute()
-  public header!: boolean;
+  public header?: boolean;
+
+  @ElementChildTextContent()
+  public if?: string;
 
   public template(): string {
     const attributes: string[] = [
@@ -65,6 +68,9 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       '[element]="element"',
       'mat-icon-button'
     ];
+    if (this.if) {
+      attributes.push(`*ngIf="${this.if}"`);
+    }
     if (this.color) {
       attributes.push(`color="${this.color}"`);
     }
@@ -82,7 +88,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   }
 
   public templateHeader(): string {
-    if (!this.header) {
+    if (!this.header || this.if) {
       return '';
     }
     const attributes: string[] = [
