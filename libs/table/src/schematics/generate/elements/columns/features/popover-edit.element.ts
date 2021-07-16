@@ -39,6 +39,7 @@ export class PopoverEditElement extends FeatureElement {
         <div>
           <form rxapPopoverEditForm
                 matEditLens
+                matEditLensClickOutBehavior="noop"
                 [initial]="element"
                 [(matEditLensPreservedFormValue)]="${this.formValueContainer}.for(element).value">
             <h2 mat-edit-title i18n>${capitalize(this.name)}</h2>
