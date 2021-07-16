@@ -14,8 +14,11 @@
     "bundle": {
       "type": "boolean",
       "description": "Add the scss-bundle target",
-      "default": false
+      "default": false,
+      "x-prompt": "Should the scss-bundle target be added?"
     }
   },
-  "required": []
+  "required": [
+    "project"
+  ]
 }
