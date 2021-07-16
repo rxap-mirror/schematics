@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.2.0-next.0...@rxap/schematics-table@12.2.0-next.1) (2021-07-16)
+
+
+### Bug Fixes
+
+* add missing matEditLens input ([c112457](https://gitlab.com/rxap/schematics/commit/c112457a08fddf6792e809bdd6c6914f0c122128))
+* feature columns ([bd2daf1](https://gitlab.com/rxap/schematics/commit/bd2daf1db98d4b59d64d7f8bdf941dbb0aa2c55c))
+* use new schematic utilities ([8417d83](https://gitlab.com/rxap/schematics/commit/8417d83f38f626e5b610bf10aca4aa66dc2bc154))
+* utilities imports ([c3ebf6f](https://gitlab.com/rxap/schematics/commit/c3ebf6f96883236ab73e8b42c42365f998ef28c7))
+
+
+### Features
+
+* add if element ([27326a1](https://gitlab.com/rxap/schematics/commit/27326a1d394ded09a2252544bae19f9bd8ed910f))
+* add new action row cell support ([6d862fe](https://gitlab.com/rxap/schematics/commit/6d862fe43f8562f80d40f9b1c70d3c917c1f3ba0))
+* add popover-edit feature support ([4b784e0](https://gitlab.com/rxap/schematics/commit/4b784e051c967d752807d243a4739e86494d810a))
+* support new protocol component input ([218f3fe](https://gitlab.com/rxap/schematics/commit/218f3fed507562af95ab3044a4a0ec01a7092aa8))
+
+
+
+
+
 # [12.2.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.1.0...@rxap/schematics-table@12.2.0-next.0) (2021-07-12)
 
 

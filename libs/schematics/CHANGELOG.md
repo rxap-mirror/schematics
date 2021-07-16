@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.9.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.9-next.0...@rxap/schematics@12.9.0-next.0) (2021-07-16)
+
+
+### Bug Fixes
+
+* use new scss imports ([4800c7e](https://gitlab.com/rxap/packages/commit/4800c7e136d64af5d6ae847de4d77f438804ef0b))
+
+
+### Features
+
+* auto setup plugin scss bundle ([6d855a5](https://gitlab.com/rxap/packages/commit/6d855a5635924e65807763fc26890119983d443e))
+
+
+
+
+
 ## [12.8.9-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.8.8...@rxap/schematics@12.8.9-next.0) (2021-07-12)
 
 

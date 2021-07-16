@@ -1,8 +1,9 @@
 {
   "name": "@rxap/schematics-ts-morph",
-  "version": "12.2.0",
+  "version": "12.3.0-next.0",
   "dependencies": {
-    "@rxap/utilities": "^12.0.3"
+    "@rxap/utilities": "^12.2.0",
+    "tslib": "^2.0.0"
   },
   "publishConfig": {
     "directory": "../../dist/libs/ts-morph",

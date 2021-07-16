@@ -1,13 +1,14 @@
 {
   "name": "@rxap/schematics-form",
-  "version": "12.1.0",
+  "version": "12.2.0-next.0",
   "peerDependencies": {
     "@nrwl/workspace": "^12.3.6",
-    "@rxap/xml-parser": "^12.0.3",
+    "@rxap/xml-parser": "^12.0.9",
     "ts-morph": "^11.0.0"
   },
   "dependencies": {
-    "@rxap/utilities": "^12.0.3"
+    "@rxap/utilities": "^12.2.0",
+    "tslib": "^2.0.0"
   },
   "ng-add": {
     "save": "dependencies"

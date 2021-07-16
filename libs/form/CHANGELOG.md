@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.1.0...@rxap/schematics-form@12.2.0-next.0) (2021-07-16)
+
+
+### Bug Fixes
+
+* add input type default ([3553c1a](https://gitlab.com/rxap/schematics/commit/3553c1a8b30538c6616e40820779e50e598489b5))
+* extend default validators ([e1ff6de](https://gitlab.com/rxap/schematics/commit/e1ff6de7236cb00434b8ff4462a6ec16bdb43877))
+* template static check ([527e42c](https://gitlab.com/rxap/schematics/commit/527e42c56349e2bf5b1192b7963773632e21b5f0))
+* update to new forms concept ([3c26626](https://gitlab.com/rxap/schematics/commit/3c26626631e71fa71f9f9d206bb3bfb19634e30b))
+* use new schematic utilities ([8417d83](https://gitlab.com/rxap/schematics/commit/8417d83f38f626e5b610bf10aca4aa66dc2bc154))
+* utilities imports ([c3ebf6f](https://gitlab.com/rxap/schematics/commit/c3ebf6f96883236ab73e8b42c42365f998ef28c7))
+
+
+### Features
+
+* add basic validators ([a17ec83](https://gitlab.com/rxap/schematics/commit/a17ec83a884443c78e3fe6e3d4fa9e586bf2e061))
+* add popover-edit feature support ([4b784e0](https://gitlab.com/rxap/schematics/commit/4b784e051c967d752807d243a4739e86494d810a))
+* support inline form logic templates ([291b270](https://gitlab.com/rxap/schematics/commit/291b27054151e82793902102fab4e457e8c8d558))
+
+
+
+
+
 # [12.1.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.1.0-next.0...@rxap/schematics-form@12.1.0) (2021-07-08)
 
 **Note:** Version bump only for package @rxap/schematics-form
