@@ -3,9 +3,9 @@ import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { RxapValidatorElement } from './rxap-validator.element';
 
 @ElementExtends(ValidatorElement)
-@ElementDef('is-number')
-export class IsNumberElement extends RxapValidatorElement {
+@ElementDef('is-object')
+export class IsObjectElement extends RxapValidatorElement {
 
-  public name = 'IsNumber';
+  public name = 'IsObject';
 
 }

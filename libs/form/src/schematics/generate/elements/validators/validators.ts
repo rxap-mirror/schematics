@@ -11,6 +11,17 @@ import { MaxLengthElement } from './max-length.element';
 import { RequiredElement } from './required.element';
 import { RequiredTrueElement } from './required-true.element';
 import { IsNumberElement } from './is-number.element';
+import { IsArrayElement } from './is-array.element';
+import { IsBooleanElement } from './is-boolean.element';
+import { IsComplexElement } from './is-complex.element';
+import { IsDateElement } from './is-date.element';
+import { IsEnumElement } from './is-enum.element';
+import { IsIntElement } from './is-int.element';
+import { IsObjectElement } from './is-object.element';
+import { IsStringElement } from './is-string.element';
+import { IsEmailElement } from './is-email.element';
+import { IsPhoneNumberElement } from './is-phone-number.element';
+import { IsUrlElement } from './is-url.element';
 
 export const ValidatorElements: Array<Constructor<ParsedElement>> = [
   MaxElement,
@@ -23,5 +34,16 @@ export const ValidatorElements: Array<Constructor<ParsedElement>> = [
   MinLengthElement,
   RequiredElement,
   RequiredTrueElement,
-  IsNumberElement
+  IsNumberElement,
+  IsArrayElement,
+  IsBooleanElement,
+  IsComplexElement,
+  IsDateElement,
+  IsEnumElement,
+  IsIntElement,
+  IsObjectElement,
+  IsStringElement,
+  IsEmailElement,
+  IsPhoneNumberElement,
+  IsUrlElement,
 ];
