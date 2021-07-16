@@ -23,7 +23,7 @@ export function AddControlValidator(
   if (validatorProperty instanceof ArrayLiteralExpression) {
     const index = validatorProperty
       .getElements()
-      .findIndex(element => element.getFullText().trim() === validator);
+      .findIndex(element => element.getFullText().trim().replace(/[\r\n\t]/g, '') === validator.trim().replace(/[\r\n\t]/g, ''));
     if (index === -1) {
       validatorProperty.addElement(validator);
     } else {
