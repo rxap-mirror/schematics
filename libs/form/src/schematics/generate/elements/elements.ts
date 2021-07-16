@@ -4,13 +4,13 @@ import { FormElement } from './form.element';
 import { GroupControlElement } from './group-control.element';
 import { InputControlElement } from './input-control.element';
 import {
-  SelectControlElement,
   DataSourceElement,
-  OpenApiDataSourceElement,
   DataSourceTransformerElement,
-  ToOptionsWithObjectElement,
+  OpenApiDataSourceElement,
+  SelectControlElement,
   ToOptionsElement,
-  ToOptionsFromObjectElement
+  ToOptionsFromObjectElement,
+  ToOptionsWithObjectElement
 } from './select-control.element';
 import { ValidatorElements } from './validators/validators';
 import { ParsedElement } from '@rxap/xml-parser';
@@ -18,6 +18,7 @@ import { Constructor } from '@rxap/utilities';
 import { FeatureElements } from './features/features';
 import { ArrayControlElement } from './array-control.element';
 import { Methods } from '@rxap/schematics-xml-parser';
+import { FileControlElement } from './file-control.element';
 
 export const Elements: Array<Constructor<ParsedElement>> = [
   CheckboxControlElement,
@@ -33,6 +34,7 @@ export const Elements: Array<Constructor<ParsedElement>> = [
   ToOptionsWithObjectElement,
   ToOptionsElement,
   ToOptionsFromObjectElement,
+  FileControlElement,
   ...ValidatorElements,
   ...FeatureElements,
   ...Methods
