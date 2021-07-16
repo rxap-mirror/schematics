@@ -460,6 +460,9 @@ Option | Type | Default | Description
 project | string |  | 
 bundle | boolean | false | Add the scss-bundle target
 
+| Required |
+| --- |
+| project |
 
 ## zeplin-configuration
 > adds zeplin connect support to the porject
