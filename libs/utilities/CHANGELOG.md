@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.5.1-next.0...@rxap/schematics-utilities@12.6.0-next.0) (2021-07-16)
+
+
+### Features
+
+* add InstallPackageIfNotExists function ([130b802](https://gitlab.com/rxap/packages/commit/130b8023f28801212e263a132f1ca06b43369f3d))
+
+
+
+
+
 ## [12.5.1-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@12.5.0...@rxap/schematics-utilities@12.5.1-next.0) (2021-07-12)
 
 **Note:** Version bump only for package @rxap/schematics-utilities
