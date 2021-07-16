@@ -112,6 +112,30 @@ export function AddPackageJsonDevDependency(
   };
 }
 
+export function InstallPackageIfNotExists(
+  packageName: string,
+  packageVersion: string | 'latest' = 'latest',
+  dev: boolean = false
+): Rule {
+  return (tree, context) => {
+    const packageJson = GetPackageJson(tree);
+    let hasPackage = false;
+    if (dev) {
+      hasPackage = !!packageJson.devDependencies && !!packageJson.devDependencies[packageName];
+    } else {
+      hasPackage = !!packageJson.dependencies && !!packageJson.dependencies[packageName];
+    }
+    if (!hasPackage) {
+      if (dev) {
+        AddPackageJsonDevDependency(packageName, packageVersion)(tree, context);
+      } else {
+        AddPackageJsonDependency(packageName, packageVersion)(tree, context);
+      }
+      context.addTask(new NodePackageInstallTask());
+    }
+  }
+}
+
 export function InstallNodePackages(): Rule {
   return (_, context) => {
     context.addTask(new NodePackageInstallTask());
