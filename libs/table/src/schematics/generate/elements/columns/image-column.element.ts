@@ -1,16 +1,27 @@
-import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
-import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
-import { SourceFile } from 'ts-morph';
 import { ColumnElement } from './column.element';
+import { ElementAttribute, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { WithTemplate } from '@rxap/schematics-html';
+import { SourceFile } from 'ts-morph';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 
 @ElementExtends(ColumnElement)
-@ElementDef('icon-column')
-export class IconColumnElement extends ColumnElement {
+@ElementDef('image-column')
+export class ImageColumnElement extends ColumnElement {
+
+  @ElementAttribute()
+  public preset?: string;
 
   public rowAttributeTemplate(): Array<string | (() => string)> {
-    return [ ...super.rowAttributeTemplate(),
-      `[rxap-icon-cell]="element${this.valueAccessor}"` ]
+    const attributes = [
+      ...super.rowAttributeTemplate(),
+      `[rxap-image-cell]="element${this.valueAccessor}"`
+    ];
+
+    if (this.preset) {
+      attributes.push(`preset="${this.preset}"`);
+    }
+
+    return attributes;
   }
 
   public innerRowTemplate(): Array<Partial<WithTemplate> | string> {
@@ -25,8 +36,9 @@ export class IconColumnElement extends ColumnElement {
     super.handleComponentModule({ sourceFile, project, options });
     AddNgModuleImport(
       sourceFile,
-      'IconCellComponentModule',
+      'ImageCellComponentModule',
       '@rxap/material-table-system'
     );
   }
+
 }
