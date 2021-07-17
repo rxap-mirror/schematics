@@ -7,7 +7,6 @@ import { PasswordControlElement } from './password-control.element';
 import { Features } from './features/features';
 import { FormFields } from './form-field/form-fields';
 import { TableSelectControlElement } from './table-select-control.element';
-import { UploadControlElement } from './upload-control.element';
 
 export const Controls: Array<Constructor<ParsedElement>> = [
   ControlElement,
@@ -15,7 +14,6 @@ export const Controls: Array<Constructor<ParsedElement>> = [
   ComponentControlElement,
   PasswordControlElement,
   TableSelectControlElement,
-  UploadControlElement,
   ...Features,
   ...FormFields
 ];
