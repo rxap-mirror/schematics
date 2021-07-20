@@ -1,6 +1,7 @@
 import { ParsedElement } from '@rxap/xml-parser';
 import {
   ElementAttribute,
+  ElementChild,
   ElementDef,
   ElementRequired,
   ElementTextContent
@@ -9,11 +10,8 @@ import { SourceFile } from 'ts-morph';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { CoerceSuffix } from '@rxap/utilities';
-import {
-  CoerceSourceFile,
-  CoerceMethodClass,
-  ToValueContext
-} from '@rxap/schematics-ts-morph';
+import { AddMethodClassOptions, CoerceMethodClass, CoerceSourceFile, ToValueContext } from '@rxap/schematics-ts-morph';
+import { TypeElement } from '../type.element';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -34,18 +32,27 @@ export class MethodElement implements ParsedElement<string>, IMethodElement {
   @ElementAttribute()
   public mock?: boolean;
 
+  @ElementChild(TypeElement)
+  public parameterType?: TypeElement
+
   public toValue({ sourceFile, project }: { sourceFile: SourceFile } & ToValueContext): string {
     if (this.from) {
       sourceFile.addImportDeclaration({
-        namedImports:    [ this.name ],
+        namedImports: [ this.name ],
         moduleSpecifier: this.from
       });
       return this.name;
     } else {
-      const methodName       = CoerceSuffix(classify(this.name), 'Method');
-      const methodFilePath   = join('/methods', `${dasherize(this.name.replace(/[-_\s]?[m|M]ethod$/, ''))}.method.ts`);
+      const methodName = CoerceSuffix(classify(this.name), 'Method');
+      const methodFilePath = join('/methods', `${dasherize(this.name.replace(/[-_\s]?[m|M]ethod$/, ''))}.method.ts`);
       const methodSourceFile = CoerceSourceFile(project, methodFilePath);
-      CoerceMethodClass(methodSourceFile, methodName);
+      const methodOptions: AddMethodClassOptions = {
+        statements: [ `console.log('${dasherize(methodName)}', parameters);` ],
+      };
+      if (this.parameterType) {
+        methodOptions.parameterType = this.parameterType.toValue({ sourceFile: methodSourceFile });
+      }
+      CoerceMethodClass(methodSourceFile, methodName, methodOptions);
       return methodName;
     }
   }
