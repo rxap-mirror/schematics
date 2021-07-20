@@ -1,10 +1,5 @@
 import { ProviderObject } from './provider-object';
-import {
-  ArrayLiteralExpression,
-  ObjectLiteralExpression,
-  PropertyAssignment,
-  Writers
-} from 'ts-morph';
+import { ArrayLiteralExpression, ObjectLiteralExpression, PropertyAssignment, Writers } from 'ts-morph';
 import { DeleteUndefinedProperties } from '@rxap/utilities';
 
 export function AddProviderToArray(
@@ -45,12 +40,13 @@ export function AddProviderToArray(
 
     if (overwrite || index === -1) {
       providerArray.addElement(Writers.object(DeleteUndefinedProperties({
-        provide:     providerObject.provide,
-        useClass:    providerObject.useClass,
-        useFactory:  providerObject.useFactory,
+        provide: providerObject.provide,
+        useClass: providerObject.useClass,
+        useFactory: providerObject.useFactory,
         useExisting: providerObject.useExisting,
-        useValue:    providerObject.useValue,
-        deps:        providerObject.deps ? Array.isArray(providerObject.deps) ? `[ ${providerObject.deps.join(',')} ]` : providerObject.deps : undefined
+        useValue: providerObject.useValue,
+        deps: providerObject.deps ? Array.isArray(providerObject.deps) ? `[ ${providerObject.deps.join(',')} ]` : providerObject.deps : undefined,
+        multi: providerObject.multi === true ? w => w.write('true') : providerObject.multi === false ? w => w.write('false') : undefined,
       })));
     }
 

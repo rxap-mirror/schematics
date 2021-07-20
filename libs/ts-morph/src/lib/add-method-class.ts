@@ -1,4 +1,6 @@
 import {
+  ConstructorDeclarationStructure,
+  DecoratorStructure,
   ImportDeclarationStructure,
   OptionalKind,
   Scope,
@@ -16,6 +18,8 @@ export interface AddMethodClassOptions extends TypeParameteredNodeStructure {
   isAsync?: boolean;
   statements?: (string | WriterFunction | StatementStructures)[] | string | WriterFunction | null;
   implements?: string[];
+  decorators?: OptionalKind<DecoratorStructure>[];
+  ctors?: OptionalKind<ConstructorDeclarationStructure>[]
 }
 
 export const DEFAULT_ADD_METHOD_CLASS_OPTIONS: Required<AddMethodClassOptions> = {
@@ -26,6 +30,8 @@ export const DEFAULT_ADD_METHOD_CLASS_OPTIONS: Required<AddMethodClassOptions> =
   statements: null,
   implements: [],
   typeParameters: [],
+  decorators: [],
+  ctors: [],
 };
 
 export function AddMethodClass(
@@ -38,20 +44,25 @@ export function AddMethodClass(
 
   name = CoerceSuffix(name, 'Method');
 
+  const decorators = options.decorators ?? [];
+
+  if (!decorators.some(d => d.name === 'Injectable')) {
+    decorators.push({
+      name: 'Injectable',
+      arguments: []
+    });
+  }
+
   sourceFile.addClass({
     name: name,
     isExported: true,
-    decorators: [
-      {
-        name: 'Injectable',
-        arguments: []
-      }
-    ],
+    decorators,
     typeParameters: parameters.typeParameters,
     implements: [
       `Method<${parameters.returnType}, ${parameters.parameterType}>`,
       ...parameters.implements,
     ],
+    ctors: parameters.ctors,
     methods: [
       {
         name: 'call',

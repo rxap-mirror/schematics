@@ -7,4 +7,5 @@ export interface ProviderObject {
   deps?: string[] | WriterFunction;
   useExisting?: string | WriterFunction;
   useValue?: string | WriterFunction;
+  multi?: boolean;
 }
