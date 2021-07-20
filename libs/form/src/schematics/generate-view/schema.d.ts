@@ -1,3 +1,5 @@
+import { Project } from 'ts-morph';
+
 export interface GenerateSchema {
   skipTsFiles: boolean | undefined;
   name: string | undefined;
@@ -10,4 +12,5 @@ export interface GenerateSchema {
   fixImports: boolean;
   format: boolean;
   templateBasePath: string | undefined;
+  tsMorphProject?: () => Project;
 }

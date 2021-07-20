@@ -5,7 +5,7 @@ import { Elements } from './elements/elements';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { FormElement } from './elements/form.element';
-import { ApplyTsMorphProject, FixMissingImports, } from '@rxap/schematics-ts-morph';
+import { ApplyTsMorphProject, FixMissingImports, MergeTsMorphProject } from '@rxap/schematics-ts-morph';
 import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import { ParseTemplate } from '@rxap/schematics-xml-parser';
 import { GetAngularJson, GetProjectRoot, GuessProjectName } from '@rxap/schematics-utilities';
@@ -64,7 +64,8 @@ export default function (options: GenerateSchema): Rule {
       throw new Error('FATAL: the options name is not defined');
     }
 
-    options.path = path = join(path, dasherize(options.name) + '-form');
+    const pathSuffix = dasherize(options.name) + '-form'
+    options.path = path = join(path, pathSuffix);
 
     console.log('@rxap/material-form-system base path: ', path);
 
@@ -94,17 +95,21 @@ export default function (options: GenerateSchema): Rule {
           theme: false,
         }),
       formElement.toValue({ project, options }),
-      options.skipTsFiles
+      // if the parent schematic has a ts-morph project apply the changes to this project
+      options.tsMorphProject ? () => MergeTsMorphProject(options.tsMorphProject!(), project, pathSuffix) : noop(),
+      // only apply files to the ts-morph project if not already exists
+      // else the changes made by previous steps are overwritten
+      options.skipTsFiles || options.tsMorphProject
         ? noop()
         : ApplyTsMorphProject(project, options.path, options.organizeImports),
       options.fixImports ? FixMissingImports() : noop(),
       options.format ? formatFiles() : noop(),
       context.debug
         ? (tree) => {
-            console.log('\n==========================================');
-            console.log('path: ' + componentFilePath);
-            console.log('==========================================');
-            console.log(tree.read(componentFilePath)!.toString('utf-8'));
+          console.log('\n==========================================');
+          console.log('path: ' + componentFilePath);
+          console.log('==========================================');
+          console.log(tree.read(componentFilePath)!.toString('utf-8'));
             console.log('\n==========================================');
             console.log('path: ' + componentModuleFilePath);
             console.log('==========================================');

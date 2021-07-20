@@ -108,7 +108,7 @@ export class WithPopoverEditElement extends FeatureElement {
     );
   }
 
-  public toValue({ options }: ToValueContext): Rule {
+  public toValue({ options, project }: ToValueContext): Rule {
     const name = dasherize(this.id) + '-popover-edit';
     return chain([
       externalSchematic('@rxap/schematics-form', 'generate', {
@@ -124,6 +124,7 @@ export class WithPopoverEditElement extends FeatureElement {
         openApiModule: options.openApiModule,
         overwrite: options.overwrite,
         skipTsFiles: options.skipTsFiles,
+        tsMorphProject: () => project,
       })
     ])
   }

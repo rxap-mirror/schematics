@@ -25,6 +25,7 @@
       "format": "path"
     },
     "formElement": {},
+    "tsMorphProject": {},
     "openApiModule": {
       "type": "string",
       "description": ""

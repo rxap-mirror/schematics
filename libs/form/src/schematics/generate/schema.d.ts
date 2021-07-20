@@ -1,4 +1,5 @@
 import { FormElement } from './elements/form.element';
+import { Project } from 'ts-morph';
 
 export interface GenerateSchema {
   skipTsFiles: boolean | undefined;
@@ -14,4 +15,5 @@ export interface GenerateSchema {
   format: boolean;
   overwrite: boolean | undefined;
   templateBasePath: string | undefined;
+  tsMorphProject?: () => Project;
 }

@@ -18,6 +18,7 @@
       "description": "",
       "visible": false
     },
+    "tsMorphProject": {},
     "templateBasePath": {
       "type": "string",
       "description": "a template base path",

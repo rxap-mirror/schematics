@@ -117,6 +117,7 @@ export class WindowFormElement implements ParsedElement {
         overwrite: options.overwrite,
         openApiModule: options.openApiModule,
         skipTsFiles: options.skipTsFiles,
+        tsMorphProject: () => project,
       }),
       (tree) => {
 

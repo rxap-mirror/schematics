@@ -2555,6 +2555,15 @@
     semver "^7.3.5"
     tslib "^2.0.0"
 
+"@rxap/schematics-utilities@^12.5.1-next.0":
+  version "12.5.1-next.0"
+  resolved "https://registry.yarnpkg.com/@rxap/schematics-utilities/-/schematics-utilities-12.5.1-next.0.tgz#fcb137d7db6c5c38399a1ec93bf39967661acc8d"
+  integrity sha512-LKYXkk+0uU7ftQH3PHCuU50KYFOJoGhgCaWLLnk3/KW0tVhkIG9vPMKRXigt0lxtWUr2tJbjrV9Eh3ABKTAGwQ==
+  dependencies:
+    "@rxap/utilities" "^12.2.0"
+    semver "^7.3.5"
+    tslib "^2.0.0"
+
 "@rxap/schematics@^12.8.8":
   version "12.8.8"
   resolved "https://registry.yarnpkg.com/@rxap/schematics/-/schematics-12.8.8.tgz#df7eb350cdcbdaccc9f37698df147a4a45d11d47"
@@ -2592,13 +2601,13 @@
     ts-morph "^10.1.0"
     tslib "^2.2.0"
 
-"@rxap/xml-parser@^12.0.9":
-  version "12.0.9"
-  resolved "https://registry.yarnpkg.com/@rxap/xml-parser/-/xml-parser-12.0.9.tgz#5a88ad4205045f1421663fc9b9a34d9d17ec0001"
-  integrity sha512-Z0zaTGixMRheJyt9kB6EMg4Tm9XOeawTCHfumG7imN0h3hqie+NSRTpbwz6C9semfmuEbGcyOsdak9naq5+FoQ==
+"@rxap/xml-parser@^12.0.10-next.0":
+  version "12.0.10-next.0"
+  resolved "https://registry.yarnpkg.com/@rxap/xml-parser/-/xml-parser-12.0.10-next.0.tgz#b28906c5d3b3a9d6e720c4543604684b500831f0"
+  integrity sha512-MTho6z+UW9qEZdzETT4rQrcGis7pfmuo3n2+TwCrWPbAmYtzdLW8SMoVLOEfhJbGhSf1/ZytIz04Ti8eZGtaZA==
   dependencies:
     "@rxap/handlebars" "^12.0.6"
-    "@rxap/schematics-utilities" "^12.4.0"
+    "@rxap/schematics-utilities" "^12.5.1-next.0"
     handlebars "^4.7.7"
     tslib "^2.2.0"
     xmldom "^0.6.0"

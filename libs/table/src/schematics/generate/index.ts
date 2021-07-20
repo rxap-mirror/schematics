@@ -148,6 +148,7 @@ export default function (options: GenerateSchema): Rule {
           templateBasePath: options.templateBasePath,
           overwrite: options.overwrite,
           skipTsFiles: options.skipTsFiles,
+          tsMorphProject: () => project,
         })
         : noop(),
       tableElement.toValue({ project, options }),

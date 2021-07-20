@@ -7,7 +7,7 @@ import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { formatFiles } from '@nrwl/workspace';
 import { Elements } from './elements/elements';
-import { AddDir, ApplyTsMorphProject, FixMissingImports, } from '@rxap/schematics-ts-morph';
+import { AddDir, ApplyTsMorphProject, FixMissingImports, MergeTsMorphProject } from '@rxap/schematics-ts-morph';
 import { ParseTemplate } from '@rxap/schematics-xml-parser';
 import { GetAngularJson } from '@rxap/schematics-utilities';
 
@@ -66,9 +66,12 @@ export default function (options: GenerateSchema): Rule {
 
     const formFilePath = dasherize(formElement.id) + '.form.ts';
 
+    let pathSuffix = '';
+
     if (!options.flat) {
-      options.path = join(options.path, dasherize(formElement.id) + '-form');
+      pathSuffix = dasherize(formElement.id) + '-form'
     }
+    options.path = join(options.path, pathSuffix);
 
     AddDir(
       host.getDir(options.path),
@@ -81,14 +84,15 @@ export default function (options: GenerateSchema): Rule {
       project.getSourceFile(formFilePath) ??
       project.createSourceFile(formFilePath);
 
+    // TODO : use the common concept for toValue and return a rule
     formElement.toValue({ sourceFile: formSourceFile, project, options });
 
-    project
-      .getSourceFiles()
-      .forEach((sourceFile) => sourceFile.organizeImports());
-
     return chain([
-      options.skipTsFiles
+      // if the parent schematic has a ts-morph project apply the changes to this project
+      options.tsMorphProject ? () => MergeTsMorphProject(options.tsMorphProject!(), project, pathSuffix) : noop(),
+      // only apply files to the ts-morph project if not already exists
+      // else the changes made by previous steps are overwritten
+      options.skipTsFiles || options.tsMorphProject
         ? noop()
         : ApplyTsMorphProject(project, options.path, options.organizeImports),
       options.fixImports ? FixMissingImports() : noop(),
