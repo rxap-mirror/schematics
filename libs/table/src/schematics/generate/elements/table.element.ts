@@ -68,11 +68,11 @@ export class TableElement implements ParsedElement<Rule> {
   public adapter?: AdapterElement;
 
   public get tableInterface(): string {
-    return 'I' + classify(this.name) + 'Table'
+    return 'I' + classify(this.name)
   }
 
   public get tableInterfaceModuleSpecifier(): string {
-    return dasherize(this.name) + '-table'
+    return dasherize(this.name)
   }
 
   public hasFeature(name: string): boolean {
