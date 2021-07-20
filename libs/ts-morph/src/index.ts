@@ -39,6 +39,7 @@ export * from './lib/get-class-decorator-arguments';
 export * from './lib/coerce-class-constructor';
 export * from './lib/add-dependency-injection';
 export * from './lib/coerce-class-method';
+export * from './lib/merge-ts-morph-project';
 
 // region nestjs
 
