@@ -1,13 +1,17 @@
-import { ControlElement, ControlTypeElement } from './control.element';
-import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
+import { ControlElement } from './control.element';
+import { ElementAttribute, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { ElementFactory } from '@rxap/xml-parser';
+import { TypeElement } from '@rxap/schematics-xml-parser';
 
 @ElementExtends(ControlElement)
 @ElementDef('file-control')
 export class FileControlElement extends ControlElement {
 
+  @ElementAttribute()
+  public nullable: boolean = true;
+
   public postParse() {
-    this.type = ElementFactory(ControlTypeElement, { name: 'File' });
+    this.type = ElementFactory(TypeElement, { name: 'File', nullable: this.nullable });
   }
 
 }

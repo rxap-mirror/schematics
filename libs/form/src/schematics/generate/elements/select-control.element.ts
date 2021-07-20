@@ -1,4 +1,4 @@
-import { ControlElement, ControlElementToValueContext, ControlTypeElement } from './control.element';
+import { ControlElement, ControlElementToValueContext } from './control.element';
 import {
   ElementAttribute,
   ElementChild,
@@ -16,6 +16,7 @@ import { Project, PropertyDeclaration, SourceFile, WriterFunction, Writers } fro
 import { strings } from '@angular-devkit/core';
 import { AddToArray, AddToFormProviders, OverwriteDecorator, ToValueContext } from '@rxap/schematics-ts-morph';
 import { GenerateSchema } from '../schema';
+import { TypeElement } from '@rxap/schematics-xml-parser';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -447,7 +448,7 @@ export class SelectControlElement extends ControlElement {
   public postParse() {
     if (!this.type) {
       if (this.multiple) {
-        this.type = ElementFactory(ControlTypeElement, { name: 'any[]' });
+        this.type = ElementFactory(TypeElement, { name: 'any[]' });
       }
     }
     if (!this.initial) {

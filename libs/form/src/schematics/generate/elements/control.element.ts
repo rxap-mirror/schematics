@@ -1,57 +1,25 @@
 import { ParsedElement } from '@rxap/xml-parser';
 import {
-  ElementDef,
   ElementAttribute,
-  ElementRequired,
-  ElementChildTextContent,
+  ElementChild,
   ElementChildren,
-  ElementChild
+  ElementChildTextContent,
+  ElementDef,
+  ElementRequired
 } from '@rxap/xml-parser/decorators';
-import {
-  PropertyDeclaration,
-  ClassDeclaration,
-  Scope,
-  Writers,
-  ObjectLiteralExpression,
-  SourceFile
-} from 'ts-morph';
+import { ClassDeclaration, ObjectLiteralExpression, PropertyDeclaration, Scope, SourceFile, Writers } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { ValidatorElement } from './validators/validator.element';
-import {
-  OverwriteProperty,
-  AddControlValidator,
-  ToValueContext
-} from '@rxap/schematics-ts-morph';
+import { AddControlValidator, OverwriteProperty, ToValueContext } from '@rxap/schematics-ts-morph';
 import { GenerateSchema } from '../schema';
 import { FormElement } from './form.element';
+import { TypeElement } from '@rxap/schematics-xml-parser';
 
 const { dasherize, classify, camelize } = strings;
 
 export interface ControlElementToValueContext extends ToValueContext<GenerateSchema> {
   classDeclaration: ClassDeclaration;
   sourceFile: SourceFile;
-}
-
-@ElementDef('type')
-export class ControlTypeElement implements ParsedElement {
-
-  @ElementChildTextContent()
-  @ElementRequired()
-  public name!: string;
-
-  @ElementChildTextContent()
-  public from?: string;
-
-  public toValue({ sourceFile }: { sourceFile: SourceFile }): string {
-    if (this.from) {
-      sourceFile.addImportDeclaration({
-        namedImports:    [ this.name ],
-        moduleSpecifier: this.from
-      });
-    }
-    return this.name;
-  }
-
 }
 
 @ElementDef('control')
@@ -81,8 +49,8 @@ export class ControlElement implements ParsedElement<PropertyDeclaration> {
   @ElementAttribute()
   public hidden!: boolean;
 
-  @ElementChild(ControlTypeElement)
-  public type?: ControlTypeElement;
+  @ElementChild(TypeElement)
+  public type?: TypeElement;
 
   @ElementChildren(ValidatorElement, { group: 'validators' })
   public validators!: ValidatorElement[];

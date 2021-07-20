@@ -1,4 +1,4 @@
-import { ControlElement, ControlTypeElement } from './control.element';
+import { ControlElement } from './control.element';
 import { ElementAttribute, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { ElementFactory } from '@rxap/xml-parser';
 import { IsNumberElement } from './validators/is-number.element';
@@ -6,6 +6,7 @@ import { IsEmailElement } from './validators/is-email.element';
 import { IsUrlElement } from './validators/is-url.element';
 import { IsStringElement } from './validators/is-string.element';
 import { IsPhoneNumberElement } from './validators/is-phone-number.element';
+import { TypeElement } from '@rxap/schematics-xml-parser';
 
 @ElementExtends(ControlElement)
 @ElementDef('input-control')
@@ -58,16 +59,16 @@ export class InputControlElement extends ControlElement {
 
         case 'checkbox':
         case 'boolean':
-          this.type = ElementFactory(ControlTypeElement, { name: 'boolean' });
+          this.type = ElementFactory(TypeElement, { name: 'boolean' });
           break;
 
         case 'integer':
         case 'number':
-          this.type = ElementFactory(ControlTypeElement, { name: 'number' });
+          this.type = ElementFactory(TypeElement, { name: 'number' });
           break;
 
         default:
-          this.type = ElementFactory(ControlTypeElement, { name: 'string' });
+          this.type = ElementFactory(TypeElement, { name: 'string' });
           break;
 
       }
