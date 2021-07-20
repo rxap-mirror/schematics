@@ -38,6 +38,12 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   public confirm?: boolean;
 
   @ElementChildTextContent()
+  public errorMessage?: string;
+
+  @ElementChildTextContent()
+  public successMessage?: string;
+
+  @ElementChildTextContent()
   public color?: string;
 
   @ElementAttribute()
@@ -81,6 +87,14 @@ export class ActionButtonElement extends AbstractActionButtonElement {
     }
     if (this.confirm) {
       attributes.push('rxapConfirm');
+    }
+    if (this.errorMessage) {
+      attributes.push(`errorMessage="${this.errorMessage}"`);
+      attributes.push('i18n-errorMessage');
+    }
+    if (this.successMessage) {
+      attributes.push(`successMessage="${this.successMessage}"`);
+      attributes.push('i18n-successMessage');
     }
     return NodeFactory('button', ...attributes)([
       NodeFactory('mat-icon')(this.icon),
