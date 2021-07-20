@@ -9,7 +9,7 @@ import {
 import { ColumnElement } from './columns/column.element';
 import { strings } from '@angular-devkit/core';
 import { ParsedElement } from '@rxap/xml-parser';
-import { Project } from 'ts-morph';
+import { Project, SourceFile } from 'ts-morph';
 import { FeatureElement } from './features/feature.element';
 import { GenerateSchema } from '../schema';
 import { AdapterElement } from './adapter.element';
@@ -66,6 +66,14 @@ export class TableElement implements ParsedElement<Rule> {
 
   @ElementChild(AdapterElement)
   public adapter?: AdapterElement;
+
+  public get tableInterface(): string {
+    return 'I' + classify(this.name) + 'Table'
+  }
+
+  public get tableInterfaceModuleSpecifier(): string {
+    return dasherize(this.name) + '-table'
+  }
 
   public hasFeature(name: string): boolean {
     return !!this.features?.find((feature) => feature.__tag === name);
@@ -275,6 +283,17 @@ export class TableElement implements ParsedElement<Rule> {
       ),
       () => this.handleComponent(project, options),
       () => this.handleComponentModule(project, options),
+      () => {
+        const sourceFile: SourceFile = project.createSourceFile(this.tableInterfaceModuleSpecifier + '.ts', '', { overwrite: true });
+        sourceFile.addInterface({
+          isExported: true,
+          name: this.tableInterface,
+          properties: this.columns.filter(column => ![ 'actions-column', 'controls-column' ].includes(column.__tag)).map(column => ({
+            name: camelize(column.name),
+            type: column.type ? column.type.toValue({ sourceFile }) : 'any',
+          }))
+        })
+      },
     ]);
   }
 
