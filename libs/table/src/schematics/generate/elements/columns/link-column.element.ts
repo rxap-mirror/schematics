@@ -3,7 +3,9 @@ import { SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { ColumnElement } from './column.element';
+import { TypeElement } from '@rxap/schematics-xml-parser';
 import { WithTemplate } from '@rxap/schematics-html';
+import { ElementFactory } from '@rxap/xml-parser';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
@@ -13,6 +15,12 @@ export class LinkColumnElement extends ColumnElement {
 
   @ElementAttribute()
   public protocol?: string;
+
+  public postParse() {
+    if (!this.type) {
+      this.type = ElementFactory(TypeElement, { name: 'string' });
+    }
+  }
 
   public rowAttributeTemplate(): Array<string | (() => string)> {
     const attributes = [

@@ -11,7 +11,8 @@ import { strings } from '@angular-devkit/core';
 import { SourceFile } from 'ts-morph';
 import { TableElement } from '../table.element';
 import { ControlElement } from '@rxap/schematics-form';
-import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext, } from '@rxap/schematics-ts-morph';
+import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
+import { TypeElement } from '@rxap/schematics-xml-parser';
 import { chain, Rule } from '@angular-devkit/schematics';
 import { GenerateSchema } from '../../schema';
 import { DisplayColumn } from '../features/feature.element';
@@ -19,6 +20,8 @@ import { FeatureElement } from './features/feature.element';
 import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize, capitalize } = strings;
+
+
 
 @ElementDef('column')
 export class ColumnElement
@@ -50,6 +53,9 @@ export class ColumnElement
 
   @ElementChildren(FeatureElement, { group: 'features' })
   public features?: FeatureElement[];
+
+  @ElementChild(TypeElement)
+  public type?: TypeElement;
 
   protected _name?: string;
 

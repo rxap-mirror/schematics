@@ -1,15 +1,23 @@
 import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { ColumnElement } from './column.element';
+import { TypeElement } from '@rxap/schematics-xml-parser';
 import { SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { WithTemplate } from '@rxap/schematics-html';
+import { ElementFactory } from '@rxap/xml-parser';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
 @ElementExtends(ColumnElement)
 @ElementDef('boolean-column')
 export class BooleanColumnElement extends ColumnElement {
+
+  public postParse() {
+    if (!this.type) {
+      this.type = ElementFactory(TypeElement, { name: 'boolean' });
+    }
+  }
 
   public rowAttributeTemplate(): Array<string | (() => string)> {
     return [

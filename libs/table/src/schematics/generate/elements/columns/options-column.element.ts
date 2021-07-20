@@ -8,6 +8,7 @@ import { ColumnElement } from './column.element';
 import { FilterElement } from './filters/filter.element';
 import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
 import { SchematicsException } from '@angular-devkit/schematics';
+import { TypeElement } from '@rxap/schematics-xml-parser';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
@@ -41,6 +42,9 @@ export class OptionsColumnElement extends ColumnElement {
   public postParse() {
     if (this.filter) {
       this.filter = ElementFactory(FilterElement, {});
+    }
+    if (!this.type) {
+      this.type = ElementFactory(TypeElement, { name: 'string | number' });
     }
   }
 
