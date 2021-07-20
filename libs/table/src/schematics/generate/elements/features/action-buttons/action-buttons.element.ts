@@ -53,10 +53,14 @@ export class ActionsColumnElement extends ColumnElement implements WithTemplate 
   public template(): string {
     return [
       '<th mat-header-cell *matHeaderCellDef>',
+      '<div fxLayout="row">',
       ...this.actions.filter(action => action.header).map(action => action.templateHeader()),
+      '</div>',
       '</th>',
       '<td mat-cell *matCellDef="let element">',
+      '<div fxLayout="row">',
       ...this.actions.map(action => action.template()),
+      '</div>',
       '</td>'
     ].join('\n')
   }
