@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.2.0-next.1...@rxap/schematics-table@12.2.0-next.2) (2021-07-20)
+
+
+### Bug Fixes
+
+* action layout container ([0f08164](https://gitlab.com/rxap/schematics/commit/0f0816486c90cae5c17f9e3204f5b59d0a0292ec))
+* add error and success message support ([80ef406](https://gitlab.com/rxap/schematics/commit/80ef406444edf1190057313b0d498a882e610df9))
+* add type to submit method ([832baad](https://gitlab.com/rxap/schematics/commit/832baad5bce9fd82bf0d665807d06dfd659ebed3))
+* add TypeElement classes ([4ee2ecc](https://gitlab.com/rxap/schematics/commit/4ee2ecc6d78a0d4f5c883475e372a4c49bed2d80))
+* apply sub schematics ([6f964a2](https://gitlab.com/rxap/schematics/commit/6f964a2ed4e2b17097764a4b6d8457fa5e78e37d))
+* table name suffix ([6b36f52](https://gitlab.com/rxap/schematics/commit/6b36f5201e9956afa2f99f630afdc5f722579fed))
+
+
+### Features
+
+* add ImageColumn element ([5ffe8e1](https://gitlab.com/rxap/schematics/commit/5ffe8e1c02cc32b719a1caa438d10c70c227b728))
+* add support for windowForm for action features ([ba220f6](https://gitlab.com/rxap/schematics/commit/ba220f6ec58d9ff3a1c8e180160c66f8178d73d4))
+* add table interface generation ([575c221](https://gitlab.com/rxap/schematics/commit/575c22143021824b1bda732a7c5cd86aedefa22f))
+
+
+
+
+
 # [12.2.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.2.0-next.0...@rxap/schematics-table@12.2.0-next.1) (2021-07-16)
 
 

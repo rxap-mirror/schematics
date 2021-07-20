@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-xml-parser@12.1.0-next.0...@rxap/schematics-xml-parser@12.1.0-next.1) (2021-07-20)
+
+
+### Features
+
+* add TypeElement classes ([775f0c1](https://gitlab.com/rxap/packages/commit/775f0c11c145881f61ac1964e334b29677647810))
+
+
+
+
+
 # [12.1.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-xml-parser@12.0.8...@rxap/schematics-xml-parser@12.1.0-next.0) (2021-07-12)
 
 

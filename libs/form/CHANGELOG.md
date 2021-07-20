@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.2.0-next.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.2.0-next.1...@rxap/schematics-form@12.2.0-next.2) (2021-07-20)
+
+
+### Bug Fixes
+
+* add TypeElement classes ([add2b6c](https://gitlab.com/rxap/schematics/commit/add2b6ca99117f062e6473e81f04eebe51cd2c5d))
+* apply sub schematics ([6f964a2](https://gitlab.com/rxap/schematics/commit/6f964a2ed4e2b17097764a4b6d8457fa5e78e37d))
+
+
+### Features
+
+* add FileControl Element ([cc13581](https://gitlab.com/rxap/schematics/commit/cc135819e8078444c6e5565039773f726a88f494))
+* add UploadControl element ([8d70d9e](https://gitlab.com/rxap/schematics/commit/8d70d9e7f1d46853734848e2a0f079f3758926ce))
+* add validator compare function ([754fd3f](https://gitlab.com/rxap/schematics/commit/754fd3fd1b9d3984d897e986c10572928f249e52))
+
+
+
+
+
 # [12.2.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.2.0-next.0...@rxap/schematics-form@12.2.0-next.1) (2021-07-16)
 
 

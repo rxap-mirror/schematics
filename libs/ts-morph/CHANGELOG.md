@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.3.0-next.0...@rxap/schematics-ts-morph@12.3.0-next.1) (2021-07-20)
+
+
+### Features
+
+* add MergeTsMorphProject function ([9d7aa56](https://gitlab.com/rxap/packages/commit/9d7aa561bf4c973dac6de60662abc30f6547db44))
+* add validator compare function ([754fd3f](https://gitlab.com/rxap/packages/commit/754fd3fd1b9d3984d897e986c10572928f249e52))
+* extend MethodClass and Provider options ([54338d4](https://gitlab.com/rxap/packages/commit/54338d46766e2e4d4e3cb42e9895f76ed0744a5c))
+
+
+
+
+
 # [12.3.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.2.0...@rxap/schematics-ts-morph@12.3.0-next.0) (2021-07-16)
 
 
