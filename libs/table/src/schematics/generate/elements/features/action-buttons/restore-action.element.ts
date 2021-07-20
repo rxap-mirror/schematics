@@ -1,6 +1,6 @@
 import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
-import { AbstractActionButtonElement } from './action-button.element';
 import { MethodActionElement } from './method-action.element';
+import { AbstractActionButtonElement } from './abstract-action-button.element';
 
 @ElementExtends(AbstractActionButtonElement)
 @ElementDef('restore-action')

@@ -1,5 +1,4 @@
 import { ElementChild } from '@rxap/xml-parser/decorators';
-import { AbstractActionButtonElement } from './action-button.element';
 import { ImportDeclarationStructure, OptionalKind, SourceFile } from 'ts-morph';
 import { RouterLinkElement } from '../../router-link.element';
 import {
@@ -15,6 +14,7 @@ import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { MethodElement } from '@rxap/schematics-xml-parser';
 import { StringOrFactory } from '@rxap/schematics-html';
+import { AbstractActionButtonElement } from './abstract-action-button.element';
 
 const { dasherize, classify, camelize } = strings;
 

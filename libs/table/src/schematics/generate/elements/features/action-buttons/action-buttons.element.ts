@@ -1,20 +1,15 @@
 import { FeatureElement } from '../feature.element';
 import { ElementChildren, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
-import { AbstractActionButtonElement, ActionButtonElement } from './action-button.element';
-import { SourceFile } from 'ts-morph';
-import {
-  AddComponentProvider,
-  AddNgModuleImport,
-  CoerceMethodClass,
-  CoerceSourceFile,
-  ToValueContext
-} from '@rxap/schematics-ts-morph';
+import { ActionButtonElement } from './action-button.element';
+import { SourceFile, VariableDeclarationKind, Writers } from 'ts-morph';
+import { AddComponentProvider, AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { chain, Rule } from '@angular-devkit/schematics';
 import { TableElement } from '../../table.element';
 import { ElementFactory } from '@rxap/xml-parser';
 import { ColumnElement } from '../../columns/column.element';
 import { WithTemplate } from '@rxap/schematics-html';
 import { strings } from '@angular-devkit/core';
+import { AbstractActionButtonElement } from './abstract-action-button.element';
 import { join } from 'path';
 
 const { classify, dasherize } = strings;
@@ -75,41 +70,46 @@ export class ActionsColumnElement extends ColumnElement implements WithTemplate 
 
   public handleComponent({ sourceFile, project, options, }: ToValueContext & { sourceFile: SourceFile }) {
     super.handleComponent({ sourceFile, project, options, });
-    const methodName = classify(this.__parent.name) + 'TableRowActionMethod';
-    const filename = dasherize(methodName).replace(/-method/, '.method');
-    const methodSourceFile = CoerceSourceFile(project, join(sourceFile.getDirectoryPath(), 'methods', filename + '.ts'));
-    CoerceMethodClass(methodSourceFile, methodName, {
-      returnType: 'any',
-      parameterType: '{ element: Data; type: string }',
-      typeParameters: [
+    const entrySourceFile: SourceFile = project.createSourceFile(join(sourceFile.getDirectoryPath(), 'methods', 'action', 'index.ts'), '', { overwrite: true });
+    entrySourceFile.addVariableStatement({
+      declarationKind: VariableDeclarationKind.Const,
+      isExported: true,
+      declarations: [
         {
-          name: 'Data',
-          constraint: 'Record<string, any>'
-        }
-      ],
-      implements: [ 'TableRowActionMethod<Data>' ],
-      structures: [
-        {
-          namedImports: [ 'TableRowActionMethod' ],
-          moduleSpecifier: '@rxap/material-table-system'
+          name: 'TABLE_ROW_ACTION_METHODS',
+          initializer: writer => {
+            writer.writeLine('[');
+            for (const action of this.actions) {
+              Writers.object({
+                provide: 'RXAP_TABLE_ROW_ACTION_METHOD',
+                useClass: action.methodName,
+                multi: 'true',
+              })(writer);
+              writer.write(',');
+            }
+            writer.write('];');
+          }
         }
       ]
     });
+    for (const action of this.actions) {
+      entrySourceFile.addImportDeclaration({
+        namedImports: [ action.methodName ],
+        moduleSpecifier: './' + action.methodModuleSpecifier
+      })
+    }
+    entrySourceFile.addImportDeclaration({
+      namedImports: [ 'RXAP_TABLE_ROW_ACTION_METHOD' ],
+      moduleSpecifier: '../../table-row-actions/tokens'
+    });
     AddComponentProvider(
       sourceFile,
-      {
-        provide: 'RXAP_TABLE_ROW_ACTION_METHOD',
-        useClass: methodName,
-      },
+      'TABLE_ROW_ACTION_METHODS',
       [
         {
-          namedImports: [ methodName ],
-          moduleSpecifier: `./methods/${filename}`
+          namedImports: [ 'TABLE_ROW_ACTION_METHODS' ],
+          moduleSpecifier: `./methods/action/index`
         },
-        {
-          namedImports: [ 'RXAP_TABLE_ROW_ACTION_METHOD' ],
-          moduleSpecifier: '@rxap/material-table-system'
-        }
       ]
     );
   }
