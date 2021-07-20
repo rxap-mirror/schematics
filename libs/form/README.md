@@ -34,6 +34,7 @@ Option | Type | Default | Description
 --- | --- | --- | ---
 name | string |  | 
 path | string |  | 
+tsMorphProject |  |  | 
 templateBasePath | string |  | a template base path
 overwrite | boolean | false | 
 project | string |  | 
@@ -63,6 +64,7 @@ project | string |  |
 templateBasePath | string |  | a template base path
 template | string |  | 
 formElement |  |  | 
+tsMorphProject |  |  | 
 openApiModule | string |  | 
 name | string |  | 
 flat | boolean |  | 
