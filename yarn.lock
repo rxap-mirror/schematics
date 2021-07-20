@@ -2601,10 +2601,10 @@
     ts-morph "^10.1.0"
     tslib "^2.2.0"
 
-"@rxap/xml-parser@^12.0.10-next.0":
-  version "12.0.10-next.0"
-  resolved "https://registry.yarnpkg.com/@rxap/xml-parser/-/xml-parser-12.0.10-next.0.tgz#b28906c5d3b3a9d6e720c4543604684b500831f0"
-  integrity sha512-MTho6z+UW9qEZdzETT4rQrcGis7pfmuo3n2+TwCrWPbAmYtzdLW8SMoVLOEfhJbGhSf1/ZytIz04Ti8eZGtaZA==
+"@rxap/xml-parser@^12.1.0-next.1":
+  version "12.1.0-next.1"
+  resolved "https://registry.yarnpkg.com/@rxap/xml-parser/-/xml-parser-12.1.0-next.1.tgz#462afb612b20145111892f474708822b766db088"
+  integrity sha512-A2KzjkMs8q2x1Wl1BnHfC0ZCS+GFxYH63EI1oP8/j7n/bzwhPfdV0B5ize5v70xj48+weViS5A98mqLPooBl2w==
   dependencies:
     "@rxap/handlebars" "^12.0.6"
     "@rxap/schematics-utilities" "^12.5.1-next.0"

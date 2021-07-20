@@ -67,4 +67,8 @@ export abstract class RxapValidatorElement extends ValidatorElement {
     return super.toValue({ controlOptions, project, options, sourceFile });
   }
 
+  protected compareValidator(a: string, b: string): boolean {
+    return !!a.match(new RegExp(`RxapValidators\\.${this.name}\\(`));
+  }
+
 }

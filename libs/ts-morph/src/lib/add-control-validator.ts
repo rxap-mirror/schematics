@@ -1,8 +1,13 @@
 import { ArrayLiteralExpression, ObjectLiteralExpression, PropertyAssignment } from 'ts-morph';
 
+export function DefaultAddControlValidatorCompare(a: string, b: string): boolean {
+  return a.trim().replace(/[\r\n\t]/g, '') === b.trim().replace(/[\r\n\t]/g, '');
+}
+
 export function AddControlValidator(
   validator: string,
-  controlOptions: ObjectLiteralExpression
+  controlOptions: ObjectLiteralExpression,
+  compareFn: (a: string, b: string) => boolean = DefaultAddControlValidatorCompare
 ) {
 
   let validatorPropertyAssignment = controlOptions.getProperty('validators');
@@ -23,7 +28,7 @@ export function AddControlValidator(
   if (validatorProperty instanceof ArrayLiteralExpression) {
     const index = validatorProperty
       .getElements()
-      .findIndex(element => element.getFullText().trim().replace(/[\r\n\t]/g, '') === validator.trim().replace(/[\r\n\t]/g, ''));
+      .findIndex(element => compareFn(element.getFullText(), validator));
     if (index === -1) {
       validatorProperty.addElement(validator);
     } else {

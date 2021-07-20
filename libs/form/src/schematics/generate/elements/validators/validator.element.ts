@@ -1,7 +1,7 @@
 import { ParsedElement } from '@rxap/xml-parser';
 import { ObjectLiteralExpression, SourceFile } from 'ts-morph';
 import { ElementDef, ElementTextContent } from '@rxap/xml-parser/decorators';
-import { AddControlValidator, ToValueContext } from '@rxap/schematics-ts-morph';
+import { AddControlValidator, DefaultAddControlValidatorCompare, ToValueContext } from '@rxap/schematics-ts-morph';
 
 export interface ValidatorToValueContext extends ToValueContext {
   controlOptions: ObjectLiteralExpression;
@@ -19,7 +19,11 @@ export class ValidatorElement implements ParsedElement {
   }
 
   public toValue({ controlOptions }: ValidatorToValueContext): any {
-    AddControlValidator(this.validator, controlOptions);
+    AddControlValidator(this.validator, controlOptions, this.compareValidator.bind(this));
+  }
+
+  protected compareValidator(a: string, b: string): boolean {
+    return DefaultAddControlValidatorCompare(a, b);
   }
 
 }
