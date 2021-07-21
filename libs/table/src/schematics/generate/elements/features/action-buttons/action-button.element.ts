@@ -161,11 +161,11 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       structures: [
         {
           namedImports: [ 'TableRowActionTypeMethod' ],
-          moduleSpecifier: '../../table-row-actions/table-row-action.method'
+          moduleSpecifier: '@rxap/material-table-system'
         },
         {
           namedImports: [ 'TableActionMethod' ],
-          moduleSpecifier: '../../table-row-actions/decorators'
+          moduleSpecifier: '@rxap/material-table-system'
         },
         {
           namedImports: [ this.__parent.__parent.tableInterface ],

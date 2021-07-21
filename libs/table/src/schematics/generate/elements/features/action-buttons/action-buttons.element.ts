@@ -104,7 +104,7 @@ export class ActionsColumnElement extends ColumnElement implements WithTemplate 
     }
     entrySourceFile.addImportDeclaration({
       namedImports: [ 'RXAP_TABLE_ROW_ACTION_METHOD' ],
-      moduleSpecifier: '../../table-row-actions/tokens'
+      moduleSpecifier: '@rxap/material-table-system'
     });
     AddComponentProvider(
       sourceFile,
