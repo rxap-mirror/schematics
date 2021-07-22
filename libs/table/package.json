@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-table",
-  "version": "12.2.0-next.3",
+  "version": "12.2.0",
   "peerDependencies": {
     "@nrwl/workspace": "^12.3.6",
     "@rxap/xml-parser": "^12.1.0-next.1",
