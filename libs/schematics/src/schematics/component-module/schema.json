@@ -42,15 +42,13 @@
       "description": "When true, includes styles inline in the component.ts file. Only CSS styles can be included inline. By default, an external styles file is created and referenced in the component.ts file.",
       "type": "boolean",
       "default": false,
-      "alias": "s",
-      "x-user-analytics": 9
+      "alias": "s"
     },
     "inlineTemplate": {
       "description": "When true, includes template inline in the component.ts file. By default, an external template file is created and referenced in the component.ts file.",
       "type": "boolean",
       "default": false,
-      "alias": "t",
-      "x-user-analytics": 10
+      "alias": "t"
     },
     "viewEncapsulation": {
       "description": "The view encapsulation strategy to use in the new component.",
@@ -61,8 +59,7 @@
         "ShadowDom"
       ],
       "type": "string",
-      "alias": "v",
-      "x-user-analytics": 11
+      "alias": "v"
     },
     "changeDetection": {
       "description": "The change detection strategy to use in the new component.",
@@ -98,8 +95,7 @@
         "sass",
         "less",
         "styl"
-      ],
-      "x-user-analytics": 5
+      ]
     },
     "type": {
       "type": "string",
@@ -259,8 +255,7 @@
     "lintFix": {
       "type": "boolean",
       "default": false,
-      "description": "When true, applies lint fixes after generating the component.",
-      "x-user-analytics": 15
+      "description": "When true, applies lint fixes after generating the component."
     },
     "commonModule": {
       "type": "boolean",
