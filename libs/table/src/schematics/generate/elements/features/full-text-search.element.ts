@@ -1,6 +1,6 @@
 import { FeatureElement } from './feature.element';
 import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
-import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { AddComponentProvider, AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
 
 @ElementExtends(FeatureElement)
@@ -28,6 +28,26 @@ export class FullTextSearchElement extends FeatureElement {
     AddNgModuleImport(sourceFile, 'MatInputModule', '@angular/material/input');
     AddNgModuleImport(sourceFile, 'MatButtonModule', '@angular/material/button');
     AddNgModuleImport(sourceFile, 'MatIconModule', '@angular/material/icon');
+  }
+
+  public handleComponent({ sourceFile, project, options }: ToValueContext & { sourceFile: SourceFile }) {
+    AddComponentProvider(
+      sourceFile,
+      {
+        provide: 'RXAP_TABLE_FILTER',
+        useClass: 'TableFullTextSearchService'
+      },
+      [
+        {
+          namedImports: [ 'RXAP_TABLE_FILTER' ],
+          moduleSpecifier: '@rxap/material-table-system'
+        },
+        {
+          namedImports: [ 'TableFullTextSearchService' ],
+          moduleSpecifier: '@rxap/table-system'
+        }
+      ]
+    )
   }
 
 }
