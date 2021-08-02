@@ -482,10 +482,14 @@ export class FormElement implements ParsedElement<ClassDeclaration> {
         ],
         properties: [
           {
-            name:                'rxapFormGroup',
-            scope:               Scope.Public,
+            name: 'rxapFormGroup',
+            scope: Scope.Public,
             hasExclamationToken: true,
-            type:                `RxapFormGroup<${formInterfaceName}>`
+            type: `RxapFormGroup<${formInterfaceName}>`
+          },
+          {
+            name: '[key: string]',
+            type: 'any'
           }
         ]
       });
