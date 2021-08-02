@@ -1,18 +1,6 @@
-import {
-  ElementDef,
-  ElementExtends,
-  ElementAttribute
-} from '@rxap/xml-parser/decorators';
-import {
-  ToValueContext,
-  AddNgModuleImport,
-  AddComponentProvider
-} from '@rxap/schematics-ts-morph';
-import {
-  SourceFile,
-  Scope,
-  Writers
-} from 'ts-morph';
+import { ElementAttribute, ElementChildTextContent, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
+import { AddComponentProvider, AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { Scope, SourceFile, Writers } from 'ts-morph';
 import { Rule } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
 import { FormFeatureElement } from './form-feature.element';
@@ -25,6 +13,9 @@ const { dasherize, classify, camelize, capitalize } = strings;
 @ElementDef('window-footer-controls')
 export class WindowFooterControlsElement extends FormFeatureElement {
 
+  @ElementChildTextContent()
+  public navigateAfterSubmit?: string;
+
   @ElementAttribute()
   public allowResubmit?: boolean;
 
@@ -33,6 +24,9 @@ export class WindowFooterControlsElement extends FormFeatureElement {
       '(close)="windowRef.complete()"',
       '(submitted)="windowRef.next($event)"'
     ];
+    if (this.navigateAfterSubmit !== undefined) {
+      attributes.push(`[navigateAfterSubmit]="[ '${this.navigateAfterSubmit}' ]"`);
+    }
     if (this.allowResubmit) {
       attributes.push('allowResubmit');
     }
