@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.0-next.0...@rxap/schematics-form@12.3.0-next.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* only use camelize if required ([39de828](https://gitlab.com/rxap/schematics/commit/39de828c7f03cc30aaaa266e08e3cde977c74098))
+* **generate:** add a index signature to the form definition class ([d25612e](https://gitlab.com/rxap/schematics/commit/d25612ec28552ae8d431b2f0f90467fcf7a5eec4))
+
+
+
+
+
 # [12.3.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.2.0...@rxap/schematics-form@12.3.0-next.0) (2021-08-02)
 
 
