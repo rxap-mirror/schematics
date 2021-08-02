@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.0-next.1...@rxap/schematics-form@12.3.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* only use camelize if required ([af450a9](https://gitlab.com/rxap/schematics/commit/af450a984fe5fa52ae9495cf38cfe69a4bc17aed))
+
+
+
+
+
 # [12.3.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.0-next.0...@rxap/schematics-form@12.3.0-next.1) (2021-08-02)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.2.0...@rxap/schematics-table@12.2.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* generate complex table interfaces ([b536b97](https://gitlab.com/rxap/schematics/commit/b536b979a875b91f1074b2445146de7e41910c6c))
+
+
+
+
+
 # [12.2.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.2.0-next.3...@rxap/schematics-table@12.2.0) (2021-07-22)
 
 **Note:** Version bump only for package @rxap/schematics-table

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.3.0...@rxap/schematics-ts-morph@12.3.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* add coerce-property-key.ts method ([81896bd](https://gitlab.com/rxap/packages/commit/81896bd06602eb77d088e8231eaeff3b3ffffc32))
+
+
+
+
+
 # [12.3.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@12.3.0-next.1...@rxap/schematics-ts-morph@12.3.0) (2021-07-22)
 
 **Note:** Version bump only for package @rxap/schematics-ts-morph
