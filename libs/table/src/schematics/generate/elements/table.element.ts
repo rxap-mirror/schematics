@@ -9,7 +9,7 @@ import {
 import { ColumnElement } from './columns/column.element';
 import { strings } from '@angular-devkit/core';
 import { ParsedElement } from '@rxap/xml-parser';
-import { Project, SourceFile } from 'ts-morph';
+import { InterfaceDeclarationStructure, OptionalKind, Project, SourceFile } from 'ts-morph';
 import { FeatureElement } from './features/feature.element';
 import { GenerateSchema } from '../schema';
 import { AdapterElement } from './adapter.element';
@@ -21,6 +21,7 @@ import {
   AddDir,
   AddNgModuleImport,
   CoerceMethodClass,
+  CoercePropertyKey,
   CoerceSourceFile,
   FindComponentModuleSourceFile,
   FindComponentSourceFile,
@@ -283,18 +284,70 @@ export class TableElement implements ParsedElement<Rule> {
       ),
       () => this.handleComponent(project, options),
       () => this.handleComponentModule(project, options),
-      () => {
-        const sourceFile: SourceFile = project.createSourceFile(this.tableInterfaceModuleSpecifier + '.ts', '', { overwrite: true });
-        sourceFile.addInterface({
-          isExported: true,
-          name: this.tableInterface,
-          properties: this.columns.filter(column => ![ 'actions-column', 'controls-column' ].includes(column.__tag)).map(column => ({
-            name: camelize(column.name),
-            type: column.type ? column.type.toValue({ sourceFile }) : 'any',
-          }))
-        })
-      },
+      () => this.createTableInterface({ project, options }),
     ]);
+  }
+
+  private createTableInterface({ project }: ToValueContext) {
+    const sourceFile: SourceFile = project.createSourceFile(this.tableInterfaceModuleSpecifier + '.ts', '', { overwrite: true });
+    // TODO : add a property tp the ColumnElement class that defines this column as "system" or "user" to inducted whether this column should be include in the interface
+    const _columns: Column[] = this.columns.filter(column => ![ 'actions-column', 'controls-column' ].includes(column.__tag)).map(column => ({
+      name: column.rawName!.split('.'),
+      type: column.type
+    }));
+
+    interface Column {
+      name: string[];
+      type: ColumnElement['type'];
+    }
+
+    function createInterface(columns: Column[], interfaceName: string) {
+      const interfaceStructures: Array<OptionalKind<InterfaceDeclarationStructure>> = [];
+
+      const interfaceStructure: OptionalKind<InterfaceDeclarationStructure> = {
+        isExported: true,
+        name: interfaceName,
+        properties: [],
+        extends: [ 'Record<string, unknown>' ]
+      };
+
+      // for each column that is a flat and not a sub type
+      for (const column of columns.filter(c => c.name.length === 1)) {
+        interfaceStructure.properties?.push({
+          name: CoercePropertyKey(column.name[0]),
+          type: column.type ? column.type.toValue({ sourceFile }) : 'any',
+        })
+      }
+
+      const columnMap = new Map<string, Column[]>();
+
+      // for each column that is a sub type
+      // group the columns by the column.name[0] value
+      for (const column of columns.filter(c => c.name.length > 1)) {
+        const parentProperty = column.name.shift()!;
+        if (!columnMap.has(parentProperty)) {
+          columnMap.set(parentProperty, []);
+        }
+        columnMap.get(parentProperty)?.push(column);
+      }
+
+      for (const [ name, group ] of columnMap.entries()) {
+        const groupInterfaceName = interfaceName + classify(name);
+        interfaceStructure.properties?.push({
+          name: CoercePropertyKey(name),
+          type: groupInterfaceName,
+        });
+        interfaceStructures.push(...createInterface(group, groupInterfaceName));
+      }
+
+      // push the "root" interface structure at the end to have the correct declaration order
+      interfaceStructures.push(interfaceStructure);
+
+      return interfaceStructures;
+    }
+
+    sourceFile.addInterfaces(createInterface(_columns, this.tableInterface));
+
   }
 
   private handleComponent(project: Project, options: GenerateSchema) {

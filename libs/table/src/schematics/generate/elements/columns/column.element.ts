@@ -39,6 +39,13 @@ export class ColumnElement
     return this._name?.replace(/\./g, '-') ?? '';
   }
 
+  /**
+   * The row property used from the xml file
+   */
+  public get rawName(): string {
+    return this._name ?? '';
+  }
+
   @ElementAttribute()
   public hidden?: boolean;
 
@@ -60,6 +67,7 @@ export class ColumnElement
   protected _name?: string;
 
   public get valueAccessor(): string {
+    // TODO : handle property path segments that match /(^[0-9]+|-|#|\.|@|\/|:|\*)/. Else the template is broken
     return this._name ? '?.' + this._name.split('.').join('?.') : '';
   }
 
@@ -191,7 +199,7 @@ export class ColumnElement
       throw new Error(`The column ${this._name} has not a filter definition.`);
     }
     return ElementFactory(ControlElement, {
-      id: dasherize(this.name),
+      id: camelize(this.name),
       __tag: 'control',
     });
   }
