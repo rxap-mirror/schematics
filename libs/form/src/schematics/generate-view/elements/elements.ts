@@ -13,6 +13,7 @@ import { CardElement } from './card.element';
 import { Components } from './component/components';
 import { ArrayGroupElement } from './array-group.element';
 import { Arrays } from './array/arrays';
+import { AccordionElement } from './accordion.element';
 
 export const Elements: Array<Constructor<ParsedElement>> = [
   NodeElement,
@@ -24,6 +25,7 @@ export const Elements: Array<Constructor<ParsedElement>> = [
   DividerElement,
   CardElement,
   ArrayGroupElement,
+  AccordionElement,
   ...Components,
   ...Controls,
   ...Features,
