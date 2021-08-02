@@ -65,7 +65,7 @@ export class ControlElement implements ParsedElement<PropertyDeclaration> {
 
   public toValue({ classDeclaration, sourceFile, options, project }: ControlElementToValueContext): PropertyDeclaration {
 
-    const controlName = camelize(this.id);
+    const controlName = this.id;
 
     let controlProperty = classDeclaration.getProperty(controlName);
 

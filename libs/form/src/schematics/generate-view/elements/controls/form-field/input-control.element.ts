@@ -22,7 +22,7 @@ export class InputControlElement extends FormFieldElement {
     const attributes: Array<string | (() => string)> = [
       'matInput',
       `type="${this.type}"`,
-      `placeholder="Enter ${camelize(this.name)}"`,
+      `placeholder="Enter ${this.name}"`,
       'rxapRequired',
       `i18n-placeholder`,
       ...this.innerAttributes

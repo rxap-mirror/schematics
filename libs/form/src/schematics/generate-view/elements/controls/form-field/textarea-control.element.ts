@@ -20,7 +20,7 @@ export class TextareaControlElement extends FormFieldElement {
       '[matAutosizeMinRows]="3"',
       `formControlName="${this.name}"`,
       'rxapRequired',
-      `placeholder="Enter ${camelize(this.name)}"`,
+      `placeholder="Enter ${this.name}"`,
       `i18n-placeholder`,
       ...this.innerAttributes
     )('\n');

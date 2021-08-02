@@ -313,8 +313,8 @@ export class FormElement implements ParsedElement<ClassDeclaration> {
     }
 
     for (const control of this.controls) {
-      const propertyName = camelize(control.id);
-      const property     = interfaceDeclaration.getProperty(propertyName);
+      const propertyName = control.id;
+      const property = interfaceDeclaration.getProperty(propertyName);
       const type         = control.type?.toValue({ sourceFile }) ?? 'any';
       if (property) {
         property.setType(type);

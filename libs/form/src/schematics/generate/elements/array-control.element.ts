@@ -1,15 +1,6 @@
-import {
-  ControlElement,
-  ControlElementToValueContext
-} from './control.element';
-import {
-  ElementDef,
-  ElementExtends
-} from '@rxap/xml-parser/decorators';
-import {
-  PropertyDeclaration,
-  Scope
-} from 'ts-morph';
+import { ControlElement, ControlElementToValueContext } from './control.element';
+import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
+import { PropertyDeclaration, Scope } from 'ts-morph';
 import { FormElement } from './form.element';
 import { strings } from '@angular-devkit/core';
 
@@ -28,7 +19,7 @@ export class ArrayControlElement extends FormElement {
     const groupSourceFile = project.getSourceFile(groupFilePath + '.ts') ?? project.createSourceFile(groupFilePath + '.ts');
     super.toValue({ sourceFile: groupSourceFile, project, options });
 
-    const controlName = camelize(this.id);
+    const controlName = this.id;
 
     let controlProperty = classDeclaration.getProperty(controlName);
 
