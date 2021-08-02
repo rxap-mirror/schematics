@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.2.0...@rxap/schematics-form@12.3.0-next.0) (2021-08-02)
+
+
+### Features
+
+* **generate-view:** add AccordionElement ([1f8b614](https://gitlab.com/rxap/schematics/commit/1f8b614195d4500beca7a5b5c10b2814ce69c9fd))
+
+
+
+
+
 # [12.2.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.2.0-next.2...@rxap/schematics-form@12.2.0) (2021-07-22)
 
 **Note:** Version bump only for package @rxap/schematics-form

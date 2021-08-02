@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.1-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.0...@rxap/schematics@12.9.1-next.0) (2021-08-02)
+
+
+### Bug Fixes
+
+* **init:** add missing default ignores ([fc9cb71](https://gitlab.com/rxap/packages/commit/fc9cb713d72fbc12547063c54f707296a3d18897))
+* remove old schema annotations ([f0fc738](https://gitlab.com/rxap/packages/commit/f0fc7384691eb21481809adcb6d4621dcdc7bea0))
+
+
+
+
+
 # [12.9.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.0-next.1...@rxap/schematics@12.9.0) (2021-07-22)
 
 **Note:** Version bump only for package @rxap/schematics
