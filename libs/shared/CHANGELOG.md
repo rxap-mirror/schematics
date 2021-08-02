@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.8](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-shared@12.0.7...@rxap/schematics-shared@12.0.8) (2021-08-02)
+
+
+### Bug Fixes
+
+* add missing peer dependencies ([83481ea](https://gitlab.com/rxap/schematics/commit/83481eafb7912aef4e9574abc416edfd5f025898))
+
+
+
+
+
 ## [12.0.7](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-shared@12.0.7-next.0...@rxap/schematics-shared@12.0.7) (2021-06-29)
 
 **Note:** Version bump only for package @rxap/schematics-shared

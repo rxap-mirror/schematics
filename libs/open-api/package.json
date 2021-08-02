@@ -1,9 +1,9 @@
 {
   "name": "@rxap/schematics-open-api",
-  "version": "12.0.8",
+  "version": "12.0.9",
   "dependencies": {
-    "@rxap/json-schema-to-typescript": "^12.0.8",
-    "@rxap/utilities": "^12.2.1-next.0",
+    "@rxap/json-schema-to-typescript": "^12.0.9",
+    "@rxap/utilities": "^12.2.1",
     "openapi-types": "^9.0.3",
     "tslib": "^2.0.0"
   },

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.0...@rxap/schematics-form@12.3.1) (2021-08-02)
+
+
+### Bug Fixes
+
+* add missing peer dependencies ([83481ea](https://gitlab.com/rxap/schematics/commit/83481eafb7912aef4e9574abc416edfd5f025898))
+* add navigate after submit attribute support ([40921c6](https://gitlab.com/rxap/schematics/commit/40921c6a90eb1133e7c219d0a032d06930cbee0f))
+
+
+
+
+
 # [12.3.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.0-next.1...@rxap/schematics-form@12.3.0) (2021-08-02)
 
 

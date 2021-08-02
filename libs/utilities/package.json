@@ -1,8 +1,8 @@
 {
   "name": "@rxap/schematics-utilities",
-  "version": "12.6.0",
+  "version": "12.6.1",
   "dependencies": {
-    "@rxap/utilities": "^12.2.1-next.0",
+    "@rxap/utilities": "^12.2.1",
     "semver": "^7.3.5",
     "tslib": "^2.0.0"
   },

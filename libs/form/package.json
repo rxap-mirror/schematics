@@ -1,17 +1,17 @@
 {
   "name": "@rxap/schematics-form",
-  "version": "12.3.0",
+  "version": "12.3.1",
   "peerDependencies": {
     "@nrwl/workspace": "^12.3.6",
-    "@rxap/schematics-html": "^12.0.7",
+    "@rxap/schematics-html": "^12.0.8",
     "@rxap/schematics-ts-morph": "^12.3.1",
-    "@rxap/schematics-utilities": "^12.6.0",
-    "@rxap/schematics-xml-parser": "^12.1.0",
-    "@rxap/xml-parser": "^12.1.0-next.1",
+    "@rxap/schematics-utilities": "^12.6.1",
+    "@rxap/schematics-xml-parser": "^12.1.1",
+    "@rxap/xml-parser": "^12.1.0",
     "ts-morph": "^11.0.0"
   },
   "dependencies": {
-    "@rxap/utilities": "^12.2.1-next.0",
+    "@rxap/utilities": "^12.2.1",
     "tslib": "^2.0.0"
   },
   "ng-add": {
@@ -23,6 +23,10 @@
     "migrations": "./migration.json",
     "packageGroup": [
       "@rxap/schematics-form",
+      "@rxap/schematics-html",
+      "@rxap/schematics-ts-morph",
+      "@rxap/schematics-utilities",
+      "@rxap/schematics-xml-parser",
       "@rxap/xml-parser"
     ]
   },
