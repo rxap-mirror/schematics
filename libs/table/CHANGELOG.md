@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.2.2...@rxap/schematics-table@12.2.3) (2021-08-02)
+
+
+### Bug Fixes
+
+* **full-text-search:** add missing providers ([c1e216e](https://gitlab.com/rxap/schematics/commit/c1e216e27b0815016e5bf891a4dbf985994951e6))
+
+
+
+
+
 ## [12.2.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.2.1...@rxap/schematics-table@12.2.2) (2021-08-02)
 
 
