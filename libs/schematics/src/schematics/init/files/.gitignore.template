@@ -22,6 +22,9 @@ output.file
 .settings/
 *.sublime-workspace
 
+migrations.json
+/test.*
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
