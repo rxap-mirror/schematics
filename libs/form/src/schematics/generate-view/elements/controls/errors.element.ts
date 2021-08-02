@@ -14,6 +14,7 @@ export function ErrorsElementParser(
 ): ErrorsElement {
 
   for (const child of element.getAllChildNodes()) {
+    // TODO : check if a camelize function for the child.name is required
     errorsElement.errors[child.name] = child.getTextContent();
   }
 

@@ -10,7 +10,7 @@ import {
 import { ClassDeclaration, ObjectLiteralExpression, PropertyDeclaration, Scope, SourceFile, Writers } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { ValidatorElement } from './validators/validator.element';
-import { AddControlValidator, OverwriteProperty, ToValueContext } from '@rxap/schematics-ts-morph';
+import { AddControlValidator, CoercePropertyKey, OverwriteProperty, ToValueContext } from '@rxap/schematics-ts-morph';
 import { GenerateSchema } from '../schema';
 import { FormElement } from './form.element';
 import { TypeElement } from '@rxap/schematics-xml-parser';
@@ -65,7 +65,7 @@ export class ControlElement implements ParsedElement<PropertyDeclaration> {
 
   public toValue({ classDeclaration, sourceFile, options, project }: ControlElementToValueContext): PropertyDeclaration {
 
-    const controlName = this.id;
+    const controlName = CoercePropertyKey(this.id, true);
 
     let controlProperty = classDeclaration.getProperty(controlName);
 

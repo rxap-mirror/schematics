@@ -19,6 +19,7 @@ import {
   AddVariableFakeProvider,
   AddVariableProvider,
   CoerceMethodClass,
+  CoercePropertyKey,
   CoerceSourceFile,
   GetFormProvidersFile,
   HandleComponent,
@@ -313,7 +314,7 @@ export class FormElement implements ParsedElement<ClassDeclaration> {
     }
 
     for (const control of this.controls) {
-      const propertyName = control.id;
+      const propertyName = CoercePropertyKey(control.id, true);
       const property = interfaceDeclaration.getProperty(propertyName);
       const type         = control.type?.toValue({ sourceFile }) ?? 'any';
       if (property) {
