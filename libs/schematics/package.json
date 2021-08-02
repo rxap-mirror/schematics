@@ -38,6 +38,7 @@
   },
   "peerDependencies": {
     "@nrwl/storybook": "^12.5.7",
+    "@rxap/schematics-utilities": "^12.6.0",
     "depcheck": "^1.4.2"
   }
 }

@@ -28,5 +28,9 @@
     "packageGroup": [
       "@rxap/schematics-html"
     ]
+  },
+  "peerDependencies": {},
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

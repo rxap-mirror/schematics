@@ -28,5 +28,11 @@
   },
   "ng-add": {
     "save": "dependencies"
+  },
+  "peerDependencies": {
+    "@rxap/schematics-utilities": "^12.6.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }
