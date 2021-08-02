@@ -20,31 +20,31 @@
     "baseUrl": ".",
     "paths": {
       "@rxap/schematics-ts-morph": [
-        "dist/libs/ts-morph"
+        "libs/ts-morph/src/index.ts"
       ],
       "@rxap/schematics-html": [
-        "dist/libs/html"
+        "libs/html/src/index.ts"
       ],
       "@rxap/schematics-xml-parser": [
-        "dist/libs/xml-parser"
+        "libs/xml-parser/src/index.ts"
       ],
       "@rxap/schematics-open-api": [
-        "dist/libs/open-api"
+        "libs/open-api/src/index.ts"
       ],
       "@rxap/schematics-form": [
-        "dist/libs/form"
+        "libs/form/src/index.ts"
       ],
       "@rxap/schematics-shared": [
-        "dist/libs/shared"
+        "libs/shared/src/index.ts"
       ],
       "@rxap/schematics-router": [
-        "dist/libs/router"
+        "libs/router/src/index.ts"
       ],
       "@rxap/schematics-table": [
-        "dist/libs/table"
+        "libs/table/src/index.ts"
       ],
       "@rxap/schematics-utilities": [
-        "dist/libs/utilities"
+        "libs/utilities/src/index.ts"
       ],
       "@rxap/schematics": [
         "libs/schematics/src/index.ts"

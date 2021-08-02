@@ -7,7 +7,12 @@
     "esModuleInterop": true,
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      "@rxap/schematics-utilities": [
+        "../../dist/libs/utilities"
+      ]
+    }
   },
   "exclude": [
     "**/*.spec.ts",
