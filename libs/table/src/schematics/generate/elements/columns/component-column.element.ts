@@ -66,7 +66,7 @@ export class ComponentColumnElement extends ColumnElement {
           selector: `td[rxap-${dasherize(this.name)}-cell]`,
           input: [
             {
-              name: 'cell',
+              name: 'value',
               required: true
             },
             {
