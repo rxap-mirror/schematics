@@ -36,6 +36,9 @@ export class PanelElement implements NodeElement {
   @ElementRequired()
   public content!: PanelContentElement;
 
+  @ElementAttribute()
+  public expanded!: boolean;
+
   public __parent!: NodeElement;
   public __tag!: string;
   public nodes!: NodeElement[];
@@ -49,7 +52,11 @@ export class PanelElement implements NodeElement {
   }
 
   public template(): string {
-    return NodeFactory('mat-expansion-panel')([
+    const attributes: string[] = [];
+    if (this.expanded) {
+      attributes.push('expanded')
+    }
+    return NodeFactory('mat-expansion-panel', ...attributes)([
       NodeFactory('mat-expansion-panel-header')(
         NodeFactory('mat-panel-title')(this.title),
       ),
