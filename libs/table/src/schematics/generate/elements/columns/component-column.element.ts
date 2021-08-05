@@ -34,7 +34,8 @@ export class ComponentColumnElement extends ColumnElement {
   public rowAttributeTemplate(): Array<string | (() => string)> {
     return [
       ...super.rowAttributeTemplate(),
-      `[rxap-${dasherize(this.name)}-cell]="element${this.valueAccessor}"`,
+      `[value]="element${this.valueAccessor}"`,
+      `rxap-${dasherize(this.name)}-cell`,
       `${this.withElement ? '[element]="element"' : ''}`
     ]
   }
@@ -63,6 +64,16 @@ export class ComponentColumnElement extends ColumnElement {
           path: options.path?.replace(/^\//, ''),
           prefix: 'rxap',
           selector: `td[rxap-${dasherize(this.name)}-cell]`,
+          input: [
+            {
+              name: 'cell',
+              required: true
+            },
+            {
+              name: 'element',
+              required: true
+            }
+          ]
         });
       } else {
         return noop();
