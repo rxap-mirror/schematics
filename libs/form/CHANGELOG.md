@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.2-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.1...@rxap/schematics-form@12.3.2-next.0) (2021-08-05)
+
+
+### Bug Fixes
+
+* **generate-view:** add support for expanded panel ([a736b26](https://gitlab.com/rxap/schematics/commit/a736b26f3cf1a53d4b3aca783f48b91c49ee4e3c))
+
+
+
+
+
 ## [12.3.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.0...@rxap/schematics-form@12.3.1) (2021-08-02)
 
 
