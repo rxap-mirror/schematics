@@ -59,7 +59,6 @@
     }
   },
   "required": [
-    "template",
-    "project"
+    "template"
   ]
 }
