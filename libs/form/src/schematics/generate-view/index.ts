@@ -25,10 +25,20 @@ export default function (options: GenerateSchema): Rule {
       path = join(projectRootPath, options.path);
     }
 
+    const basePathList: string[] = [];
+
+    if (options.templateBasePath) {
+      basePathList.push(options.templateBasePath);
+    }
+    if (options.path) {
+      // Hack to go out of the templates base folder
+      basePathList.push(join('..', options.path));
+    }
+
     const formElement = ParseTemplate<FormElement>(
       host,
       options.template,
-      options.templateBasePath,
+      basePathList,
       ...Elements
     );
     options.name = options.name ?? formElement.name;
