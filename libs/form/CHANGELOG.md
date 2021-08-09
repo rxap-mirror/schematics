@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.2-next.0...@rxap/schematics-form@12.4.0-next.0) (2021-08-09)
+
+
+### Features
+
+* support dynamic generation ([929dc99](https://gitlab.com/rxap/schematics/commit/929dc99c8fd75f645ff3b89c09f8851b2cc20a52))
+
+
+
+
+
 ## [12.3.2-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.1...@rxap/schematics-form@12.3.2-next.0) (2021-08-05)
 
 

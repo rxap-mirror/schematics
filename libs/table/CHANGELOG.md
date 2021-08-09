@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.0...@rxap/schematics-table@12.3.0-next.1) (2021-08-09)
+
+
+### Features
+
+* **component-column:** create required inputs ([dea99a1](https://gitlab.com/rxap/schematics/commit/dea99a12d68df8723369504a4898aae05f4e5fa3))
+
+
+
+
+
 # [12.3.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.2.3...@rxap/schematics-table@12.3.0-next.0) (2021-08-05)
 
 
