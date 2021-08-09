@@ -48,7 +48,6 @@ skipTsFiles | boolean | false |
 | Required |
 | --- |
 | template |
-| project |
 
 ## generate
 > Generates a form definition from a xml specification
