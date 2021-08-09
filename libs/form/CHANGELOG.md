@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.0-next.0...@rxap/schematics-form@12.4.0-next.1) (2021-08-09)
+
+
+### Bug Fixes
+
+* support custom template base paths ([6c43ac0](https://gitlab.com/rxap/schematics/commit/6c43ac0d0d027f8b64dfcea66eb900eb1f414dee))
+
+
+
+
+
 # [12.4.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.3.2-next.0...@rxap/schematics-form@12.4.0-next.0) (2021-08-09)
 
 
