@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.1...@rxap/schematics-table@12.3.0-next.2) (2021-08-10)
+
+
+### Features
+
+* support custom pipes ([da48e31](https://gitlab.com/rxap/schematics/commit/da48e310ecc9b028c785693f0306a3baf6f73f21))
+
+
+
+
+
 # [12.3.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.0...@rxap/schematics-table@12.3.0-next.1) (2021-08-09)
 
 
