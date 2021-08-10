@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.5...@rxap/schematics-table@12.3.0-next.6) (2021-08-10)
+
+
+### Bug Fixes
+
+* handle component module for each pipe ([2f04af3](https://gitlab.com/rxap/schematics/commit/2f04af3421ba76e392f8449ef355d3830b2d4620))
+
+
+
+
+
 # [12.3.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.4...@rxap/schematics-table@12.3.0-next.5) (2021-08-10)
 
 
