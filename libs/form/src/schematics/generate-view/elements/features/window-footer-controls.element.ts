@@ -192,8 +192,6 @@ export class WindowFooterControlsElement extends FormFeatureElement {
                 },
                 {
                   name: 'injector',
-                  isReadonly: true,
-                  scope: Scope.Private,
                   type: 'Injector',
                   decorators: [ {
                     name: 'Inject',
