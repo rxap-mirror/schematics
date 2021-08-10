@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0-next.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.0-next.1...@rxap/schematics-form@12.4.0-next.2) (2021-08-10)
+
+
+### Bug Fixes
+
+* support custom injector instance ([582c856](https://gitlab.com/rxap/schematics/commit/582c85653b0a2686a95d8c23e5f5a3c52a5de142))
+
+
+
+
+
 # [12.4.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.0-next.0...@rxap/schematics-form@12.4.0-next.1) (2021-08-09)
 
 
