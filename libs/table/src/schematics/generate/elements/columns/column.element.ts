@@ -33,6 +33,9 @@ export class PipeElement implements ParsedElement<Rule>, HandleComponentModule {
   @ElementChildTextContent()
   public module!: string;
 
+  @ElementAttribute()
+  public async?: boolean;
+
   public handleComponentModule({ sourceFile, project }: ToValueContext & { sourceFile: SourceFile }) {
     AddNgModuleImport(sourceFile, this.module, this.from);
   }
@@ -117,7 +120,7 @@ export class ColumnElement
   }
 
   public pipeTemplate(): string {
-    return this.pipes?.map(pipe => ' | ' + pipe.name).join('') ?? '';
+    return this.pipes?.map(pipe => ' | ' + pipe.name + pipe.async ? ' | async' : '').join('') ?? '';
   }
 
   public innerRowTemplate(): Array<Partial<WithTemplate> | string> {
