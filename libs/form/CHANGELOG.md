@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.0-next.4...@rxap/schematics-form@12.4.0-next.5) (2021-08-10)
+
+
+### Bug Fixes
+
+* always use compare with ([fd76f85](https://gitlab.com/rxap/schematics/commit/fd76f8585e350306dd89922551b8ddc89d29820a))
+
+
+
+
+
 # [12.4.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.0-next.3...@rxap/schematics-form@12.4.0-next.4) (2021-08-10)
 
 
