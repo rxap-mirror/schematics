@@ -1,9 +1,10 @@
 import { ParsedElement } from '@rxap/xml-parser';
 import { Rule } from '@angular-devkit/schematics';
 import { AddNgModuleImport, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
-import { ElementAttribute, ElementChildTextContent } from '@rxap/xml-parser/decorators';
+import { ElementAttribute, ElementChildTextContent, ElementDef } from '@rxap/xml-parser/decorators';
 import { SourceFile } from 'ts-morph';
 
+@ElementDef('pipe')
 export class PipeElement implements ParsedElement<Rule>, HandleComponentModule {
 
   @ElementChildTextContent()
