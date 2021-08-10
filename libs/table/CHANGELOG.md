@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.7](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.6...@rxap/schematics-table@12.3.0-next.7) (2021-08-10)
+
+
+### Bug Fixes
+
+* generalize pipe to template function ([e5493d4](https://gitlab.com/rxap/schematics/commit/e5493d48578b23fedf880744a5bb0fff16997a3d))
+
+
+
+
+
 # [12.3.0-next.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.5...@rxap/schematics-table@12.3.0-next.6) (2021-08-10)
 
 
