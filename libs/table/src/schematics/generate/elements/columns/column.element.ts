@@ -2,7 +2,6 @@ import {
   ElementAttribute,
   ElementChild,
   ElementChildren,
-  ElementChildTextContent,
   ElementDef,
   ElementRequired,
 } from '@rxap/xml-parser/decorators';
@@ -19,32 +18,9 @@ import { GenerateSchema } from '../../schema';
 import { DisplayColumn } from '../features/feature.element';
 import { FeatureElement } from './features/feature.element';
 import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
+import { PipeElement } from './pipes/pipe.element';
 
 const { dasherize, classify, camelize, capitalize } = strings;
-
-export class PipeElement implements ParsedElement<Rule>, HandleComponentModule {
-
-  @ElementChildTextContent()
-  public name!: string;
-
-  @ElementChildTextContent()
-  public from!: string;
-
-  @ElementChildTextContent()
-  public module!: string;
-
-  @ElementAttribute()
-  public async?: boolean;
-
-  public handleComponentModule({ sourceFile, project }: ToValueContext & { sourceFile: SourceFile }) {
-    AddNgModuleImport(sourceFile, this.module, this.from);
-  }
-
-  public validate(): boolean {
-    return true;
-  }
-
-}
 
 @ElementDef('column')
 export class ColumnElement
