@@ -173,7 +173,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
         },
         ...this.windowForm ? [
           {
-            namedImports: [ 'Inject' ],
+            namedImports: [ 'Inject', 'INJECTOR', 'Injector' ],
             moduleSpecifier: '@angular/core'
           }
         ] : [],
@@ -191,6 +191,16 @@ export class ActionButtonElement extends AbstractActionButtonElement {
                 arguments: [ this.windowForm.openFormWindowMethodName ]
               }
             ]
+          },
+          {
+            name: 'injector',
+            isReadonly: true,
+            scope: Scope.Private,
+            type: 'Injector',
+            decorators: [ {
+              name: 'Inject',
+              arguments: [ 'INJECTOR' ]
+            } ]
           }
         ]
       } ] : [],
@@ -203,7 +213,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       statements: [
         `console.log(\`action row type: ${this.type}\`, parameters);`,
         ...(this.windowForm ? [
-          'return this.openFormWindow.call(parameters);'
+          'return this.openFormWindow.call(parameters, { injector: this.injector });'
         ] : [])
       ]
     });
