@@ -15,7 +15,9 @@
     "parse5": "^6.0.1",
     "ts-morph": "^11.0.0",
     "tslib": "^2.0.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.2.4",
+    "@rxap/schematics-utilities": "^12.6.1",
+    "depcheck": "^1.4.2"
   },
   "license": "MIT",
   "keywords": [
@@ -38,8 +40,6 @@
     "save": "devDependencies"
   },
   "peerDependencies": {
-    "@nrwl/storybook": "^12.5.7",
-    "@rxap/schematics-utilities": "^12.6.1",
-    "depcheck": "^1.4.2"
+    "@nrwl/storybook": "^12.5.7"
   }
 }
