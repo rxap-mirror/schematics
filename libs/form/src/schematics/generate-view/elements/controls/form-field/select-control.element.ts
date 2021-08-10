@@ -38,9 +38,7 @@ export class SelectControlElement extends FormFieldElement {
 
   public handleComponentModule({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
     super.handleComponentModule({ project, sourceFile, options });
-    if (this.compareWith) {
-      AddNgModuleImport(sourceFile, 'CompareWithDirectiveModule', '@rxap/material-form-system');
-    }
+    AddNgModuleImport(sourceFile, 'CompareWithDirectiveModule', '@rxap/material-form-system');
     AddNgModuleImport(sourceFile, 'MatSelectModule', '@angular/material/select');
     AddNgModuleImport(sourceFile, 'InputSelectOptionsDirectiveModule', '@rxap/form-system');
     AddNgModuleImport(sourceFile, 'RequiredDirectiveModule', '@rxap/material-form-system');
