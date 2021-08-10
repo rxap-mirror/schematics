@@ -96,7 +96,7 @@ export class ColumnElement
   }
 
   public pipeTemplate(): string {
-    return this.pipes?.map(pipe => ' | ' + pipe.name + pipe.async ? ' | async' : '').join('') ?? '';
+    return this.pipes?.map(pipe => pipe.toString()).join('') ?? '';
   }
 
   public innerRowTemplate(): Array<Partial<WithTemplate> | string> {
