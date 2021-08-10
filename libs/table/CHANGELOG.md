@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.9](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.8...@rxap/schematics-table@12.3.0-next.9) (2021-08-10)
+
+
+### Bug Fixes
+
+* wait for form compilation ([be3baf3](https://gitlab.com/rxap/schematics/commit/be3baf36bb2b7b3148a36ae0fd1a5e39f3df6976))
+
+
+
+
+
 # [12.3.0-next.8](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.7...@rxap/schematics-table@12.3.0-next.8) (2021-08-10)
 
 
