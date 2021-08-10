@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.4...@rxap/schematics-table@12.3.0-next.5) (2021-08-10)
+
+
+### Bug Fixes
+
+* add missing element def decorator ([4e6c1bd](https://gitlab.com/rxap/schematics/commit/4e6c1bdde959df2fd31578e29f273845b6c676c2))
+
+
+
+
+
 # [12.3.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.3...@rxap/schematics-table@12.3.0-next.4) (2021-08-10)
 
 
