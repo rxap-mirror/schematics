@@ -1,14 +1,7 @@
 import { FormFieldElement } from './form-field.element';
-import {
-  ElementDef,
-  ElementExtends,
-  ElementChildTextContent
-} from '@rxap/xml-parser/decorators';
+import { ElementChildTextContent, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { NodeElement } from '../../node.element';
-import {
-  ToValueContext,
-  AddNgModuleImport
-} from '@rxap/schematics-ts-morph';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
 import type { ClearElement } from '../features/clear.element';
 import { NodeFactory } from '@rxap/schematics-html';
@@ -35,6 +28,8 @@ export class SelectControlElement extends FormFieldElement {
     ];
     if (this.compareWith) {
       attributes.push(`rxapCompareWith="${this.compareWith}"`);
+    } else {
+      attributes.push(`rxapCompareWith`);
     }
     return NodeFactory('mat-select', ...attributes)([
       NodeFactory('mat-option', '*rxapInputSelectOptions="let option"', '[value]="option.value"')('\n{{option.display}}\n')
