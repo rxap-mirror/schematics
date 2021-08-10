@@ -190,6 +190,7 @@ export class ColumnElement
       );
     }
     this.features?.forEach(feature => feature.handleComponentModule({ sourceFile, project, options }));
+    this.pipes?.forEach(pipe => pipe.handleComponentModule({ sourceFile, project, options }));
   }
 
   public handleComponent({
@@ -198,7 +199,6 @@ export class ColumnElement
                            options,
                          }: ToValueContext & { sourceFile: SourceFile }) {
     this.features?.forEach(feature => feature.handleComponent({ sourceFile, project, options }));
-    this.pipes?.forEach(pipe => pipe.handleComponentModule({ sourceFile, project, options }))
   }
 
   public createControlElement(): ControlElement {
