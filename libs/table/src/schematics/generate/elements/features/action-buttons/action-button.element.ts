@@ -213,7 +213,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       statements: [
         `console.log(\`action row type: ${this.type}\`, parameters);`,
         ...(this.windowForm ? [
-          'return this.openFormWindow.call(parameters, { injector: this.injector });'
+          'return this.openFormWindow.call(parameters, { injector: this.injector }).toPromise();'
         ] : [])
       ]
     });
