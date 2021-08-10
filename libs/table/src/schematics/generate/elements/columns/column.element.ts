@@ -2,6 +2,7 @@ import {
   ElementAttribute,
   ElementChild,
   ElementChildren,
+  ElementChildTextContent,
   ElementDef,
   ElementRequired,
 } from '@rxap/xml-parser/decorators';
@@ -21,7 +22,26 @@ import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
+export class PipeElement implements ParsedElement<Rule>, HandleComponentModule {
 
+  @ElementChildTextContent()
+  public name!: string;
+
+  @ElementChildTextContent()
+  public from!: string;
+
+  @ElementChildTextContent()
+  public module!: string;
+
+  public handleComponentModule({ sourceFile, project }: ToValueContext & { sourceFile: SourceFile }) {
+    AddNgModuleImport(sourceFile, this.module, this.from);
+  }
+
+  public validate(): boolean {
+    return true;
+  }
+
+}
 
 @ElementDef('column')
 export class ColumnElement
@@ -45,6 +65,9 @@ export class ColumnElement
   public get rawName(): string {
     return this._name ?? '';
   }
+
+  @ElementChildren(PipeElement, { group: 'pipes' })
+  public pipes?: PipeElement[];
 
   @ElementAttribute()
   public hidden?: boolean;
@@ -93,8 +116,12 @@ export class ColumnElement
     ];
   }
 
+  public pipeTemplate(): string {
+    return this.pipes?.map(pipe => ' | ' + pipe.name).join('') ?? '';
+  }
+
   public innerRowTemplate(): Array<Partial<WithTemplate> | string> {
-    return [ `{{ element${this.valueAccessor} }}` ]
+    return [ `{{ element${this.valueAccessor}${this.pipeTemplate()} }}` ]
   }
 
   public innerHeaderTemplate(): Array<Partial<WithTemplate> | string> {
@@ -192,6 +219,7 @@ export class ColumnElement
                            options,
                          }: ToValueContext & { sourceFile: SourceFile }) {
     this.features?.forEach(feature => feature.handleComponent({ sourceFile, project, options }));
+    this.pipes?.forEach(pipe => pipe.handleComponentModule({ sourceFile, project, options }))
   }
 
   public createControlElement(): ControlElement {
