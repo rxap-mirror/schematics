@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.3...@rxap/schematics-table@12.3.0-next.4) (2021-08-10)
+
+
+### Bug Fixes
+
+* expose pipe element ([92bf21d](https://gitlab.com/rxap/schematics/commit/92bf21dab200da54b9a900e9d99e9a05609c5610))
+
+
+
+
+
 # [12.3.0-next.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.2...@rxap/schematics-table@12.3.0-next.3) (2021-08-10)
 
 
