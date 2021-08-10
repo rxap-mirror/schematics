@@ -156,7 +156,7 @@ export class WindowFooterControlsElement extends FormFeatureElement {
         const sourceFile = project.createSourceFile(openFormMethodDirectiveFilePath);
         sourceFile.addImportDeclarations([
           {
-            namedImports:    [ 'NgModule', 'Directive', 'Input' ],
+            namedImports: [ 'NgModule', 'Directive', 'Input', 'INJECTOR', 'Injector', 'Inject' ],
             moduleSpecifier: '@angular/core'
           },
           {
@@ -185,13 +185,23 @@ export class WindowFooterControlsElement extends FormFeatureElement {
             {
               parameters: [
                 {
-                  name:       'method',
+                  name: 'method',
                   isReadonly: true,
-                  scope:      Scope.Public,
-                  type:       `Open${classify(options.name!)}FormWindowMethod`
+                  scope: Scope.Public,
+                  type: `Open${classify(options.name!)}FormWindowMethod`
+                },
+                {
+                  name: 'injector',
+                  isReadonly: true,
+                  scope: Scope.Private,
+                  type: 'Injector',
+                  decorators: [ {
+                    name: 'Inject',
+                    arguments: [ 'INJECTOR' ]
+                  } ]
                 }
               ],
-              statements: [ 'super();' ]
+              statements: [ 'super(injector);' ]
             }
           ],
           decorators: [
