@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.4.0-next.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.0-next.5...@rxap/schematics-form@12.4.0-next.6) (2021-08-11)
+
+
+### Bug Fixes
+
+* add missing default path suffix ([1eff679](https://gitlab.com/rxap/schematics/commit/1eff679e95479402b126e42320b54728be273752))
+
+
+
+
+
 # [12.4.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.0-next.4...@rxap/schematics-form@12.4.0-next.5) (2021-08-10)
 
 

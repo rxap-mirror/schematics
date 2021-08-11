@@ -1,23 +1,22 @@
 {
   "name": "@rxap/schematics",
-  "version": "12.9.2",
+  "version": "12.9.3-next.0",
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [
-      "@rxap/schematics",
-      "@rxap/schematics-utilities"
+      "@rxap/schematics"
     ]
   },
   "schematics": "./collection.json",
   "dependencies": {
     "@rxap/schematics-ts-morph": "^12.3.1",
-    "@rxap/utilities": "^12.2.1",
+    "@rxap/schematics-utilities": "^12.6.1",
+    "@rxap/utilities": "^12.2.1-next.0",
+    "depcheck": "^1.4.2",
     "parse5": "^6.0.1",
     "ts-morph": "^11.0.0",
     "tslib": "^2.0.0",
-    "typescript": "^4.2.4",
-    "@rxap/schematics-utilities": "^12.6.1",
-    "depcheck": "^1.4.2"
+    "typescript": "^4.2.4"
   },
   "license": "MIT",
   "keywords": [
