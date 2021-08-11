@@ -20,9 +20,10 @@ export default function (options: GenerateSchema): Rule {
     let path: string = options.path ?? '';
 
     if (!options.path) {
-      path = projectRootPath;
+      // TODO : check if lib or app should be used
+      path = projectRootPath + '/src/lib';
     } else if (options.path[0] === '/') {
-      path = join(projectRootPath, options.path);
+      path = join(projectRootPath + '/src/lib', options.path);
     }
 
     const basePathList: string[] = [];
