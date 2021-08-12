@@ -38,7 +38,7 @@ export default function(options: InitSchema): Rule {
         },
       ]) : noop(),
       options.preset === 'nest' ? chain([
-        AddPackageJsonDevDependency('@nrwl/angular'),
+        AddPackageJsonDevDependency('@nrwl/nest'),
         (_, context) => {
           const installTaskId = context.addTask(new NodePackageInstallTask());
           context.addTask(new RunSchematicTask('@nrwl/nest', 'init', {
