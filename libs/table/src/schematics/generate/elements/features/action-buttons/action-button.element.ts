@@ -61,6 +61,9 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   @ElementChild(MethodElement)
   public method?: MethodElement;
 
+  @ElementAttribute()
+  public refresh?: boolean;
+
   public get methodName(): string {
     return classify(this.__parent.__parent.name) + classify(this.type) + 'TableRowActionMethod';
   }
@@ -75,6 +78,9 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       '[element]="element"',
       'mat-icon-button'
     ];
+    if (this.refresh) {
+      attributes.push(`[refresh]="true"`)
+    }
     if (this.if) {
       attributes.push(`*ngIf="${this.if}"`);
     }
