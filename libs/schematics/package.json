@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics",
-  "version": "12.9.3",
+  "version": "12.9.4",
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.3...@rxap/schematics@12.9.4) (2021-08-12)
+
+
+### Bug Fixes
+
+* install nrwl/nest dep ([56eacd6](https://gitlab.com/rxap/packages/commit/56eacd6cb1250a6bace935af3ad76c6cd3198a54))
+
+
+
+
+
 ## [12.9.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.3-next.1...@rxap/schematics@12.9.3) (2021-08-12)
 
 **Note:** Version bump only for package @rxap/schematics
