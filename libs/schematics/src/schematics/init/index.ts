@@ -48,6 +48,7 @@ export default function(options: InitSchema): Rule {
       ]) : noop(),
       AddPackageJsonDevDependency('webpack-extension-reloader'),
       AddPackageJsonDevDependency('env-cmd'),
+      AddPackageJsonDevDependency('jest-junit'),
       schematic('config-commitlint', { overwrite: options.overwrite }),
       schematic('config-renovate', { overwrite: options.overwrite }),
       schematic('config-semantic-release', { overwrite: options.overwrite }),
