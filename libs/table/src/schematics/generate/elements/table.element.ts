@@ -239,8 +239,8 @@ export class TableElement implements ParsedElement<Rule> {
     let rowDef =
       '[' +
       [
+        ...this.features?.map(feature => feature.displayColumn()) ?? [],
         ...this.columns.map((column) => column.displayColumn()),
-        ...this.features?.map(feature => feature.displayColumn()) ?? []
       ].filter((column): column is DisplayColumn | DisplayColumn[] => !!column)
         .map(column => Array.isArray(column) ? column : [ column ])
         .reduce((a, b) => [ ...a, ...b ], [])
