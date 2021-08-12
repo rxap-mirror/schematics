@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.3-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.3-next.0...@rxap/schematics@12.9.3-next.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* add nest init support ([a6a71c7](https://gitlab.com/rxap/packages/commit/a6a71c7c392de2c36a17a5c990bca6a089dac24c))
+
+
+
+
+
 ## [12.9.3-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.2...@rxap/schematics@12.9.3-next.0) (2021-08-11)
 
 
