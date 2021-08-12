@@ -37,6 +37,15 @@ export default function(options: InitSchema): Rule {
           }), [ installTaskId ])
         },
       ]) : noop(),
+      options.preset === 'nest' ? chain([
+        AddPackageJsonDevDependency('@nrwl/angular'),
+        (_, context) => {
+          const installTaskId = context.addTask(new NodePackageInstallTask());
+          context.addTask(new RunSchematicTask('@nrwl/nest', 'init', {
+            unitTestRunner: 'jest'
+          }), [ installTaskId ])
+        },
+      ]) : noop(),
       AddPackageJsonDevDependency('webpack-extension-reloader'),
       AddPackageJsonDevDependency('env-cmd'),
       schematic('config-commitlint', { overwrite: options.overwrite }),
