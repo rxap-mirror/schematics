@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0-next.13](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.12...@rxap/schematics-table@12.3.0-next.13) (2021-08-12)
+
+
+### Bug Fixes
+
+* include feature column definitions ([56b80d3](https://gitlab.com/rxap/schematics/commit/56b80d35a730facefc16ff5c9e3bbe5038f5f539))
+
+
+
+
+
 # [12.3.0-next.12](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.11...@rxap/schematics-table@12.3.0-next.12) (2021-08-12)
 
 
