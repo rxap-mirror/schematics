@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.3.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.13...@rxap/schematics-table@12.3.0) (2021-08-12)
+
+**Note:** Version bump only for package @rxap/schematics-table
+
+
+
+
+
 # [12.3.0-next.13](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.12...@rxap/schematics-table@12.3.0-next.13) (2021-08-12)
 
 
