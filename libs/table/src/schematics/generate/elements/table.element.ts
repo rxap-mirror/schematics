@@ -10,7 +10,7 @@ import { ColumnElement } from './columns/column.element';
 import { strings } from '@angular-devkit/core';
 import { ParsedElement } from '@rxap/xml-parser';
 import { InterfaceDeclarationStructure, OptionalKind, Project, SourceFile } from 'ts-morph';
-import { FeatureElement } from './features/feature.element';
+import { DisplayColumn, FeatureElement } from './features/feature.element';
 import { GenerateSchema } from '../schema';
 import { AdapterElement } from './adapter.element';
 import {
@@ -238,10 +238,16 @@ export class TableElement implements ParsedElement<Rule> {
 
     let rowDef =
       '[' +
-      this.columns
-        .map((column) => column.name)
+      [
+        ...this.columns.map((column) => column.displayColumn()),
+        ...this.features?.map(feature => feature.displayColumn()) ?? []
+      ].filter((column): column is DisplayColumn | DisplayColumn[] => !!column)
+        .map(column => Array.isArray(column) ? column : [ column ])
+        .reduce((a, b) => [ ...a, ...b ], [])
+        .filter(column => column.active !== false)
+        .map(column => column.name)
         .map((name) => `'${name}'`)
-        .join(',') +
+        .join(', ') +
       ']';
     if (this.hasFeature('column-menu')) {
       rowDef = 'rxapTableColumns.displayColumns';
