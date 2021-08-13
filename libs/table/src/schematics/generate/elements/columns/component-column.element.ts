@@ -35,6 +35,7 @@ export class ComponentColumnElement extends ColumnElement {
     return [
       ...super.rowAttributeTemplate(),
       `[value]="element${this.valueAccessor}"`,
+      `[element]="element`,
       `rxap-${dasherize(this.name)}-cell`,
       `${this.withElement ? '[element]="element"' : ''}`
     ]
@@ -71,7 +72,14 @@ export class ComponentColumnElement extends ColumnElement {
             },
             {
               name: 'element',
-              required: true
+              required: true,
+              type: this.__parent.tableInterface,
+              imports: [
+                {
+                  moduleSpecifier: '../' + this.__parent.tableInterfaceModuleSpecifier,
+                  namedImport: this.__parent.tableInterface,
+                }
+              ]
             }
           ]
         });
