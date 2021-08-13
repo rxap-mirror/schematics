@@ -35,7 +35,7 @@ export class ComponentColumnElement extends ColumnElement {
     return [
       ...super.rowAttributeTemplate(),
       `[value]="element${this.valueAccessor}"`,
-      `[element]="element`,
+      `[element]="element"`,
       `rxap-${dasherize(this.name)}-cell`,
       `${this.withElement ? '[element]="element"' : ''}`
     ]
