@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.1-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0...@rxap/schematics-table@12.3.1-next.0) (2021-08-13)
+
+
+### Bug Fixes
+
+* add element input ([c93ffda](https://gitlab.com/rxap/schematics/commit/c93ffda80ad325a596e86a30e4a8edaed0071c12))
+
+
+
+
+
 # [12.3.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.3.0-next.13...@rxap/schematics-table@12.3.0) (2021-08-12)
 
 **Note:** Version bump only for package @rxap/schematics-table

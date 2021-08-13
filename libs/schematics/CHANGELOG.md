@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.5-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.4...@rxap/schematics@12.9.5-next.0) (2021-08-13)
+
+
+### Bug Fixes
+
+* install jest-junit package ([fc60bbc](https://gitlab.com/rxap/packages/commit/fc60bbc3c3f94929637fddc057a263da78d2816e))
+
+
+
+
+
 ## [12.9.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.3...@rxap/schematics@12.9.4) (2021-08-12)
 
 
