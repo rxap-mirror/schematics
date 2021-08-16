@@ -1,14 +1,10 @@
 import { ControlElement } from './control.element';
-import {
-  ElementChildTextContent,
-  ElementDef,
-  ElementExtends,
-} from '@rxap/xml-parser/decorators';
+import { ElementChildTextContent, ElementDef, ElementExtends, } from '@rxap/xml-parser/decorators';
 import { NodeElement } from '../node.element';
-import { ToValueContext, AddNgModuleImport } from '@rxap/schematics-ts-morph';
-import { SourceFile, Scope, Writers } from 'ts-morph';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { Scope, SourceFile, Writers } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
-import { chain, Rule, externalSchematic } from '@angular-devkit/schematics';
+import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
 import { join } from 'path';
 import { GenerateSchema } from '../../schema';
 import { PermissionsElement } from './features/permissions.element';
@@ -37,8 +33,10 @@ export class ComponentControlElement extends ControlElement {
     if (!this.componentName) {
       this.componentName = classify(this.name);
     }
-    if (!this.componentModuleName) {
+    if (!this.from && !this.componentModuleName) {
       this.createComponent = true;
+    }
+    if (!this.componentModuleName) {
       this.componentModuleName = `${this.componentName}ControlComponentModule`;
     }
     if (!this.selector) {
@@ -48,9 +46,6 @@ export class ComponentControlElement extends ControlElement {
       this.from = `./${dasherize(this.componentName)}-control/${dasherize(
         this.componentName
       )}-control.component.module`;
-    }
-    if (!this.componentModuleName) {
-      this.componentModuleName = `${this.componentName}Module`;
     }
   }
 
