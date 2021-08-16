@@ -51,6 +51,7 @@ export default function (options: AngularLibraryProjectSchema): Rule {
           enableIvy: options.enableIvy,
         }
       ),
+      // TODO : install missing packages and only execute the schematics after installation
       CheckIfPackagesAreInstalled([
         '@rxap/plugin-pack',
         '@rxap/plugin-readme-generator',
