@@ -2,12 +2,13 @@ import { DisplayColumn, FeatureElement } from './feature.element';
 import {
   ElementAttribute,
   ElementChild,
+  ElementChildTextContent,
   ElementDef,
   ElementExtends,
   ElementRequired
 } from '@rxap/xml-parser/decorators';
 import { Scope, SourceFile } from 'ts-morph';
-import { ParsedElement } from '@rxap/xml-parser';
+import { ElementFactory, ParsedElement } from '@rxap/xml-parser';
 import { TableElement } from '../table.element';
 import { strings } from '@angular-devkit/core';
 import { AddComponentProvider, AddNgModuleImport, HandleComponent, ToValueContext } from '@rxap/schematics-ts-morph';
@@ -262,12 +263,94 @@ export class RootElement implements ParsedElement, HandleComponent {
             moduleSpecifier: '@angular/core'
           },
           {
-            namedImports:    [ 'ProxyRemoteMethod', 'RxapRemoteMethod' ],
+            namedImports: [ 'ProxyRemoteMethod', 'RxapRemoteMethod' ],
             moduleSpecifier: '@rxap/remote-method'
           }
         ]);
       }
     }
+  }
+
+}
+
+@ElementDef('data-source')
+export class DataSourceElement implements ParsedElement<string> {
+
+  public __tag!: string;
+
+  @ElementChildTextContent()
+  public name!: string;
+
+  @ElementChildTextContent()
+  public id!: string;
+
+  @ElementChildTextContent()
+  public from!: string;
+
+  public postParse() {
+    if (!this.name && !this.from && this.id) {
+      this.name = classify(this.id) + 'DataSource';
+    }
+  }
+
+  public validate(): boolean {
+    return true;
+  }
+
+  public toValue({
+                   sourceFile,
+                   project,
+                   options
+                 }: ToValueContext<GenerateSchema> & { sourceFile: SourceFile }): string {
+
+    if (!this.from && this.id) {
+
+      const optionsFilePath = `${dasherize(this.id)}.data-source`;
+
+      if (!project.getSourceFile(optionsFilePath + '.ts')) {
+
+        const optionsSourceFile = project.createSourceFile(optionsFilePath + '.ts');
+
+        optionsSourceFile.addClass({
+          name: this.name,
+          isExported: true,
+          extends: 'BaseDataSource<Record<string, unknown>>',
+          decorators: [
+            {
+              name: 'Injectable',
+              arguments: []
+            },
+            {
+              name: 'RxapDataSource',
+              arguments: [ writer => writer.quote(this.id) ]
+            }
+          ]
+        });
+
+        optionsSourceFile.addImportDeclarations([
+          {
+            moduleSpecifier: '@angular/core',
+            namedImports: [ 'Injectable' ]
+          },
+          {
+            moduleSpecifier: '@rxap/data-source',
+            namedImports: [ 'BaseDataSource', 'RxapDataSource' ]
+          }
+        ]);
+
+      }
+
+      this.from = `./${optionsFilePath}`;
+
+    }
+
+    sourceFile.addImportDeclaration({
+      moduleSpecifier: this.from,
+      namedImports: [ this.name ]
+    });
+
+    return this.name;
+
   }
 
 }
@@ -286,22 +369,34 @@ export class TreeTableElement extends FeatureElement {
   @ElementRequired()
   public root!: RootElement;
 
-  public handleComponent({ sourceFile, project, options }: ToValueContext<GenerateSchema> & { sourceFile: SourceFile }) {
+  @ElementChild(DataSourceElement)
+  public dataSource!: DataSourceElement;
+
+  public postParse() {
+    if (!this.dataSource) {
+      // TODO : mv TreeTableDataSource to rxap
+      this.dataSource = ElementFactory(DataSourceElement, {
+        name: 'TreeTableDataSource',
+        from: '@mfd/shared/data-sources/tree-table.data-source'
+      })
+    }
+  }
+
+  public handleComponent({
+                           sourceFile,
+                           project,
+                           options
+                         }: ToValueContext<GenerateSchema> & { sourceFile: SourceFile }) {
     super.handleComponent({ sourceFile, project, options });
     this.child.handleComponent({ sourceFile, project, options });
     this.root.handleComponent({ sourceFile, project, options });
     AddComponentProvider(
       sourceFile,
       {
-        provide:  'TABLE_DATA_SOURCE',
-        useClass: 'TreeTableDataSource'
+        provide: 'TABLE_DATA_SOURCE',
+        useClass: this.dataSource.toValue({ sourceFile, project, options })
       },
       [
-        {
-          namedImports:    [ 'TreeTableDataSource' ],
-          // TODO : mv TreeTableDataSource to rxap
-          moduleSpecifier: '@mfd/shared/data-sources/tree-table.data-source'
-        },
         {
           namedImports:    [ 'TABLE_DATA_SOURCE' ],
           moduleSpecifier: '@rxap/material-table-system'
