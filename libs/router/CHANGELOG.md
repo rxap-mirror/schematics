@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.15](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-router@12.0.14...@rxap/schematics-router@12.0.15) (2021-09-08)
+
+
+### Bug Fixes
+
+* skip routing module creation ([7de1a63](https://gitlab.com/rxap/schematics/commit/7de1a632d2f5ec18c98d433a02c99ed085837e2f))
+
+
+
+
+
 ## [12.0.14](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-router@12.0.13...@rxap/schematics-router@12.0.14) (2021-08-02)
 
 
