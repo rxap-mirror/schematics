@@ -1,25 +1,31 @@
-import { ControlElement } from './control.element';
-import { ElementChildTextContent, ElementDef, ElementExtends, } from '@rxap/xml-parser/decorators';
-import { NodeElement } from '../node.element';
-import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
-import { Scope, SourceFile, Writers } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
-import { join } from 'path';
-import { GenerateSchema } from '../../schema';
-import { PermissionsElement } from './features/permissions.element';
 import { NodeFactory } from '@rxap/schematics-html';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { CoerceSuffix } from '@rxap/utilities';
+import { ElementChildTextContent, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
+import { join } from 'path';
+import { Scope, SourceFile, Writers } from 'ts-morph';
+import { GenerateSchema } from '../../schema';
+import { NodeElement } from '../node.element';
+import { ControlElement } from './control.element';
+import { PermissionsElement } from './features/permissions.element';
 
-const { dasherize, classify, camelize, capitalize } = strings;
+const { dasherize, classify, capitalize } = strings;
 
 @ElementExtends(NodeElement)
 @ElementDef('component-control')
 export class ComponentControlElement extends ControlElement {
+
+  public get componentNameDasherized(): string {
+    return dasherize(this.componentName.replace(/Component$/, ''));
+  }
+
+  /**
+   * The full component name. including the suffix `Component`
+   */
   @ElementChildTextContent('name')
   public componentName!: string;
-
-  @ElementChildTextContent('module')
-  public componentModuleName!: string;
 
   @ElementChildTextContent()
   public selector!: string;
@@ -28,24 +34,30 @@ export class ComponentControlElement extends ControlElement {
   public from!: string;
 
   public createComponent = false;
+  /**
+   * The full component module name. including the suffix `Module`
+   */
+  @ElementChildTextContent('module')
+  public componentModuleName!: string;
 
   public postParse() {
     if (!this.componentName) {
       this.componentName = classify(this.name);
     }
+    // normalize the component name to include the ControlComponent suffix
+    this.componentName = CoerceSuffix(classify(this.componentName), 'ControlComponent');
     if (!this.from && !this.componentModuleName) {
       this.createComponent = true;
     }
     if (!this.componentModuleName) {
-      this.componentModuleName = `${this.componentName}ControlComponentModule`;
+      this.componentModuleName = `${this.componentName}Module`;
     }
+    this.componentModuleName = CoerceSuffix(classify(this.componentModuleName), 'Module');
     if (!this.selector) {
-      this.selector = `rxap-${dasherize(this.componentName)}-control`;
+      this.selector = `rxap-${this.componentNameDasherized}`;
     }
     if (!this.from) {
-      this.from = `./${dasherize(this.componentName)}-control/${dasherize(
-        this.componentName
-      )}-control.component.module`;
+      this.from = `./${this.componentNameDasherized}/${this.componentNameDasherized}.component.module`;
     }
   }
 
@@ -98,39 +110,37 @@ export class ComponentControlElement extends ControlElement {
         if (!tree.exists(componentModulePath)) {
           return chain([
             externalSchematic('@rxap/schematics', 'component-module', {
-              name: dasherize(this.componentName) + '-control',
-              path: options.path?.replace(/^\//, ''),
+              name:     this.componentNameDasherized,
+              path:     options.path?.replace(/^\//, ''),
               selector: this.selector,
-              project: options.project,
+              project:  options.project,
             }),
-            (tree) => {
+            () => {
               const componentSourceFile = project.createSourceFile(
-                `./${dasherize(this.componentName)}-control/${dasherize(
-                  this.componentName
-                )}-control.component.ts`
+                `./${this.componentNameDasherized}/${this.componentNameDasherized}.component.ts`,
               );
 
               componentSourceFile.addClass({
-                name: this.componentName + 'ControlComponent',
-                extends: 'ControlValueAccessor',
+                name:       this.componentName,
+                extends:    'ControlValueAccessor',
                 properties: [
                   {
-                    name: 'value',
-                    scope: Scope.Public,
-                    type: 'any | null',
+                    name:        'value',
+                    scope:       Scope.Public,
+                    type:        'any | null',
                     initializer: 'null',
                   },
                 ],
-                methods: [
+                methods:    [
                   {
-                    name: 'writeValue',
+                    name:       'writeValue',
                     parameters: [
                       {
                         name: 'value',
                         type: 'any | null',
                       },
                     ],
-                    scope: Scope.Public,
+                    scope:      Scope.Public,
                     returnType: 'void',
                     statements: ['this.value = value;'],
                   },
@@ -141,29 +151,23 @@ export class ComponentControlElement extends ControlElement {
                     name: 'Component',
                     arguments: [
                       Writers.object({
-                        selector: (w) => w.quote(this.selector),
-                        templateUrl: (w) =>
-                          w.quote(
-                            `./${dasherize(
-                              this.componentName
-                            )}-control.component.html`
-                          ),
-                        styleUrls: `[ './${dasherize(
-                          this.componentName
-                        )}-control.component.scss' ]`,
+                        selector:        (w) => w.quote(this.selector),
+                        templateUrl:     (w) =>
+                                           w.quote(
+                                             `./${this.componentNameDasherized}.component.html`,
+                                           ),
+                        styleUrls:       `[ './${this.componentNameDasherized}.component.scss' ]`,
                         changeDetection: 'ChangeDetectionStrategy.OnPush',
-                        host: Writers.object({
+                        host:            Writers.object({
                           class: (w) =>
-                            w.quote(
-                              `rxap-${dasherize(this.componentName)}-control`
-                            ),
+                                   w.quote(this.selector),
                         }),
-                        providers: (w) => {
+                        providers:       (w) => {
                           w.writeLine('[');
                           Writers.object({
-                            provide: 'NG_VALUE_ACCESSOR',
-                            multi: 'true',
-                            useExisting: `forwardRef(() => ${this.componentName}ControlComponent)`,
+                            provide:     'NG_VALUE_ACCESSOR',
+                            multi:       'true',
+                            useExisting: `forwardRef(() => ${this.componentName})`,
                           })(w);
                           w.write(']');
                         },
