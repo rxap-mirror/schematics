@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.1.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-html@12.0.8...@rxap/schematics-html@12.1.0-next.0) (2021-09-09)
+
+
+### Features
+
+* auto generate error messages ([22fc8f6](https://gitlab.com/rxap/packages/commit/22fc8f6402335dcd3ef6af079f6af42d6670e189))
+
+
+
+
+
 ## [12.0.8](https://gitlab.com/rxap/packages/compare/@rxap/schematics-html@12.0.7...@rxap/schematics-html@12.0.8) (2021-08-02)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.2-next.0...@rxap/schematics-form@12.5.0-next.0) (2021-09-09)
+
+
+### Features
+
+* auto generate error messages ([22fc8f6](https://gitlab.com/rxap/schematics/commit/22fc8f6402335dcd3ef6af079f6af42d6670e189))
+
+
+
+
+
 ## [12.4.2-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.4.1...@rxap/schematics-form@12.4.2-next.0) (2021-09-09)
 
 

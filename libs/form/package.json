@@ -1,9 +1,9 @@
 {
   "name": "@rxap/schematics-form",
-  "version": "12.4.2-next.0",
+  "version": "12.5.0-next.0",
   "peerDependencies": {
     "@nrwl/workspace": "^12.3.6",
-    "@rxap/schematics-html": "^12.0.8",
+    "@rxap/schematics-html": "^12.1.0-next.0",
     "@rxap/schematics-ts-morph": "^12.3.1",
     "@rxap/schematics-utilities": "^12.6.1",
     "@rxap/schematics-xml-parser": "^12.1.1",
