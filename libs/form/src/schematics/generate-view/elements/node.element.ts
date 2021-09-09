@@ -1,20 +1,10 @@
-import { ParsedElement } from '@rxap/xml-parser';
-import {
-  ElementChildren,
-  ElementDef,
-  ElementRequired
-} from '@rxap/xml-parser/decorators';
-import {
-  chain,
-  Rule
-} from '@angular-devkit/schematics';
-import {
-  ToValueContext,
-  HandleComponentModule,
-  HandleComponent
-} from '@rxap/schematics-ts-morph';
-import { SourceFile } from 'ts-morph';
+import { chain, Rule } from '@angular-devkit/schematics';
 import { WithTemplate } from '@rxap/schematics-html';
+import { HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ParsedElement } from '@rxap/xml-parser';
+import { ElementChildren, ElementDef, ElementRequired } from '@rxap/xml-parser/decorators';
+import { SourceFile } from 'ts-morph';
+import { FormElement as DefinitionFormElement } from '../../generate/elements/form.element';
 
 @ElementDef('node')
 export class NodeElement implements ParsedElement<Rule>, WithTemplate, HandleComponentModule, HandleComponent {
@@ -25,6 +15,10 @@ export class NodeElement implements ParsedElement<Rule>, WithTemplate, HandleCom
   @ElementChildren(NodeElement)
   @ElementRequired()
   public nodes!: NodeElement[];
+
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
+  }
 
   public get controlPath(): string {
     return this.__parent.controlPath;

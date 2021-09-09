@@ -1,21 +1,16 @@
+import { chain, Rule } from '@angular-devkit/schematics';
+import { NodeFactory } from '@rxap/schematics-html';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import {
   ElementAttribute,
   ElementChildren,
   ElementDef,
   ElementExtends,
-  ElementRequired
+  ElementRequired,
 } from '@rxap/xml-parser/decorators';
-import {
-  AddNgModuleImport,
-  ToValueContext
-} from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
-import {
-  chain,
-  Rule
-} from '@angular-devkit/schematics';
+import { FormElement as DefinitionFormElement } from '../../generate/elements/form.element';
 import { NodeElement } from './node.element';
-import { NodeFactory } from '@rxap/schematics-html';
 
 @ElementExtends(NodeElement)
 @ElementDef('array-group')
@@ -44,7 +39,11 @@ export class ArrayGroupElement implements NodeElement {
   public nodes: NodeElement[] = [];
 
   public get controlPath(): string {
-    return [ this.__parent.controlPath, this.name ].join('.');
+    return [this.__parent.controlPath, this.name].join('.');
+  }
+
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
   }
 
   public validate(): boolean {

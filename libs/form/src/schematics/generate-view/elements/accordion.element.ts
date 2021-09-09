@@ -1,3 +1,7 @@
+import { strings } from '@angular-devkit/core';
+import { chain, Rule } from '@angular-devkit/schematics';
+import { NodeFactory } from '@rxap/schematics-html';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import {
   ElementAttribute,
   ElementChild,
@@ -7,11 +11,8 @@ import {
   ElementExtends,
   ElementRequired,
 } from '@rxap/xml-parser/decorators';
-import { strings } from '@angular-devkit/core';
-import { chain, Rule } from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
-import { NodeFactory } from '@rxap/schematics-html';
-import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { FormElement as DefinitionFormElement } from '../../generate/elements/form.element';
 import { NodeElement } from './node.element';
 
 const { dasherize, classify, camelize, capitalize } = strings;
@@ -47,6 +48,10 @@ export class PanelElement implements NodeElement {
     return this.__parent.controlPath;
   }
 
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
+  }
+
   public toValue({ project, options }: ToValueContext): Rule {
     return this.content.toValue({ project, options });
   }
@@ -54,7 +59,7 @@ export class PanelElement implements NodeElement {
   public template(): string {
     const attributes: string[] = [];
     if (this.expanded) {
-      attributes.push('expanded')
+      attributes.push('expanded');
     }
     return NodeFactory('mat-expansion-panel', ...attributes)([
       NodeFactory('mat-expansion-panel-header')(
@@ -101,8 +106,12 @@ export class AccordionElement implements NodeElement {
     return this.__parent.controlPath;
   }
 
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
+  }
+
   public template(): string {
-    const attributes: Array<string | (() => string)> = [ `fxFlex="${this.flex}"` ];
+    const attributes: Array<string | (() => string)> = [`fxFlex="${this.flex}"`];
     if (this.multiple) {
       attributes.push('multi');
     }

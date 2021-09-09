@@ -1,17 +1,5 @@
-import {
-  ElementAttribute,
-  ElementChild,
-  ElementChildren,
-  ElementChildTextContent,
-  ElementDef,
-  ElementRequired,
-  ElementTextContent
-} from '@rxap/xml-parser/decorators';
-import { ControlElement } from './control.element';
-import { ParsedElement } from '@rxap/xml-parser';
-import { ClassDeclaration, ImportDeclarationStructure, OptionalKind, Project, Scope, SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
-import { FeatureElement } from './features/feature.element';
+import { noop, Rule } from '@angular-devkit/schematics';
 import {
   AddComponentFakeProvider,
   AddComponentProvider,
@@ -24,14 +12,26 @@ import {
   GetFormProvidersFile,
   HandleComponent,
   ProviderObject,
-  ToValueContext
+  ToValueContext,
 } from '@rxap/schematics-ts-morph';
-import { noop, Rule } from '@angular-devkit/schematics';
-import { GenerateSchema } from '../schema';
-import { HandleFormProviders } from './types';
-import { CoerceSuffix } from '@rxap/utilities';
-import { join } from 'path';
 import { MethodElement } from '@rxap/schematics-xml-parser';
+import { CoerceSuffix } from '@rxap/utilities';
+import { ParsedElement } from '@rxap/xml-parser';
+import {
+  ElementAttribute,
+  ElementChild,
+  ElementChildren,
+  ElementChildTextContent,
+  ElementDef,
+  ElementRequired,
+  ElementTextContent,
+} from '@rxap/xml-parser/decorators';
+import { join } from 'path';
+import { ClassDeclaration, ImportDeclarationStructure, OptionalKind, Project, Scope, SourceFile } from 'ts-morph';
+import { GenerateSchema } from '../schema';
+import { ControlElement } from './control.element';
+import { FeatureElement } from './features/feature.element';
+import { HandleFormProviders } from './types';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -520,4 +520,20 @@ export class FormElement implements ParsedElement<ClassDeclaration> {
 
   }
 
+  public getControl(controlPath: string): ControlElement | null {
+    const controlIdList = controlPath.split('.');
+    if (!controlIdList.length) {
+      return null;
+    }
+    const controlId = controlIdList.shift()!;
+    const control   = this.controls.find(control => control.id === controlId) ?? null;
+    if (control instanceof FormElement) {
+      return control.getControl(controlIdList.join('.'));
+    } else {
+      if (controlIdList.length) {
+        return null;
+      }
+      return control;
+    }
+  }
 }

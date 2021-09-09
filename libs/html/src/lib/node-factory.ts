@@ -3,8 +3,8 @@ import { WithTemplate } from './with-template';
 export function NodeFactory(
   tag: string,
   ...attributes: Array<string | (() => string)>
-): (innerNode?: Array<Partial<WithTemplate> | string> | string) => string {
-  return (innerNode?: Array<Partial<WithTemplate> | string> | string) => {
+): (innerNode?: Array<Partial<WithTemplate> | string> | string, ...args: any[]) => string {
+  return (innerNode?: Array<Partial<WithTemplate> | string> | string, ...args: any[]) => {
     let template = `<${tag}`;
     attributes.filter(Boolean).forEach(attr => {
       if (typeof attr === 'string') {
@@ -23,7 +23,7 @@ export function NodeFactory(
           innerText += inner;
         } else if (inner.template) {
           if (typeof inner.template === 'function') {
-            innerText += inner.template();
+            innerText += inner.template(...args);
           } else if (typeof inner.template === 'string') {
             innerText += inner.template;
           }

@@ -1,23 +1,18 @@
-import { NodeElement } from '../node.element';
+import { chain, Rule } from '@angular-devkit/schematics';
+import { WithTemplate } from '@rxap/schematics-html';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ParsedElement } from '@rxap/xml-parser';
 import {
   ElementAttribute,
+  ElementChildren,
   ElementDef,
   ElementExtends,
   ElementRequired,
-  ElementChildren
 } from '@rxap/xml-parser/decorators';
-import { ParsedElement } from '@rxap/xml-parser';
-import {
-  ToValueContext,
-  AddNgModuleImport
-} from '@rxap/schematics-ts-morph';
-import {
-  chain,
-  Rule
-} from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
+import { FormElement as DefinitionFormElement } from '../../../generate/elements/form.element';
+import { NodeElement } from '../node.element';
 import { ArrayFeatureElement } from './features/array-feature.element';
-import { WithTemplate } from '@rxap/schematics-html';
 
 @ElementExtends(NodeElement)
 @ElementDef('array')
@@ -41,7 +36,11 @@ export class ArrayElement implements WithTemplate, ParsedElement, NodeElement {
   public nodes: NodeElement[] = [];
 
   public get controlPath(): string {
-    return [ this.__parent.controlPath, this.name ].join('.');
+    return [this.__parent.controlPath, this.name].join('.');
+  }
+
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
   }
 
   constructor() {

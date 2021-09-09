@@ -1,21 +1,16 @@
-import { NodeElement } from './node.element';
+import { chain, Rule } from '@angular-devkit/schematics';
+import { NodeFactory } from '@rxap/schematics-html';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import {
   ElementAttribute,
   ElementChildren,
   ElementDef,
   ElementExtends,
-  ElementRequired
+  ElementRequired,
 } from '@rxap/xml-parser/decorators';
-import {
-  ToValueContext,
-  AddNgModuleImport
-} from '@rxap/schematics-ts-morph';
-import {
-  Rule,
-  chain
-} from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
-import { NodeFactory } from '@rxap/schematics-html';
+import { FormElement as DefinitionFormElement } from '../../generate/elements/form.element';
+import { NodeElement } from './node.element';
 
 @ElementExtends(NodeElement)
 @ElementDef('group')
@@ -32,7 +27,11 @@ export class GroupElement implements NodeElement {
   public nodes: NodeElement[] = [];
 
   public get controlPath(): string {
-    return [ this.__parent.controlPath, this.name ].join('.');
+    return [this.__parent.controlPath, this.name].join('.');
+  }
+
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
   }
 
   public template(): string {

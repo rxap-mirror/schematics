@@ -1,26 +1,18 @@
+import { Rule } from '@angular-devkit/schematics';
+import { NodeFactory, StringOrFactory, WithTemplate } from '@rxap/schematics-html';
+import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ParsedElement } from '@rxap/xml-parser';
 import {
+  ElementAttribute,
+  ElementChild,
+  ElementChildTextContent,
   ElementDef,
   ElementExtends,
-  ElementChildTextContent,
-  ElementChild,
   ElementRequired,
-  ElementAttribute,
 } from '@rxap/xml-parser/decorators';
-import { NodeElement } from './node.element';
-import {
-  HandleComponentModule,
-  HandleComponent,
-  ToValueContext,
-  AddNgModuleImport,
-} from '@rxap/schematics-ts-morph';
-import { ParsedElement } from '@rxap/xml-parser';
-import { Rule } from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
-import {
-  NodeFactory,
-  WithTemplate,
-  StringOrFactory,
-} from '@rxap/schematics-html';
+import { FormElement as DefinitionFormElement } from '../../generate/elements/form.element';
+import { NodeElement } from './node.element';
 
 @ElementDef('content')
 export class ContentElement extends NodeElement {
@@ -32,13 +24,11 @@ export class ContentElement extends NodeElement {
 @ElementExtends(NodeElement)
 @ElementDef('card')
 export class CardElement
-  implements
-    WithTemplate,
+  implements WithTemplate,
     ParsedElement<Rule>,
     HandleComponentModule,
     HandleComponent,
-    NodeElement
-{
+    NodeElement {
   public __tag!: string;
   public __parent!: NodeElement;
 
@@ -46,6 +36,10 @@ export class CardElement
 
   public get controlPath(): string {
     return this.__parent.controlPath;
+  }
+
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
   }
 
   @ElementAttribute()

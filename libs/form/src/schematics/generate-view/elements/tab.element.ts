@@ -1,28 +1,17 @@
-import { NodeElement } from './node.element';
+import { chain, Rule } from '@angular-devkit/schematics';
+import { NodeFactory, StringOrFactory, WithTemplate } from '@rxap/schematics-html';
+import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
 import { ParsedElement } from '@rxap/xml-parser';
 import {
   ElementChildren,
   ElementChildTextContent,
   ElementDef,
   ElementExtends,
-  ElementRequired
+  ElementRequired,
 } from '@rxap/xml-parser/decorators';
-import {
-  ToValueContext,
-  AddNgModuleImport,
-  HandleComponentModule,
-  HandleComponent
-} from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
-import {
-  Rule,
-  chain
-} from '@angular-devkit/schematics';
-import {
-  NodeFactory,
-  WithTemplate,
-  StringOrFactory
-} from '@rxap/schematics-html';
+import { FormElement as DefinitionFormElement } from '../../generate/elements/form.element';
+import { NodeElement } from './node.element';
 
 @ElementDef('tab')
 export class TabElement implements NodeElement {
@@ -41,10 +30,14 @@ export class TabElement implements NodeElement {
     return this.__parent.controlPath;
   }
 
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
+  }
+
   public template(): string {
     return NodeFactory('mat-tab', `label="${this.label}"`)(NodeFactory(
-      'ng-template', 'matTabContent'
-    )([ ...this.nodes, '\n' ]));
+      'ng-template', 'matTabContent',
+    )([...this.nodes, '\n']));
   }
 
   public validate(): boolean {
@@ -80,6 +73,10 @@ export class TabGroupElement implements WithTemplate, ParsedElement<Rule>, Handl
 
   public get controlPath(): string {
     return this.__parent.controlPath;
+  }
+
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
   }
 
   public validate(): boolean {

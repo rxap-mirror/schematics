@@ -1,20 +1,20 @@
-import { GenerateSchema } from './schema';
-import { chain, externalSchematic, noop, Rule, SchematicsException, Tree, } from '@angular-devkit/schematics';
-import { formatFiles } from '@nrwl/workspace';
-import { Elements } from './elements/elements';
-import { join } from 'path';
 import { strings } from '@angular-devkit/core';
-import { FormElement } from './elements/form.element';
+import { chain, externalSchematic, noop, Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
+import { formatFiles } from '@nrwl/workspace';
 import { ApplyTsMorphProject, FixMissingImports, MergeTsMorphProject } from '@rxap/schematics-ts-morph';
-import { IndentationText, Project, QuoteKind } from 'ts-morph';
-import { ParseTemplate } from '@rxap/schematics-xml-parser';
 import { GetAngularJson, GetProjectRoot, GuessProjectName } from '@rxap/schematics-utilities';
+import { ParseTemplate } from '@rxap/schematics-xml-parser';
+import { join } from 'path';
+import { IndentationText, Project, QuoteKind } from 'ts-morph';
+import { Elements } from './elements/elements';
+import { FormElement } from './elements/form.element';
+import { GenerateSchema } from './schema';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
 export default function (options: GenerateSchema): Rule {
   return async (host: Tree, context) => {
-    const projectName = options.project = GuessProjectName(host, options);
+    const projectName     = options.project = GuessProjectName(host, options);
     const projectRootPath = GetProjectRoot(host, projectName);
 
     let path: string = options.path ?? '';
@@ -97,22 +97,22 @@ export default function (options: GenerateSchema): Rule {
 
     return chain([
       hasComponentTemplate
-        ? noop()
-        : externalSchematic('@rxap/schematics', 'component-module', {
-          path: options.path.replace(/^\//, ''),
-          project: projectName,
-          name: dasherize(options.name) + '-form',
-          flat: true,
-          theme: false,
-        }),
-      formElement.toValue({ project, options }),
+      ? noop()
+      : externalSchematic('@rxap/schematics', 'component-module', {
+        path:    options.path.replace(/^\//, ''),
+        project: projectName,
+        name:    dasherize(options.name) + '-form',
+        flat:    true,
+        theme:   false,
+      }),
+      formElement.toValue({ host, project, options }),
       // if the parent schematic has a ts-morph project apply the changes to this project
       options.tsMorphProject ? () => MergeTsMorphProject(options.tsMorphProject!(), project, pathSuffix) : noop(),
       // only apply files to the ts-morph project if not already exists
       // else the changes made by previous steps are overwritten
       options.skipTsFiles || options.tsMorphProject
-        ? noop()
-        : ApplyTsMorphProject(project, options.path, options.organizeImports),
+      ? noop()
+      : ApplyTsMorphProject(project, options.path, options.organizeImports),
       options.fixImports ? FixMissingImports() : noop(),
       options.format ? formatFiles() : noop(),
       context.debug

@@ -1,4 +1,7 @@
-import { GroupElement } from './group.element';
+import { strings } from '@angular-devkit/core';
+import { chain, externalSchematic, noop, Rule, Tree } from '@angular-devkit/schematics';
+import { NodeFactory } from '@rxap/schematics-html';
+import { AddComponentProvider, AddDir, AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import {
   ElementChild,
   ElementChildRawContent,
@@ -7,32 +10,41 @@ import {
   ElementDef,
   ElementExtends,
 } from '@rxap/xml-parser/decorators';
-import { NodeElement } from './node.element';
-import { AddComponentProvider, AddDir, AddNgModuleImport, ToValueContext, } from '@rxap/schematics-ts-morph';
-import { SourceFile } from 'ts-morph';
-import { chain, externalSchematic, noop, Rule, } from '@angular-devkit/schematics';
 import { join } from 'path';
-import { strings } from '@angular-devkit/core';
+import { SourceFile } from 'ts-morph';
+import {
+  FormElement as DefinitionFormElement,
+  LoadHandleMethod,
+  SubmitHandleMethod,
+} from '../../generate/elements/form.element';
+import { ParseFormElement } from '../../generate/parse-form-element';
 import { GenerateSchema } from '../schema';
 import { FormFeatureElement } from './features/form-feature.element';
-import { LoadHandleMethod, SubmitHandleMethod, } from '../../generate/elements/form.element';
-import { NodeFactory } from '@rxap/schematics-html';
+import { GroupElement } from './group.element';
+import { NodeElement } from './node.element';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
 @ElementExtends(NodeElement)
 @ElementDef('definition')
 export class FormElement extends GroupElement {
+
+  public get logicTemplate(): string {
+    return this._logicTemplate ?? join('forms', dasherize(this.form ?? this.name) + '.xml');
+  }
+
+  @ElementChildRawContent({
+    tag: 'template',
+  })
+  public set logicTemplate(value: string) {
+    this._logicTemplate = value;
+  }
+
   @ElementChildren(FormFeatureElement, { group: 'features' })
   public features?: FormFeatureElement[];
 
   @ElementChildTextContent()
   public form?: string;
-
-  @ElementChildRawContent({
-    tag: 'template'
-  })
-  public logicTemplate?: string;
 
   @ElementChild(SubmitHandleMethod)
   public submit?: SubmitHandleMethod;
@@ -43,10 +55,18 @@ export class FormElement extends GroupElement {
   @ElementChildTextContent()
   public title?: string;
 
+  public get formElement(): DefinitionFormElement | null {
+    return this._formElement;
+  }
+
+  private _formElement: DefinitionFormElement | null = null;
+
+  private _logicTemplate?: string;
+
   public template(): string {
     return NodeFactory(
       'form',
-      'rxapForm'
+      'rxapForm',
     )([...this.nodes, ...(this.features ?? [])]);
   }
 
@@ -105,28 +125,29 @@ export class FormElement extends GroupElement {
     AddNgModuleImport(sourceFile, 'RxapFormsModule', '@rxap/forms');
   }
 
-  public toValue({ project, options }: ToValueContext<GenerateSchema>): Rule {
-    const componentFile = dasherize(options.name!) + '-form.component.ts';
-    const componentModuleFile =
-      dasherize(options.name!) + '-form.component.module.ts';
+  public toValue({ project, options, host }: ToValueContext<GenerateSchema> & { host: Tree }): Rule {
+    const componentFile             = dasherize(options.name!) + '-form.component.ts';
+    const componentModuleFile       =
+            dasherize(options.name!) + '-form.component.module.ts';
     const componentTemplateFilePath = join(
       options.path!,
-      dasherize(options.name!) + '-form.component.html'
+      dasherize(options.name!) + '-form.component.html',
     );
+    this._formElement               = ParseFormElement(host, this.logicTemplate, options.templateBasePath);
     return chain([
       externalSchematic('@rxap/schematics-form', 'generate', {
-        project: options.project,
-        name: options.name,
-        template: this.logicTemplate ?? join('forms', dasherize(this.form ?? this.name) + '.xml'),
-        path: options.path?.replace(/^\//, '') ?? '',
-        flat: true,
-        organizeImports: false,
-        fixImports: false,
-        format: false,
+        project:          options.project,
+        name:             options.name,
+        template:         this.logicTemplate,
+        path:             options.path?.replace(/^\//, '') ?? '',
+        flat:             true,
+        organizeImports:  false,
+        fixImports:       false,
+        format:           false,
         templateBasePath: options.templateBasePath,
-        openApiModule: options.openApiModule,
-        overwrite: options.overwrite,
-        skipTsFiles: options.skipTsFiles,
+        openApiModule:    options.openApiModule,
+        overwrite:        options.overwrite,
+        skipTsFiles:      options.skipTsFiles,
       }),
       options.overwrite
         ? (tree) => tree.overwrite(componentTemplateFilePath, this.template())

@@ -1,31 +1,21 @@
-import { NodeElement } from '../node.element';
-import {
-  ToValueContext,
-  AddNgModuleImport,
-  CoerceSourceFile
-} from '@rxap/schematics-ts-morph';
+import { strings } from '@angular-devkit/core';
+import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
+import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
+import { AddNgModuleImport, CoerceSourceFile, ToValueContext } from '@rxap/schematics-ts-morph';
 import { ParsedElement } from '@rxap/xml-parser';
 import {
-  ElementExtends,
-  ElementDef,
-  ElementChildTextContent,
   ElementAttribute,
+  ElementChildren,
+  ElementChildTextContent,
+  ElementDef,
+  ElementExtends,
   ElementRequired,
-  ElementChildren
 } from '@rxap/xml-parser/decorators';
-import { strings } from '@angular-devkit/core';
-import { SourceFile } from 'ts-morph';
-import {
-  Rule,
-  chain,
-  externalSchematic
-} from '@angular-devkit/schematics';
 import { join } from 'path';
+import { SourceFile } from 'ts-morph';
+import { FormElement as DefinitionFormElement } from '../../../generate/elements/form.element';
+import { NodeElement } from '../node.element';
 import { ComponentFeatureElement } from './features/component-feature.element';
-import {
-  NodeFactory,
-  WithTemplate
-} from '@rxap/schematics-html';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
@@ -64,6 +54,10 @@ export class ComponentElement implements WithTemplate, ParsedElement, NodeElemen
 
   public get controlPath(): string {
     return this.__parent.controlPath;
+  }
+
+  public get formElement(): DefinitionFormElement | null {
+    return this.__parent.formElement;
   }
 
   constructor() {

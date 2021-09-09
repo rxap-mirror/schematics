@@ -3,3 +3,6 @@ export { ControlElement } from './generate/elements/control.element';
 export { ValidatorElement } from './generate/elements/validators/validator.element';
 export { NodeElement } from './generate-view/elements/node.element';
 export { Elements as FormViewElements } from './generate-view/elements/elements';
+export {} from './generate/index';
+export {} from './generate-view/index';
+export {} from './ng-add/index';

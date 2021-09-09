@@ -1,23 +1,22 @@
+import { strings } from '@angular-devkit/core';
 import { chain, noop, Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
+import { formatFiles } from '@nrwl/workspace';
+import { AddDir, ApplyTsMorphProject, FixMissingImports, MergeTsMorphProject } from '@rxap/schematics-ts-morph';
+import { GetAngularJson } from '@rxap/schematics-utilities';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { join } from 'path';
-import { GenerateSchema } from './schema';
-import { FormElement } from './elements/form.element';
 import { IndentationText, Project, QuoteKind } from 'ts-morph';
-import { strings } from '@angular-devkit/core';
-import { formatFiles } from '@nrwl/workspace';
-import { Elements } from './elements/elements';
-import { AddDir, ApplyTsMorphProject, FixMissingImports, MergeTsMorphProject } from '@rxap/schematics-ts-morph';
-import { ParseTemplate } from '@rxap/schematics-xml-parser';
-import { GetAngularJson } from '@rxap/schematics-utilities';
+import { FormElement } from './elements/form.element';
+import { ParseFormElement } from './parse-form-element';
+import { GenerateSchema } from './schema';
 
 const { dasherize, classify, camelize } = strings;
 
 export default function (options: GenerateSchema): Rule {
   return async (host: Tree) => {
     const projectRootPath = options.project
-      ? await createDefaultPath(host, options.project as string)
-      : '/';
+                            ? await createDefaultPath(host, options.project as string)
+                            : '/';
 
     if (!options.path) {
       options.path = projectRootPath;
@@ -46,12 +45,7 @@ export default function (options: GenerateSchema): Rule {
     let formElement: FormElement | undefined = options.formElement;
 
     if (!formElement) {
-      formElement = ParseTemplate<FormElement>(
-        host,
-        options.template,
-        options.templateBasePath,
-        ...Elements
-      );
+      formElement = ParseFormElement(host, options.template, options.templateBasePath);
     }
 
     const project = new Project({
@@ -71,7 +65,7 @@ export default function (options: GenerateSchema): Rule {
     if (!options.flat) {
       pathSuffix = dasherize(formElement.id) + '-form'
     }
-    options.path = join(options.path, pathSuffix);
+    options.path = join(options.path!, pathSuffix);
 
     AddDir(
       host.getDir(options.path),

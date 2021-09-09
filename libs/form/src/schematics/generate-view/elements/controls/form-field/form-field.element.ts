@@ -1,15 +1,12 @@
-import { ControlElement } from '../control.element';
-import {
-  ElementChild,
-  ElementChildTextContent,
-} from '@rxap/xml-parser/decorators';
-import { PrefixElement, SuffixElement } from './prefix.element';
-import { ErrorsElement } from '../errors.element';
 import { strings } from '@angular-devkit/core';
-import { ToValueContext, AddNgModuleImport } from '@rxap/schematics-ts-morph';
-import { SourceFile } from 'ts-morph';
-import { PermissionsElement } from '../features/permissions.element';
 import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ElementChild, ElementChildTextContent } from '@rxap/xml-parser/decorators';
+import { SourceFile } from 'ts-morph';
+import { ControlElement } from '../control.element';
+import { ErrorsElement } from '../errors.element';
+import { PermissionsElement } from '../features/permissions.element';
+import { PrefixElement, SuffixElement } from './prefix.element';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
@@ -54,6 +51,7 @@ export abstract class FormFieldElement extends ControlElement {
     if (this.hint) {
       nodes.push(NodeFactory('mat-hint')(this.hint));
     }
+    this.autoCreateErrors();
     if (this.errors) {
       nodes.push(this.errors.template());
     }
@@ -71,14 +69,31 @@ export abstract class FormFieldElement extends ControlElement {
 
     if (this.hasFeature('permissions')) {
       const permissionsElement =
-        this.getFeature<PermissionsElement>('permissions');
-      node = permissionsElement.wrapNode(
+              this.getFeature<PermissionsElement>('permissions');
+      node                     = permissionsElement.wrapNode(
         node,
-        ['form', this.controlPath].join('.')
+        ['form', this.controlPath].join('.'),
       );
     }
 
     return node;
+  }
+
+  private autoCreateErrors() {
+    const control = this.getControl();
+    if (control) {
+      if (!this.errors) {
+        this.errors = new ErrorsElement();
+      }
+      if (control.required && !this.errors.errors.required) {
+        this.errors.errors.required = 'Please enter a value';
+      }
+      if (!this.errors.validate()) {
+        this.errors = undefined;
+      }
+    } else {
+      console.warn('Could not find control');
+    }
   }
 
   protected abstract innerTemplate(): string;
