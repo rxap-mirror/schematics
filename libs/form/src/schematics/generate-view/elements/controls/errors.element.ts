@@ -1,21 +1,20 @@
-import { ElementParser, ParsedElement, RxapElement, XmlParserService } from '@rxap/xml-parser';
 import { strings } from '@angular-devkit/core';
-import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext, } from '@rxap/schematics-ts-morph';
 import { Rule } from '@angular-devkit/schematics';
-import { SourceFile } from 'ts-morph';
 import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
+import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ElementParser, ParsedElement, RxapElement, XmlParserService } from '@rxap/xml-parser';
+import { SourceFile } from 'ts-morph';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
 export function ErrorsElementParser(
   parser: XmlParserService,
   element: RxapElement,
-  errorsElement: ErrorsElement = new ErrorsElement()
+  errorsElement: ErrorsElement = new ErrorsElement(),
 ): ErrorsElement {
 
   for (const child of element.getAllChildNodes()) {
-    // TODO : check if a camelize function for the child.name is required
-    errorsElement.errors[child.name] = child.getTextContent();
+    errorsElement.errors[child.nodeName] = child.getTextContent();
   }
 
   return errorsElement;
