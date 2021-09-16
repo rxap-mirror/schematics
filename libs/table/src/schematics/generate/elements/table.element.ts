@@ -316,7 +316,7 @@ export class TableElement implements ParsedElement<Rule> {
         isExported: true,
         name: interfaceName,
         properties: [],
-        extends: [ 'Record<string, unknown>' ]
+        extends: ['Record<string, unknown>', 'TableRowMetadata'],
       };
 
       // for each column that is a flat and not a sub type
@@ -355,6 +355,10 @@ export class TableElement implements ParsedElement<Rule> {
     }
 
     sourceFile.addInterfaces(createInterface(_columns, this.tableInterface));
+    sourceFile.addImportDeclaration({
+      namedImports:    ['TableRowMetadata'],
+      moduleSpecifier: '@rxap/material-table-system',
+    });
 
   }
 
