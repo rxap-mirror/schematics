@@ -216,14 +216,18 @@ export class TableElement implements ParsedElement<Rule> {
   public rowTemplate(): string {
     const templates: string[] = [];
 
+    const columnNames = [
+      ...this.features?.map(feature => feature.displayColumn()) ?? [],
+      ...this.columns.map((column) => column.displayColumn()),
+    ].filter((column): column is DisplayColumn | DisplayColumn[] => !!column)
+      .map(column => Array.isArray(column) ? column : [column])
+      .reduce((a, b) => [...a, ...b], [])
+      .filter(column => column.active !== false)
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+      .map(column => column.name);
+
     if (this.hasFilter) {
-      let filterRowDef =
-        '[' +
-        this.columns
-          .map((column) => column.name)
-          .map((name) => `'filter_${name}'`)
-          .join(',') +
-        ']';
+      let filterRowDef = `[${columnNames.map((name) => `'filter_${name}'`).join(',')}]`;
       if (this.hasFeature('column-menu')) {
         filterRowDef = 'rxapTableColumns.displayColumns | toFilterColumnNames';
       }
@@ -236,19 +240,7 @@ export class TableElement implements ParsedElement<Rule> {
       );
     }
 
-    let rowDef =
-      '[' +
-          [
-            ...this.features?.map(feature => feature.displayColumn()) ?? [],
-            ...this.columns.map((column) => column.displayColumn()),
-          ].filter((column): column is DisplayColumn | DisplayColumn[] => !!column)
-            .map(column => Array.isArray(column) ? column : [column])
-            .reduce((a, b) => [...a, ...b], [])
-            .filter(column => column.active !== false)
-            .map(column => column.name)
-            .map((name) => `'${name}'`)
-            .join(', ') +
-          ']';
+    let rowDef = `[${columnNames.map((name) => `'${name}'`).join(', ')}]`;
     if (this.hasFeature('column-menu')) {
       rowDef = 'rxapTableColumns.displayColumns';
     }

@@ -13,6 +13,7 @@ export class SpinnerColumnElement extends FeatureElement {
       name:   '__spinner__',
       hidden: true,
       active: true,
+      order:  -1,
     };
   }
 

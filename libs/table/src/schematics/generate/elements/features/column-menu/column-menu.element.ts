@@ -1,10 +1,10 @@
-import { ElementChildren, ElementDef, ElementExtends, } from '@rxap/xml-parser/decorators';
-import { DisplayColumn, FeatureElement } from '../feature.element';
+import { strings } from '@angular-devkit/core';
+import { NodeFactory } from '@rxap/schematics-html';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ElementChildren, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { SourceFile } from 'ts-morph';
 import { TableElement } from '../../table.element';
-import { strings } from '@angular-devkit/core';
-import { coerceArray } from '@rxap/utilities';
-import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { DisplayColumn, FeatureElement } from '../feature.element';
 import { ColumnMenuFeatureElement } from './features/column-menu-feature.element';
 
 const { capitalize } = strings;
@@ -58,38 +58,31 @@ export class ColumnMenuElement extends FeatureElement {
 
   public headerTemplate(): string {
     let template =
-      '<rxap-table-column-menu matCard #rxapTableColumns="rxapTableColumns">';
+          '<rxap-table-column-menu matCard #rxapTableColumns="rxapTableColumns">';
 
-    if (this.__parent.features) {
-      for (const feature of this.__parent.features) {
-        const displayColumns = coerceArray(feature.displayColumn());
-        for (const displayColumn of displayColumns) {
-          template += `
-        <rxap-table-column-option
-        ${displayColumn.hidden ? 'hidden' : ''}
-        ${displayColumn.active === false ? 'inactive' : ''}
-        name="${displayColumn.name}">
-        </rxap-table-column-option>
-        `;
-        }
-      }
+    const columns = [
+      ...(this.__parent.features?.map(feature => feature.displayColumn()) ?? []),
+      ...this.__parent.columns.map((column) => column.displayColumn()),
+    ].filter((column): column is DisplayColumn | DisplayColumn[] => !!column)
+      .map(column => Array.isArray(column) ? column : [column])
+      .reduce((a, b) => [...a, ...b], [])
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+
+    for (const column of columns) {
+
+      template +=
+        NodeFactory(
+          'rxap-table-column-option',
+          ...[column.hidden ? 'hidden' : '', column.active === false ? 'inactive' : '', `name="${column.name}"`].filter(
+            Boolean),
+        )(
+          [
+            NodeFactory('ng-container', 'i18n')(capitalize(column.name)),
+          ]);
+
     }
 
-    for (const column of this.__parent.columns) {
-      const displayColumns = coerceArray(column.displayColumn());
-      for (const displayColumn of displayColumns) {
-        template += `
-        <rxap-table-column-option
-        ${displayColumn.hidden ? 'hidden' : ''}
-        ${displayColumn.active === false ? 'inactive' : ''}
-        name="${displayColumn.name}">
-        <ng-container i18n>${capitalize(displayColumn.name)}</ng-container>
-        </rxap-table-column-option>
-        `;
-      }
-    }
-
-    this.features?.forEach(feature => template += feature.headerTemplate())
+    this.features?.forEach(feature => template += feature.headerTemplate());
     template += '</rxap-table-column-menu>';
     return template;
   }

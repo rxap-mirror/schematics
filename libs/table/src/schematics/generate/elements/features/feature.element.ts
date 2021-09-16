@@ -1,18 +1,15 @@
-import { ParsedElement } from '@rxap/xml-parser';
-import { SourceFile } from 'ts-morph';
-import { ElementDef } from '@rxap/xml-parser/decorators';
-import {
-  HandleComponent,
-  HandleComponentModule,
-  ToValueContext
-} from '@rxap/schematics-ts-morph';
 import { Rule } from '@angular-devkit/schematics';
+import { HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ParsedElement } from '@rxap/xml-parser';
+import { ElementDef } from '@rxap/xml-parser/decorators';
+import { SourceFile } from 'ts-morph';
 import { TableElement } from '../table.element';
 
 export interface DisplayColumn {
   name: string;
   hidden?: boolean;
   active?: boolean;
+  order?: number;
 }
 
 @ElementDef('feature')
