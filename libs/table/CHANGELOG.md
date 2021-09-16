@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0-next.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.2...@rxap/schematics-table@12.5.0-next.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* move spinner column ([05c2dee](https://gitlab.com/rxap/schematics/commit/05c2dee91f67cd025b1756680cf3cd334197b534))
+
+
+
+
+
 # [12.5.0-next.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.1...@rxap/schematics-table@12.5.0-next.2) (2021-09-16)
 
 
