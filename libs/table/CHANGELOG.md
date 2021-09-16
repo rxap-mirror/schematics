@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.0...@rxap/schematics-table@12.5.0-next.1) (2021-09-16)
+
+
+### Bug Fixes
+
+* add TableRowMetadata extends ([162ab76](https://gitlab.com/rxap/schematics/commit/162ab7666c7f7626ab99b0ec6e42a8fbae49aed2))
+
+
+
+
+
 # [12.5.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.4.0...@rxap/schematics-table@12.5.0-next.0) (2021-09-16)
 
 
