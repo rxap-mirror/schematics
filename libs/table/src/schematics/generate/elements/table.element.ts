@@ -1,18 +1,7 @@
-import {
-  ElementAttribute,
-  ElementChild,
-  ElementChildren,
-  ElementChildTextContent,
-  ElementDef,
-  ElementRequired,
-} from '@rxap/xml-parser/decorators';
-import { ColumnElement } from './columns/column.element';
 import { strings } from '@angular-devkit/core';
-import { ParsedElement } from '@rxap/xml-parser';
-import { InterfaceDeclarationStructure, OptionalKind, Project, SourceFile } from 'ts-morph';
-import { DisplayColumn, FeatureElement } from './features/feature.element';
-import { GenerateSchema } from '../schema';
-import { AdapterElement } from './adapter.element';
+import { chain, Rule } from '@angular-devkit/schematics';
+import { FormElement } from '@rxap/schematics-form';
+import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
 import {
   AddComponentAnimations,
   AddComponentFakeProvider,
@@ -27,14 +16,25 @@ import {
   FindComponentSourceFile,
   ToValueContext,
 } from '@rxap/schematics-ts-morph';
-import { FormElement } from '@rxap/schematics-form';
-import { chain, Rule } from '@angular-devkit/schematics';
-import { join } from 'path';
-import { CoerceSuffix } from '@rxap/utilities';
-import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
 import { MethodElement } from '@rxap/schematics-xml-parser';
+import { CoerceSuffix } from '@rxap/utilities';
+import { ParsedElement } from '@rxap/xml-parser';
+import {
+  ElementAttribute,
+  ElementChild,
+  ElementChildren,
+  ElementChildTextContent,
+  ElementDef,
+  ElementRequired,
+} from '@rxap/xml-parser/decorators';
+import { join } from 'path';
+import { InterfaceDeclarationStructure, OptionalKind, Project, SourceFile } from 'ts-morph';
+import { GenerateSchema } from '../schema';
+import { AdapterElement } from './adapter.element';
+import { ColumnElement } from './columns/column.element';
+import { DisplayColumn, FeatureElement } from './features/feature.element';
 
-const { dasherize, classify, camelize } = strings;
+const { dasherize, classify } = strings;
 
 @ElementDef('definition')
 export class TableElement implements ParsedElement<Rule> {
@@ -238,23 +238,25 @@ export class TableElement implements ParsedElement<Rule> {
 
     let rowDef =
       '[' +
-      [
-        ...this.features?.map(feature => feature.displayColumn()) ?? [],
-        ...this.columns.map((column) => column.displayColumn()),
-      ].filter((column): column is DisplayColumn | DisplayColumn[] => !!column)
-        .map(column => Array.isArray(column) ? column : [ column ])
-        .reduce((a, b) => [ ...a, ...b ], [])
-        .filter(column => column.active !== false)
-        .map(column => column.name)
-        .map((name) => `'${name}'`)
-        .join(', ') +
-      ']';
+          [
+            ...this.features?.map(feature => feature.displayColumn()) ?? [],
+            ...this.columns.map((column) => column.displayColumn()),
+          ].filter((column): column is DisplayColumn | DisplayColumn[] => !!column)
+            .map(column => Array.isArray(column) ? column : [column])
+            .reduce((a, b) => [...a, ...b], [])
+            .filter(column => column.active !== false)
+            .map(column => column.name)
+            .map((name) => `'${name}'`)
+            .join(', ') +
+          ']';
     if (this.hasFeature('column-menu')) {
       rowDef = 'rxapTableColumns.displayColumns';
     }
-    templates.push(
-      NodeFactory('tr', 'mat-header-row', `*matHeaderRowDef="${rowDef}"`)()
-    );
+    if (!this.hasFeature('no-column-header')) {
+      templates.push(
+        NodeFactory('tr', 'mat-header-row', `*matHeaderRowDef="${rowDef}"`)(),
+      );
+    }
     const rowAttributes: Array<string | (() => string)> = [
       '[@rowsAnimation]',
       'mat-row',
