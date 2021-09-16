@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.4.0...@rxap/schematics-table@12.5.0-next.0) (2021-09-16)
+
+
+### Features
+
+* add NoColumnHeader Feature ([769f2e6](https://gitlab.com/rxap/schematics/commit/769f2e6751f0c76da0c60f9fd09c9ae3c3e199ea))
+* add SpinnerColumn Feature ([967edb1](https://gitlab.com/rxap/schematics/commit/967edb1494b9f5cd1687ef318001ad696abc0ed0))
+
+
+
+
+
 # [12.4.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.4.0-next.0...@rxap/schematics-table@12.4.0) (2021-09-08)
 
 **Note:** Version bump only for package @rxap/schematics-table
