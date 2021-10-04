@@ -1,3 +1,8 @@
+import { strings } from '@angular-devkit/core';
+import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
+import { SubmitHandleMethod } from '@rxap/schematics-form';
+import { AddComponentProvider, AddNgModuleProvider, ToValueContext } from '@rxap/schematics-ts-morph';
+import { MethodElement, ModuleElement, TypeElement } from '@rxap/schematics-xml-parser';
 import { ElementFactory, ParsedElement } from '@rxap/xml-parser';
 import {
   ElementChild,
@@ -6,19 +11,14 @@ import {
   ElementDef,
   ElementRequired,
 } from '@rxap/xml-parser/decorators';
-import { SubmitHandleMethod } from '@rxap/schematics-form';
-import type { CreateButtonElement } from './create-button.element';
-import type { EditActionElement } from './action-buttons/edit-action.element';
-import { AddComponentProvider, AddNgModuleProvider, ToValueContext, } from '@rxap/schematics-ts-morph';
-import { strings } from '@angular-devkit/core';
 import { join } from 'path';
-import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
-import { GenerateSchema } from '../../schema';
 import { Writers } from 'ts-morph';
-import { MethodElement, ModuleElement, TypeElement } from '@rxap/schematics-xml-parser';
+import { GenerateSchema } from '../../schema';
 import type { ActionButtonElement } from './action-buttons/action-button.element';
+import type { EditActionElement } from './action-buttons/edit-action.element';
+import type { CreateButtonElement } from './create-button.element';
 
-const { dasherize, classify, camelize } = strings;
+const { dasherize, classify } = strings;
 
 @ElementDef('window-form')
 export class WindowFormElement implements ParsedElement {
@@ -71,20 +71,20 @@ export class WindowFormElement implements ParsedElement {
     this.__parent.module = ElementFactory(ModuleElement, {
       name: classify(this.coerceName) + 'FormComponentModule',
       form:
-        './' +
-        join(
-          dasherize(this.coerceName) + '-form',
-          dasherize(this.coerceName) + '-form.component.module'
-        ),
+            './' +
+              join(
+                dasherize(this.coerceName) + '-form',
+                dasherize(this.coerceName) + '-form.component.module',
+              ),
     });
     this.__parent.method = ElementFactory(MethodElement, {
       name: this.openFormWindowMethodName,
       from:
-        './' +
-        join(
-          dasherize(this.coerceName) + '-form',
-          this.openFormWindowMethodModuleSpecifier,
-        ),
+            './' +
+              join(
+                dasherize(this.coerceName) + '-form',
+                this.openFormWindowMethodModuleSpecifier,
+              ),
     });
     if (!this.template) {
       this.template = join(
@@ -106,18 +106,18 @@ export class WindowFormElement implements ParsedElement {
   public toValue({ options, project }: ToValueContext<GenerateSchema>): Rule {
     return chain([
       externalSchematic('@rxap/schematics-form', 'generate-view', {
-        path: options.path?.replace(/^\//, ''),
-        template: this.template,
-        name: this.name,
-        project: options.project,
-        organizeImports: false,
-        fixImports: false,
-        format: false,
+        path:             options.path?.replace(/^\//, ''),
+        template:         this.template,
+        name:             this.name,
+        project:          options.project,
+        organizeImports:  false,
+        fixImports:       false,
+        format:           false,
         templateBasePath: options.templateBasePath,
-        overwrite: options.overwrite,
-        openApiModule: options.openApiModule,
-        skipTsFiles: options.skipTsFiles,
-        tsMorphProject: () => project,
+        overwrite:        options.overwrite,
+        openApiModule:    options.openApiModule,
+        skipTsFiles:      options.skipTsFiles,
+        tsMorphProject:   () => project,
       }),
       (tree) => {
 
@@ -135,11 +135,11 @@ export class WindowFormElement implements ParsedElement {
         }
 
         const sourceFile =
-          project.getSourceFile(formComponentModuleFilePath) ??
-          project.createSourceFile(
-            formComponentModuleFilePath,
-            tree.read(join(options.path!, formComponentModuleFilePath))!.toString()
-          );
+                project.getSourceFile(formComponentModuleFilePath) ??
+                project.createSourceFile(
+                  formComponentModuleFilePath,
+                  tree.read(join(options.path!, formComponentModuleFilePath))!.toString(),
+                );
 
         AddNgModuleProvider(
           sourceFile,
@@ -168,20 +168,18 @@ export class WindowFormElement implements ParsedElement {
         }
 
         const sourceFile =
-          project.getSourceFile(formComponentFilePath) ??
-          project.createSourceFile(
-            formComponentFilePath,
-            tree.read(join(options.path!, formComponentFilePath))!.toString()
-          );
+                project.getSourceFile(formComponentFilePath) ??
+                project.createSourceFile(
+                  formComponentFilePath,
+                  tree.read(join(options.path!, formComponentFilePath))!.toString(),
+                );
 
         AddComponentProvider(
           sourceFile,
           {
-            provide: 'RXAP_WINDOW_SETTINGS',
+            provide:  'RXAP_WINDOW_SETTINGS',
             useValue: Writers.object({
-              title: `$localize\`:@@form.${dasherize(
-                this.name!
-              )}.window.title:${this.title}\``,
+              title: `$localize\`${this.title}\``,
             }),
           },
           [

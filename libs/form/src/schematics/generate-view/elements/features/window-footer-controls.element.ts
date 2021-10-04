@@ -1,13 +1,13 @@
-import { ElementAttribute, ElementChildTextContent, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
-import { AddComponentProvider, AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
-import { Scope, SourceFile, Writers } from 'ts-morph';
-import { Rule } from '@angular-devkit/schematics';
 import { strings } from '@angular-devkit/core';
-import { FormFeatureElement } from './form-feature.element';
-import { GenerateSchema } from '../../schema';
+import { Rule } from '@angular-devkit/schematics';
 import { NodeFactory } from '@rxap/schematics-html';
+import { AddComponentProvider, AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import { ElementAttribute, ElementChildTextContent, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
+import { Scope, SourceFile, Writers } from 'ts-morph';
+import { GenerateSchema } from '../../schema';
+import { FormFeatureElement } from './form-feature.element';
 
-const { dasherize, classify, camelize, capitalize } = strings;
+const { dasherize, classify } = strings;
 
 @ElementExtends(FormFeatureElement)
 @ElementDef('window-footer-controls')
@@ -52,7 +52,7 @@ export class WindowFooterControlsElement extends FormFeatureElement {
             w => {
               w.write('return ');
               Writers.object({
-                title: `$localize\`:@@form.${dasherize(this.__parent.name)}.window.title:${this.__parent.title}\``
+                title: `$localize\`${this.__parent.title}\``,
               })(w);
               w.write(';');
             }
@@ -77,7 +77,7 @@ export class WindowFooterControlsElement extends FormFeatureElement {
   }
 
   public toValue({ project, options }: ToValueContext<GenerateSchema>): Rule {
-    return tree => {
+    return () => {
 
       const openFormMethodFilePath = `open-${dasherize(options.name!)}-form-window.method.ts`;
       if (!project.getSourceFile(openFormMethodFilePath)) {
