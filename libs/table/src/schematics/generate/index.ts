@@ -1,4 +1,4 @@
-import { GenerateSchema } from './schema';
+import { strings } from '@angular-devkit/core';
 import {
   apply,
   applyTemplates,
@@ -14,15 +14,16 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import { join } from 'path';
-import { strings } from '@angular-devkit/core';
-import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import { formatFiles } from '@nrwl/workspace';
+import { ApplyTsMorphProject, FixMissingImports } from '@rxap/schematics-ts-morph';
+import { GetAngularJson, GetProjectRoot, GuessProjectName } from '@rxap/schematics-utilities';
+import { ParseTemplate } from '@rxap/schematics-xml-parser';
+import { existsSync } from 'fs';
+import { join } from 'path';
+import { IndentationText, Project, QuoteKind } from 'ts-morph';
 import { TableSystemElements } from './elements/elements';
 import { TableElement } from './elements/table.element';
-import { ApplyTsMorphProject, FixMissingImports, } from '@rxap/schematics-ts-morph';
-import { ParseTemplate } from '@rxap/schematics-xml-parser';
-import { GetAngularJson, GetProjectRoot, GuessProjectName } from '@rxap/schematics-utilities';
+import { GenerateSchema } from './schema';
 
 const { dasherize } = strings;
 
@@ -42,14 +43,20 @@ export default function (options: GenerateSchema): Rule {
       basePathList.push(join('..', options.path));
     }
 
+    if (host.exists('.rxap/generator/elements.js')) {
+      if (existsSync(join(process.cwd(), '.rxap/generator/elements.js'))) {
+        require(join(process.cwd(), '.rxap/generator/elements.js'));
+      }
+    }
+
     const tableElement = ParseTemplate<TableElement>(
       host,
       options.template,
       basePathList,
-      ...TableSystemElements
+      ...TableSystemElements,
     );
 
-    options.name = options.name ?? tableElement.id;
+    options.name    = options.name ?? tableElement.id;
     tableElement.id = options.name;
 
     if (!tableElement.id) {
