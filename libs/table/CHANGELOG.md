@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.3...@rxap/schematics-table@12.5.0-next.4) (2021-10-04)
+
+
+### Bug Fixes
+
+* remove i18n custom ids ([fbea9d9](https://gitlab.com/rxap/schematics/commit/fbea9d9cd90f7c9526f1f70114cf8661a0984b8c))
+
+
+
+
+
 # [12.5.0-next.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.2...@rxap/schematics-table@12.5.0-next.3) (2021-09-16)
 
 
