@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.4...@rxap/schematics-table@12.5.0-next.5) (2021-10-04)
+
+
+### Bug Fixes
+
+* dynamic elements loading ([9ba2ee2](https://gitlab.com/rxap/schematics/commit/9ba2ee27e505e3fd59f316adbd36bf2fca067aff))
+
+
+
+
+
 # [12.5.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.3...@rxap/schematics-table@12.5.0-next.4) (2021-10-04)
 
 
