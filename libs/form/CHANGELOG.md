@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.5.0-next.3...@rxap/schematics-form@12.5.0-next.4) (2021-10-05)
+
+
+### Bug Fixes
+
+* set input type based on form type ([06da535](https://gitlab.com/rxap/schematics/commit/06da535b29d06e04a3c75813be38f14aa89e29fb))
+
+
+
+
+
 # [12.5.0-next.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.5.0-next.2...@rxap/schematics-form@12.5.0-next.3) (2021-10-04)
 
 
