@@ -1,31 +1,50 @@
+import { LeafFactory } from '@rxap/schematics-html';
+import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
 import { ElementAttribute, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
-
-import { strings } from '@angular-devkit/core';
+import { SourceFile } from 'ts-morph';
 import { NodeElement } from '../../node.element';
 import { FormFieldElement } from './form-field.element';
-import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
-import { SourceFile } from 'ts-morph';
-import { LeafFactory } from '@rxap/schematics-html';
-
-const { dasherize, classify, camelize, capitalize } = strings;
 
 @ElementExtends(NodeElement)
 @ElementDef('input-control')
 export class InputControlElement extends FormFieldElement {
 
   @ElementAttribute()
-  public type: string = 'text';
+  public type?: string;
 
   public standalone?: boolean;
+
+  public postParse() {
+    if (!this.type) {
+      const control = this.getControl();
+      if (control) {
+        switch (control.type?.name) {
+
+          case 'number':
+            this.type = 'number';
+            break;
+
+          case 'string':
+            this.type = 'text';
+            break;
+
+          case 'boolean':
+            this.type = 'checkbox';
+            break;
+
+        }
+      }
+    }
+  }
 
   protected innerTemplate(): string {
     const attributes: Array<string | (() => string)> = [
       'matInput',
-      `type="${this.type}"`,
+      `type="${this.type ?? 'text'}"`,
       `placeholder="Enter ${this.name}"`,
       'rxapRequired',
       `i18n-placeholder`,
-      ...this.innerAttributes
+      ...this.innerAttributes,
     ];
 
     if (!this.standalone) {
