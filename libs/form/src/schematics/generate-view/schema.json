@@ -38,8 +38,7 @@
       "description": ""
     },
     "template": {
-      "type": "string",
-      "format": "path"
+      "type": "string"
     },
     "organizeImports": {
       "type": "boolean",

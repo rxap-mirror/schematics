@@ -20,9 +20,7 @@
       "visible": false
     },
     "template": {
-      "type": "string",
-      "description": "",
-      "format": "path"
+      "type": "string"
     },
     "formElement": {},
     "tsMorphProject": {},
