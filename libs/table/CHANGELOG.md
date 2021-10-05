@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.5.0-next.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.5...@rxap/schematics-table@12.5.0-next.6) (2021-10-05)
+
+
+### Bug Fixes
+
+* support inline template ([1dc5482](https://gitlab.com/rxap/schematics/commit/1dc5482c01abc779789f8cbaf7f938bb5bd2f11f))
+
+
+
+
+
 # [12.5.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.4...@rxap/schematics-table@12.5.0-next.5) (2021-10-04)
 
 
