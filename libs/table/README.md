@@ -41,7 +41,7 @@ flat | boolean | false |
 overwrite | boolean | false | Whether existing files and properties should be overwritten
 skipTsFiles | boolean | false | Skip the creation or update of typescript files
 project | string |  | The name of the project where the table component should be generated.
-template | string |  | Path to the table template xml file.
+template | string |  | 
 openApiModule | string |  | The project name for the OpenApi RemoteMethods and Directives
 organizeImports | boolean | true | 
 fixImports | boolean | true | 
