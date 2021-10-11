@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.7](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.6...@rxap/schematics@12.9.7) (2021-10-11)
+
+
+### Bug Fixes
+
+* update gitlab ci config ([4444a98](https://gitlab.com/rxap/packages/commit/4444a98d7e790aef8ab34b3eaba1d110746f08ea))
+
+
+
+
+
 ## [12.9.6](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.6-next.0...@rxap/schematics@12.9.6) (2021-10-07)
 
 **Note:** Version bump only for package @rxap/schematics
