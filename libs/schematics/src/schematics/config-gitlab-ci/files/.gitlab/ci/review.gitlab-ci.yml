@@ -1,0 +1,68 @@
+variables:
+  CI_CONFIG_VERSION: 'v4.26.5'
+  VERSION: "${CI_MERGE_REQUEST_IID}-mr"
+
+workflow:
+  rules:
+    - if: '$FIREBASE_TOKEN == null'
+      variables:
+        DISABLE_FIREBASE_DEPLOY: "true"
+      when: always
+
+include:
+  - project: 'rxap/gitlab-ci'
+    ref: v4.26.5
+    file: '/templates/node-modules/cache.yml'
+  - '/.gitlab/ci/test.yml'
+  - project: 'rxap/gitlab-ci'
+    ref: v4.26.5
+    file: '/templates/nrwl/run.yml'
+  - project: 'rxap/gitlab-ci'
+    ref: v4.26.5
+    file: '/templates/firebase/deploy.yml'
+
+stages:
+  - build
+  - test
+  - deploy
+
+pwa:pack:
+  tags:
+    - build
+  stage: build
+  extends: .run
+  cache: !reference [ .cache, cache ]
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 day
+
+deploy:
+  tags:
+    - script
+  extends: .hosting:channel:deploy
+  needs:
+    - pwa:pack
+  rules:
+    - if: '$DISABLE_FIREBASE_DEPLOY'
+      when: never
+    - when: on_success
+  environment:
+    name: "review/mr-${CI_MERGE_REQUEST_IID}"
+    url: $DYNAMIC_ENVIRONMENT_URL
+    on_stop: deploy:stop
+    deployment_tier: development
+    auto_stop_in: 3d
+
+deploy:stop:
+  tags:
+    - script
+  extends: .hosting:channel:deploy:stop
+  rules:
+    - if: '$DISABLE_FIREBASE_DEPLOY'
+      when: never
+    - when: manual
+      allow_failure: true
+  environment:
+    name: "review/mr-${CI_MERGE_REQUEST_IID}"
+    action: stop

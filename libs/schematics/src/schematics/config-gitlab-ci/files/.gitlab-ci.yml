@@ -1,304 +1,109 @@
 variables:
-  CI_CONFIG_VERSION: 'v4.20.7'
+  CI_CONFIG_VERSION: 'v4.26.5'
+
+workflow:
+  rules:
+    # skip branch pipeline if the commit starts with release
+    # the release job will create a commit for each new release. This commit should not be handled by the ci!
+    - if: '$CI_COMMIT_BRANCH && $CI_COMMIT_MESSAGE =~ /^release:/'
+      when: never
+    # skip branch pipeline for issue and renovate branches
+    - if: '$CI_COMMIT_BRANCH =~ /^\d+/ || $CI_COMMIT_BRANCH =~ /^renovate\//'
+      when: never
+    # if the pipeline is triggered for a renovate upgrade. skip everything except the renovate trigger
+    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
+      variables:
+        CODE_QUALITY_DISABLED: "true"
+        SECRET_DETECTION_DISABLED: "true"
+        RELEASE_DISABLED: "true"
+        REVIEW_DISABLED: "true"
+        PIPELINE_DISABLED: "true"
+    # if the pipeline is triggered for a tag the test jobs should not be executed
+    - if: '$CI_COMMIT_TAG'
+      variables:
+        CODE_QUALITY_DISABLED: "true"
+        SECRET_DETECTION_DISABLED: "true"
+    - when: always
 
 include:
   - template: Security/Secret-Detection.gitlab-ci.yml
-  - template: Security/SAST.gitlab-ci.yml
+  - template: Code-Quality.gitlab-ci.yml
   - project: 'rxap/gitlab-ci'
-    ref: v4.20.7
+    ref: v4.26.5
     file: '/templates/release.yml'
   - project: 'rxap/gitlab-ci'
-    ref: v4.20.7
-    file: '/templates/nrwl/run.yml'
-  - project: 'rxap/gitlab-ci'
-    ref: v4.20.7
-    file: '/templates/setup.yml'
-  - project: 'rxap/gitlab-ci'
-    ref: v4.20.7
-    file: '/templates/firebase/deploy.yml'
+    ref: v4.26.5
+    file: '/templates/node-modules/install.yml'
 
 stages:
   - build
   - test
-  - deploy
   - trigger
   - release
 
-setup:
+install:
+  extends: .install
   tags:
     - build
-  rules:
-    - if: '$CI_COMMIT_REF_NAME =~ /^\d+/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "master"'
-      when: never
-    - when: always
-
-eslint-sast:
-  rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      when: never
-    - if: '$CI_COMMIT_REF_NAME =~ /^\d+/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "master"'
-      when: never
-    - if: $SAST_DISABLED
-      when: never
-    - if: $SAST_EXCLUDED_ANALYZERS =~ /eslint/
-      when: never
-    - if: $CI_COMMIT_BRANCH &&
-        $SAST_DEFAULT_ANALYZERS =~ /eslint/
-      exists:
-        - '**/*.html'
-        - '**/*.js'
-        - '**/*.jsx'
-        - '**/*.ts'
-        - '**/*.tsx'
 
 secret_detection:
-  rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      when: never
-    - if: '$CI_COMMIT_REF_NAME =~ /^\d+/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "master"'
-      when: never
-    - if: $SECRET_DETECTION_DISABLED
-      when: never
-    - if: $CI_COMMIT_BRANCH && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
+  needs: [ ]
 
-nodejs-scan-sast:
-  rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      when: never
-    - if: '$CI_COMMIT_REF_NAME =~ /^\d+/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "master"'
-      when: never
-    - if: $SAST_DISABLED
-      when: never
-    - if: $SAST_EXCLUDED_ANALYZERS =~ /nodejs-scan/
-      when: never
-    - if: $CI_COMMIT_BRANCH &&
-        $SAST_DEFAULT_ANALYZERS =~ /nodejs-scan/
-      exists:
-        - '**/package.json'
-
-test:
-  image: node:lts
-  stage: test
+trigger:pipeline:
+  stage: trigger
   needs:
-    - setup
-  allow_failure: true
-  cache:
-    key:
-      files:
-        - yarn.lock
-    paths:
-      - node_modules/
-    policy: pull
-  coverage: '/Statements\s*:\s*(\d+\.?\d*)%/'
-  script:
-    - yarn jest --config jest.config.js --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters cobertura --coverageReporters text-summary
+    - job: install
+      artifacts: false
   rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      when: always
-      allow_failure: true
-    - if: '$CI_COMMIT_REF_NAME =~ /^\d+/ && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "master"'
+    # if the pipeline is for a merge request. skip the release job and pipeline trigger
+    - if: '$PIPELINE_DISABLED || $CI_PIPELINE_SOURCE != "push"'
       when: never
-    - when: on_success
-      allow_failure: true
-  artifacts:
-    reports:
-      junit: junit.xml
-      cobertura: coverage/cobertura-coverage.xml
-  tags:
-    - build
-
-build:
-  tags:
-    - build
-  needs:
-    - setup
-  stage: build
-  extends: .run
-  cache:
-    key:
-      files:
-        - yarn.lock
-    paths:
-      - node_modules/
-    policy: pull
-  rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      when: never
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+    - if: '$CI_COMMIT_BRANCH'
       when: on_success
-  variables:
-    TARGET: "pwa:build"
-    ADDITIONAL_TARGET_LIST: "pwa:build-info"
-  before_script:
-    - yarn --prefer-offline
-  artifacts:
-    paths:
-      - build
-    expire_in: 1 day
+  trigger:
+    include: .gitlab/ci/pipeline.gitlab-ci.yml
+    strategy: depend
 
-deploy:
-  tags:
-    - script
-  extends: .hosting:channel:deploy
+trigger:review:
+  stage: trigger
   needs:
-    - build
-  variables:
-    VERSION: "${CI_MERGE_REQUEST_IID}-mr"
+    - job: install
+      artifacts: false
   rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      when: never
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "master"'
-      when: never
-    - if: '$FIREBASE_TOKEN == null'
-      when: never
-    - if: '$VERSION == null'
-      when: never
-    - if: '$FIREBASE_PROJECT == null'
-      when: never
-    - if: '$DISABLE_FIREBASE_DEPLOY'
+    # if the pipeline is not for a merge request. skip the review trigger
+    - if: '$REVIEW_DISABLED || $CI_PIPELINE_SOURCE != "merge_request_event"'
       when: never
     - when: on_success
-      allow_failure: true
-  environment:
-    name: "review/${CI_MERGE_REQUEST_IID}-merge-request"
-    url: $DYNAMIC_ENVIRONMENT_URL
-    on_stop: deploy:stop
-    deployment_tier: development
-
-deploy:stop:
-  tags:
-    - script
-  extends: .hosting:channel:deploy:stop
-  variables:
-    VERSION: "${CI_MERGE_REQUEST_IID}-mr"
-  rules:
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      when: never
-    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME != "master"'
-      when: never
-    - if: '$FIREBASE_TOKEN == null'
-      when: never
-    - if: '$VERSION == null'
-      when: never
-    - if: '$FIREBASE_PROJECT == null'
-      when: never
-    - if: '$DISABLE_FIREBASE_DEPLOY'
-      when: never
-    - when: manual
-      allow_failure: true
-  environment:
-    name: "review/${CI_MERGE_REQUEST_IID}-merge-request"
-    action: stop
-
-trigger:promote:
-  stage: trigger
-  needs:
-    - setup
-  variables:
-    ENVIRONMENT_NAME: "$RELEASE_TARGET"
-    VERSION: "${CI_COMMIT_TAG}"
-  rules:
-    - if: '$RELEASE_TARGET == null'
-      when: never
-    - if: '$CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+/'
-      when: always
   trigger:
-    include: .promote.gitlab-ci.yml
+    include: .gitlab/ci/review.gitlab-ci.yml
     strategy: depend
 
-trigger:master:
+trigger:renovate:
   stage: trigger
   needs:
-    - setup
-  variables:
-    ENVIRONMENT_NAME: "master"
-    VERSION: "master"
+    - job: install
+      artifacts: false
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "master"'
-      when: always
+    # only trigger renovate for merge requests with the current source branch
+    - if: '$RENOVATE_DISABLED || $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME !~ /^renovate\//'
+      when: never
+    - when: on_success
   trigger:
-    include: .master.gitlab-ci.yml
-    strategy: depend
-
-trigger:feature:
-  stage: trigger
-  needs:
-    - setup
-  variables:
-    ENVIRONMENT_NAME: "$CI_COMMIT_REF_NAME"
-    VERSION: "${CI_COMMIT_REF_SLUG}"
-  rules:
-    - if: '$CI_COMMIT_BRANCH =~ /^feature\//'
-      when: always
-  trigger:
-    include: .master.gitlab-ci.yml
-    strategy: depend
-
-trigger:custom-release:
-  stage: trigger
-  needs:
-    - setup
-  variables:
-    ENVIRONMENT_NAME: "$CI_COMMIT_REF_NAME"
-    VERSION: "${CI_COMMIT_REF_NAME}"
-  rules:
-    - if: '$CI_COMMIT_BRANCH =~ /^release\//'
-      when: always
-  trigger:
-    include: .release.gitlab-ci.yml
-    strategy: depend
-
-trigger:maintenance:
-  stage: trigger
-  needs:
-    - setup
-  variables:
-    ENVIRONMENT_NAME: "$CI_COMMIT_REF_SLUG"
-    VERSION: "${CI_COMMIT_REF_NAME}"
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "next" || $CI_COMMIT_REF_NAME == "next-major" || $CI_COMMIT_REF_NAME =~ /^[0-9]+\.x/ || $CI_COMMIT_REF_NAME =~ /^[0-9]+\.[0-9]+\.x/ || $CI_COMMIT_REF_NAME == "beta" || $CI_COMMIT_REF_NAME == "alpha"'
-      when: always
-  trigger:
-    include: .master.gitlab-ci.yml
+    include: .gitlab/ci/renovate.gitlab-ci.yml
     strategy: depend
 
 trigger:release:
   stage: trigger
   needs:
-    - setup
+    - job: install
+      artifacts: false
   variables:
     ENVIRONMENT_NAME: "release/$CI_COMMIT_TAG"
     VERSION: "${CI_COMMIT_TAG}"
     LATEST: "true"
   rules:
-    - if: '$RELEASE_TARGET'
-      when: never
     - if: '$CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+/'
-      when: always
+      when: on_success
   trigger:
-    include: .release.gitlab-ci.yml
+    include: .gitlab/ci/release.gitlab-ci.yml
     strategy: depend
-
-renovate:
-  stage: build
-  needs: [ ]
-  rules:
-    - if: '$DISABLE_RENOVATE'
-      when: never
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      when: always
-  tags:
-    - build
-  extends: .run
-  variables:
-    GIT_SUBMODULE_STRATEGY: recursive
-    TARGET: "pwa:build"
-  before_script:
-    - yarn --prefer-offline
-  cache:
-    key:
-      files:
-        - yarn.lock
-    paths:
-      - node_modules/
-    policy: push

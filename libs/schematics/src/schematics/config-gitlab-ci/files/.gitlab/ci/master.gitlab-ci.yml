@@ -1,0 +1,33 @@
+variables:
+  CI_CONFIG_VERSION: 'v4.26.5'
+
+include:
+  - project: 'rxap/gitlab-ci'
+    ref: v4.26.5
+    file: '/templates/node-modules/cache.yml'
+  - project: 'rxap/gitlab-ci'
+    ref: v4.26.5
+    file: '/templates/firebase/deploy.yml'
+  - project: 'rxap/gitlab-ci'
+    ref: v4.26.5
+    file: '/templates/nrwl/run.yml'
+
+stages:
+  - build
+  - deploy
+
+pwa:pack:master:
+  tags:
+    - build
+  extends: .run
+  cache: !reference [ .cache, cache ]
+  environment:
+    name: $ENVIRONMENT_NAME
+    action: prepare
+
+pwa:deploy:
+  tags:
+    - script
+  extends: .hosting:channel:deploy
+  needs:
+    - pwa:pack:master

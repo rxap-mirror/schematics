@@ -1,0 +1,19 @@
+variables:
+  CI_CONFIG_VERSION: 'v4.26.5'
+
+include:
+  - project: 'rxap/gitlab-ci'
+    ref: v4.26.5
+    file: '/templates/nrwl/renovate.yml'
+
+stages:
+  - build
+  - test
+
+renovate:test:
+  tags:
+    - build
+
+renovate:build:
+  tags:
+    - build

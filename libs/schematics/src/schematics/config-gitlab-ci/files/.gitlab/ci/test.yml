@@ -1,0 +1,13 @@
+test:
+  image: node:lts
+  tags:
+    - build
+  stage: test
+  cache: !reference [ .cache, cache ]
+  coverage: '/Statements\s*:\s*(\d+\.?\d*)%/'
+  script:
+    - yarn jest --config jest.config.js --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters cobertura --coverageReporters text-summary --passWithNoTests
+  artifacts:
+    reports:
+      junit: junit.xml
+      cobertura: coverage/cobertura-coverage.xml
