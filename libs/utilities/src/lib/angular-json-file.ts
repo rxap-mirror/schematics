@@ -1,6 +1,14 @@
-import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
+import {
+  Rule,
+  SchematicsException,
+  Tree
+} from '@angular-devkit/schematics';
 import { AngularJson } from './angular-json';
-import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
+import {
+  GetJsonFile,
+  UpdateJsonFile,
+  UpdateJsonFileOptions
+} from './json-file';
 import { Project } from './angular-json/project';
 import { CliOptions } from './angular-json/cli-options';
 import { SchematicOptions } from './angular-json/schematic-options';
@@ -168,7 +176,7 @@ export class AngularProject {
 
   public readonly targets: AngularProjectTargetMap;
 
-  constructor(public readonly _project: Project) {
+  constructor(public readonly _project: Project, public readonly name: string) {
     if (!this._project.targets && !this._project.architect) {
       this._project.targets = {} as any
     }
@@ -181,7 +189,7 @@ export class AngularProjectMap {
 
   constructor(public readonly _projectMap: Record<string, Project>) {
     for (const [name, project] of Object.entries(_projectMap)) {
-      const angularProject = new AngularProject(project);
+      const angularProject = new AngularProject(project, name);
       this._map.set(name, angularProject);
     }
   }
@@ -190,7 +198,7 @@ export class AngularProjectMap {
     if (this._map.has(name)) {
       throw new Error(`A project with the name '${name}' already exists`);
     }
-    this._map.set(name, new AngularProject(project));
+    this._map.set(name, new AngularProject(project, name));
     this._projectMap[name] = project;
   }
 

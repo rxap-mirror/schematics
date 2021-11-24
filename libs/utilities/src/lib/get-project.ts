@@ -1,8 +1,20 @@
-import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
+import {
+  Rule,
+  SchematicsException,
+  Tree
+} from '@angular-devkit/schematics';
 import { relative } from 'path';
-import { Angular, AngularProject, GetAngularJson } from './angular-json-file';
+import {
+  Angular,
+  AngularProject,
+  GetAngularJson
+} from './angular-json-file';
 import { PackageJson } from './package-json';
-import { GetPackageJson, UpdatePackageJson, UpdatePackageJsonOptions } from './package-json-file';
+import {
+  GetPackageJson,
+  UpdatePackageJson,
+  UpdatePackageJsonOptions
+} from './package-json-file';
 
 export function GetProject(host: Tree, projectName: string): AngularProject {
 
@@ -31,6 +43,26 @@ export function GetProjectPrefix(host: Tree, projectName: string): string {
 
   return prefix;
 
+}
+
+export function GetDefaultProjectName(host: Tree): string | null {
+
+  const angularJson = new Angular(GetAngularJson(host));
+
+  return angularJson.defaultProject?.name ?? Array.from(angularJson.projects.keys())[0] ?? null;
+
+}
+
+export function GetDefaultProject(host: Tree): AngularProject | null {
+
+  const angularJson = new Angular(GetAngularJson(host));
+
+  return angularJson.defaultProject ?? Array.from(angularJson.projects.values())[0] ?? null;
+
+}
+
+export function GetDefaultPrefix(host: Tree): string | null {
+  return GetDefaultProject(host)?.prefix ?? null;
 }
 
 export function GetProjectRoot(host: Tree, projectName: string): string {
