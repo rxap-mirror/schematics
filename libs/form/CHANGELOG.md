@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.5.0...@rxap/schematics-form@12.6.0-next.0) (2021-11-25)
+
+
+### Features
+
+* add chip control element ([d09922e](https://gitlab.com/rxap/schematics/commit/d09922ea64b96cece4e009d25bbb66e9016f52a6))
+
+
+
+
+
 # [12.5.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.5.0-next.5...@rxap/schematics-form@12.5.0) (2021-10-07)
 
 **Note:** Version bump only for package @rxap/schematics-form
