@@ -2298,7 +2298,7 @@
     tslib "^2.0.0"
     yargs-parser "20.0.0"
 
-"@nrwl/workspace@12.3.6", "@nrwl/workspace@^12.3.6":
+"@nrwl/workspace@12.3.6":
   version "12.3.6"
   resolved "https://registry.yarnpkg.com/@nrwl/workspace/-/workspace-12.3.6.tgz#4b78e08284312726861a5a50ca2bc50243ea041a"
   integrity sha512-s87OSvy/aQx0D5spP2CXYhs/of0CIrNsxdaYQi4QhKo508hybRgOBxORDgU4z55Wm3lr/GxQdmxedXKzu7PbIw==
@@ -2485,7 +2485,7 @@
     "@rxap/schematics-utilities" "^12.4.0"
     tslib "^2.2.0"
 
-"@rxap/plugin-library-schematics@^12.0.10":
+"@rxap/plugin-library-schematics@^12.0.11":
   version "12.0.11"
   resolved "https://registry.yarnpkg.com/@rxap/plugin-library-schematics/-/plugin-library-schematics-12.0.11.tgz#c0aa91dd964a4c8e0cb70c4f9e0717b0ff01fb77"
   integrity sha512-PI7QQwM4sx4o3V8RHJzCRqfDYcLEX/bNzXVlixQFQQF99NjMHqJMqVxCc5PCaedk9Q3SVjbLype7DVarHZoVkQ==
@@ -2494,39 +2494,37 @@
     "@angular-devkit/core" "9"
     "@angular-devkit/schematics" "9"
 
-"@rxap/plugin-library@^12.4.0":
-  version "12.4.1"
-  resolved "https://registry.yarnpkg.com/@rxap/plugin-library/-/plugin-library-12.4.1.tgz#9db27c6dd65b995b3cfeb38779a30f17087c21c8"
-  integrity sha512-MOz//jeVwL6h8KKLGHNEpPNU+rwm6SB9shXo3Hyzq43w6VGTwlUN5LJ6Fcz04v55T2e7Bdcs/huEHe9DHH8TiA==
+"@rxap/plugin-library@^12.4.2":
+  version "12.4.2"
+  resolved "https://registry.yarnpkg.com/@rxap/plugin-library/-/plugin-library-12.4.2.tgz#78fd2359cc6fdb13d1d421c7e0bcf285be0084bf"
+  integrity sha512-jPp5YWgK1XuvK/7l8oItI6ORAlZ2arNcYDZafM3DImb876lYeB9adaWclvJzTjk4PjohLVsut/EWKwtpHwBMYQ==
   dependencies:
     "@angular-devkit/architect" "^0.1200.3"
     "@angular-devkit/core" "^12.0.3"
     "@angular-devkit/schematics" "^12.0.3"
-    "@nrwl/workspace" "^12.3.6"
     "@rxap/schematics-utilities" "^12.6.0"
     "@rxap/utilities" "^12.2.0"
     tslib "^2.0.0"
     typescript "^4.2.4"
 
-"@rxap/plugin-pack@^12.1.13":
-  version "12.2.0"
-  resolved "https://registry.yarnpkg.com/@rxap/plugin-pack/-/plugin-pack-12.2.0.tgz#afb7ab7abcda4c0abe30bddd5d243f3c2923beab"
-  integrity sha512-sMF3wP8GWR4/PWjM5gqucUlM1AvWLiIbUEaur1SmmiLgOUDvQpd4ieTSc0bFmOjNujwxwlG+jkvQuVomFLsrrw==
+"@rxap/plugin-pack@^12.2.1":
+  version "12.2.1"
+  resolved "https://registry.yarnpkg.com/@rxap/plugin-pack/-/plugin-pack-12.2.1.tgz#be010162392250e2db9112791aea6bb31949ecf9"
+  integrity sha512-dNJCnICaMjlGjJyb1HVsFZEVu5dz7QTLPUk/fqwELrG1sCjZJdn+i50e9BhWbIarl0ZGsl6DO5Jd95MAtYDKBA==
   dependencies:
     "@angular-devkit/architect" "^0.1200.3"
     "@angular-devkit/schematics" "^12.0.3"
     "@rxap/schematics-utilities" "^12.6.0"
     tslib "^2.0.0"
 
-"@rxap/plugin-readme-generator@^12.3.4":
-  version "12.3.5"
-  resolved "https://registry.yarnpkg.com/@rxap/plugin-readme-generator/-/plugin-readme-generator-12.3.5.tgz#7735893b5e552f805857743a2bbabfb0c5e5e041"
-  integrity sha512-JnOOjVuWm0FPJcEJfOSa3ewB7CyU3L8rZSfgYnAxQ112n303cgbPZ/A0dO7X2F0SSXFXvlW7tSykbKn+sk0KLQ==
+"@rxap/plugin-readme-generator@^12.3.6":
+  version "12.3.6"
+  resolved "https://registry.yarnpkg.com/@rxap/plugin-readme-generator/-/plugin-readme-generator-12.3.6.tgz#8f76040bc8fbd6e7af5538a6d793a057e006c23b"
+  integrity sha512-febOfF775rX22Umw8VUZP6z91UtJg5FkDCAkBT//e63b2PLaGniOvqFgv2drMIiayyY/Ckq5yP0aQoQIhX0cIw==
   dependencies:
     "@angular-devkit/architect" "^0.1200.3"
     "@angular-devkit/core" "^12.0.3"
     "@angular-devkit/schematics" "^12.0.3"
-    "@nrwl/workspace" "^12.3.6"
     "@rxap/schematics-utilities" "^12.6.0"
     handlebars "^4.7.7"
     tslib "^2.0.0"
