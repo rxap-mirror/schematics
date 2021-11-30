@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.0...@rxap/schematics-form@12.6.0-next.1) (2021-11-30)
+
+
+### Features
+
+* add the FormFieldControl parser ([2e47e68](https://gitlab.com/rxap/schematics/commit/2e47e687c746616ccd09ff7b5768984e89416617))
+
+
+
+
+
 # [12.6.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.5.0...@rxap/schematics-form@12.6.0-next.0) (2021-11-25)
 
 
