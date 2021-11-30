@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.1...@rxap/schematics-form@12.6.0-next.2) (2021-11-30)
+
+
+### Features
+
+* add AutocompleteControlElement ([98a819c](https://gitlab.com/rxap/schematics/commit/98a819cacfe488df0da548086529e7f0d14765dd))
+
+
+
+
+
 # [12.6.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.0...@rxap/schematics-form@12.6.0-next.1) (2021-11-30)
 
 
