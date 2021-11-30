@@ -32,8 +32,8 @@ export class AutocompleteControlElement extends FormFieldElement {
 
   public handleComponentModule({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
     super.handleComponentModule({ project, sourceFile, options });
-    AddNgModuleImport(sourceFile, 'CompareWithDirectiveModule', '@rxap/material-form-system');
-    AddNgModuleImport(sourceFile, 'MatSelectModule', '@angular/material/select');
+    AddNgModuleImport(sourceFile, 'MatInputModule', '@angular/material/input');
+    AddNgModuleImport(sourceFile, 'MatAutocompleteModule', '@angular/material/autocomplete');
     AddNgModuleImport(sourceFile, 'InputSelectOptionsDirectiveModule', '@rxap/form-system');
     AddNgModuleImport(sourceFile, 'RequiredDirectiveModule', '@rxap/material-form-system');
   }
