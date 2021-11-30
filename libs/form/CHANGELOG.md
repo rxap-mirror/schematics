@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.2...@rxap/schematics-form@12.6.0-next.3) (2021-11-30)
+
+
+### Bug Fixes
+
+* **AutocompleteControlElement:** add missing module imports ([f28f098](https://gitlab.com/rxap/schematics/commit/f28f0987e76528f28847cfc35664d89838907f7b))
+
+
+
+
+
 # [12.6.0-next.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.1...@rxap/schematics-form@12.6.0-next.2) (2021-11-30)
 
 
