@@ -21,6 +21,13 @@ export class TypeElement implements ParsedElement {
   @ElementAttribute()
   public nullable?: boolean;
 
+  public get type(): string {
+    if (this.nullable) {
+      return [ this.name, 'null' ].join(' | ');
+    }
+    return this.name;
+  }
+
   public toValue({ sourceFile }: { sourceFile: SourceFile }): string {
     if (this.from) {
       sourceFile.addImportDeclaration({
@@ -28,10 +35,7 @@ export class TypeElement implements ParsedElement {
         moduleSpecifier: this.from
       });
     }
-    if (this.nullable) {
-      return [ this.name, 'null' ].join(' | ');
-    }
-    return this.name;
+    return this.type;
   }
 
 }
