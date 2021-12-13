@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.9-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.8...@rxap/schematics@12.9.9-next.0) (2021-12-13)
+
+
+### Bug Fixes
+
+* **component-stories:** update to the story format ([36e9ded](https://gitlab.com/rxap/packages/commit/36e9dedd611e85ee17117463ef24f81939d321d1))
+
+
+
+
+
 ## [12.9.8](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.7...@rxap/schematics@12.9.8) (2021-11-24)
 
 **Note:** Version bump only for package @rxap/schematics
