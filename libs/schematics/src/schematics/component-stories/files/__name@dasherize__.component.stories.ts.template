@@ -1,22 +1,21 @@
-import {
-  moduleMetadata,
-  addDecorator
-} from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { <%= classify(name) %>ComponentModule } from './<%= dasherize(name) %>.component.module';
 import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
 
-addDecorator(moduleMetadata({
-  imports: [
-    <%= classify(name) %>ComponentModule,
-  ]
-}));
-
 export default {
   title:     '<%= classify(name) %>Component',
-  component: <%= classify(name) %>Component
+  component: <%= classify(name) %>Component,
+  decorators: [
+    moduleMetadata({
+      imports: [
+        <%= classify(name) %>ComponentModule,
+      ]
+    })
+  ]
 };
 
-export const basic = () => ({
-  component: <%= classify(name) %>Component,
-  props:     {}
+const Template: Story<StartComponent> = (args: any) => ({
+  props: {}
 });
+
+export const Default = Template.bind({});
