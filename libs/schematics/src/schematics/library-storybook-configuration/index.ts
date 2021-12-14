@@ -13,8 +13,14 @@ import {
 } from '@angular-devkit/schematics';
 import { StorybookConfigurationSchema } from './schema';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
-import { join, relative } from 'path';
+import {
+  join,
+  relative
+} from 'path';
 import { UpdateAngularJson } from '@rxap/schematics-utilities';
+import { strings } from '@angular-devkit/core';
+
+const { dasherize } = strings;
 
 export default function(options: StorybookConfigurationSchema): Rule {
 
@@ -23,7 +29,7 @@ export default function(options: StorybookConfigurationSchema): Rule {
     const projectRootPath = (await createDefaultPath(host, options.name)).replace(/\/src\/lib$/, '');
 
     const relativePathToProjectRoot = relative(projectRootPath, '/');
-    const pathToProjectStorybookConfig = join(relativePathToProjectRoot, '..', '.storybook', 'config.default');
+    const pathToProjectStorybook = join(relativePathToProjectRoot, '..', '.storybook');
 
     return chain([
       externalSchematic(
@@ -66,7 +72,8 @@ export default function(options: StorybookConfigurationSchema): Rule {
       }),
       mergeWith(apply(url('./files'), [
         template({
-          pathToProjectStorybookConfig
+          pathToProjectStorybook,
+          projectName: dasherize(options.name)
         }),
         move(projectRootPath),
         forEach(entry => {
