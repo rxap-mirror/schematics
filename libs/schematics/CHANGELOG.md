@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.9.9-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.9-next.0...@rxap/schematics@12.9.9-next.1) (2021-12-15)
+
+
+### Bug Fixes
+
+* **library-storybook-configuration:** update default configuration files ([100321e](https://gitlab.com/rxap/packages/commit/100321ecab57b8855431ba4feeea0ddc7bc49463))
+
+
+
+
+
 ## [12.9.9-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.8...@rxap/schematics@12.9.9-next.0) (2021-12-13)
 
 
