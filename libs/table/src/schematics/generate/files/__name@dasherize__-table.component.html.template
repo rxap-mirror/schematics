@@ -9,7 +9,14 @@
 
   <div class="table-card-container" fxFlex="nogrow" fxLayout="row" fxLayoutAlign="start start">
 <% } else { %>
+<% if (tableElement.hasFeature('header')) { %>
+  <div class="container" fxLayout="column" fxLayoutGap="16px">
+  <h1 i18n><%= tableElement.title %></h1>
+  <mat-divider fxFlex="nogrow"></mat-divider>
+  <div class="table-card-container" fxFlex="nogrow" fxLayout="row" fxLayoutAlign="start start">
+<% } else {%>
   <div class="table-card-container" fxLayout="row" fxLayoutAlign="start start">
+<% } %>
 <% } %>
     <mat-card fxFlex="nogrow">
 
@@ -24,7 +31,7 @@
       <%= tableElement.footerTemplate() %>
 
     </mat-card>
-<% if (tableElement.hasFeature('navigate-back')) { %>
+<% if (tableElement.hasFeature('navigate-back') || tableElement.hasFeature('header')) { %>
   </div>
 </div>
 <% } %>

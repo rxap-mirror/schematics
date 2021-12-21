@@ -1,7 +1,13 @@
 import { strings } from '@angular-devkit/core';
-import { chain, Rule } from '@angular-devkit/schematics';
+import {
+  chain,
+  Rule
+} from '@angular-devkit/schematics';
 import { FormElement } from '@rxap/schematics-form';
-import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
+import {
+  NodeFactory,
+  WithTemplate
+} from '@rxap/schematics-html';
 import {
   AddComponentAnimations,
   AddComponentFakeProvider,
@@ -14,7 +20,7 @@ import {
   CoerceSourceFile,
   FindComponentModuleSourceFile,
   FindComponentSourceFile,
-  ToValueContext,
+  ToValueContext
 } from '@rxap/schematics-ts-morph';
 import { MethodElement } from '@rxap/schematics-xml-parser';
 import { CoerceSuffix } from '@rxap/utilities';
@@ -25,14 +31,22 @@ import {
   ElementChildren,
   ElementChildTextContent,
   ElementDef,
-  ElementRequired,
+  ElementRequired
 } from '@rxap/xml-parser/decorators';
 import { join } from 'path';
-import { InterfaceDeclarationStructure, OptionalKind, Project, SourceFile } from 'ts-morph';
+import {
+  InterfaceDeclarationStructure,
+  OptionalKind,
+  Project,
+  SourceFile
+} from 'ts-morph';
 import { GenerateSchema } from '../schema';
 import { AdapterElement } from './adapter.element';
 import { ColumnElement } from './columns/column.element';
-import { DisplayColumn, FeatureElement } from './features/feature.element';
+import {
+  DisplayColumn,
+  FeatureElement
+} from './features/feature.element';
 
 const { dasherize, classify } = strings;
 
@@ -176,7 +190,7 @@ export class TableElement implements ParsedElement<Rule> {
       }
     }
 
-    if (!this.hasFeature('navigate-back') && this.title) {
+    if (!this.hasFeature('navigate-back') && !this.hasFeature('header') && this.title) {
       template += `<mat-card-title i18n>${this.title}</mat-card-title>`;
     }
 

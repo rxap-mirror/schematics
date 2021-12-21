@@ -15,6 +15,7 @@ import { SortElement } from './sort.element';
 import { SpinnerColumnElement } from './spinner-column.element';
 import { TreeTableElement } from './tree-table.element';
 import { WithPopoverEditElement } from './with-popover-edit.element';
+import { HeaderElement } from './header.element';
 
 export const Features: Array<Constructor<ParsedElement>> = [
   FeatureElement,
@@ -30,6 +31,7 @@ export const Features: Array<Constructor<ParsedElement>> = [
   FullTextSearchElement,
   SpinnerColumnElement,
   NoColumnHeaderElement,
+  HeaderElement,
   ...ActionsButtons,
   ...ColumnMenuFeatures,
 ];
