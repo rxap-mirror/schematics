@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.5.1-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0...@rxap/schematics-table@12.5.1-next.0) (2021-12-21)
+
+
+### Bug Fixes
+
+* **header:** add the header element feature ([961c7bc](https://gitlab.com/rxap/schematics/commit/961c7bc02a0a5df1b14c8536714f3943e2be0066))
+
+
+
+
+
 # [12.5.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0-next.6...@rxap/schematics-table@12.5.0) (2021-10-07)
 
 **Note:** Version bump only for package @rxap/schematics-table
