@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.1-next.0...@rxap/schematics-table@12.6.0-next.0) (2021-12-22)
+
+
+### Features
+
+* support persistent paginator directives ([d86000f](https://gitlab.com/rxap/schematics/commit/d86000f8dba0f215a02006ba147b17d24f390d65))
+
+
+
+
+
 ## [12.5.1-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.0...@rxap/schematics-table@12.5.1-next.0) (2021-12-21)
 
 
