@@ -3,7 +3,9 @@ import {
   ElementAttribute,
   ElementDef,
   ElementRequired,
-  ElementTextContent
+  ElementTextContent,
+  ElementChildTextContent,
+  ElementRecord
 } from '@rxap/xml-parser/decorators';
 import { SourceFile } from 'ts-morph';
 import {
@@ -20,9 +22,13 @@ export class AdapterElement implements ParsedElement, HandleComponent {
 
   public __parent!: TableElement;
 
+  @ElementChildTextContent({ tag: 'factory' })
   @ElementTextContent()
   @ElementRequired()
   public factoryName!: string;
+
+  @ElementRecord()
+  public options?: Record<string, any>;
 
   @ElementAttribute('import')
   @ElementRequired()
@@ -34,7 +40,7 @@ export class AdapterElement implements ParsedElement, HandleComponent {
   public handleComponent({ sourceFile, options }: ToValueContext<GenerateSchema> & { sourceFile: SourceFile }): void {
     const providerObject  = {
       provide:  'TABLE_REMOTE_METHOD_ADAPTER_FACTORY',
-      useValue: this.factoryName
+      useValue: this.options ? `${this.factoryName}(JSON.parse('${JSON.stringify(this.options)}'))` : this.factoryName
     };
     const importStructure = [
       {
