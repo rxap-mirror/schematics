@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.0...@rxap/schematics-table@12.6.0-next.1) (2022-01-20)
+
+
+### Features
+
+* **adapter:** support custom adapter options ([98fb690](https://gitlab.com/rxap/schematics/commit/98fb69057dd96f7910d84c4a0ffd732dfed374f9))
+* **create-button:** support custom label text ([2b057b8](https://gitlab.com/rxap/schematics/commit/2b057b81a65db1c8dfed6c5ff126266b34362c5f))
+
+
+
+
+
 # [12.6.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.5.1-next.0...@rxap/schematics-table@12.6.0-next.0) (2021-12-22)
 
 
