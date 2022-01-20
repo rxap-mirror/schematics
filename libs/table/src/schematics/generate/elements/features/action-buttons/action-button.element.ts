@@ -6,12 +6,28 @@ import {
   ElementExtends,
   ElementRequired
 } from '@rxap/xml-parser/decorators';
-import { Scope, SourceFile } from 'ts-morph';
-import { AddComponentProvider, CoerceMethodClass, CoerceSourceFile, ToValueContext } from '@rxap/schematics-ts-morph';
-import { chain, noop, Rule } from '@angular-devkit/schematics';
+import {
+  Scope,
+  SourceFile
+} from 'ts-morph';
+import {
+  AddComponentProvider,
+  CoerceMethodClass,
+  CoerceSourceFile,
+  ToValueContext,
+  AddNgModuleImport
+} from '@rxap/schematics-ts-morph';
+import {
+  chain,
+  noop,
+  Rule
+} from '@angular-devkit/schematics';
 import { NodeFactory } from '@rxap/schematics-html';
 import { WindowFormElement } from '../window-form.element';
-import { MethodElement, ModuleElement } from '@rxap/schematics-xml-parser';
+import {
+  MethodElement,
+  ModuleElement
+} from '@rxap/schematics-xml-parser';
 import { join } from 'path';
 import { GenerateSchema } from '../../../schema';
 import { strings } from '@angular-devkit/core';
@@ -228,6 +244,9 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   public handleComponentModule({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
     super.handleComponentModule({ project, sourceFile, options });
     this.module?.handleComponentModule({ project, sourceFile, options });
+    if (this.confirm) {
+      AddNgModuleImport(sourceFile, 'ConfirmComponentModule', '@rxap/components');
+    }
   }
 
   public toValue({ project, options }: ToValueContext<GenerateSchema>): Rule {
