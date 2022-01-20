@@ -131,6 +131,7 @@ export class CreateButtonElement extends FeatureElement {
     return NodeFactory('div', 'fxLayout="row"', 'fxLayoutGap="12px"', 'fxLayoutAlign="start center"')([
       NodeFactory(
         'button',
+        'style="z-index: 2;"',
         ...attributes
       )(
         NodeFactory('mat-icon')('add')
