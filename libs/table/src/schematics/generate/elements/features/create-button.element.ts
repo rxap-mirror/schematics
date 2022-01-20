@@ -3,7 +3,8 @@ import {
   ElementChild,
   ElementDef,
   ElementExtends,
-  ElementAttribute
+  ElementAttribute,
+  ElementChildTextContent
 } from '@rxap/xml-parser/decorators';
 import {
   ImportDeclarationStructure,
@@ -15,7 +16,7 @@ import {
   ProviderObject,
   AddNgModuleImport,
   ToValueContext,
-  AddComponentProvider,
+  AddComponentProvider
 } from '@rxap/schematics-ts-morph';
 import {
   Rule,
@@ -50,6 +51,9 @@ export class CreateButtonElement extends FeatureElement {
 
   @ElementAttribute()
   public withPermission?: boolean;
+
+  @ElementChildTextContent()
+  public label?: string;
 
   public handleComponentModule({ sourceFile, project, options }: ToValueContext & { sourceFile: SourceFile }) {
     AddNgModuleImport(sourceFile, 'TableCreateButtonDirectiveModule', '@rxap/material-table-system');
@@ -124,12 +128,15 @@ export class CreateButtonElement extends FeatureElement {
     if (this.withPermission) {
       attributes.push(`rxapHasEnablePermission="table.${this.__parent.id}.table.create-button"`);
     }
-    return NodeFactory(
-      'button',
-      ...attributes
-    )(
-      NodeFactory('mat-icon')('add')
-    );
+    return NodeFactory('div', 'fxLayout="row"', 'fxLayoutGap="12px"', 'fxLayoutAlign="start center"')([
+      NodeFactory(
+        'button',
+        ...attributes
+      )(
+        NodeFactory('mat-icon')('add')
+      ),
+      NodeFactory('span')(this.label)
+    ])
   }
 
   public toValue({ options, project }: ToValueContext<GenerateSchema>): Rule {
