@@ -7,15 +7,15 @@
 
   <mat-divider fxFlex="nogrow"></mat-divider>
 
-  <div class="table-card-container" fxFlex="nogrow" fxLayout="row" fxLayoutAlign="start start">
+  <div class="table-card-container" fxFlex="nogrow" fxLayout="column">
 <% } else { %>
 <% if (tableElement.hasFeature('header')) { %>
   <div class="container" fxLayout="column" fxLayoutGap="16px">
   <h1 i18n><%= tableElement.title %></h1>
   <mat-divider fxFlex="nogrow"></mat-divider>
-  <div class="table-card-container" fxFlex="nogrow" fxLayout="row" fxLayoutAlign="start start">
+  <div class="table-card-container" fxFlex="nogrow" fxLayout="column">
 <% } else {%>
-  <div class="table-card-container" fxLayout="row" fxLayoutAlign="start start">
+  <div class="table-card-container" fxLayout="column">
 <% } %>
 <% } %>
     <mat-card fxFlex="nogrow">
