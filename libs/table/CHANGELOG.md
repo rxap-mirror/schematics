@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.2...@rxap/schematics-table@12.6.0-next.3) (2022-01-20)
+
+
+### Bug Fixes
+
+* **create-button:** set z index to 2 ([756b3c7](https://gitlab.com/rxap/schematics/commit/756b3c7b8063138e0e5e00458884115909302739))
+* **table-template:** full table with ([157231d](https://gitlab.com/rxap/schematics/commit/157231d67ee5eb9ab13e946a7bc201fe8a5efaa9))
+
+
+
+
+
 # [12.6.0-next.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.1...@rxap/schematics-table@12.6.0-next.2) (2022-01-20)
 
 
