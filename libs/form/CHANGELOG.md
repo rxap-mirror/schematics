@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.5...@rxap/schematics-form@12.6.0-next.6) (2022-01-24)
+
+
+### Bug Fixes
+
+* **date-control:** build template ([cb8e807](https://gitlab.com/rxap/schematics/commit/cb8e80786ea1c71692b3f6ec5ec1f8800bde55e2))
+
+
+
+
+
 # [12.6.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.4...@rxap/schematics-form@12.6.0-next.5) (2022-01-24)
 
 
