@@ -25,7 +25,7 @@ export class DateControlElement extends FormFieldElement {
 
   public handleComponentModule({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
     super.handleComponentModule({ project, sourceFile, options });
-    AddNgModuleImport(sourceFile, 'MatDatepickerModule', '@angular/material/date');
+    AddNgModuleImport(sourceFile, 'MatDatepickerModule', '@angular/material/datepicker');
     AddNgModuleImport(sourceFile, 'MatInputModule', '@angular/material/input');
     AddNgModuleImport(sourceFile, 'RequiredDirectiveModule', '@rxap/material-form-system');
   }
