@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.3...@rxap/schematics-form@12.6.0-next.4) (2022-01-24)
+
+
+### Features
+
+* **date-control:** add support for the date control ([d3d6644](https://gitlab.com/rxap/schematics/commit/d3d6644733c3bb05b7ab15fbbc250cad7e8c02a5))
+
+
+
+
+
 # [12.6.0-next.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.2...@rxap/schematics-form@12.6.0-next.3) (2021-11-30)
 
 
