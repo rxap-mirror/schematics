@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.4...@rxap/schematics-form@12.6.0-next.5) (2022-01-24)
+
+
+### Bug Fixes
+
+* **date-control:** fix datepicker import path ([5849e22](https://gitlab.com/rxap/schematics/commit/5849e220dd02192759e2761abd170b8027c64c26))
+
+
+
+
+
 # [12.6.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.3...@rxap/schematics-form@12.6.0-next.4) (2022-01-24)
 
 
