@@ -1,5 +1,5 @@
 <% if (tableElement.hasFeature('navigate-back')) { %>
-<div class="container" fxLayout="column" fxLayoutGap="16px">
+<div class="container" fxLayout="column" fxLayoutGap="16px" style="padding 12px">
 
   <rxap-navigate-back-button fxFlex="nogrow">
     <h1 i18n><%= tableElement.title %></h1>
@@ -13,9 +13,9 @@
   <div class="container" fxLayout="column" fxLayoutGap="16px">
   <h1 i18n><%= tableElement.title %></h1>
   <mat-divider fxFlex="nogrow"></mat-divider>
-  <div class="table-card-container" fxFlex="nogrow" fxLayout="column">
+  <div class="table-card-container" fxFlex="nogrow" fxLayout="column" style="padding 12px">
 <% } else {%>
-  <div class="table-card-container" fxLayout="column">
+  <div class="table-card-container" fxLayout="column" style="padding 12px">
 <% } %>
 <% } %>
     <mat-card fxFlex="nogrow">
