@@ -19,6 +19,7 @@ import { FeatureElements } from './features/features';
 import { ArrayControlElement } from './array-control.element';
 import { Methods } from '@rxap/schematics-xml-parser';
 import { FileControlElement } from './file-control.element';
+import { DateControlElement } from './date-control.element';
 
 export const Elements: Array<Constructor<ParsedElement>> = [
   CheckboxControlElement,
@@ -35,6 +36,7 @@ export const Elements: Array<Constructor<ParsedElement>> = [
   ToOptionsElement,
   ToOptionsFromObjectElement,
   FileControlElement,
+  DateControlElement,
   ...ValidatorElements,
   ...FeatureElements,
   ...Methods

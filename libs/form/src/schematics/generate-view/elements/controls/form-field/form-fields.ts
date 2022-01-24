@@ -7,6 +7,7 @@ import { UploadControlElement } from './upload-control.element';
 import { ChipListControlElement } from './chip-list-control.element';
 import { FormFieldControlElement } from './form-field-control.element';
 import { AutocompleteControlElement } from './autocomplete-control.element';
+import { DateControlElement } from './date-control.element';
 
 export const FormFields: Array<Constructor<ParsedElement>> = [
   InputControlElement,
@@ -16,4 +17,5 @@ export const FormFields: Array<Constructor<ParsedElement>> = [
   ChipListControlElement,
   FormFieldControlElement,
   AutocompleteControlElement,
+  DateControlElement,
 ];
