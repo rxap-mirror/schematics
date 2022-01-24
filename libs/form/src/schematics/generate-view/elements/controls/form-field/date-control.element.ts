@@ -45,8 +45,8 @@ export class DateControlElement extends FormFieldElement {
 
     return [
       LeafFactory('input', `[matDatepicker]="${dataPickerName}"`, ...attributes),
-      NodeFactory('mat-datepicker-toggle', 'matSuffix', `[for]="${dataPickerName}"`),
-      NodeFactory('mat-datepicker', `#${dataPickerName}`)
+      NodeFactory('mat-datepicker-toggle', 'matSuffix', `[for]="${dataPickerName}"`)(),
+      NodeFactory('mat-datepicker', `#${dataPickerName}`)()
     ].join('\n');
   }
 
