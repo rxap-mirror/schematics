@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.5...@rxap/schematics-table@12.6.0-next.6) (2022-01-25)
+
+
+### Features
+
+* support stickyEnd ([15619ec](https://gitlab.com/rxap/schematics/commit/15619ecee04ba758c22e88613051e2c4a59c4e0a))
+
+
+
+
+
 # [12.6.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.4...@rxap/schematics-table@12.6.0-next.5) (2022-01-25)
 
 
