@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.7](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.6...@rxap/schematics-table@12.6.0-next.7) (2022-01-25)
+
+
+### Bug Fixes
+
+* **table-template:** add padding ([1e4dee4](https://gitlab.com/rxap/schematics/commit/1e4dee431d45c1c54c724229336b901228c4cb38))
+
+
+
+
+
 # [12.6.0-next.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.5...@rxap/schematics-table@12.6.0-next.6) (2022-01-25)
 
 
