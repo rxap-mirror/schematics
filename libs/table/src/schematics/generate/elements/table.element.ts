@@ -272,7 +272,8 @@ export class TableElement implements ParsedElement<Rule> {
     const rowAttributes: Array<string | (() => string)> = [
       '[@rowsAnimation]',
       'mat-row',
-      `*matRowDef="let element; columns: ${rowDef};"`,
+      '[ngClass]="{ \'rxap-row-odd\': odd, \'rxap-row-even\': even }"',
+      `*matRowDef="let element; columns: ${rowDef}; let odd = odd; let even = even"`,
     ];
     if (this.hasFeature('expandable')) {
       rowAttributes.push('[rxapExpandRow]="element"');
@@ -283,7 +284,8 @@ export class TableElement implements ParsedElement<Rule> {
         NodeFactory(
           'tr',
           'mat-row',
-          '*matRowDef="let row; columns: [\'expandedRow\']"',
+          '[ngClass]="{ \'rxap-row-odd\': odd, \'rxap-row-even\': even }"',
+          '*matRowDef="let row; columns: [\'expandedRow\']"; let odd = odd; let even = even',
           'class="rxap-expanded-row"'
         )()
       );
