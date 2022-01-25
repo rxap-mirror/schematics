@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.8](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.7...@rxap/schematics-table@12.6.0-next.8) (2022-01-25)
+
+
+### Bug Fixes
+
+* push action column to column instead of unshift ([a0b8498](https://gitlab.com/rxap/schematics/commit/a0b84985f2a3e4e6ccc77a175168a3c8caf4167f))
+
+
+
+
+
 # [12.6.0-next.7](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.6...@rxap/schematics-table@12.6.0-next.7) (2022-01-25)
 
 
