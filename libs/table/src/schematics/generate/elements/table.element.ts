@@ -122,6 +122,9 @@ export class TableElement implements ParsedElement<Rule> {
       if (column.sticky) {
         attributes.push('sticky');
       }
+      if (column.stickyEnd) {
+        attributes.push('stickyEnd');
+      }
       template += NodeFactory('ng-container', ...attributes)([column]);
     }
 
@@ -153,6 +156,9 @@ export class TableElement implements ParsedElement<Rule> {
       ];
       if (column.sticky) {
         attributes.push('sticky');
+      }
+      if (column.stickyEnd) {
+        attributes.push('stickyEnd');
       }
       template += NodeFactory('ng-container', ...attributes)(innerTemplate);
     }

@@ -1,9 +1,24 @@
 import { FeatureElement } from '../feature.element';
-import { ElementChildren, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
+import {
+  ElementChildren,
+  ElementDef,
+  ElementExtends
+} from '@rxap/xml-parser/decorators';
 import { ActionButtonElement } from './action-button.element';
-import { SourceFile, VariableDeclarationKind, Writers } from 'ts-morph';
-import { AddComponentProvider, AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
-import { chain, Rule } from '@angular-devkit/schematics';
+import {
+  SourceFile,
+  VariableDeclarationKind,
+  Writers
+} from 'ts-morph';
+import {
+  AddComponentProvider,
+  AddNgModuleImport,
+  ToValueContext
+} from '@rxap/schematics-ts-morph';
+import {
+  chain,
+  Rule
+} from '@angular-devkit/schematics';
 import { TableElement } from '../../table.element';
 import { ElementFactory } from '@rxap/xml-parser';
 import { ColumnElement } from '../../columns/column.element';
@@ -19,7 +34,7 @@ export class ControlsColumnElement extends ColumnElement {
   public __tag = 'controls-column';
 
   protected _name = 'controls';
-  public sticky = true;
+  public stickyEnd = true;
   public hidden = true;
 
   public template(): string {
@@ -45,7 +60,7 @@ export class ControlsColumnElement extends ColumnElement {
 export class ActionsColumnElement extends ColumnElement implements WithTemplate {
 
   public __tag = 'actions-column';
-  public sticky = true;
+  public stickyEnd = true;
   public hidden = true;
   public actions: ActionButtonElement[] = [];
   protected _name = 'actions';

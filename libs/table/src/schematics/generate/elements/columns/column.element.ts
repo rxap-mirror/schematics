@@ -3,21 +3,35 @@ import {
   ElementChild,
   ElementChildren,
   ElementDef,
-  ElementRequired,
+  ElementRequired
 } from '@rxap/xml-parser/decorators';
 import { FilterElement } from './filters/filter.element';
-import { ElementFactory, ParsedElement } from '@rxap/xml-parser';
+import {
+  ElementFactory,
+  ParsedElement
+} from '@rxap/xml-parser';
 import { strings } from '@angular-devkit/core';
 import { SourceFile } from 'ts-morph';
 import { TableElement } from '../table.element';
 import { ControlElement } from '@rxap/schematics-form';
-import { AddNgModuleImport, HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
+import {
+  AddNgModuleImport,
+  HandleComponent,
+  HandleComponentModule,
+  ToValueContext
+} from '@rxap/schematics-ts-morph';
 import { TypeElement } from '@rxap/schematics-xml-parser';
-import { chain, Rule } from '@angular-devkit/schematics';
+import {
+  chain,
+  Rule
+} from '@angular-devkit/schematics';
 import { GenerateSchema } from '../../schema';
 import { DisplayColumn } from '../features/feature.element';
 import { FeatureElement } from './features/feature.element';
-import { NodeFactory, WithTemplate } from '@rxap/schematics-html';
+import {
+  NodeFactory,
+  WithTemplate
+} from '@rxap/schematics-html';
 import { PipeElement } from './pipes/pipe.element';
 
 const { dasherize, classify, camelize, capitalize } = strings;
@@ -56,6 +70,9 @@ export class ColumnElement
 
   @ElementAttribute()
   public sticky?: boolean;
+
+  @ElementAttribute()
+  public stickyEnd?: boolean;
 
   @ElementChild(FilterElement)
   public filter?: FilterElement;

@@ -1,5 +1,9 @@
 import { Rule } from '@angular-devkit/schematics';
-import { HandleComponent, HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
+import {
+  HandleComponent,
+  HandleComponentModule,
+  ToValueContext
+} from '@rxap/schematics-ts-morph';
 import { ParsedElement } from '@rxap/xml-parser';
 import { ElementDef } from '@rxap/xml-parser/decorators';
 import { SourceFile } from 'ts-morph';
@@ -22,9 +26,9 @@ export class FeatureElement implements ParsedElement<Rule>, HandleComponentModul
     return this.__parent.id;
   }
 
-  public static ColumnNoFilter(name: string, sticky: boolean = false): string {
+  public static ColumnNoFilter(name: string, sticky: boolean = false, stickyEnd: boolean = false): string {
     return `
-    <ng-container matColumnDef="filter_${name}" ${sticky ? 'sticky' : ''}>
+    <ng-container matColumnDef="filter_${name}" ${sticky ? 'sticky' : ''} ${stickyEnd ? 'stickyEnd' : ''}>
       <th mat-header-cell *matHeaderCellDef></th>
     </ng-container>
     `;
