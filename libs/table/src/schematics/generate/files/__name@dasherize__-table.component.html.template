@@ -22,7 +22,7 @@
 
       <%= tableElement.headerTemplate() %>
 
-      <mat-card-content>
+      <mat-card-content style="overflow-x: auto">
 
         <%= tableElement.tableTemplate() %>
 
