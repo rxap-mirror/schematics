@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.9](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.8...@rxap/schematics-table@12.6.0-next.9) (2022-01-25)
+
+
+### Features
+
+* **create-button:** include title from window from ([a7a57bb](https://gitlab.com/rxap/schematics/commit/a7a57bb469e0336223c4f64d5787d240f383c8f0))
+
+
+
+
+
 # [12.6.0-next.8](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.7...@rxap/schematics-table@12.6.0-next.8) (2022-01-25)
 
 
