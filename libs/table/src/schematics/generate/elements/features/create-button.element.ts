@@ -136,7 +136,7 @@ export class CreateButtonElement extends FeatureElement {
       )(
         NodeFactory('mat-icon')('add')
       ),
-      NodeFactory('span')(this.label)
+      NodeFactory('span', 'i18n')(this.label ?? this.windowForm?.title ?? '')
     ])
   }
 
