@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.10](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.9...@rxap/schematics-table@12.6.0-next.10) (2022-01-25)
+
+
+### Bug Fixes
+
+* support odd and even classes ([3756b4d](https://gitlab.com/rxap/schematics/commit/3756b4d2d24b631001caed97153033282776bf0d))
+
+
+
+
+
 # [12.6.0-next.9](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.8...@rxap/schematics-table@12.6.0-next.9) (2022-01-25)
 
 
