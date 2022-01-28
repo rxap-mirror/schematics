@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.11](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.10...@rxap/schematics-table@12.6.0-next.11) (2022-01-28)
+
+
+### Features
+
+* add permission support ([1106ec1](https://gitlab.com/rxap/schematics/commit/1106ec190ce860d04799685959f28d66042d12d6))
+
+
+
+
+
 # [12.6.0-next.10](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.9...@rxap/schematics-table@12.6.0-next.10) (2022-01-25)
 
 
