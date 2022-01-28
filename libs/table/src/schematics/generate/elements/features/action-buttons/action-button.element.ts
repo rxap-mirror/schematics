@@ -80,48 +80,15 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   @ElementAttribute()
   public refresh?: boolean;
 
+  @ElementChildTextContent()
+  public permission?: string;
+
   public get methodName(): string {
     return classify(this.__parent.__parent.name) + classify(this.type) + 'TableRowActionMethod';
   }
 
   public get methodModuleSpecifier(): string {
     return dasherize(this.methodName).replace(/-method/, '.method')
-  }
-
-  public template(): string {
-    const attributes: string[] = [
-      `rxapTableRowAction="${this.type}"`,
-      '[element]="element"',
-      'mat-icon-button'
-    ];
-    if (this.refresh) {
-      attributes.push(`[refresh]="true"`)
-    }
-    if (this.if) {
-      attributes.push(`*ngIf="${this.if}"`);
-    }
-    if (this.color) {
-      attributes.push(`color="${this.color}"`);
-    }
-    if (this.tooltip) {
-      attributes.push(`matTooltip="${this.tooltip}"`);
-      attributes.push('i18n-matTooltip');
-    }
-    if (this.confirm) {
-      attributes.push('rxapConfirm');
-    }
-    if (this.errorMessage) {
-      attributes.push(`errorMessage="${this.errorMessage}"`);
-      attributes.push('i18n-errorMessage');
-    }
-    if (this.successMessage) {
-      attributes.push(`successMessage="${this.successMessage}"`);
-      attributes.push('i18n-successMessage');
-    }
-    return NodeFactory('button', ...attributes)([
-      NodeFactory('mat-icon')(this.icon),
-      NodeFactory('mat-progress-bar', '*rxapTableRowActionExecuting', 'mode="indeterminate"')()
-    ]);
   }
 
   public templateHeader(): string {
@@ -142,10 +109,24 @@ export class ActionButtonElement extends AbstractActionButtonElement {
     if (this.confirm) {
       attributes.push('rxapConfirm');
     }
+    if (this.permission) {
+      attributes.push(`rxapHasEnablePermission="${this.permission}"`);
+    }
     return NodeFactory('button', ...attributes)([
       NodeFactory('mat-icon')(this.icon),
       NodeFactory('mat-progress-bar', '*rxapTableRowActionExecuting', 'mode="indeterminate"')()
     ]);
+  }
+
+  public handleComponentModule({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
+    super.handleComponentModule({ project, sourceFile, options });
+    this.module?.handleComponentModule({ project, sourceFile, options });
+    if (this.confirm) {
+      AddNgModuleImport(sourceFile, 'ConfirmComponentModule', '@rxap/components');
+    }
+    if (this.permission) {
+      AddNgModuleImport(sourceFile, 'HasPermissionModule', '@rxap/authorization');
+    }
   }
 
   public handleComponent({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
@@ -241,12 +222,43 @@ export class ActionButtonElement extends AbstractActionButtonElement {
     });
   }
 
-  public handleComponentModule({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
-    super.handleComponentModule({ project, sourceFile, options });
-    this.module?.handleComponentModule({ project, sourceFile, options });
-    if (this.confirm) {
-      AddNgModuleImport(sourceFile, 'ConfirmComponentModule', '@rxap/components');
+  public template(): string {
+    const attributes: string[] = [
+      `rxapTableRowAction="${this.type}"`,
+      '[element]="element"',
+      'mat-icon-button'
+    ];
+    if (this.refresh) {
+      attributes.push(`[refresh]="true"`)
     }
+    if (this.if) {
+      attributes.push(`*ngIf="${this.if}"`);
+    }
+    if (this.color) {
+      attributes.push(`color="${this.color}"`);
+    }
+    if (this.tooltip) {
+      attributes.push(`matTooltip="${this.tooltip}"`);
+      attributes.push('i18n-matTooltip');
+    }
+    if (this.confirm) {
+      attributes.push('rxapConfirm');
+    }
+    if (this.errorMessage) {
+      attributes.push(`errorMessage="${this.errorMessage}"`);
+      attributes.push('i18n-errorMessage');
+    }
+    if (this.successMessage) {
+      attributes.push(`successMessage="${this.successMessage}"`);
+      attributes.push('i18n-successMessage');
+    }
+    if (this.permission) {
+      attributes.push(`rxapHasEnablePermission="${this.permission}"`);
+    }
+    return NodeFactory('button', ...attributes)([
+      NodeFactory('mat-icon')(this.icon),
+      NodeFactory('mat-progress-bar', '*rxapTableRowActionExecuting', 'mode="indeterminate"')()
+    ]);
   }
 
   public toValue({ project, options }: ToValueContext<GenerateSchema>): Rule {
