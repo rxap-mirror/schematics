@@ -53,6 +53,9 @@ export class CreateButtonElement extends FeatureElement {
   public withPermission?: boolean;
 
   @ElementChildTextContent()
+  public permission?: string;
+
+  @ElementChildTextContent()
   public label?: string;
 
   public handleComponentModule({ sourceFile, project, options }: ToValueContext & { sourceFile: SourceFile }) {
@@ -127,6 +130,9 @@ export class CreateButtonElement extends FeatureElement {
     ];
     if (this.withPermission) {
       attributes.push(`rxapHasEnablePermission="table.${this.__parent.id}.table.create-button"`);
+    }
+    if (this.permission) {
+      attributes.push(`rxapHasEnablePermission="${this.permission}"`);
     }
     return NodeFactory('div', 'fxLayout="row"', 'fxLayoutGap="12px"', 'fxLayoutAlign="start center"')([
       NodeFactory(
