@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.13](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.12...@rxap/schematics-table@12.6.0-next.13) (2022-01-29)
+
+
+### Features
+
+* **action-button:** support if check in header actions ([d8eb119](https://gitlab.com/rxap/schematics/commit/d8eb1198db32f7c5f7da302f946636d16b143982))
+
+
+
+
+
 # [12.6.0-next.12](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.11...@rxap/schematics-table@12.6.0-next.12) (2022-01-28)
 
 
