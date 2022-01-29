@@ -91,7 +91,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   }
 
   public get showRowHeaderMethodName(): string {
-    return `showRowHeaderAction${camelize(this.type)}`;
+    return `showRowHeaderAction${classify(this.type)}`;
   }
 
   public get methodName(): string {
