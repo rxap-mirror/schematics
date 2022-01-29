@@ -15,7 +15,9 @@ import {
   CoerceMethodClass,
   CoerceSourceFile,
   ToValueContext,
-  AddNgModuleImport
+  AddNgModuleImport,
+  GetComponentClass,
+  CoerceClassMethod
 } from '@rxap/schematics-ts-morph';
 import {
   chain,
@@ -32,6 +34,7 @@ import { join } from 'path';
 import { GenerateSchema } from '../../../schema';
 import { strings } from '@angular-devkit/core';
 import { AbstractActionButtonElement } from './abstract-action-button.element';
+import { SelectableElement } from '../selectable.element';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -83,6 +86,14 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   @ElementChildTextContent()
   public permission?: string;
 
+  public get hasHeader() {
+    return this.header && this.__parent.__parent.getFeature<SelectableElement>('selectable')?.multiple
+  }
+
+  public get showRowHeaderMethodName(): string {
+    return `showRowHeaderAction${camelize(this.type)}`;
+  }
+
   public get methodName(): string {
     return classify(this.__parent.__parent.name) + classify(this.type) + 'TableRowActionMethod';
   }
@@ -92,7 +103,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   }
 
   public templateHeader(): string {
-    if (!this.header || this.if) {
+    if (!this.hasHeader) {
       return '';
     }
     const attributes: string[] = [
@@ -101,6 +112,12 @@ export class ActionButtonElement extends AbstractActionButtonElement {
     ];
     if (this.color) {
       attributes.push(`color="${this.color}"`);
+    }
+    if (this.refresh) {
+      attributes.push(`[refresh]="true"`)
+    }
+    if (this.if) {
+      attributes.push(`*ngIf="${this.showRowHeaderMethodName}(selected)"`);
     }
     if (this.tooltip) {
       attributes.push(`matTooltip="${this.tooltip}"`);
@@ -131,6 +148,25 @@ export class ActionButtonElement extends AbstractActionButtonElement {
 
   public handleComponent({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
     super.handleComponent({ project, options, sourceFile });
+
+    if (this.hasHeader && this.if) {
+
+      const componentClass = GetComponentClass(sourceFile);
+
+      CoerceClassMethod(componentClass, this.showRowHeaderMethodName, {
+        parameters: [
+          {
+            name: 'selected',
+            type: 'Array<Record<string, any>>',
+          },
+        ],
+        statements: [
+          `return selected.some(element => ${this.if});`
+        ]
+      });
+
+    }
+
     // if a windowForm is used the corresponding FormProvider must be added
     if (this.windowForm) {
 

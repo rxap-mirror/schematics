@@ -22,10 +22,14 @@ import {
 import { TableElement } from '../../table.element';
 import { ElementFactory } from '@rxap/xml-parser';
 import { ColumnElement } from '../../columns/column.element';
-import { WithTemplate } from '@rxap/schematics-html';
+import {
+  WithTemplate,
+  NodeFactory
+} from '@rxap/schematics-html';
 import { strings } from '@angular-devkit/core';
 import { AbstractActionButtonElement } from './abstract-action-button.element';
 import { join } from 'path';
+import { SelectableElement } from '../selectable.element';
 
 const { classify, dasherize } = strings;
 
@@ -66,25 +70,22 @@ export class ActionsColumnElement extends ColumnElement implements WithTemplate 
   protected _name = 'actions';
 
   public template(): string {
+    const headerAttributes: string[] = [];
+    if (this.__parent.getFeature<SelectableElement>('selectable')?.multiple && this.actions.some(action => action.hasHeader && action.if)) {
+      headerAttributes.push('*rxapSelectedRows="let selected"')
+    }
     return [
-      '<th mat-header-cell *matHeaderCellDef>',
-      '<div fxLayout="row">',
-      ...this.actions.filter(action => action.header).map(action => action.templateHeader()),
-      '</div>',
-      '</th>',
-      '<td mat-cell *matCellDef="let element">',
-      '<div fxLayout="row">',
-      ...this.actions.map(action => action.template()),
-      '</div>',
-      '</td>'
-    ].join('\n')
+      NodeFactory('th', 'mat-header-cell', '*matHeaderCellDef')([
+        NodeFactory('div', 'fxLayout="row"', ...headerAttributes)(this.actions.filter(action => action.header).map(action => action.templateHeader()))
+      ]),
+      NodeFactory('td', 'mat-cell', '*matCellDef="let element"')([
+        NodeFactory('div', 'fxLayout="row"')(this.actions.map(action => action.template()))
+      ])
+    ].join('\n');
   }
 
   public templateFilter(): string {
-    return [
-      '<th mat-header-cell *matHeaderCellDef>',
-      '</th>'
-    ].join('\n');
+    return NodeFactory('th', 'mat-header-cell', '*matHeaderCellDef')();
   }
 
   public handleComponent({ sourceFile, project, options, }: ToValueContext & { sourceFile: SourceFile }) {
