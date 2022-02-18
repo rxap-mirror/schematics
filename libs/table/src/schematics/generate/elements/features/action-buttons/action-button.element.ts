@@ -131,7 +131,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       attributes.push(`rxapHasEnablePermission="${this.permission}"`);
     }
     return NodeFactory('button', ...attributes)([
-      this.icon.svg ? NodeFactory('mat-icon', `svg="${this.icon.name}"`)() : NodeFactory('mat-icon')(this.icon.name),
+      this.icon.svg ? NodeFactory('mat-icon', `svgIcon="${this.icon.name}"`)() : NodeFactory('mat-icon')(this.icon.name),
       NodeFactory('mat-progress-bar', '*rxapTableRowActionExecuting', 'mode="indeterminate"')()
     ]);
   }
@@ -293,7 +293,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       attributes.push(`rxapHasEnablePermission="${this.permission}"`);
     }
     return NodeFactory('button', ...attributes)([
-      this.icon.svg ? NodeFactory('mat-icon', `svg="${this.icon.name}"`)() : NodeFactory('mat-icon')(this.icon.name),
+      this.icon.svg ? NodeFactory('mat-icon', `svgIcon="${this.icon.name}"`)() : NodeFactory('mat-icon')(this.icon.name),
       NodeFactory('mat-progress-bar', '*rxapTableRowActionExecuting', 'mode="indeterminate"')()
     ]);
   }
