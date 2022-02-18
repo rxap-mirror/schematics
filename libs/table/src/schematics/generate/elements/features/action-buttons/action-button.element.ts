@@ -35,6 +35,7 @@ import { GenerateSchema } from '../../../schema';
 import { strings } from '@angular-devkit/core';
 import { AbstractActionButtonElement } from './abstract-action-button.element';
 import { SelectableElement } from '../selectable.element';
+import { IconElement } from '@rxap/xml-parser/elements';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -46,9 +47,9 @@ export class ActionButtonElement extends AbstractActionButtonElement {
   @ElementRequired()
   public type!: string;
 
-  @ElementChildTextContent()
+  @ElementChild(IconElement)
   @ElementRequired()
-  public icon!: string;
+  public icon!: IconElement;
 
   @ElementChildTextContent()
   public tooltip?: string;
@@ -130,7 +131,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       attributes.push(`rxapHasEnablePermission="${this.permission}"`);
     }
     return NodeFactory('button', ...attributes)([
-      NodeFactory('mat-icon')(this.icon),
+      this.icon.svg ? NodeFactory('mat-icon', `svg="${this.icon.name}"`)() : NodeFactory('mat-icon')(this.icon.name),
       NodeFactory('mat-progress-bar', '*rxapTableRowActionExecuting', 'mode="indeterminate"')()
     ]);
   }
@@ -292,7 +293,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       attributes.push(`rxapHasEnablePermission="${this.permission}"`);
     }
     return NodeFactory('button', ...attributes)([
-      NodeFactory('mat-icon')(this.icon),
+      this.icon.svg ? NodeFactory('mat-icon', `svg="${this.icon.name}"`)() : NodeFactory('mat-icon')(this.icon.name),
       NodeFactory('mat-progress-bar', '*rxapTableRowActionExecuting', 'mode="indeterminate"')()
     ]);
   }
