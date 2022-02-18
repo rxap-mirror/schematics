@@ -26,6 +26,9 @@ export class SelectControlElement extends FormFieldElement {
       `formControlName="${this.name}"`,
       ...this.innerAttributes
     ];
+    if (this.disabled) {
+      attributes.push('disabled');
+    }
     if (this.compareWith) {
       attributes.push(`rxapCompareWith="${this.compareWith}"`);
     } else {

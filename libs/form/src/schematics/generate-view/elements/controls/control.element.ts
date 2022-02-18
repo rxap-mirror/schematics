@@ -29,6 +29,9 @@ export class ControlElement implements WithTemplate, ParsedElement, NodeElement 
   @ElementChildren(ControlFeatureElement, { group: 'features' })
   public features?: ControlFeatureElement[];
 
+  @ElementAttribute()
+  public disabled?: boolean;
+
   public attributes: Array<string | (() => string)> = [];
 
   public __tag!: string;
@@ -37,7 +40,7 @@ export class ControlElement implements WithTemplate, ParsedElement, NodeElement 
   public nodes: NodeElement[] = [];
 
   public get controlPath(): string {
-    return [this.__parent.controlPath, this.name].join('.');
+    return [ this.__parent.controlPath, this.name ].join('.');
   }
 
   public get formElement(): DefinitionFormElement | null {

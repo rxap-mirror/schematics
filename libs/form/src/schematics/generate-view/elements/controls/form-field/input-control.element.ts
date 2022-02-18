@@ -44,8 +44,12 @@ export class InputControlElement extends FormFieldElement {
       `placeholder="Enter ${this.name}"`,
       'rxapRequired',
       `i18n-placeholder`,
-      ...this.innerAttributes,
+      ...this.innerAttributes
     ];
+
+    if (this.disabled) {
+      attributes.push('disabled');
+    }
 
     if (!this.standalone) {
       attributes.push(`formControlName="${this.name}"`);
