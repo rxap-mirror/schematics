@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.7](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.6...@rxap/schematics-form@12.6.0-next.7) (2022-02-18)
+
+
+### Bug Fixes
+
+* support view level disable states ([394424d](https://gitlab.com/rxap/schematics/commit/394424da5d357b5c537dfc4834bafb28a35d189a))
+
+
+
+
+
 # [12.6.0-next.6](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.5...@rxap/schematics-form@12.6.0-next.6) (2022-01-24)
 
 
