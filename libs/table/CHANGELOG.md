@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.6.0-next.16](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.15...@rxap/schematics-table@12.6.0-next.16) (2022-02-18)
+
+
+### Bug Fixes
+
+* support svg icons ([c0786f7](https://gitlab.com/rxap/schematics/commit/c0786f7024fe02db81da006ac990c817241d9441))
+
+
+
+
+
 # [12.6.0-next.15](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.14...@rxap/schematics-table@12.6.0-next.15) (2022-02-18)
 
 
