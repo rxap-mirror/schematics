@@ -3,6 +3,7 @@
   "exclude": [
     "../**/test.ts",
     "../**/*.spec.ts",
+    "../**/*.test.ts",
     "../tools",
     "../**/*.sandbox.ts",
     "../apps/*-e2e"

@@ -16,43 +16,26 @@
           "e2e",
           "build-storybook"
         ],
-        "strictlyOrderedTargets": [
-          "build",
-          "pack"
-        ]
+        "parallel": 1
       }
     }
   },
-  "projects": {
-    "utilities": {
-      "tags": []
-    },
-    "router": {
-      "tags": []
-    },
-    "table": {
-      "tags": []
-    },
-    "form": {
-      "tags": []
-    },
-    "shared": {
-      "tags": []
-    },
-    "ts-morph": {
-      "tags": []
-    },
-    "html": {
-      "tags": []
-    },
-    "xml-parser": {
-      "tags": []
-    },
-    "open-api": {
-      "tags": []
-    },
-    "schematics": {
-      "tags": []
-    }
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ],
+    "pack": [
+      {
+        "target": "pack",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "defaultCollection": "@rxap/schematics",
+    "packageManager": "yarn"
   }
 }

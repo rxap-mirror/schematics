@@ -19,35 +19,35 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@rxap/schematics-ts-morph": [
-        "libs/ts-morph/src/index.ts"
-      ],
-      "@rxap/schematics-html": [
-        "libs/html/src/index.ts"
-      ],
-      "@rxap/schematics-xml-parser": [
-        "libs/xml-parser/src/index.ts"
-      ],
-      "@rxap/schematics-open-api": [
-        "libs/open-api/src/index.ts"
+      "@rxap/schematics": [
+        "libs/schematics/src/index.ts"
       ],
       "@rxap/schematics-form": [
         "libs/form/src/index.ts"
       ],
-      "@rxap/schematics-shared": [
-        "libs/shared/src/index.ts"
+      "@rxap/schematics-html": [
+        "libs/html/src/index.ts"
+      ],
+      "@rxap/schematics-open-api": [
+        "libs/open-api/src/index.ts"
       ],
       "@rxap/schematics-router": [
         "libs/router/src/index.ts"
       ],
+      "@rxap/schematics-shared": [
+        "libs/shared/src/index.ts"
+      ],
       "@rxap/schematics-table": [
         "libs/table/src/index.ts"
+      ],
+      "@rxap/schematics-ts-morph": [
+        "libs/ts-morph/src/index.ts"
       ],
       "@rxap/schematics-utilities": [
         "libs/utilities/src/index.ts"
       ],
-      "@rxap/schematics": [
-        "libs/schematics/src/index.ts"
+      "@rxap/schematics-xml-parser": [
+        "libs/xml-parser/src/index.ts"
       ]
     }
   },
