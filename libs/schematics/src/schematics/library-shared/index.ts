@@ -39,7 +39,6 @@ export default function (options: LibrarySharedSchema): Rule {
           'library',
           {
             name:      'shared',
-            style: 'scss'
           }
         ),
         options.storybook ? schematic(
