@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.16...@rxap/schematics-table@13.0.0-next.0) (2022-02-19)
+
+
+### Build System
+
+* upgrade to nrwl 13.x.x ([5cd07c1](https://gitlab.com/rxap/schematics/commit/5cd07c19645528c787ef01a121a4a4367db78902))
+
+
+### BREAKING CHANGES
+
+* update the core nrwl packages to 13.x.x
+
+Signed-off-by: Merzough Münker <mmuenker@digitaix.com>
+
+
+
+
+
 # [12.6.0-next.16](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.15...@rxap/schematics-table@12.6.0-next.16) (2022-02-18)
 
 
