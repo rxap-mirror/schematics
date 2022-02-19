@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.1...@rxap/schematics@13.0.0-next.2) (2022-02-19)
+
+
+### Bug Fixes
+
+* remove unused schematic option ([e887ff3](https://gitlab.com/rxap/packages/commit/e887ff30dcdabeda2a107a7585f5334e226d8c39))
+
+
+
+
+
 # [13.0.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.0...@rxap/schematics@13.0.0-next.1) (2022-02-19)
 
 
