@@ -2714,13 +2714,13 @@
     handlebars "^4.7.7"
     tslib "^2.3.1"
 
-"@rxap/schematics-ts-morph@^12.3.2":
-  version "12.3.2"
-  resolved "https://registry.yarnpkg.com/@rxap/schematics-ts-morph/-/schematics-ts-morph-12.3.2.tgz#7e8f0ed2f21cdaf694f778bb8584e6c7ae12d9b5"
-  integrity sha512-toaBBJw+ugHOyEFBJ7AstS9bSC5DKvFc/grHlIovrrNlw1BbGlCdUtM/Tfq0LXN1brzqdW5eeJjRLkV0nqqA3w==
+"@rxap/schematics-ts-morph@^13.0.0-next.0":
+  version "13.0.0-next.0"
+  resolved "https://registry.yarnpkg.com/@rxap/schematics-ts-morph/-/schematics-ts-morph-13.0.0-next.0.tgz#ed0b18b5ba941c290bef17b2033abe38798e4f61"
+  integrity sha512-VhCcO6TMiYvH2gvASPyJD7Z/K9OTwfu0KlLoFVZtBr8deJisramEuX3M/6sKC8UzJ5oDVnpW2sWNdSqb77B8yQ==
   dependencies:
-    "@rxap/utilities" "^12.2.1-next.0"
-    tslib "^2.0.0"
+    "@rxap/utilities" "^12.2.2"
+    tslib "^2.3.1"
 
 "@rxap/schematics-utilities@^12.1.0", "@rxap/schematics-utilities@^12.4.0", "@rxap/schematics-utilities@^12.6.0", "@rxap/schematics-utilities@^12.7.0":
   version "12.7.0"
@@ -2731,22 +2731,31 @@
     semver "^7.3.5"
     tslib "^2.0.0"
 
-"@rxap/schematics@^12.9.9":
-  version "12.9.9"
-  resolved "https://registry.yarnpkg.com/@rxap/schematics/-/schematics-12.9.9.tgz#db72dfee8ff4de5c1fa889db7119ed46ee342300"
-  integrity sha512-UJAChbpzLrrQyU30lDPLaSDMnDxJMd1WxBnCQA6pKMVxfK7QwXTA0kWeSINTKNkNhkhGLKtU9bxg6tpaSH+5RA==
+"@rxap/schematics-utilities@^13.0.0-next.0":
+  version "13.0.0-next.0"
+  resolved "https://registry.yarnpkg.com/@rxap/schematics-utilities/-/schematics-utilities-13.0.0-next.0.tgz#a2e013dde5b89de17f5ac8bc0798721528f44f95"
+  integrity sha512-C/G6GUF4lurgQQdMyzRR6Y2UHX/zIg2NJWZOyDLqZXDht1XUf5m3Z2clY5fhWyt3cN6i6vvYB13KlS3b0LWOiw==
   dependencies:
-    "@rxap/schematics-ts-morph" "^12.3.2"
-    "@rxap/schematics-utilities" "^12.7.0"
-    "@rxap/utilities" "^12.2.1"
-    depcheck "^1.4.2"
+    "@rxap/utilities" "^12.2.2"
+    semver "^7.3.5"
+    tslib "^2.3.1"
+
+"@rxap/schematics@^13.0.0-next.0":
+  version "13.0.0-next.0"
+  resolved "https://registry.yarnpkg.com/@rxap/schematics/-/schematics-13.0.0-next.0.tgz#54b9aa689cdaff2b5403fd0c3038eece8182cdc8"
+  integrity sha512-+sNB+csYMixRngZrkQ+4Tjp7VmuMJ2hPKEGiH/R60J9qH6zBXwDFfpwJrQbx1ie1+h4kKQlV9bAffL+Tk2nywg==
+  dependencies:
+    "@rxap/schematics-ts-morph" "^13.0.0-next.0"
+    "@rxap/schematics-utilities" "^13.0.0-next.0"
+    "@rxap/utilities" "^12.2.2"
+    depcheck "^1.4.3"
     parse5 "^6.0.1"
     semver "^7.3.5"
-    ts-morph "^11.0.0"
-    tslib "^2.0.0"
-    typescript "^4.2.4"
+    ts-morph "^13.0.3"
+    tslib "^2.3.1"
+    typescript "^4.3.5"
 
-"@rxap/utilities@^12.2.1", "@rxap/utilities@^12.2.1-next.0", "@rxap/utilities@^12.2.2":
+"@rxap/utilities@^12.2.1", "@rxap/utilities@^12.2.2":
   version "12.2.2"
   resolved "https://registry.yarnpkg.com/@rxap/utilities/-/utilities-12.2.2.tgz#a70401e590b15762eeb79f90391be46cbf4759c1"
   integrity sha512-NAbBSDlhhpndO56qf9+eDSdt5O5DeGp8Cn7KebAFbTLetLA/J9PvXGLcovnohi0ZjtuUBwGsQy9o+j/aL/MyzA==
@@ -3374,16 +3383,6 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
   integrity sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==
-
-"@ts-morph/common@~0.10.1":
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/@ts-morph/common/-/common-0.10.1.tgz#be15b9ab13a32bbc1f6a6bd7dc056b2247b272eb"
-  integrity sha512-rKN/VtZUUlW4M+6vjLFSaFc1Z9sK+1hh0832ucPtPkXqOw/mSWE80Lau4z2zTPNTqtxAjfZbvKpQcEwJy0KIEg==
-  dependencies:
-    fast-glob "^3.2.5"
-    minimatch "^3.0.4"
-    mkdirp "^1.0.4"
-    path-browserify "^1.0.1"
 
 "@ts-morph/common@~0.12.3":
   version "0.12.3"
@@ -6018,7 +6017,7 @@ delegates@^1.0.0:
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
 
-depcheck@^1.4.2, depcheck@^1.4.3:
+depcheck@^1.4.3:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/depcheck/-/depcheck-1.4.3.tgz#faa4c143921f3fe25d5a7a633f9864327c250843"
   integrity sha512-vy8xe1tlLFu7t4jFyoirMmOR7x7N601ubU9Gkifyr9z8rjBFtEdWHDBMqXyk6OkK+94NXutzddVXJuo0JlUQKQ==
@@ -12862,14 +12861,6 @@ ts-morph@^10.1.0:
     "@ts-morph/common" "~0.9.2"
     code-block-writer "^10.1.1"
 
-ts-morph@^11.0.0:
-  version "11.0.3"
-  resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-11.0.3.tgz#01a92b3c2b5a48ccdf318ec90864229b8061d056"
-  integrity sha512-ymuPkndv9rzqTLiHWMkVrFXWcN4nBiBGhRP/kTC9F5amAAl7BNLfyrsTzMD1o9A0zishKoF1KQT/0yyFhJnPgA==
-  dependencies:
-    "@ts-morph/common" "~0.10.1"
-    code-block-writer "^10.1.1"
-
 ts-morph@^13.0.3:
   version "13.0.3"
   resolved "https://registry.yarnpkg.com/ts-morph/-/ts-morph-13.0.3.tgz#c0c51d1273ae2edb46d76f65161eb9d763444c1d"
@@ -13017,7 +13008,7 @@ typescript@4.3.5:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
   integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
 
-typescript@^4.2.4, typescript@^4.3.5, typescript@^4.5.3:
+typescript@^4.3.5, typescript@^4.5.3:
   version "4.5.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
   integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==

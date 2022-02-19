@@ -65,7 +65,7 @@
     "@rxap/plugin-library-schematics": "^13.0.0-next.0",
     "@rxap/plugin-pack": "^13.0.0-next.0",
     "@rxap/plugin-readme-generator": "^13.0.0-next.0",
-    "@rxap/schematics": "^12.9.9",
+    "@rxap/schematics": "^13.0.0-next.0",
     "@types/glob": "^7.2.0",
     "@types/jest": "27.4.0",
     "@types/node": "^17.0.18",
