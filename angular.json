@@ -35,19 +35,6 @@
             "{options.outputPath}"
           ]
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/form/tsconfig.lib.json",
-              "libs/form/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/form/**/*"
-            ]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": [
@@ -312,19 +299,6 @@
             "{options.outputPath}"
           ]
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/router/tsconfig.lib.json",
-              "libs/router/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/router/**/*"
-            ]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": [
@@ -505,19 +479,6 @@
             "{options.outputPath}"
           ]
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/shared/tsconfig.lib.json",
-              "libs/shared/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/shared/**/*"
-            ]
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "outputs": [
@@ -611,19 +572,6 @@
           "outputs": [
             "{options.outputPath}"
           ]
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/table/tsconfig.lib.json",
-              "libs/table/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/table/**/*"
-            ]
-          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -792,19 +740,6 @@
           "outputs": [
             "{options.outputPath}"
           ]
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/utilities/tsconfig.lib.json",
-              "libs/utilities/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/utilities/**/*"
-            ]
-          }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
