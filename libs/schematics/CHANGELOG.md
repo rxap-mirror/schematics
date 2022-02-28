@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.2...@rxap/schematics@13.0.0-next.3) (2022-02-28)
+
+
+### Bug Fixes
+
+* update ci concept ([72e093d](https://gitlab.com/rxap/packages/commit/72e093d02852d7604a2d22db498c6310cf16f6e9))
+
+
+
+
+
 # [13.0.0-next.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.1...@rxap/schematics@13.0.0-next.2) (2022-02-19)
 
 
