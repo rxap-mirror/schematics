@@ -1,109 +1,55 @@
-variables:
-  CI_CONFIG_VERSION: 'v4.26.5'
-
 workflow:
   rules:
     # skip branch pipeline if the commit starts with release
-    # the release job will create a commit for each new release. This commit should not be handled by the ci!
-    - if: '$CI_COMMIT_BRANCH && $CI_COMMIT_MESSAGE =~ /^release:/'
-      when: never
-    # skip branch pipeline for issue and renovate branches
-    - if: '$CI_COMMIT_BRANCH =~ /^\d+/ || $CI_COMMIT_BRANCH =~ /^renovate\//'
-      when: never
-    # if the pipeline is triggered for a renovate upgrade. skip everything except the renovate trigger
-    - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ /^renovate\//'
-      variables:
-        CODE_QUALITY_DISABLED: "true"
-        SECRET_DETECTION_DISABLED: "true"
-        RELEASE_DISABLED: "true"
-        REVIEW_DISABLED: "true"
-        PIPELINE_DISABLED: "true"
-    # if the pipeline is triggered for a tag the test jobs should not be executed
-    - if: '$CI_COMMIT_TAG'
-      variables:
-        CODE_QUALITY_DISABLED: "true"
-        SECRET_DETECTION_DISABLED: "true"
-    - when: always
+  # the release job will create a commit for each new release. This commit should not be handled by the ci!
+  - if: '$CI_COMMIT_BRANCH && $CI_COMMIT_MESSAGE =~ /^release:/'
+    when: never
+  # if the current branch is not protected and a merge request for this branch exists
+  # skip the pipeline
+  - if: '$CI_COMMIT_REF_PROTECTED != "true" && $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'
+    when: never
+  - when: always
 
 include:
-  - template: Security/Secret-Detection.gitlab-ci.yml
-  - template: Code-Quality.gitlab-ci.yml
-  - project: 'rxap/gitlab-ci'
-    ref: v4.26.5
-    file: '/templates/release.yml'
-  - project: 'rxap/gitlab-ci'
-    ref: v4.26.5
-    file: '/templates/node-modules/install.yml'
 
-stages:
-  - build
-  - test
-  - trigger
-  - release
+- project: 'rxap/gitlab-ci'
+  ref: $RXAP_CI_CONFIG_REF
+  file: '/templates/node-modules/cache.yml'
 
-install:
-  extends: .install
-  tags:
-    - build
-
-secret_detection:
-  needs: [ ]
-
-trigger:pipeline:
-  stage: trigger
-  needs:
-    - job: install
-      artifacts: false
+# the review pipeline to check if tests and builds are successful and deploy a review environment
+- local: .gitlab/ci/review.yaml
   rules:
-    # if the pipeline is for a merge request. skip the release job and pipeline trigger
-    - if: '$PIPELINE_DISABLED || $CI_PIPELINE_SOURCE != "push"'
-      when: never
-    - if: '$CI_COMMIT_BRANCH'
-      when: on_success
-  trigger:
-    include: .gitlab/ci/pipeline.gitlab-ci.yml
-    strategy: depend
+  # run the review pipeline for merge request that do not have a channel branch as source branch
+  - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME !~ $RXAP_CI_CHANNEL && $CI_PIPELINE_SOURCE == "merge_request_event" && $REVIEW_DISABLED == null'
+    # run the review pipeline for merged results merge requests if the source branch is a channel branch
+  - if: '$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME =~ $RXAP_CI_CHANNEL && $CI_MERGE_REQUEST_EVENT_TYPE == "merged_result" && $CI_PIPELINE_SOURCE == "merge_request_event" && $REVIEW_DISABLED == null'
 
-trigger:review:
-  stage: trigger
-  needs:
-    - job: install
-      artifacts: false
+# the branch pipeline to check if tests and builds are successful
+- local: .gitlab/ci/branch.yaml
   rules:
-    # if the pipeline is not for a merge request. skip the review trigger
-    - if: '$REVIEW_DISABLED || $CI_PIPELINE_SOURCE != "merge_request_event"'
-      when: never
-    - when: on_success
-  trigger:
-    include: .gitlab/ci/review.gitlab-ci.yml
-    strategy: depend
+  - if: '$CI_COMMIT_REF_PROTECTED != "true" && $CI_PIPELINE_SOURCE =~ /push|web|api/ && $BRANCH_DISABLED == null'
 
-trigger:renovate:
-  stage: trigger
-  needs:
-    - job: install
-      artifacts: false
+# the release pipeline to deploy new releases
+- local: .gitlab/ci/release.yaml
   rules:
-    # only trigger renovate for merge requests with the current source branch
-    - if: '$RENOVATE_DISABLED || $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME !~ /^renovate\//'
-      when: never
-    - when: on_success
-  trigger:
-    include: .gitlab/ci/renovate.gitlab-ci.yml
-    strategy: depend
+  - if: '$CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+/ && $RELEASE_DISABLED == null'
+- local: .gitlab/ci/release-branch.yaml
+  rules:
+  - if: '$CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_REF_NAME =~ /^release\// && $RELEASE_DISABLED == null'
 
-trigger:release:
-  stage: trigger
-  needs:
-    - job: install
-      artifacts: false
-  variables:
-    ENVIRONMENT_NAME: "release/$CI_COMMIT_TAG"
-    VERSION: "${CI_COMMIT_TAG}"
-    LATEST: "true"
+# the main pipeline for the default branch and create new tag if necessary
+- local: .gitlab/ci/main.yaml
   rules:
-    - if: '$CI_COMMIT_TAG =~ /^v\d+\.\d+\.\d+/'
-      when: on_success
-  trigger:
-    include: .gitlab/ci/release.gitlab-ci.yml
-    strategy: depend
+  - if: '$CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE =~ /push|web|api/ && $MAIN_DISABLED == null'
+
+# the pipeline to validate the channel branch and create a new tag if necessary
+- local: .gitlab/ci/channel.yaml
+  rules:
+  - if: '$CI_COMMIT_REF_PROTECTED == "true" && $CI_COMMIT_BRANCH && $CI_PIPELINE_SOURCE =~ /push|web|api/ && $CHANNEL_DISABLED == null'
+  - if: '$CI_COMMIT_REF_NAME =~ $RXAP_CI_CHANNEL && $CI_OPEN_MERGE_REQUESTS && $CI_COMMIT_MESSAGE =~ /^release:/ && $CHANNEL_DISABLED == null'
+
+job:
+  stage: .pre
+  script: echo job
+  rules:
+  - if: '$CI_COMMIT_REF_PROTECTED != "true" && $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS'

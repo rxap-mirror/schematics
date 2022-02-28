@@ -1,0 +1,37 @@
+include:
+- local: .gitlab/ci/utilities/test.yaml
+- local: .gitlab/ci/utilities/build.yaml
+- local: .gitlab/ci/utilities/deploy.yaml
+
+stages:
+- test
+- build
+- deploy
+
+test:
+  needs: [ ]
+  extends: .test
+  environment:
+    name: review/$CI_MERGE_REQUEST_IID
+
+build:
+  needs: [ ]
+  extends: .build
+  environment:
+    name: review/$CI_MERGE_REQUEST_IID
+
+deploy:
+  extends: .deploy
+  needs:
+  - build
+  environment:
+    name: review/$CI_MERGE_REQUEST_IID
+    auto_stop_in: 3 day
+    on_stop: deploy:stop
+    deployment_tier: testing
+
+deploy:stop:
+  extends: .deploy_stop
+  environment:
+    name: review/$CI_MERGE_REQUEST_IID
+  needs: [ ]

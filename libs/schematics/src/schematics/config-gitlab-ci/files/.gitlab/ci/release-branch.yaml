@@ -1,0 +1,29 @@
+include:
+- local: .gitlab/ci/utilities/build.yaml
+- local: .gitlab/ci/utilities/docker.yaml
+- local: .gitlab/ci/utilities/deploy.yaml
+
+stages:
+- build
+- container
+- deploy
+
+build:
+  needs: [ ]
+  extends: .build
+  environment:
+    name: $CI_COMMIT_REF_NAME
+
+build:container:
+  extends: .build_container
+  environment:
+    name: $CI_COMMIT_REF_NAME
+  needs:
+  - build
+
+deploy:
+  extends: .deploy
+  environment:
+    name: $CI_COMMIT_REF_NAME
+  needs:
+  - build

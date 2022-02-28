@@ -1,0 +1,15 @@
+.deploy:
+  stage: deploy
+  environment:
+    name: $ENVIRONMENT_NAME
+  script:
+  - echo deploy
+
+.deploy_stop:
+  stage: deploy
+  when: manual
+  script:
+  - echo stop
+  environment:
+    name: $ENVIRONMENT_NAME
+    action: stop

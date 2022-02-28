@@ -1,0 +1,19 @@
+include:
+- project: 'rxap/gitlab-ci'
+  ref: $RXAP_CI_CONFIG_REF
+  file: '/templates/nrwl/run.yml'
+
+.build:
+  stage: build
+  tags:
+  - build
+  extends: .run
+  cache: !reference [ .cache, cache ]
+  variables:
+    TARGET: "server:ci:production"
+  before_script:
+  - echo "//gitlab.com/api/v4/projects/28766914/packages/npm/:_authToken=${NPM_ACCESS_TOKEN}" >> .npmrc
+  - yarn --prefer-offline
+  environment:
+    name: $ENVIRONMENT_NAME
+    action: prepare
