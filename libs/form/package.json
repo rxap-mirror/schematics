@@ -6,7 +6,7 @@
     "@rxap/schematics-html": "^13.0.0-next.0",
     "@rxap/schematics-ts-morph": "^13.0.0-next.0",
     "@rxap/schematics-utilities": "^13.0.0-next.0",
-    "@rxap/schematics-xml-parser": "^13.0.0-next.0",
+    "@rxap/schematics-xml-parser": "^13.0.0",
     "@rxap/xml-parser": "^12.1.1",
     "ts-morph": "^13.0.3"
   },
