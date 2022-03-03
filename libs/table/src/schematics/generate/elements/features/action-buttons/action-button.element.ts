@@ -1,41 +1,31 @@
+import { strings } from '@angular-devkit/core';
+import { chain, noop, Rule } from '@angular-devkit/schematics';
+import { NodeFactory } from '@rxap/schematics-html';
+import {
+  AddComponentProvider,
+  AddNgModuleImport,
+  CoerceClassMethod,
+  CoerceMethodClass,
+  CoerceSourceFile,
+  GetComponentClass,
+  ToValueContext,
+} from '@rxap/schematics-ts-morph';
+import { MethodElement, ModuleElement } from '@rxap/schematics-xml-parser';
 import {
   ElementAttribute,
   ElementChild,
   ElementChildTextContent,
   ElementDef,
   ElementExtends,
-  ElementRequired
+  ElementRequired,
 } from '@rxap/xml-parser/decorators';
-import {
-  Scope,
-  SourceFile
-} from 'ts-morph';
-import {
-  AddComponentProvider,
-  CoerceMethodClass,
-  CoerceSourceFile,
-  ToValueContext,
-  AddNgModuleImport,
-  GetComponentClass,
-  CoerceClassMethod
-} from '@rxap/schematics-ts-morph';
-import {
-  chain,
-  noop,
-  Rule
-} from '@angular-devkit/schematics';
-import { NodeFactory } from '@rxap/schematics-html';
-import { WindowFormElement } from '../window-form.element';
-import {
-  MethodElement,
-  ModuleElement
-} from '@rxap/schematics-xml-parser';
-import { join } from 'path';
-import { GenerateSchema } from '../../../schema';
-import { strings } from '@angular-devkit/core';
-import { AbstractActionButtonElement } from './abstract-action-button.element';
-import { SelectableElement } from '../selectable.element';
 import { IconElement } from '@rxap/xml-parser/elements';
+import { join } from 'path';
+import { Scope, SourceFile } from 'ts-morph';
+import { GenerateSchema } from '../../../schema';
+import { SelectableElement } from '../selectable.element';
+import { WindowFormElement } from '../window-form.element';
+import { AbstractActionButtonElement } from './abstract-action-button.element';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -213,7 +203,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
         },
         ...this.windowForm ? [
           {
-            namedImports: [ 'Inject', 'INJECTOR', 'Injector' ],
+            namedImports: [ 'Inject', 'INJECTOR', 'Injector', 'ChangeDetectorRef' ],
             moduleSpecifier: '@angular/core'
           }
         ] : [],
@@ -241,6 +231,12 @@ export class ActionButtonElement extends AbstractActionButtonElement {
               name: 'Inject',
               arguments: [ 'INJECTOR' ]
             } ]
+          },
+          {
+            name: 'cdr',
+            isReadonly: true,
+            scope: Scope.Private,
+            type: 'ChangeDetectorRef'
           }
         ]
       } ] : [],
@@ -252,6 +248,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
       ],
       statements: [
         `console.log(\`action row type: ${this.type}\`, parameters);`,
+        'this.cdr.detectChanges();',
         ...(this.windowForm ? [
           'return this.openFormWindow.call(parameters, { injector: this.injector }).toPromise();'
         ] : [])
