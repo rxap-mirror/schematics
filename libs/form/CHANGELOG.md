@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@13.0.0-next.0...@rxap/schematics-form@13.0.0-next.1) (2022-03-03)
+
+
+### Bug Fixes
+
+* support for the new textarea auto size directives ([c84b78c](https://gitlab.com/rxap/schematics/commit/c84b78c31759da550cc7857fedc3acd950c8bc57))
+
+
+
+
+
 # [12.6.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-form@12.6.0-next.7...@rxap/schematics-form@12.6.0) (2022-02-19)
 
 **Note:** Version bump only for package @rxap/schematics-form
