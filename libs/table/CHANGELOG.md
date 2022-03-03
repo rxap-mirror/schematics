@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.6.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0...@rxap/schematics-table@12.6.2) (2022-03-03)
+
+
+### Bug Fixes
+
+* **actions:** add required cdr check ([9c6269d](https://gitlab.com/rxap/schematics/commit/9c6269de1e52dbd24df4dde2bbb0a88eb5f24a14))
+
+
+
+
+
+## [12.6.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0...@rxap/schematics-table@12.6.1) (2022-03-03)
+
+
+### Bug Fixes
+
+* **actions:** add required cdr check ([9c6269d](https://gitlab.com/rxap/schematics/commit/9c6269de1e52dbd24df4dde2bbb0a88eb5f24a14))
+
+
+
+
+
 # [12.6.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0-next.16...@rxap/schematics-table@12.6.0) (2022-02-19)
 
 **Note:** Version bump only for package @rxap/schematics-table
