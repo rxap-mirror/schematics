@@ -16,8 +16,8 @@ export class TextareaControlElement extends FormFieldElement {
     return NodeFactory(
       'textarea',
       'matInput',
-      '[mat-autosize]="true"',
-      '[matAutosizeMinRows]="3"',
+      'cdkTextareaAutosize',
+      '[cdkAutosizeMinRows]="3"',
       `formControlName="${this.name}"`,
       'rxapRequired',
       `placeholder="Enter ${this.name}"`,
@@ -30,6 +30,7 @@ export class TextareaControlElement extends FormFieldElement {
     super.handleComponentModule({ project, sourceFile, options });
     AddNgModuleImport(sourceFile, 'MatInputModule', '@angular/material/input');
     AddNgModuleImport(sourceFile, 'RequiredDirectiveModule', '@rxap/material-form-system');
+    AddNgModuleImport(sourceFile, 'TextFieldModule', '@angular/cdk/text-field');
   }
 
 }
