@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.6.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.2...@rxap/schematics-table@12.6.3) (2022-03-08)
+
+
+### Bug Fixes
+
+* add missing show archived element ([1ae0d85](https://gitlab.com/rxap/schematics/commit/1ae0d858e0b90715b9d22a4f58711bffac8e7cee))
+
+
+
+
+
 ## [12.6.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.0...@rxap/schematics-table@12.6.2) (2022-03-03)
 
 
