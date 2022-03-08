@@ -4,6 +4,7 @@ import { ColumnMenuElement } from '../column-menu.element';
 import { HandleComponentModule, ToValueContext } from '@rxap/schematics-ts-morph';
 import { Rule } from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
+import { DisplayColumn } from '../../feature.element';
 
 @ElementDef('column-menu-feature')
 export class ColumnMenuFeatureElement implements ParsedElement<Rule>, HandleComponentModule {
@@ -29,6 +30,10 @@ export class ColumnMenuFeatureElement implements ParsedElement<Rule>, HandleComp
 
   public columnTemplateFilter(): string {
     return '';
+  }
+
+  public displayColumn(): DisplayColumn | DisplayColumn[] | null {
+    return null;
   }
 
 }
