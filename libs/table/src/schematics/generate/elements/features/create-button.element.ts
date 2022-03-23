@@ -134,7 +134,7 @@ export class CreateButtonElement extends FeatureElement {
     if (this.permission) {
       attributes.push(`rxapHasEnablePermission="${this.permission}"`);
     }
-    return NodeFactory('div', 'fxLayout="row"', 'fxLayoutGap="12px"', 'fxLayoutAlign="start center"')([
+    return NodeFactory('div', 'class="create-button"', 'fxLayout="row"', 'fxLayoutGap="12px"', 'fxLayoutAlign="start center"')([
       NodeFactory(
         'button',
         'style="z-index: 2;"',
