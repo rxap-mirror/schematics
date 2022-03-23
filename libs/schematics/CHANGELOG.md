@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.3...@rxap/schematics@13.0.0-next.4) (2022-03-23)
+
+
+### Bug Fixes
+
+* remove rxap/utilities dependency ([d8dfe16](https://gitlab.com/rxap/packages/commit/d8dfe168f5d3afd5cd88d4fd143bd2c7b2c687b7))
+
+
+
+
+
 ## [12.9.9](https://gitlab.com/rxap/packages/compare/@rxap/schematics@12.9.9-next.2...@rxap/schematics@12.9.9) (2022-02-19)
 
 **Note:** Version bump only for package @rxap/schematics

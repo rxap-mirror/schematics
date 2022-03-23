@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-open-api",
-  "version": "13.0.0-next.0",
+  "version": "13.0.0-next.1",
   "dependencies": {
     "@rxap/json-schema-to-typescript": "^12.0.9",
     "openapi-types": "^10.0.0",
@@ -37,6 +37,7 @@
     "email": "incoming+rxap-packages-14898188-issue-@incoming.gitlab.com"
   },
   "peerDependencies": {
+    "@rxap/schematics-utilities": "^13.0.0-next.1",
     "ts-morph": "^13.0.3"
   }
 }

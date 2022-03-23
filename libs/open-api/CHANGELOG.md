@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.0.0-next.0...@rxap/schematics-open-api@13.0.0-next.1) (2022-03-23)
+
+
+### Bug Fixes
+
+* remove rxap/utilities dependency ([d8dfe16](https://gitlab.com/rxap/packages/commit/d8dfe168f5d3afd5cd88d4fd143bd2c7b2c687b7))
+
+
+
+
+
 # [13.0.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@12.0.9...@rxap/schematics-open-api@13.0.0-next.0) (2022-02-19)
 
 
