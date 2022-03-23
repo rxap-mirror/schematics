@@ -1,4 +1,4 @@
-import { Constructor } from '@rxap/utilities';
+import { Constructor } from '@rxap/schematics-utilities';
 import { ParsedElement } from '@rxap/xml-parser';
 import { Features } from './features/features';
 import { ArrayElement } from './array.element';

@@ -37,16 +37,15 @@
   "dependencies": {
     "@rxap/json-schema-to-typescript": "^12.0.9",
     "@rxap/mixin": "^12.0.7",
-    "@rxap/utilities": "^12.2.2",
     "@rxap/xml-parser": "^12.1.1",
+    "@storybook/builder-webpack5": "~6.4.19",
+    "@storybook/manager-webpack5": "~6.4.19",
     "openapi-types": "^10.0.0",
     "parse5": "^6.0.1",
     "reflect-metadata": "^0.1.13",
     "semver": "^7.3.5",
     "ts-morph": "^13.0.3",
-    "tslib": "^2.3.1",
-    "@storybook/builder-webpack5": "~6.4.19",
-    "@storybook/manager-webpack5": "~6.4.19"
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
     "@angular/cli": "13.2.4",
@@ -95,4 +94,3 @@
     "email": "incoming+rxap-schematics-27428931-issue-@incoming.gitlab.com"
   }
 }
-

@@ -14,7 +14,7 @@ import {
 } from './select-control.element';
 import { ValidatorElements } from './validators/validators';
 import { ParsedElement } from '@rxap/xml-parser';
-import { Constructor } from '@rxap/utilities';
+import { Constructor } from '@rxap/schematics-utilities';
 import { FeatureElements } from './features/features';
 import { ArrayControlElement } from './array-control.element';
 import { Methods } from '@rxap/schematics-xml-parser';

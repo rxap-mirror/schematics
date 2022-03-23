@@ -1,6 +1,6 @@
 import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { CoerceFile } from './coerce-file';
-import { deepMerge } from '@rxap/utilities';
+import { deepMerge } from '@rxap/schematics-utilities';
 
 export type EnvFile = Record<string, string | number | boolean>
 

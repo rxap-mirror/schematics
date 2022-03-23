@@ -9,7 +9,7 @@ import {
   AddNgModuleImport
 } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
-import { Required } from '@rxap/utilities';
+import { Required } from '@rxap/schematics-utilities';
 import { ArrayFeatureElement } from './array-feature.element';
 import { NodeFactory } from '@rxap/schematics-html';
 

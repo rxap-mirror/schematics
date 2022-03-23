@@ -9,7 +9,7 @@ import {
   TypeParameteredNodeStructure,
   WriterFunction
 } from 'ts-morph';
-import { CoerceSuffix } from '@rxap/utilities';
+import { CoerceSuffix } from '@rxap/schematics-utilities';
 
 export interface AddMethodClassOptions extends TypeParameteredNodeStructure {
   structures?: ReadonlyArray<OptionalKind<ImportDeclarationStructure>>;

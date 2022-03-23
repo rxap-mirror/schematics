@@ -26,7 +26,7 @@ import {
 import { WindowFormElement } from './window-form.element';
 import { GenerateSchema } from '../../schema';
 import { join } from 'path';
-import { dasherize } from '@rxap/utilities';
+import { dasherize } from '@rxap/schematics-utilities';
 import { NodeFactory } from '@rxap/schematics-html';
 import {
   MethodElement,

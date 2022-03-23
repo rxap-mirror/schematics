@@ -3,7 +3,7 @@ import {
   AddMethodClass,
   AddMethodClassOptions
 } from './add-method-class';
-import { CoerceSuffix } from '@rxap/utilities';
+import { CoerceSuffix } from '@rxap/schematics-utilities';
 
 export function CoerceMethodClass(
   sourceFile: SourceFile,

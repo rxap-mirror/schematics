@@ -6,7 +6,7 @@ import {
   GetRelativePathToProjectRoot,
   UpdateProjectPackageJson
 } from '@rxap/schematics-utilities';
-import { unique } from '@rxap/utilities';
+import { unique } from '@rxap/schematics-utilities';
 import { join } from 'path';
 
 export default function (options: ConfigPackageJsonSchema): Rule {

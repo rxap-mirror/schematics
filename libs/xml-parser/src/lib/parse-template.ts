@@ -1,5 +1,5 @@
 import { ParsedElement, XmlParserService } from '@rxap/xml-parser';
-import { coerceArray, Constructor } from '@rxap/utilities';
+import { coerceArray, Constructor } from '@rxap/schematics-utilities';
 import { DirEntry, Tree } from '@angular-devkit/schematics';
 import { join } from 'path';
 

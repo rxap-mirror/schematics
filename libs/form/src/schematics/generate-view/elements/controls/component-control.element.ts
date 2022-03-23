@@ -2,7 +2,7 @@ import { strings } from '@angular-devkit/core';
 import { chain, externalSchematic, Rule } from '@angular-devkit/schematics';
 import { NodeFactory } from '@rxap/schematics-html';
 import { AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
-import { CoerceSuffix } from '@rxap/utilities';
+import { CoerceSuffix } from '@rxap/schematics-utilities';
 import { ElementChildTextContent, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { join } from 'path';
 import { Scope, SourceFile, Writers } from 'ts-morph';

@@ -15,7 +15,7 @@ import {
   ToValueContext,
 } from '@rxap/schematics-ts-morph';
 import { MethodElement } from '@rxap/schematics-xml-parser';
-import { CoerceSuffix } from '@rxap/utilities';
+import { CoerceSuffix } from '@rxap/schematics-utilities';
 import { ParsedElement } from '@rxap/xml-parser';
 import {
   ElementAttribute,

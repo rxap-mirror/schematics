@@ -1,6 +1,6 @@
 import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
 import { CoerceFile } from './coerce-file';
-import { equals, IsFunction } from '@rxap/utilities';
+import { equals, IsFunction } from '@rxap/schematics-utilities';
 
 export function GetJsonFile<T = any>(host: Tree, filePath: string, create: boolean = false): T {
 

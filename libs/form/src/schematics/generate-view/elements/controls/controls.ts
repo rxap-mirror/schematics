@@ -1,4 +1,4 @@
-import { Constructor } from '@rxap/utilities';
+import { Constructor } from '@rxap/schematics-utilities';
 import { ParsedElement } from '@rxap/xml-parser';
 import { ControlElement } from './control.element';
 import { CheckboxControlElement } from './checkbox-control.element';

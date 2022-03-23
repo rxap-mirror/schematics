@@ -10,7 +10,7 @@ import {
   AddNgModuleImport
 } from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
-import { Required } from '@rxap/utilities';
+import { Required } from '@rxap/schematics-utilities';
 import { NodeFactory } from '@rxap/schematics-html';
 
 export enum PermissionElementType {

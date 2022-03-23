@@ -9,7 +9,7 @@ import {
 import { SourceFile } from 'ts-morph';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
-import { CoerceSuffix } from '@rxap/utilities';
+import { CoerceSuffix } from '@rxap/schematics-utilities';
 import { AddMethodClassOptions, CoerceMethodClass, CoerceSourceFile, ToValueContext } from '@rxap/schematics-ts-morph';
 import { TypeElement } from '../type.element';
 

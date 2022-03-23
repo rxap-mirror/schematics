@@ -5,7 +5,7 @@ import {
 import {
   classify,
   CoerceSuffix
-} from '@rxap/utilities';
+} from '@rxap/schematics-utilities';
 
 export function FindComponentSourceFile(name: string, project: Project): SourceFile {
   const className = CoerceSuffix(classify(name), 'Component');

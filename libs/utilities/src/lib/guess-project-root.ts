@@ -1,5 +1,5 @@
 import { SchematicsException, Tree } from '@angular-devkit/schematics';
-import { IsDefined } from '@rxap/utilities';
+import { IsDefined } from '@rxap/schematics-utilities';
 import { GetProjectRoot } from './get-project';
 import { GetWorkspace } from './workspace';
 

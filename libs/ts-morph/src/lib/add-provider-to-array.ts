@@ -1,6 +1,6 @@
 import { ProviderObject } from './provider-object';
 import { ArrayLiteralExpression, ObjectLiteralExpression, PropertyAssignment, Writers } from 'ts-morph';
-import { DeleteUndefinedProperties } from '@rxap/utilities';
+import { DeleteUndefinedProperties } from '@rxap/schematics-utilities';
 
 export function AddProviderToArray(
   providerObject: ProviderObject | string,

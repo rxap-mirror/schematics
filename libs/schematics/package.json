@@ -11,7 +11,6 @@
   "dependencies": {
     "@rxap/schematics-ts-morph": "^13.0.0-next.0",
     "@rxap/schematics-utilities": "^13.0.0-next.0",
-    "@rxap/utilities": "^12.2.2",
     "depcheck": "^1.4.3",
     "parse5": "^6.0.1",
     "ts-morph": "^13.0.3",

@@ -1,6 +1,6 @@
 import { Project, SourceFile } from 'ts-morph';
 import { CoerceClass } from '../coerce-class';
-import { classify, CoerceSuffix, dasherize } from '@rxap/utilities';
+import { classify, CoerceSuffix, dasherize } from '@rxap/schematics-utilities';
 import { CoerceSourceFile } from '../coerce-source-file';
 import { FindNestModuleSourceFile } from './find-nest-module-source-file';
 import { AddNestModuleController } from './add-nest-module-controller';

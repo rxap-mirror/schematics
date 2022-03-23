@@ -1,4 +1,4 @@
-import { Constructor } from '@rxap/utilities';
+import { Constructor } from '@rxap/schematics-utilities';
 import { ParsedElement } from '@rxap/xml-parser';
 import { ActionsButtons } from './action-buttons/actions-buttons';
 import { ColumnMenuElement } from './column-menu/column-menu.element';

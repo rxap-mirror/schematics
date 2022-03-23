@@ -1,5 +1,5 @@
 import { OpenAPIV3 } from 'openapi-types';
-import { classify } from '@rxap/utilities';
+import { classify } from '@rxap/schematics-utilities';
 import { IsAnySchemaObject } from './any-schema-object';
 import { PARAMETER_FILE_SUFFIX } from '../config';
 import { GetResponse } from './get-response';

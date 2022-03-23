@@ -9,7 +9,7 @@ import {
   ProviderObject,
   ToValueContext
 } from '@rxap/schematics-ts-morph';
-import { CoerceSuffix } from '@rxap/utilities';
+import { CoerceSuffix } from '@rxap/schematics-utilities';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { MethodElement } from '@rxap/schematics-xml-parser';

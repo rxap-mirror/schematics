@@ -5,7 +5,7 @@ import {
   ElementChildTextContent
 } from '@rxap/xml-parser/decorators';
 import { strings } from '@angular-devkit/core';
-import { CoerceSuffix } from '@rxap/utilities';
+import { CoerceSuffix } from '@rxap/schematics-utilities';
 import {
   ToValueContext,
   AddNgModuleImport

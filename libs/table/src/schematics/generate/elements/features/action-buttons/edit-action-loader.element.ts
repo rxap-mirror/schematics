@@ -21,7 +21,7 @@ import { Rule } from '@angular-devkit/schematics';
 import { SourceFile } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { join } from 'path';
-import { CoerceSuffix } from '@rxap/utilities';
+import { CoerceSuffix } from '@rxap/schematics-utilities';
 import { OpenApiRemoteMethodElement } from '@rxap/schematics-xml-parser';
 import { AbstractActionButtonElement } from './abstract-action-button.element';
 
