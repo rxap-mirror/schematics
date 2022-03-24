@@ -6,6 +6,7 @@ import { SourceFile } from 'ts-morph';
 import { TableElement } from '../../table.element';
 import { DisplayColumn, FeatureElement } from '../feature.element';
 import { ColumnMenuFeatureElement } from './features/column-menu-feature.element';
+import { coerceArray } from '@rxap/utilities';
 
 const { capitalize } = strings;
 
@@ -34,12 +35,10 @@ export class ColumnMenuElement extends FeatureElement {
     }));
   }
 
-  public displayColumn(): DisplayColumn | null {
-    return {
-      name: 'removedAt',
-      active: false,
-      hidden: true,
-    };
+  public displayColumn(): DisplayColumn | DisplayColumn[] | null {
+    return this.features?.map(feature => feature.displayColumn())
+               .filter((columns): columns is DisplayColumn[] | DisplayColumn => columns !== null)
+               .reduce((displayColumns, columns) => [ ...coerceArray(displayColumns), ...coerceArray(columns) ], [] as DisplayColumn[]) ?? null;
   }
 
   public columnTemplateFilter(): string {
