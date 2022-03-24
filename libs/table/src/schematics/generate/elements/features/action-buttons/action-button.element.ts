@@ -148,7 +148,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
         parameters: [
           {
             name: 'selected',
-            type: 'Array<Record<string, any>>',
+            type: 'any[]',
           },
         ],
         statements: [
