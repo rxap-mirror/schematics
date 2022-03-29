@@ -106,7 +106,6 @@ selector | string |  | The HTML selector to use for this component.
 skipSelector | boolean | false | Specifies if the component should have a selector or not.
 module | string |  | The declaring NgModule.
 entryComponent | boolean | false | When true, the new component is the entry component of the declaring NgModule.
-lintFix | boolean | false | When true, applies lint fixes after generating the component.
 commonModule | boolean | false | When true, the new NgModule imports &quot;CommonModule&quot;. 
 
 | Required |
@@ -487,8 +486,6 @@ ng g @rxap/schematics:storybook-configuration
 
 Option | Type | Default | Description
 --- | --- | --- | ---
-name | string |  | 
-path | string |  | 
 project | string |  | 
 
 
