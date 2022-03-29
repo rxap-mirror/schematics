@@ -1,6 +1,7 @@
 import { moduleMetadata, Story } from '@storybook/angular';
 import { <%= classify(name) %>ComponentModule } from './<%= dasherize(name) %>.component.module';
 import { <%= classify(name) %>Component } from './<%= dasherize(name) %>.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export default {
   title:     '<%= classify(name) %>Component',
@@ -8,6 +9,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [
+        BrowserAnimationsModule,
         <%= classify(name) %>ComponentModule,
       ]
     })
@@ -19,3 +21,4 @@ const Template: Story<<%= classify(name) %>Component> = (args: any) => ({
 });
 
 export const Default = Template.bind({});
+Default.args = {};
