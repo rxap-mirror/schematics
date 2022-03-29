@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.7](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.6...@rxap/schematics@13.0.0-next.7) (2022-03-29)
+
+
+### Bug Fixes
+
+* update to scss [@use](https://gitlab.com/use) concept ([669d2c4](https://gitlab.com/rxap/packages/commit/669d2c4a3106810e2d404c02530257eeac779f44))
+
+
+
+
+
 # [13.0.0-next.6](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.5...@rxap/schematics@13.0.0-next.6) (2022-03-29)
 
 
