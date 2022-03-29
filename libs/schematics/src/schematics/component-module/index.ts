@@ -186,7 +186,6 @@ export default function(options: ComponentModule): Rule {
         path: options.path,
         project: options.project,
         commonModule: options.commonModule,
-        lintFix: options.lintFix,
         name: `${classify(options.name)}Component`,
         flat: true,
         routing: false,
