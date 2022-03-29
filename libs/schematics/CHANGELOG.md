@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.6](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.5...@rxap/schematics@13.0.0-next.6) (2022-03-29)
+
+
+### Bug Fixes
+
+* remove deprecated schematic option ([dd60fa3](https://gitlab.com/rxap/packages/commit/dd60fa355d1be34477f857c88ea6e2e0c207898a))
+* update to new scss version ([ae71e94](https://gitlab.com/rxap/packages/commit/ae71e946b15199725ca6214e88da1e8e7edc3042))
+
+
+
+
+
 # [13.0.0-next.5](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.4...@rxap/schematics@13.0.0-next.5) (2022-03-29)
 
 
