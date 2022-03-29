@@ -1,0 +1,19 @@
+{
+  "fileServerFolder": ".",
+  "fixturesFolder": "./src/fixtures",
+  "integrationFolder": "./src/integration",
+  "modifyObstructiveCode": false,
+  "supportFile": "./src/support/index.ts",
+  "video": true,
+  "videosFolder": "../../dist/cypress/apps/storybook-e2e/videos",
+  "screenshotsFolder": "../../dist/cypress/apps/storybook-e2e/screenshots",
+  "chromeWebSecurity": false,
+
+  "videoUploadOnPasses": false,
+  "pluginsFile": "./src/plugins/index.js",
+  "baseUrl": "http://localhost:4400",
+  "testFiles": "**/*.{feature,features,spec.ts}",
+  "viewportHeight": 1080,
+  "viewportWidth": 1920,
+  "projectId": "eurogard-settings"
+}

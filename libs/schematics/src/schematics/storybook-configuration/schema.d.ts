@@ -1,1 +1,3 @@
-export interface StorybookConfigurationSchema {}
+export interface StorybookConfigurationSchema {
+  project: string;
+}
