@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-@mixin <%= prefix %>-<%= dasherize(name) %>-theme($theme) {
+@mixin theme($theme) {
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
   $accent: map-get($theme, accent);
@@ -12,6 +12,6 @@
 
 }
 
-@mixin <%= prefix %>-<%= dasherize(name) %>-typography($config) {
+@mixin typography($config) {
   .<%= prefix %>-<%= dasherize(name) %> { }
 }

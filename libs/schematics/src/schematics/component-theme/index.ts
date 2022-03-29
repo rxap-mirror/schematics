@@ -49,9 +49,9 @@ export function addThemeToProjectRoot(options: ComponentThemeSchema): Rule {
     const importPath = buildRelativePath(indexScssFilePath, componentThemeFilePath).replace(/\.scss$/, '');
 
     indexScssFile = indexScssFile
-      .replace('/* IMPORT */', `@import "${importPath}";\n/* IMPORT */`)
-      .replace('/* THEME_INCLUDE */', `@include ${options.prefix}-${dasherize(options.name)}-theme($theme);\n  /* THEME_INCLUDE */`)
-      .replace('/* TYPOGRAPHY_INCLUDE */', `@include ${options.prefix}-${dasherize(options.name)}-typography($config);\n  /* TYPOGRAPHY_INCLUDE */`);
+      .replace('/* IMPORT */', `/* IMPORT */\n@use "${importPath}" as ${dasherize(options.name)};`)
+      .replace('/* THEME_INCLUDE */', `@include ${dasherize(options.name)}.theme($theme);\n  /* THEME_INCLUDE */`)
+      .replace('/* TYPOGRAPHY_INCLUDE */', `@include ${dasherize(options.name)}.typography($config);\n  /* TYPOGRAPHY_INCLUDE */`);
 
     host.overwrite(indexScssFilePath, indexScssFile);
 
