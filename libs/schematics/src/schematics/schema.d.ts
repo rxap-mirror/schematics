@@ -195,10 +195,6 @@ export interface ComponentModule {
    */
   entryComponent?: boolean;
   /**
-   * When true, applies lint fixes after generating the component.
-   */
-  lintFix?: boolean;
-  /**
    * When true, the new NgModule imports "CommonModule".
    */
   commonModule?: boolean;

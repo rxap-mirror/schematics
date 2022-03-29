@@ -214,7 +214,6 @@ export default function(options: ComponentModule): Rule {
         skipTests: options.skipTests,
         flat: options.flat,
         skipSelector: options.skipSelector,
-        lintFix: options.lintFix,
         skipImport: false,
         module: `${dasherize(options.name)}.component.module`,
         export: true,
