@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@13.0.0-next.2...@rxap/schematics-table@13.0.0-next.3) (2022-03-29)
+
+
+### Bug Fixes
+
+* add class to create button ([6cae3eb](https://gitlab.com/rxap/schematics/commit/6cae3ebafe12b0b81784d1b5de88e636eeea4e78))
+* add missing show archived element ([1ae0d85](https://gitlab.com/rxap/schematics/commit/1ae0d858e0b90715b9d22a4f58711bffac8e7cee))
+* use any array to prevent any type issues with typescript 4.5+ ([a883d0b](https://gitlab.com/rxap/schematics/commit/a883d0b4ee7db8589f5fb55b7d4d3cd71257f6d6))
+
+
+
+
+
 ## [12.6.3](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@12.6.2...@rxap/schematics-table@12.6.3) (2022-03-08)
 
 

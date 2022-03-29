@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.5](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.4...@rxap/schematics@13.0.0-next.5) (2022-03-29)
+
+
+### Bug Fixes
+
+* add BrowserAnimationsModule import ([9ec242a](https://gitlab.com/rxap/packages/commit/9ec242a6d2a81d1c4caf4692d45a0d5e72476626))
+* remove deprecated schematic option ([7b1c4b5](https://gitlab.com/rxap/packages/commit/7b1c4b5cc7f7367353c39eadc2a6ba7618bdf7f4))
+
+
+### Features
+
+* support new storybook concept ([9e27a8c](https://gitlab.com/rxap/packages/commit/9e27a8c85b16c8b0f9a597b026ad225efea83c63))
+
+
+
+
+
 # [13.0.0-next.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics@13.0.0-next.3...@rxap/schematics@13.0.0-next.4) (2022-03-23)
 
 
