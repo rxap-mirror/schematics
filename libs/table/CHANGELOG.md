@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.5](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@13.0.0-next.4...@rxap/schematics-table@13.0.0-next.5) (2022-05-09)
+
+
+### Bug Fixes
+
+* remove @rxap/utiliteis dependency ([5829029](https://gitlab.com/rxap/schematics/commit/58290297bf546fb8be6ba60f5f433658d483e3c9))
+
+
+
+
+
 # [13.0.0-next.4](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@13.0.0-next.3...@rxap/schematics-table@13.0.0-next.4) (2022-05-09)
 
 **Note:** Version bump only for package @rxap/schematics-table

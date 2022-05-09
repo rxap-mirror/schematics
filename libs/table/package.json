@@ -1,7 +1,6 @@
 {
   "name": "@rxap/schematics-table",
-  "version": "13.0.0-next.4",
-  "peerDependencies": {},
+  "version": "13.0.0-next.5",
   "dependencies": {
     "tslib": "^2.3.1"
   },
@@ -39,5 +38,6 @@
   },
   "ng-add": {
     "save": "dependencies"
-  }
+  },
+  "peerDependencies": {}
 }

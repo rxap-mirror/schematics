@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.0.0-next.2...@rxap/schematics-open-api@13.0.0-next.3) (2022-05-09)
+
+
+### Bug Fixes
+
+* convert ref into object for parameters ([81f8f9e](https://gitlab.com/rxap/packages/commit/81f8f9e02b8feffe24ca43ee0684740bd59e0f88))
+
+
+
+
+
 # [13.0.0-next.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.0.0-next.1...@rxap/schematics-open-api@13.0.0-next.2) (2022-05-09)
 
 **Note:** Version bump only for package @rxap/schematics-open-api
