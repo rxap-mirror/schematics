@@ -6,7 +6,10 @@ import { SourceFile } from 'ts-morph';
 import { TableElement } from '../../table.element';
 import { DisplayColumn, FeatureElement } from '../feature.element';
 import { ColumnMenuFeatureElement } from './features/column-menu-feature.element';
-import { coerceArray } from '@rxap/utilities';
+
+export function coerceArray<T>(value?: T | T[] | null): T[] {
+  return value === null || value === undefined ? [] : Array.isArray(value) ? value : [ value ];
+}
 
 const { capitalize } = strings;
 
