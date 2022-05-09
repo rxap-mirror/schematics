@@ -18,11 +18,38 @@ export async function GenerateParameters(
     const properties: Record<string, OpenAPIV3.SchemaObject | AnySchemaObject | OpenAPIV3.ReferenceObject> = {};
     const required: string[]                                                                               = [];
 
-    if (operation.parameters.some(parameter => IsReferenceObject(parameter))) {
+    const parameters = operation.parameters.filter(param => !IsReferenceObject(param) && param.in !== 'header');
+
+    for (const parameter of operation.parameters.filter(param => IsReferenceObject(param))) {
+      if (IsReferenceObject(parameter)) {
+        const ref = parameter.$ref;
+        const segments: string[] = ref.split('/');
+        const hashTag = segments.shift();
+        const componentsSegment = segments.shift();
+        const group = segments.shift();
+        const name = segments.shift();
+        if (hashTag !== '#') {
+          throw new Error('Could not parse ref: ' + ref);
+        }
+        if (componentsSegment !== 'components') {
+          throw new Error('Could not parse ref: ' + ref);
+        }
+        if (!group || !(components as any)[group]) {
+          throw new Error(`Group '${group}' does not exist in the components object with ref: ${ref}`);
+        }
+        const component = (components as any)[group];
+        if (!name || !component[name]) {
+          throw new Error(`Could not find '${name}' in group '${group} with ref: ${ref}`);
+        }
+        parameters.push(component[name]);
+      }
+    }
+
+    if (parameters.some(parameter => IsReferenceObject(parameter))) {
       throw new Error('Reference object are not supported in the parameter definition!');
     }
 
-    for (const parameter of operation.parameters.filter(param => !IsReferenceObject(param) && param.in !== 'header')) {
+    for (const parameter of parameters) {
 
       if (IsReferenceObject(parameter)) {
         throw new Error('FATAL: Reference object are not supported in the parameter definition!');
