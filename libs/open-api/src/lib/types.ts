@@ -11,6 +11,20 @@ export interface GenerateParameter<Options extends OpenApiSchemaBase = OpenApiSc
   options: Options;
 }
 
+export interface OperationObjectWithMetadata extends OpenAPIV3.OperationObject {
+  path: string;
+  method: string;
+}
+
+export function GenerateParameterToOperationObjectWithMetadata(parameter: GenerateParameter): OperationObjectWithMetadata {
+  const blacklist = ['project','options','components'];
+  const copy: any = {};
+  for (const key of Object.keys(parameter).filter(k => !blacklist.includes(k))) {
+    copy[key] = (parameter as any)[key];
+  }
+  return copy;
+}
+
 export function HasOperationId(operation: OpenAPIV3.OperationObject): operation is OperationObject {
   return !!operation.operationId
 }
