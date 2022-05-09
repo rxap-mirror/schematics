@@ -1,16 +1,15 @@
 {
   "name": "@rxap/schematics-open-api",
-  "version": "13.0.0-next.1",
+  "version": "13.0.0-next.2",
   "dependencies": {
-    "@rxap/json-schema-to-typescript": "^12.0.9",
-    "openapi-types": "^10.0.0",
     "tslib": "^2.3.1"
   },
   "schematics": "./schematics/collection.json",
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [
-      "@rxap/schematics-open-api"
+      "@rxap/schematics-open-api",
+      "@rxap/schematics-utilities"
     ]
   },
   "publishConfig": {
@@ -36,8 +35,5 @@
     "url": "https://gitlab.com/rxap/plugins/-/issues",
     "email": "incoming+rxap-packages-14898188-issue-@incoming.gitlab.com"
   },
-  "peerDependencies": {
-    "@rxap/schematics-utilities": "^13.0.0-next.1",
-    "ts-morph": "^13.0.3"
-  }
+  "peerDependencies": {}
 }
