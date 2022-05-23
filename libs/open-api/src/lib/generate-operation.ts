@@ -59,7 +59,7 @@ export async function GenerateOperation<Options extends OpenApiSchemaBase = Open
                   }
                   await generatorFunction(parameters);
                 } catch (e) {
-                  console.error(`Failed to generate [${generatorFunction}] for operation: ${operation.operationId}`);
+                  console.error(`Failed to generate [${generatorFunction?.name}] for operation: ${operation.operationId}`);
                 }
 
               }

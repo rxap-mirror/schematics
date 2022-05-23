@@ -35,7 +35,7 @@
   },
   "private": true,
   "dependencies": {
-    "@rxap/json-schema-to-typescript": "^12.0.9",
+    "@rxap/json-schema-to-typescript": "13.0.0-next.1",
     "@rxap/mixin": "^12.0.7",
     "@rxap/xml-parser": "^12.1.1",
     "@storybook/builder-webpack5": "~6.4.19",
