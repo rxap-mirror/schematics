@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0-next.4](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.0.0-next.3...@rxap/schematics-open-api@13.0.0-next.4) (2022-05-23)
+
+
+### Bug Fixes
+
+* update typescript generator package ([3bd311c](https://gitlab.com/rxap/packages/commit/3bd311ca5697bdbed598cdf8c9ec44f297fd2215))
+
+
+
+
+
 # [13.0.0-next.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.0.0-next.2...@rxap/schematics-open-api@13.0.0-next.3) (2022-05-09)
 
 
