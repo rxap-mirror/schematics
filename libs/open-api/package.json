@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-open-api",
-  "version": "13.0.0",
+  "version": "14.0.0",
   "dependencies": {
     "tslib": "^2.3.1"
   },
@@ -38,7 +38,7 @@
   },
   "peerDependencies": {
     "@rxap/json-schema-to-typescript": "^13.0.0-next.1",
-    "@rxap/schematics-utilities": "^13.0.0",
+    "@rxap/schematics-utilities": "^14.0.0",
     "openapi-types": "^10.0.0",
     "ts-morph": "^13.0.3"
   }

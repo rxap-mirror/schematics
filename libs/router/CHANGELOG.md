@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-router@13.0.0...@rxap/schematics-router@14.0.0) (2022-09-11)
+
+
+### chore
+
+* upgrade to 14.x.x ([c9b8ffa](https://gitlab.com/rxap/schematics/commit/c9b8ffa50b9d86020143c333a4d4ed8c5af07687))
+
+
+### BREAKING CHANGES
+
+* upgrade to 14.x.x
+
+
+
+
+
 # [13.0.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-router@13.0.0-next.1...@rxap/schematics-router@13.0.0) (2022-09-11)
 
 **Note:** Version bump only for package @rxap/schematics-router
