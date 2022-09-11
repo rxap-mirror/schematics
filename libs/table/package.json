@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-table",
-  "version": "13.0.0-next.5",
+  "version": "13.0.0",
   "dependencies": {
     "tslib": "^2.3.1"
   },
@@ -39,5 +39,14 @@
   "ng-add": {
     "save": "dependencies"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "@nrwl/workspace": "^13.8.3",
+    "@rxap/schematics-form": "^13.0.0",
+    "@rxap/schematics-html": "^13.0.0",
+    "@rxap/schematics-ts-morph": "^13.0.0",
+    "@rxap/schematics-utilities": "^13.0.0",
+    "@rxap/schematics-xml-parser": "^13.0.1",
+    "@rxap/xml-parser": "^12.1.1",
+    "ts-morph": "^13.0.3"
+  }
 }

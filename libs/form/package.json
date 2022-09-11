@@ -1,7 +1,6 @@
 {
   "name": "@rxap/schematics-form",
-  "version": "13.0.0-next.3",
-  "peerDependencies": {},
+  "version": "13.0.0",
   "dependencies": {
     "tslib": "^2.3.1"
   },
@@ -39,5 +38,14 @@
   "bugs": {
     "url": "https://gitlab.com/rxap/schematics/-/issues",
     "email": "incoming+rxap-schematics-27428931-issue-@incoming.gitlab.com"
+  },
+  "peerDependencies": {
+    "@nrwl/workspace": "^13.8.3",
+    "@rxap/schematics-html": "^13.0.0",
+    "@rxap/schematics-ts-morph": "^13.0.0",
+    "@rxap/schematics-utilities": "^13.0.0",
+    "@rxap/schematics-xml-parser": "^13.0.1",
+    "@rxap/xml-parser": "^12.1.1",
+    "ts-morph": "^13.0.3"
   }
 }
