@@ -1,9 +1,9 @@
-import { IsReferenceObject } from './utilities/is-reference-object';
-import { PARAMETER_BASE_PATH, PARAMETER_FILE_SUFFIX } from './config';
-import { OpenAPIV3 } from 'openapi-types';
-import { TypescriptInterfaceGenerator } from '@rxap/json-schema-to-typescript';
-import { AnySchemaObject } from './utilities/any-schema-object';
-import { Project } from 'ts-morph';
+import {IsReferenceObject} from './utilities/is-reference-object';
+import {PARAMETER_BASE_PATH, PARAMETER_FILE_SUFFIX} from './config';
+import {OpenAPIV3} from 'openapi-types';
+import {TypescriptInterfaceGenerator} from '@rxap/json-schema-to-typescript';
+import {AnySchemaObject} from './utilities/any-schema-object';
+import {Project} from 'ts-morph';
 
 export async function GenerateParameters(
   operation: OpenAPIV3.OperationObject,
@@ -81,7 +81,7 @@ export async function GenerateParameters(
 
       await generator.build(operationId);
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(`Failed to generate parameter interface for: ${operationId}`, error.message);
     }
 

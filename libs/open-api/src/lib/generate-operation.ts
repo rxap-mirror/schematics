@@ -1,18 +1,13 @@
-import { OpenAPIV3 } from 'openapi-types';
-import { IsHttpMethod } from './utilities/is-http-method';
-import { IgnoreOperation } from './utilities/ignore-operation';
-import { IsOperationObject } from './utilities/is-operation-object';
-import { Project } from 'ts-morph';
-import {
-  HasOperationId,
-  GenerateParameter,
-  OpenApiSchemaBase,
-  GeneratorFunction
-} from './types';
-import { GenerateParameters } from './generate-parameters';
-import { GenerateRequestBody } from './generate-request-body';
-import { GenerateResponse } from './generate-response';
-import { GenerateComponents } from './generate-components';
+import {OpenAPIV3} from 'openapi-types';
+import {IsHttpMethod} from './utilities/is-http-method';
+import {IgnoreOperation} from './utilities/ignore-operation';
+import {IsOperationObject} from './utilities/is-operation-object';
+import {Project} from 'ts-morph';
+import {GenerateParameter, GeneratorFunction, HasOperationId, OpenApiSchemaBase} from './types';
+import {GenerateParameters} from './generate-parameters';
+import {GenerateRequestBody} from './generate-request-body';
+import {GenerateResponse} from './generate-response';
+import {GenerateComponents} from './generate-components';
 
 export async function GenerateOperation<Options extends OpenApiSchemaBase = OpenApiSchemaBase>(
   openapi: OpenAPIV3.Document,
@@ -58,7 +53,7 @@ export async function GenerateOperation<Options extends OpenApiSchemaBase = Open
                     options
                   }
                   await generatorFunction(parameters);
-                } catch (e) {
+                } catch (e: any) {
                   console.error(`Failed to generate [${generatorFunction?.name}] for operation: ${operation.operationId}`);
                 }
 

@@ -1,9 +1,9 @@
-import { OpenAPIV3 } from 'openapi-types';
-import { TypescriptInterfaceGenerator } from '@rxap/json-schema-to-typescript';
-import { IsAnySchemaObject } from './utilities/any-schema-object';
-import { REQUEST_BODY_BASE_PATH, REQUEST_BODY_FILE_SUFFIX } from './config';
-import { Project } from 'ts-morph';
-import { GetRequestBody } from './utilities/get-reqeust-body';
+import {OpenAPIV3} from 'openapi-types';
+import {TypescriptInterfaceGenerator} from '@rxap/json-schema-to-typescript';
+import {IsAnySchemaObject} from './utilities/any-schema-object';
+import {REQUEST_BODY_BASE_PATH, REQUEST_BODY_FILE_SUFFIX} from './config';
+import {Project} from 'ts-morph';
+import {GetRequestBody} from './utilities/get-reqeust-body';
 
 export async function GenerateRequestBody(
   operation: OpenAPIV3.OperationObject,
@@ -28,7 +28,7 @@ export async function GenerateRequestBody(
 
       await generator.build(operationId);
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(`Failed to generate request body interface for: ${operationId}`, error.message);
     }
 

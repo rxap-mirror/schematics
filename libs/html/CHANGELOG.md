@@ -7,17 +7,11 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @rxap/schematics-html
 
-
-
-
-
 # [13.0.0-next.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-html@12.1.0...@rxap/schematics-html@13.0.0-next.0) (2022-02-19)
-
 
 ### Build System
 
 * upgrade to nrwl 13.x.x ([5cd07c1](https://gitlab.com/rxap/packages/commit/5cd07c19645528c787ef01a121a4a4367db78902))
-
 
 ### BREAKING CHANGES
 

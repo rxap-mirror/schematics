@@ -1,10 +1,10 @@
-import { chain, noop, Rule } from '@angular-devkit/schematics';
-import { dirname, join } from 'path';
-import { NodePackageInstallTask, RunSchematicTask } from '@angular-devkit/schematics/tasks';
-import { PackageJson } from './package-json';
-import { GetJsonFile } from './json-file';
-import { CollectionJson } from './collection-json';
-import { AddPackageJsonDependency, AddPackageJsonDevDependency } from './package-json-file';
+import {chain, noop, Rule} from '@angular-devkit/schematics';
+import {dirname, join} from 'path';
+import {NodePackageInstallTask, RunSchematicTask} from '@angular-devkit/schematics/tasks';
+import {PackageJson} from './package-json';
+import {GetJsonFile} from './json-file';
+import {CollectionJson} from './collection-json';
+import {AddPackageJsonDependency, AddPackageJsonDevDependency} from './package-json-file';
 
 export function InstallPeerDependencies(): Rule {
   return (host, context) => {
@@ -12,7 +12,7 @@ export function InstallPeerDependencies(): Rule {
     const packageJsonFilePath = join(context.schematic.description.collection.name, 'package.json');
     try {
       packageJson = require(packageJsonFilePath);
-    } catch (e) {
+    } catch (e: any) {
       console.warn(`Could not load schematic package.json file from '${packageJsonFilePath}': ${e.message}`);
       return noop();
     }
@@ -35,7 +35,7 @@ export function InstallPeerDependencies(): Rule {
           try {
             peerPackageDirname = dirname(require.resolve(join(name, 'package.json')));
             peerPackageJson = require(join(name, 'package.json'));
-          } catch (e) {
+          } catch (e: any) {
             console.warn(`Could not resolve the peerDependency '${name}'.`);
             return noop();
           }

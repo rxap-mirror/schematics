@@ -14,7 +14,8 @@
     "**/*.test.ts",
     "**/files/**",
     "src/schematics/**",
-    "src/migrations/**"
+    "src/migrations/**",
+    "jest.config.ts"
   ],
   "include": [
     "**/*.ts"

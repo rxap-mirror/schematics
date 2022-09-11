@@ -1,0 +1,93 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/form/src",
+  "prefix": "rxap",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/form",
+        "tsConfig": "libs/form/tsconfig.lib.json",
+        "packageJson": "libs/form/package.json",
+        "main": "libs/form/src/index.ts",
+        "srcRootForCompilationRoot": "libs/form",
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "assets": [
+          "libs/form/*.md",
+          "libs/form/LICENSE",
+          {
+            "input": "./libs/form",
+            "glob": "collection.json",
+            "output": "."
+          },
+          {
+            "input": "./libs/form",
+            "glob": "migration.json",
+            "output": "."
+          }
+        ]
+      },
+      "outputs": [
+        "{options.outputPath}"
+      ]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/form"
+      ],
+      "options": {
+        "jestConfig": "libs/form/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "pack": {
+      "executor": "@rxap/plugin-pack:build",
+      "options": {
+        "targets": [
+          "form:build",
+          "form:build-schematics",
+          "form:build-migrations"
+        ]
+      }
+    },
+    "update-package-group": {
+      "executor": "@rxap/plugin-library:update-package-group"
+    },
+    "publish": {
+      "executor": "@rxap/plugin-library-publish:publish",
+      "options": {
+        "buildTarget": "form:build",
+        "preTarget": "form:pack"
+      }
+    },
+    "readme": {
+      "executor": "@rxap/plugin-readme-generator:library"
+    },
+    "build-schematics": {
+      "executor": "@rxap/plugin-library:build-schematics",
+      "options": {
+        "outputPath": "dist/libs/form",
+        "tsConfig": "libs/form/tsconfig.schematics.json",
+        "assets": [],
+        "type": "schematics"
+      }
+    },
+    "build-migrations": {
+      "executor": "@rxap/plugin-library:build-schematics",
+      "options": {
+        "outputPath": "dist/libs/form",
+        "tsConfig": "libs/form/tsconfig.migrations.json",
+        "assets": [],
+        "type": "migrations"
+      }
+    },
+    "update-peer-dependencies": {
+      "executor": "@rxap/plugin-library:update-peer-dependencies",
+      "options": {
+        "ignore": []
+      }
+    }
+  },
+  "tags": []
+}

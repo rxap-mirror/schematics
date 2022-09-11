@@ -11,7 +11,8 @@
   "exclude": [
     "**/*.spec.ts",
     "**/*.test.ts",
-    "src/migrations/**"
+    "src/migrations/**",
+    "jest.config.ts"
   ],
   "include": [
     "**/*.ts"

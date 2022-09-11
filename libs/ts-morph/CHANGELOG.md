@@ -7,17 +7,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package @rxap/schematics-ts-morph
 
-
-
-
-
 # [13.0.0-next.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@13.0.0-next.1...@rxap/schematics-ts-morph@13.0.0-next.2) (2022-05-09)
 
 **Note:** Version bump only for package @rxap/schematics-ts-morph
-
-
-
-
 
 # [13.0.0-next.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@13.0.0-next.0...@rxap/schematics-ts-morph@13.0.0-next.1) (2022-03-23)
 

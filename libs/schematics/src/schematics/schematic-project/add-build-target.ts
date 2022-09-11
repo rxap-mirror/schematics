@@ -1,7 +1,6 @@
-import { Rule, SchematicsException } from '@angular-devkit/schematics';
-import { join } from 'path';
-import { NodePackageBuilderOptions } from '@nrwl/node/src/executors/package/utils/models';
-import { UpdateAngularProject } from '@rxap/schematics-utilities';
+import {Rule, SchematicsException} from '@angular-devkit/schematics';
+import {join} from 'path';
+import {UpdateAngularProject} from '@rxap/schematics-utilities';
 
 export function AddBuildTarget(projectName: string): Rule {
   return UpdateAngularProject(project => {
@@ -12,7 +11,7 @@ export function AddBuildTarget(projectName: string): Rule {
 
     if (!project.targets.has('build')) {
       project.targets.add('build', {
-        builder: '@nrwl/node:package',
+        builder: '@nrwl/js:tsc',
         options: {
           outputPath: join('dist', project.root),
           tsConfig: join(project.root, 'tsconfig.lib.json'),
@@ -27,7 +26,7 @@ export function AddBuildTarget(projectName: string): Rule {
       } as any);
     }
 
-    const target = project.targets.get<NodePackageBuilderOptions>('build')!;
+    const target = project.targets.get<any>('build')!;
 
     if (!Array.isArray(target.options.assets)) {
       target.options.assets = [];

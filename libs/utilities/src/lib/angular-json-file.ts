@@ -1,19 +1,11 @@
-import {
-  Rule,
-  SchematicsException,
-  Tree
-} from '@angular-devkit/schematics';
-import { AngularJson } from './angular-json';
-import {
-  GetJsonFile,
-  UpdateJsonFile,
-  UpdateJsonFileOptions
-} from './json-file';
-import { Project } from './angular-json/project';
-import { CliOptions } from './angular-json/cli-options';
-import { SchematicOptions } from './angular-json/schematic-options';
-import { I18n } from './angular-json/i18n';
-import { Target } from './angular-json/target';
+import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
+import {AngularJson} from './angular-json';
+import {GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions} from './json-file';
+import {Project} from './angular-json/project';
+import {CliOptions} from './angular-json/cli-options';
+import {SchematicOptions} from './angular-json/schematic-options';
+import {I18n} from './angular-json/i18n';
+import {Target} from './angular-json/target';
 
 export function GetAngularJson(host: Tree): AngularJson {
   return GetJsonFile(host, 'angular.json');
@@ -276,7 +268,7 @@ export function UpdateAngularJson(
     async (angularJson: AngularJson) => {
       try {
         await updater(new Angular(angularJson));
-      } catch (e) {
+      } catch (e: any) {
         throw new SchematicsException(
           `Could not update the angular.json: ${e.message}`
         );
@@ -303,7 +295,7 @@ export function UpdateAngularProject(
       const project = angular.projects.get(options.projectName)!;
       try {
         await updater(project);
-      } catch (e) {
+      } catch (e: any) {
         throw new SchematicsException(`Could not update the project '${options.projectName}'`);
       }
     },

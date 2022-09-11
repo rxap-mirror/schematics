@@ -34,7 +34,7 @@ export function HttpRequest<T>(url: string): Promise<T> {
       res.on('end', () => {
         try {
           resolve(JSON.parse(rawData));
-        } catch (e) {
+        } catch (e: any) {
           console.error(e.message);
           reject(e.message);
         }

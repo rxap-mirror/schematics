@@ -1,0 +1,84 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/xml-parser/src",
+  "prefix": "rxap",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/xml-parser",
+        "tsConfig": "libs/xml-parser/tsconfig.lib.json",
+        "packageJson": "libs/xml-parser/package.json",
+        "main": "libs/xml-parser/src/index.ts",
+        "srcRootForCompilationRoot": "libs/xml-parser",
+        "assets": [
+          "libs/xml-parser/*.md",
+          "libs/xml-parser/LICENSE"
+        ]
+      },
+      "outputs": [
+        "{options.outputPath}"
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/xml-parser/src/**/*.ts",
+          "libs/xml-parser/src/**/*.html"
+        ]
+      },
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/xml-parser"
+      ],
+      "options": {
+        "jestConfig": "libs/xml-parser/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "pack": {
+      "executor": "@rxap/plugin-pack:build",
+      "options": {
+        "targets": [
+          "xml-parser:build",
+          "xml-parser:build-migrations"
+        ]
+      }
+    },
+    "update-package-group": {
+      "executor": "@rxap/plugin-library:update-package-group"
+    },
+    "publish": {
+      "executor": "@rxap/plugin-library-publish:publish",
+      "options": {
+        "buildTarget": "xml-parser:build",
+        "preTarget": "xml-parser:pack"
+      }
+    },
+    "readme": {
+      "executor": "@rxap/plugin-readme-generator:library"
+    },
+    "build-migrations": {
+      "executor": "@rxap/plugin-library:build-schematics",
+      "options": {
+        "outputPath": "dist/libs/xml-parser",
+        "tsConfig": "libs/xml-parser/tsconfig.migrations.json",
+        "assets": [],
+        "type": "migrations"
+      }
+    },
+    "update-peer-dependencies": {
+      "executor": "@rxap/plugin-library:update-peer-dependencies",
+      "options": {
+        "ignore": []
+      }
+    }
+  },
+  "tags": []
+}

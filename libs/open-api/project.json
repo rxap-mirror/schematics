@@ -1,0 +1,84 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/open-api/src",
+  "prefix": "rxap",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/open-api",
+        "tsConfig": "libs/open-api/tsconfig.lib.json",
+        "packageJson": "libs/open-api/package.json",
+        "main": "libs/open-api/src/index.ts",
+        "srcRootForCompilationRoot": "libs/open-api",
+        "assets": [
+          "libs/open-api/*.md",
+          "libs/open-api/LICENSE"
+        ]
+      },
+      "outputs": [
+        "{options.outputPath}"
+      ]
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/open-api/src/**/*.ts",
+          "libs/open-api/src/**/*.html"
+        ]
+      },
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/open-api"
+      ],
+      "options": {
+        "jestConfig": "libs/open-api/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "pack": {
+      "executor": "@rxap/plugin-pack:build",
+      "options": {
+        "targets": [
+          "open-api:build",
+          "open-api:build-migrations"
+        ]
+      }
+    },
+    "update-package-group": {
+      "executor": "@rxap/plugin-library:update-package-group"
+    },
+    "publish": {
+      "executor": "@rxap/plugin-library-publish:publish",
+      "options": {
+        "buildTarget": "open-api:build",
+        "preTarget": "open-api:pack"
+      }
+    },
+    "readme": {
+      "executor": "@rxap/plugin-readme-generator:library"
+    },
+    "build-migrations": {
+      "executor": "@rxap/plugin-library:build-schematics",
+      "options": {
+        "outputPath": "dist/libs/open-api",
+        "tsConfig": "libs/open-api/tsconfig.migrations.json",
+        "assets": [],
+        "type": "migrations"
+      }
+    },
+    "update-peer-dependencies": {
+      "executor": "@rxap/plugin-library:update-peer-dependencies",
+      "options": {
+        "ignore": []
+      }
+    }
+  },
+  "tags": []
+}

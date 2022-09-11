@@ -1,5 +1,5 @@
-import { Rule, SchematicsException } from '@angular-devkit/schematics';
-import { UpdatePackageJson } from './package-json-file';
+import {Rule, SchematicsException} from '@angular-devkit/schematics';
+import {UpdatePackageJson} from './package-json-file';
 
 /**
  * Checks if all provided packages are installed and listed as dependencies
@@ -19,7 +19,7 @@ export function CheckIfPackagesAreInstalled(packageList: string[]): Rule {
     const notInstalled = notReferenced.filter(packageName => {
       try {
         require(packageName);
-      } catch (e) {
+      } catch (e: any) {
         return true
       }
       return false;
