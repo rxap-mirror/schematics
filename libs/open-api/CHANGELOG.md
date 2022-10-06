@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@14.0.0...@rxap/schematics-open-api@14.0.1) (2022-10-06)
+
+
+### Bug Fixes
+
+* update package json deps ([99c7002](https://gitlab.com/rxap/packages/commit/99c70028a34927902ece991748a7d0fc857c5223))
+
+
+
+
+
 # [14.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.0.0...@rxap/schematics-open-api@14.0.0) (2022-09-11)
 
 
