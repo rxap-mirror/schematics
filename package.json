@@ -36,8 +36,8 @@
   "private": true,
   "dependencies": {
     "@rxap/json-schema-to-typescript": "13.0.0-next.1",
-    "@rxap/mixin": "^12.0.7",
-    "@rxap/xml-parser": "^12.1.1",
+    "@rxap/mixin": "^14.0.0",
+    "@rxap/xml-parser": "^14.0.0",
     "@storybook/builder-webpack5": "6.5.10",
     "@storybook/core-server": "~6.4.12",
     "@storybook/manager-webpack5": "6.5.10",
