@@ -260,6 +260,9 @@ export interface UpdateAngularJsonFileOptions extends UpdateJsonFileOptions {
 
 }
 
+/**
+ * @deprecated removed
+ */
 export function UpdateAngularJson(
   updater: (angular: Angular) => void | PromiseLike<void>,
   options?: UpdateAngularJsonFileOptions
@@ -283,6 +286,9 @@ export interface UpdateAngularProjectOptions extends UpdateAngularJsonFileOption
   projectName: string;
 }
 
+/**
+ * @deprecated removed
+ */
 export function UpdateAngularProject(
   updater: (project: AngularProject) => void | PromiseLike<void>,
   options: UpdateAngularProjectOptions
