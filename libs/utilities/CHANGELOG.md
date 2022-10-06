@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@14.0.0...@rxap/schematics-utilities@14.0.1) (2022-10-06)
+
+
+### Bug Fixes
+
+* mark update angular functions as deprecated ([7ff013b](https://gitlab.com/rxap/packages/commit/7ff013ba383c6c01ef4bb68621071b7afb61887c))
+
+
+
+
+
 # [14.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@13.0.0...@rxap/schematics-utilities@14.0.0) (2022-09-11)
 
 
