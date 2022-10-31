@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@14.0.1...@rxap/schematics-utilities@14.0.2) (2022-10-31)
+
+
+### Bug Fixes
+
+* support fragmented angular json ([a1b860c](https://gitlab.com/rxap/packages/commit/a1b860ce35c46ae6038d7909876a7f14a24ac3f6))
+
+
+
+
+
 ## [14.0.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@14.0.0...@rxap/schematics-utilities@14.0.1) (2022-10-06)
 
 
