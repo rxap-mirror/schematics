@@ -1,14 +1,52 @@
-import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
-import {AngularJson} from './angular-json';
-import {GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions} from './json-file';
-import {Project} from './angular-json/project';
-import {CliOptions} from './angular-json/cli-options';
-import {SchematicOptions} from './angular-json/schematic-options';
-import {I18n} from './angular-json/i18n';
-import {Target} from './angular-json/target';
+import { Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
+import { AngularJson } from './angular-json';
+import { CliOptions } from './angular-json/cli-options';
+import { I18n } from './angular-json/i18n';
+import { Project } from './angular-json/project';
+import { SchematicOptions } from './angular-json/schematic-options';
+import { Target } from './angular-json/target';
+import { clone } from './clone';
+import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
+
+export function IsAngularJson(angularJson: AngularJson | FragmentedAngularJson): angularJson is AngularJson {
+  return !!angularJson.projects && Object.values(angularJson.projects).every(project => typeof project === 'object');
+}
+
+export function GetAngularJsonFragments(host: Tree, angularJson: FragmentedAngularJson): AngularJson {
+  const copy = clone(angularJson);
+
+  if (!copy.projects) {
+    copy.projects = {};
+  }
+
+  for (const [project, path] of Object.entries(copy.projects)) {
+    copy.projects[project] = GetJsonFile(host, path + '/project.json');
+  }
+
+  if (!IsAngularJson(copy)) {
+    throw new Error('Failed to create full angular json from fragments');
+  }
+
+  return copy;
+}
+
+export interface FragmentedAngularJson {
+  version: number,
+  projects?: Record<string, string>
+}
+
+export function IsFragmentedAngularJson(angularJson: AngularJson | FragmentedAngularJson): angularJson is FragmentedAngularJson {
+  return angularJson.version === 2;
+}
 
 export function GetAngularJson(host: Tree): AngularJson {
-  return GetJsonFile(host, 'angular.json');
+  let content = GetJsonFile<AngularJson | FragmentedAngularJson>(host, 'angular.json');
+
+  if (IsFragmentedAngularJson(content)) {
+    content = GetAngularJsonFragments(host, content);
+  }
+
+  return content;
 }
 
 export class AngularProjectTargetConfigurationsMap {
