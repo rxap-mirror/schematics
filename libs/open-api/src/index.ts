@@ -8,6 +8,7 @@ export * from './lib/generate-index-exports';
 export * from './lib/generate-response';
 export * from './lib/load-open-api-config';
 export * from './lib/types';
+export * from './lib/coerce-open-api-project';
 
 // region utilities
 
