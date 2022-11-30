@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.0.0...@rxap/schematics-open-api@13.1.0) (2022-11-30)
+
+
+### Bug Fixes
+
+* only create type if defined and prefer void ([ab82007](https://gitlab.com/rxap/packages/commit/ab820076f626423b0c4b43a8677bfd4806d2caf6))
+* only create type if defined and prefer void ([ee62f16](https://gitlab.com/rxap/packages/commit/ee62f16ded62a7d09b9f3042b2323fb1cc3e52a2))
+
+
+### Features
+
+* add coerce open api project function ([4472003](https://gitlab.com/rxap/packages/commit/44720030f668bece8b592c4d565f28b45d3c8304))
+
+
+
+
+
 # [13.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.0.0-next.4...@rxap/schematics-open-api@13.0.0) (2022-09-11)
 
 **Note:** Version bump only for package @rxap/schematics-open-api
