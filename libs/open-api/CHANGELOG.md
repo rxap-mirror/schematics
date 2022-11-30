@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.1.1...@rxap/schematics-open-api@13.1.2) (2022-11-30)
+
+
+### Bug Fixes
+
+* use any return type ([44afb5b](https://gitlab.com/rxap/packages/commit/44afb5bd7a906e6e532efe9821c88b54063eeb3d))
+
+
+
+
+
 ## [13.1.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@13.1.0...@rxap/schematics-open-api@13.1.1) (2022-11-30)
 
 
