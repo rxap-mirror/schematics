@@ -1,5 +1,5 @@
-import { OpenAPIV3 } from 'openapi-types';
 import { TypescriptInterfaceGenerator } from '@rxap/json-schema-to-typescript';
+import { OpenAPIV3 } from 'openapi-types';
 import { Project } from 'ts-morph';
 import { RESPONSE_BASE_PATH, RESPONSE_FILE_SUFFIX } from './config';
 import { IsAnySchemaObject } from './utilities/any-schema-object';
@@ -13,13 +13,13 @@ export async function GenerateResponse(
 
   const response = GetResponse(operation);
 
-  if (!IsAnySchemaObject(response) && operation.operationId) {
+  if (response && !IsAnySchemaObject(response) && operation.operationId) {
     const operationId = operation.operationId;
 
     const generator = new TypescriptInterfaceGenerator(
       { ...response, components },
       { suffix: RESPONSE_FILE_SUFFIX, basePath: RESPONSE_BASE_PATH },
-      project
+      project,
     );
 
     console.debug(`Generate response interface for: ${operationId}`);
@@ -28,7 +28,7 @@ export async function GenerateResponse(
 
       await generator.build(operationId);
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(`Failed to generate response interface for: ${operationId}`, error.message);
     }
 
