@@ -1,28 +1,49 @@
 import { OpenAPIV3 } from 'openapi-types';
-import { IsHttpMethod } from './utilities/is-http-method';
-import { IgnoreOperation } from './utilities/ignore-operation';
-import { IsOperationObject } from './utilities/is-operation-object';
 import { Project } from 'ts-morph';
-import {
-  HasOperationId,
-  GenerateParameter,
-  OpenApiSchemaBase,
-  GeneratorFunction
-} from './types';
+import { GenerateComponents } from './generate-components';
 import { GenerateParameters } from './generate-parameters';
 import { GenerateRequestBody } from './generate-request-body';
 import { GenerateResponse } from './generate-response';
-import { GenerateComponents } from './generate-components';
+import { GenerateParameter, GeneratorFunction, HasOperationId, OpenApiSchemaBase, OperationObject } from './types';
+import { IgnoreOperation } from './utilities/ignore-operation';
+import { IsHttpMethod } from './utilities/is-http-method';
+import { IsOperationObject } from './utilities/is-operation-object';
 
-export async function GenerateOperation<Options extends OpenApiSchemaBase = OpenApiSchemaBase>(
+async function executeGenerator<Options extends OpenApiSchemaBase>(
+  project: Project,
+  options: Options,
+  path: string,
+  method: string,
+  generatorFunction: GeneratorFunction<Options>,
+  components: OpenAPIV3.ComponentsObject,
+  operation: OperationObject,
+) {
+  try {
+    const parameters: GenerateParameter<Options> = {
+      ...operation,
+      components,
+      method,
+      path,
+      project,
+      options,
+    };
+    await generatorFunction(parameters);
+  } catch (e) {
+    console.error(`Failed to generate [${generatorFunction?.name}] for operation: ${operation.operationId}`);
+  }
+}
+
+export function GenerateOperation<Options extends OpenApiSchemaBase = OpenApiSchemaBase>(
   openapi: OpenAPIV3.Document,
   project: Project,
   options: Options,
   generatorFunctionList: GeneratorFunction<Options>[],
-) {
+): Promise<void[]> {
   const components: OpenAPIV3.ComponentsObject = (openapi as any).components ?? (openapi as any).definitions ?? {};
 
-  await GenerateComponents(components, project);
+  const promiseList: Array<Promise<void>> = [];
+
+  promiseList.push(...GenerateComponents(components, project));
 
   for (const [path, methods] of Object.entries(openapi.paths)) {
 
@@ -42,25 +63,21 @@ export async function GenerateOperation<Options extends OpenApiSchemaBase = Open
 
             if (HasOperationId(operation)) {
 
-              await GenerateParameters(operation, project, components);
-              await GenerateRequestBody(operation, project, components);
-              await GenerateResponse(operation, project, components);
+              promiseList.push(GenerateParameters(operation, project, components));
+              promiseList.push(GenerateRequestBody(operation, project, components));
+              promiseList.push(GenerateResponse(operation, project, components));
 
               for (const generatorFunction of generatorFunctionList) {
 
-                try {
-                  const parameters: GenerateParameter<Options> = {
-                    ...operation,
-                    components,
-                    method,
-                    path,
-                    project,
-                    options
-                  }
-                  await generatorFunction(parameters);
-                } catch (e) {
-                  console.error(`Failed to generate [${generatorFunction?.name}] for operation: ${operation.operationId}`);
-                }
+                promiseList.push(executeGenerator(
+                  project,
+                  options,
+                  path,
+                  method,
+                  generatorFunction,
+                  components,
+                  operation,
+                ));
 
               }
 
@@ -77,4 +94,7 @@ export async function GenerateOperation<Options extends OpenApiSchemaBase = Open
     }
 
   }
+
+  return Promise.all(promiseList);
+
 }
