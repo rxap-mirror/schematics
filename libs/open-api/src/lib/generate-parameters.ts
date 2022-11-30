@@ -1,14 +1,14 @@
-import {IsReferenceObject} from './utilities/is-reference-object';
-import {PARAMETER_BASE_PATH, PARAMETER_FILE_SUFFIX} from './config';
-import {OpenAPIV3} from 'openapi-types';
-import {TypescriptInterfaceGenerator} from '@rxap/json-schema-to-typescript';
-import {AnySchemaObject} from './utilities/any-schema-object';
-import {Project} from 'ts-morph';
+import { TypescriptInterfaceGenerator } from '@rxap/json-schema-to-typescript';
+import { OpenAPIV3 } from 'openapi-types';
+import { Project } from 'ts-morph';
+import { PARAMETER_BASE_PATH, PARAMETER_FILE_SUFFIX } from './config';
+import { AnySchemaObject } from './utilities/any-schema-object';
+import { IsReferenceObject } from './utilities/is-reference-object';
 
 export async function GenerateParameters(
   operation: OpenAPIV3.OperationObject,
   project: Project,
-  components: OpenAPIV3.ComponentsObject
+  components: OpenAPIV3.ComponentsObject,
 ): Promise<void> {
 
   if (operation.parameters && operation.parameters.length && operation.operationId) {
