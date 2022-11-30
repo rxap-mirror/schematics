@@ -38,7 +38,7 @@ export function GenerateOperation<Options extends OpenApiSchemaBase = OpenApiSch
   project: Project,
   options: Options,
   generatorFunctionList: GeneratorFunction<Options>[],
-): Promise<void[]> {
+): Promise<any> {
   const components: OpenAPIV3.ComponentsObject = (openapi as any).components ?? (openapi as any).definitions ?? {};
 
   const promiseList: Array<Promise<void>> = [];
