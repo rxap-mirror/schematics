@@ -1,10 +1,11 @@
 {
+  "name": "shared",
   "projectType": "library",
   "sourceRoot": "libs/shared/src",
   "prefix": "rxap",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -36,15 +37,11 @@
         ],
         "buildableProjectDepsInPackageJsonType": "dependencies"
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/shared"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/shared"],
       "options": {
         "jestConfig": "libs/shared/jest.config.ts",
         "passWithNoTests": true

@@ -1,10 +1,11 @@
 {
+  "name": "open-api",
   "projectType": "library",
   "sourceRoot": "libs/open-api/src",
   "prefix": "rxap",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -20,14 +21,9 @@
         "packageJson": "libs/open-api/package.json",
         "main": "libs/open-api/src/index.ts",
         "srcRootForCompilationRoot": "libs/open-api",
-        "assets": [
-          "libs/open-api/*.md",
-          "libs/open-api/LICENSE"
-        ]
+        "assets": ["libs/open-api/*.md", "libs/open-api/LICENSE"]
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -37,15 +33,11 @@
           "libs/open-api/src/**/*.html"
         ]
       },
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/open-api"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/open-api"],
       "options": {
         "jestConfig": "libs/open-api/jest.config.ts",
         "passWithNoTests": true
@@ -54,10 +46,7 @@
     "pack": {
       "executor": "@rxap/plugin-pack:build",
       "options": {
-        "targets": [
-          "open-api:build",
-          "open-api:build-migrations"
-        ]
+        "targets": ["open-api:build", "open-api:build-migrations"]
       }
     },
     "update-package-group": {

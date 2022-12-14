@@ -1,10 +1,11 @@
 {
+  "name": "ts-morph",
   "projectType": "library",
   "sourceRoot": "libs/ts-morph/src",
   "prefix": "rxap",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -20,14 +21,9 @@
         "packageJson": "libs/ts-morph/package.json",
         "main": "libs/ts-morph/src/index.ts",
         "srcRootForCompilationRoot": "libs/ts-morph",
-        "assets": [
-          "libs/ts-morph/*.md",
-          "libs/ts-morph/LICENSE"
-        ]
+        "assets": ["libs/ts-morph/*.md", "libs/ts-morph/LICENSE"]
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -37,15 +33,11 @@
           "libs/ts-morph/src/**/*.html"
         ]
       },
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/ts-morph"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/ts-morph"],
       "options": {
         "jestConfig": "libs/ts-morph/jest.config.ts",
         "passWithNoTests": true
@@ -54,10 +46,7 @@
     "pack": {
       "executor": "@rxap/plugin-pack:build",
       "options": {
-        "targets": [
-          "ts-morph:build",
-          "ts-morph:build-migrations"
-        ]
+        "targets": ["ts-morph:build", "ts-morph:build-migrations"]
       }
     },
     "update-package-group": {

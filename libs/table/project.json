@@ -1,10 +1,11 @@
 {
+  "name": "table",
   "projectType": "library",
   "sourceRoot": "libs/table/src",
   "prefix": "rxap",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -42,15 +43,11 @@
         ],
         "buildableProjectDepsInPackageJsonType": "dependencies"
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/table"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/table"],
       "options": {
         "jestConfig": "libs/table/jest.config.ts",
         "passWithNoTests": true

@@ -53,14 +53,14 @@
     "@lerna/collect-updates": "^4.0.0",
     "@lerna/package-graph": "^4.0.0",
     "@lerna/project": "^4.0.0",
-    "@nrwl/cli": "14.7.3",
-    "@nrwl/eslint-plugin-nx": "14.7.3",
-    "@nrwl/jest": "14.7.3",
-    "@nrwl/linter": "14.7.3",
-    "@nrwl/nx-cloud": "^15.0.2",
-    "@nrwl/nx-plugin": "14.7.3",
-    "@nrwl/storybook": "14.7.3",
-    "@nrwl/workspace": "14.7.3",
+    "@nrwl/cli": "15.3.3",
+    "@nrwl/eslint-plugin-nx": "15.3.3",
+    "@nrwl/jest": "15.3.3",
+    "@nrwl/linter": "15.3.3",
+    "@nrwl/nx-cloud": "15.0.2",
+    "@nrwl/nx-plugin": "15.3.3",
+    "@nrwl/storybook": "15.3.3",
+    "@nrwl/workspace": "15.3.3",
     "@rxap/plugin-library": "^14.0.1",
     "@rxap/plugin-library-schematics": "^14.0.0",
     "@rxap/plugin-pack": "^14.0.0",
@@ -73,8 +73,8 @@
     "@types/node": "^17.0.18",
     "@types/parse5": "^6.0.3",
     "@types/semver": "^7.3.9",
-    "@typescript-eslint/eslint-plugin": "5.33.1",
-    "@typescript-eslint/parser": "5.33.1",
+    "@typescript-eslint/eslint-plugin": "5.46.1",
+    "@typescript-eslint/parser": "5.46.1",
     "depcheck": "^1.4.3",
     "dotenv": "10.0.0",
     "env-cmd": "^10.1.0",
@@ -84,11 +84,11 @@
     "jest": "28.1.3",
     "jest-junit": "^13.0.0",
     "lerna": "^4.0.0",
-    "nx": "14.7.3",
+    "nx": "15.3.3",
     "prettier": "2.7.1",
     "ts-jest": "28.0.8",
     "ts-node": "10.9.1",
-    "typescript": "4.7.4"
+    "typescript": "4.8.4"
   },
   "repository": "git@gitlab.com:rxap/schematics.git",
   "homepage": "https://gitlab.com/rxap/schematics",
@@ -98,3 +98,4 @@
     "email": "incoming+rxap-schematics-27428931-issue-@incoming.gitlab.com"
   }
 }
+

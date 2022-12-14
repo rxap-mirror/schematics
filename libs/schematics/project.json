@@ -1,9 +1,10 @@
 {
+  "name": "schematics",
   "sourceRoot": "libs/schematics/src",
   "projectType": "library",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -13,37 +14,26 @@
     },
     "build": {
       "executor": "@nrwl/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/schematics",
         "tsConfig": "libs/schematics/tsconfig.lib.json",
         "packageJson": "libs/schematics/package.json",
         "main": "libs/schematics/src/index.ts",
-        "assets": [
-          "libs/schematics/*.md",
-          "libs/schematics/LICENSE"
-        ],
+        "assets": ["libs/schematics/*.md", "libs/schematics/LICENSE"],
         "buildableProjectDepsInPackageJsonType": "dependencies"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/schematics/**/*.ts"
-        ]
+        "lintFilePatterns": ["libs/schematics/**/*.ts"]
       },
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/schematics"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/schematics"],
       "options": {
         "jestConfig": "libs/schematics/jest.config.ts",
         "passWithNoTests": true

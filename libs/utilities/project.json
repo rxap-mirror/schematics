@@ -1,10 +1,11 @@
 {
+  "name": "utilities",
   "projectType": "library",
   "sourceRoot": "libs/utilities/src",
   "prefix": "rxap",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -20,14 +21,9 @@
         "packageJson": "libs/utilities/package.json",
         "main": "libs/utilities/src/index.ts",
         "srcRootForCompilationRoot": "libs/utilities",
-        "assets": [
-          "libs/utilities/*.md",
-          "libs/utilities/LICENSE"
-        ]
+        "assets": ["libs/utilities/*.md", "libs/utilities/LICENSE"]
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
@@ -35,9 +31,7 @@
         "jestConfig": "libs/utilities/jest.config.ts",
         "passWithNoTests": true
       },
-      "outputs": [
-        "coverage/libs/utilities"
-      ]
+      "outputs": ["{workspaceRoot}/coverage/libs/utilities"]
     },
     "update-package-group": {
       "executor": "@rxap/plugin-library:update-package-group"
@@ -45,10 +39,7 @@
     "pack": {
       "executor": "@rxap/plugin-pack:build",
       "options": {
-        "targets": [
-          "utilities:build",
-          "utilities:build-migrations"
-        ]
+        "targets": ["utilities:build", "utilities:build-migrations"]
       }
     },
     "publish": {

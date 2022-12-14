@@ -1,10 +1,11 @@
 {
+  "name": "xml-parser",
   "projectType": "library",
   "sourceRoot": "libs/xml-parser/src",
   "prefix": "rxap",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -20,14 +21,9 @@
         "packageJson": "libs/xml-parser/package.json",
         "main": "libs/xml-parser/src/index.ts",
         "srcRootForCompilationRoot": "libs/xml-parser",
-        "assets": [
-          "libs/xml-parser/*.md",
-          "libs/xml-parser/LICENSE"
-        ]
+        "assets": ["libs/xml-parser/*.md", "libs/xml-parser/LICENSE"]
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
@@ -37,15 +33,11 @@
           "libs/xml-parser/src/**/*.html"
         ]
       },
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/xml-parser"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/xml-parser"],
       "options": {
         "jestConfig": "libs/xml-parser/jest.config.ts",
         "passWithNoTests": true
@@ -54,10 +46,7 @@
     "pack": {
       "executor": "@rxap/plugin-pack:build",
       "options": {
-        "targets": [
-          "xml-parser:build",
-          "xml-parser:build-migrations"
-        ]
+        "targets": ["xml-parser:build", "xml-parser:build-migrations"]
       }
     },
     "update-package-group": {

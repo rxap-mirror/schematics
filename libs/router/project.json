@@ -1,10 +1,11 @@
 {
+  "name": "router",
   "projectType": "library",
   "sourceRoot": "libs/router/src",
   "prefix": "rxap",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -36,15 +37,11 @@
         ],
         "buildableProjectDepsInPackageJsonType": "dependencies"
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/router"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/router"],
       "options": {
         "jestConfig": "libs/router/jest.config.ts",
         "passWithNoTests": true

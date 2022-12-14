@@ -1,10 +1,11 @@
 {
+  "name": "html",
   "projectType": "library",
   "sourceRoot": "libs/html/src",
   "prefix": "rxap",
   "targets": {
     "version": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "commands": ["echo ok"]
       },
@@ -20,32 +21,20 @@
         "packageJson": "libs/html/package.json",
         "main": "libs/html/src/index.ts",
         "srcRootForCompilationRoot": "libs/html",
-        "assets": [
-          "libs/html/*.md",
-          "libs/html/LICENSE"
-        ]
+        "assets": ["libs/html/*.md", "libs/html/LICENSE"]
       },
-      "outputs": [
-        "{options.outputPath}"
-      ]
+      "outputs": ["{options.outputPath}"]
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/html/src/**/*.ts",
-          "libs/html/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/html/src/**/*.ts", "libs/html/src/**/*.html"]
       },
-      "outputs": [
-        "{options.outputFile}"
-      ]
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/html"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/html"],
       "options": {
         "jestConfig": "libs/html/jest.config.ts",
         "passWithNoTests": true
@@ -54,10 +43,7 @@
     "pack": {
       "executor": "@rxap/plugin-pack:build",
       "options": {
-        "targets": [
-          "html:build",
-          "html:build-migrations"
-        ]
+        "targets": ["html:build", "html:build-migrations"]
       }
     },
     "update-package-group": {
