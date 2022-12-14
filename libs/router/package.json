@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-router",
-  "version": "14.0.1",
+  "version": "14.0.2",
   "peerDependencies": {
     "@nrwl/workspace": "^14.7.3",
     "@rxap/schematics-ts-morph": "^14.0.1",
