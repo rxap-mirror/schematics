@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@14.0.3...@rxap/schematics-utilities@15.0.0) (2022-12-14)
+
+
+### chore
+
+* upgrade to nrwl 15.x.x ([c0a94f6](https://gitlab.com/rxap/packages/commit/c0a94f6b044213fe55dbda0634bef60859daa345))
+* upgrade to nrwl 15.x.x ([de2b991](https://gitlab.com/rxap/packages/commit/de2b99196ee6d388f37efd17b464a5bfa744de7e))
+
+
+### BREAKING CHANGES
+
+* upgrade nrwl 15.x.x
+* upgrade nrwl 15.x.x
+
+
+
+
+
 ## [14.0.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@14.0.2...@rxap/schematics-utilities@14.0.3) (2022-12-14)
 
 **Note:** Version bump only for package @rxap/schematics-utilities

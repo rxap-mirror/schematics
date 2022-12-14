@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-router@14.0.2...@rxap/schematics-router@15.0.0) (2022-12-14)
+
+
+### chore
+
+* upgrade to nrwl 15.x.x ([c0a94f6](https://gitlab.com/rxap/schematics/commit/c0a94f6b044213fe55dbda0634bef60859daa345))
+* upgrade to nrwl 15.x.x ([de2b991](https://gitlab.com/rxap/schematics/commit/de2b99196ee6d388f37efd17b464a5bfa744de7e))
+
+
+### BREAKING CHANGES
+
+* upgrade nrwl 15.x.x
+* upgrade nrwl 15.x.x
+
+
+
+
+
 ## [14.0.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-router@14.0.1...@rxap/schematics-router@14.0.2) (2022-12-14)
 
 **Note:** Version bump only for package @rxap/schematics-router

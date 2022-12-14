@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-html@14.0.1...@rxap/schematics-html@15.0.0) (2022-12-14)
+
+
+### chore
+
+* upgrade to nrwl 15.x.x ([de2b991](https://gitlab.com/rxap/packages/commit/de2b99196ee6d388f37efd17b464a5bfa744de7e))
+
+
+### BREAKING CHANGES
+
+* upgrade nrwl 15.x.x
+
+
+
+
+
 ## [14.0.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-html@14.0.0...@rxap/schematics-html@14.0.1) (2022-12-14)
 
 **Note:** Version bump only for package @rxap/schematics-html

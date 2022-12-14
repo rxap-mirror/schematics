@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-html",
-  "version": "14.0.1",
+  "version": "15.0.0",
   "publishConfig": {
     "directory": "../../dist/libs/html",
     "access": "public"
