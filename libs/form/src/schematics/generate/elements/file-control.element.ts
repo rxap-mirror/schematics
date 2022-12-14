@@ -11,7 +11,7 @@ export class FileControlElement extends ControlElement {
   public nullable: boolean = true;
 
   public postParse() {
-    this.type = ElementFactory(TypeElement, { name: 'File', nullable: this.nullable });
+    this.type = ElementFactory<TypeElement>(TypeElement, { name: 'File', nullable: this.nullable });
   }
 
 }

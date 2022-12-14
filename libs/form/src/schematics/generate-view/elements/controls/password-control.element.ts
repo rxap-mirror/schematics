@@ -55,7 +55,7 @@ export class PasswordControlElement extends ControlElement {
   public passwordValidateControl!: InputControlElement;
 
   public postParse() {
-    this.passwordControl         = ElementFactory(InputControlElement, {
+    this.passwordControl         = ElementFactory<InputControlElement>(InputControlElement, {
       label:      this.label ?? capitalize(this.name),
       flex:       'grow',
       type:       'password',
@@ -69,7 +69,7 @@ export class PasswordControlElement extends ControlElement {
       __parent:   this.__parent,
       __tag:      'input-control'
     });
-    this.passwordValidateControl = ElementFactory(InputControlElement, {
+    this.passwordValidateControl = ElementFactory<InputControlElement>(InputControlElement, {
       label:      (this.label ?? capitalize(this.name)) + ' Repeat',
       flex:       'grow',
       type:       'password',

@@ -68,7 +68,7 @@ export class WindowFormElement implements ParsedElement {
   }
 
   public postParse() {
-    this.__parent.module = ElementFactory(ModuleElement, {
+    this.__parent.module = ElementFactory<ModuleElement>(ModuleElement, {
       name: classify(this.coerceName) + 'FormComponentModule',
       form:
             './' +
@@ -77,7 +77,7 @@ export class WindowFormElement implements ParsedElement {
                 dasherize(this.coerceName) + '-form.component.module',
               ),
     });
-    this.__parent.method = ElementFactory(MethodElement, {
+    this.__parent.method = ElementFactory<MethodElement>(MethodElement, {
       name: this.openFormWindowMethodName,
       from:
             './' +
@@ -96,7 +96,7 @@ export class WindowFormElement implements ParsedElement {
     // if the submit method does not have a adapter the method
     // should have the form parameters
     if (!this.submit.adapter) {
-      this.submit.method.parameterType = ElementFactory(TypeElement, {
+      this.submit.method.parameterType = ElementFactory<TypeElement>(TypeElement, {
         name: 'I' + classify(this.coerceName) + 'Form',
         from: join('..', dasherize(this.coerceName) + '-form', dasherize(this.coerceName) + '.form')
       });

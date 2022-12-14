@@ -11,7 +11,7 @@ import { ComponentElement } from '../component.element';
 export class EmptyRouterOutletElement extends RouteFeatureElement {
 
   public postValidate() {
-    this.__parent.component = ElementFactory(ComponentElement, {
+    this.__parent.component = ElementFactory<ComponentElement>(ComponentElement, {
       name: 'EmptyRouterOutletComponent',
       from: '@rxap/components'
     });

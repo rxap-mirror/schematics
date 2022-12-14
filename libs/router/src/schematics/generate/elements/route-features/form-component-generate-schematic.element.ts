@@ -41,7 +41,7 @@ export class FormComponentGenerateSchematicElement extends RouteFeatureElement {
 
   public postValidate() {
     if (!this.__parent.component && this.name) {
-      this.__parent.component = ElementFactory(ComponentElement, {
+      this.__parent.component = ElementFactory<ComponentElement>(ComponentElement, {
         name: classify(this.name) + 'FormComponent',
         from:
           './' +
@@ -50,7 +50,7 @@ export class FormComponentGenerateSchematicElement extends RouteFeatureElement {
             dasherize(this.name) + '-form.component'
           ),
       });
-      this.__parent.module = ElementFactory(ModuleElement, {
+      this.__parent.module = ElementFactory<ModuleElement>(ModuleElement, {
         name: classify(this.name) + 'FormComponentModule',
         from:
           './' +

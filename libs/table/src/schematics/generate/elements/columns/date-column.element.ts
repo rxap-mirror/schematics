@@ -15,7 +15,7 @@ export class DateColumnElement extends ColumnElement {
 
   public postParse() {
     if (!this.type) {
-      this.type = ElementFactory(TypeElement, { name: 'string | number | Date' });
+      this.type = ElementFactory<TypeElement>(TypeElement, { name: 'string | number | Date' });
     }
   }
 

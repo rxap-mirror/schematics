@@ -9,7 +9,7 @@ export class CheckboxControlElement extends ControlElement {
 
   public postParse() {
     if (!this.type) {
-      this.type = ElementFactory(TypeElement, { name: 'boolean' });
+      this.type = ElementFactory<TypeElement>(TypeElement, { name: 'boolean' });
     }
   }
 

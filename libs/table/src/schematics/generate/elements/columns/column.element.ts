@@ -222,7 +222,7 @@ export class ColumnElement
     if (!this.filter) {
       throw new Error(`The column ${this._name} has not a filter definition.`);
     }
-    return ElementFactory(ControlElement, {
+    return ElementFactory<ControlElement>(ControlElement, {
       id: camelize(this.name),
       __tag: 'control',
     });

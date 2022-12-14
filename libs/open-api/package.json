@@ -37,8 +37,10 @@
     "email": "incoming+rxap-packages-14898188-issue-@incoming.gitlab.com"
   },
   "peerDependencies": {
-    "@rxap/json-schema-to-typescript": "^13.0.0-next.1",
-    "@rxap/schematics-utilities": "^14.0.2",
+    "@angular-devkit/schematics": "^15.0.3",
+    "@apidevtools/json-schema-ref-parser": "^9.1.0",
+    "@rxap/json-schema-to-typescript": "^14.0.3",
+    "@rxap/schematics-utilities": "^14.0.3",
     "openapi-types": "^10.0.0",
     "ts-morph": "^13.0.3"
   }

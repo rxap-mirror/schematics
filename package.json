@@ -31,13 +31,18 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "bash setup.sh"
+    "postinstall": "bash setup.sh",
+    "debug": "nx run utilities:update-peer-dependencies --verbose"
   },
   "private": true,
   "dependencies": {
-    "@rxap/json-schema-to-typescript": "13.0.0-next.1",
-    "@rxap/mixin": "^14.0.0",
-    "@rxap/xml-parser": "^14.0.0",
+    "@angular-devkit/core": "^15.0.3",
+    "@angular-devkit/schematics": "^15.0.3",
+    "@apidevtools/json-schema-ref-parser": "^9.1.0",
+    "@rxap/json-schema-to-typescript": "14.0.3",
+    "@rxap/mixin": "14.0.2",
+    "@rxap/xml-parser": "14.0.3",
+    "@schematics/angular": "^15.0.3",
     "@storybook/builder-webpack5": "6.5.10",
     "@storybook/core-server": "~6.4.12",
     "@storybook/manager-webpack5": "6.5.10",
@@ -49,7 +54,6 @@
     "tslib": "^2.3.1"
   },
   "devDependencies": {
-    "@angular/cli": "14.2.2",
     "@lerna/collect-updates": "^4.0.0",
     "@lerna/package-graph": "^4.0.0",
     "@lerna/project": "^4.0.0",
@@ -61,7 +65,7 @@
     "@nrwl/nx-plugin": "15.3.3",
     "@nrwl/storybook": "15.3.3",
     "@nrwl/workspace": "15.3.3",
-    "@rxap/plugin-library": "^14.0.1",
+    "@rxap/plugin-library": "14.1.0-dev.0",
     "@rxap/plugin-library-schematics": "^14.0.0",
     "@rxap/plugin-pack": "^14.0.0",
     "@rxap/plugin-readme-generator": "^14.0.1",
@@ -98,4 +102,3 @@
     "email": "incoming+rxap-schematics-27428931-issue-@incoming.gitlab.com"
   }
 }
-

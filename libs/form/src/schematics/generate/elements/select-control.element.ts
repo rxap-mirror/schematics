@@ -448,7 +448,7 @@ export class SelectControlElement extends ControlElement {
   public postParse() {
     if (!this.type) {
       if (this.multiple) {
-        this.type = ElementFactory(TypeElement, { name: 'any[]' });
+        this.type = ElementFactory<TypeElement>(TypeElement, { name: 'any[]' });
       }
     }
     if (!this.initial) {

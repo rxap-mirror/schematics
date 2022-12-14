@@ -32,5 +32,8 @@
       "@rxap/schematics-utilities"
     ],
     "migrations": "./migration.json"
+  },
+  "peerDependencies": {
+    "@angular-devkit/schematics": "^15.0.3"
   }
 }

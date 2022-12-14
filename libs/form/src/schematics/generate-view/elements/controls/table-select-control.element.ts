@@ -70,8 +70,8 @@ export class TableSelectControlElement extends SelectControlElement {
 
   public postParse() {
     super.postParse();
-    this.prefix = ElementFactory(PrefixElement, {
-      button: ElementFactory(IconElement, {
+    this.prefix = ElementFactory<PrefixElement>(PrefixElement, {
+      button: ElementFactory<IconElement>(IconElement, {
         svg: true,
         name: 'table-eye',
       }),

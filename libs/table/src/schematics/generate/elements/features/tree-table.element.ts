@@ -375,7 +375,7 @@ export class TreeTableElement extends FeatureElement {
   public postParse() {
     if (!this.dataSource) {
       // TODO : mv TreeTableDataSource to rxap
-      this.dataSource = ElementFactory(DataSourceElement, {
+      this.dataSource = ElementFactory<DataSourceElement>(DataSourceElement, {
         name: 'TreeTableDataSource',
         from: '@mfd/shared/data-sources/tree-table.data-source'
       })

@@ -41,10 +41,10 @@ export class OptionsColumnElement extends ColumnElement {
 
   public postParse() {
     if (this.filter) {
-      this.filter = ElementFactory(FilterElement, {});
+      this.filter = ElementFactory<FilterElement>(FilterElement, {});
     }
     if (!this.type) {
-      this.type = ElementFactory(TypeElement, { name: 'string | number' });
+      this.type = ElementFactory<TypeElement>(TypeElement, { name: 'string | number' });
     }
   }
 

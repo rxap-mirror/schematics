@@ -23,33 +23,33 @@ export class InputControlElement extends ControlElement {
 
       case 'tel':
         if (!this.validators.some(v => v instanceof IsPhoneNumberElement)) {
-          this.validators.push(ElementFactory(IsPhoneNumberElement, {}));
+          this.validators.push(ElementFactory<IsPhoneNumberElement>(IsPhoneNumberElement, {}));
         }
         break;
 
       case 'email':
         if (!this.validators.some(v => v instanceof IsEmailElement)) {
-          this.validators.push(ElementFactory(IsEmailElement, {}));
+          this.validators.push(ElementFactory<IsEmailElement>(IsEmailElement, {}));
         }
         break;
 
       case 'number':
       case 'integer':
         if (!this.validators.some(v => v instanceof IsNumberElement)) {
-          this.validators.push(ElementFactory(IsNumberElement, {}));
+          this.validators.push(ElementFactory<IsNumberElement>(IsNumberElement, {}));
         }
         break;
 
       case 'url':
         if (!this.validators.some(v => v instanceof IsUrlElement)) {
-          this.validators.push(ElementFactory(IsUrlElement, {}));
+          this.validators.push(ElementFactory<IsUrlElement>(IsUrlElement, {}));
         }
         break;
 
       case 'password':
       case 'text':
         if (!this.validators.some(v => v instanceof IsStringElement)) {
-          this.validators.push(ElementFactory(IsStringElement, {}));
+          this.validators.push(ElementFactory<IsStringElement>(IsStringElement, {}));
         }
         break;
 
@@ -59,16 +59,16 @@ export class InputControlElement extends ControlElement {
 
         case 'checkbox':
         case 'boolean':
-          this.type = ElementFactory(TypeElement, { name: 'boolean' });
+          this.type = ElementFactory<TypeElement>(TypeElement, { name: 'boolean' });
           break;
 
         case 'integer':
         case 'number':
-          this.type = ElementFactory(TypeElement, { name: 'number' });
+          this.type = ElementFactory<TypeElement>(TypeElement, { name: 'number' });
           break;
 
         default:
-          this.type = ElementFactory(TypeElement, { name: 'string' });
+          this.type = ElementFactory<TypeElement>(TypeElement, { name: 'string' });
           break;
 
       }
