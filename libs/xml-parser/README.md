@@ -15,6 +15,6 @@
 # Installation
 
 ```
-yarn add @rxap/schematics-xml-parser @rxap/schematics-ts-morph@^14.0.0 @rxap/schematics-utilities@^14.0.1 @rxap/xml-parser@^14.0.0
+yarn add @rxap/schematics-xml-parser @rxap/schematics-ts-morph@^14.0.1 @rxap/schematics-utilities@^14.0.2 @rxap/xml-parser@^14.0.0
 ```
 

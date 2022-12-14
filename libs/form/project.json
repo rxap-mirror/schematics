@@ -3,6 +3,15 @@
   "sourceRoot": "libs/form/src",
   "prefix": "rxap",
   "targets": {
+    "version": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["echo ok"]
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
     "build": {
       "executor": "@nrwl/js:tsc",
       "options": {

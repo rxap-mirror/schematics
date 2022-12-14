@@ -3,8 +3,23 @@
   "sourceRoot": "libs/table/src",
   "prefix": "rxap",
   "targets": {
+    "version": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["echo ok"]
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
     "build": {
       "executor": "@nrwl/js:tsc",
+      "dependsOn": [
+        {
+          "target": "build-schematics",
+          "projects": "dependencies"
+        }
+      ],
       "options": {
         "outputPath": "dist/libs/table",
         "tsConfig": "libs/table/tsconfig.lib.json",

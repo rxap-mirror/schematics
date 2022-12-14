@@ -10,6 +10,9 @@
     "paths": {
       "@rxap/schematics-utilities": [
         "dist/libs/utilities"
+      ],
+      "@rxap/schematics-from": [
+        "../../dist/libs/from"
       ]
     }
   },
