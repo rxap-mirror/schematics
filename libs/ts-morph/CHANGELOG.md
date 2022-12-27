@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@15.0.0...@rxap/schematics-ts-morph@15.0.1) (2022-12-27)
+
+
+### Bug Fixes
+
+* remove verbose logging ([5c8c44a](https://gitlab.com/rxap/packages/commit/5c8c44aa1002fc275a6d88a65a665671d1d3d5aa))
+
+
+
+
+
 # [15.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@14.0.2...@rxap/schematics-ts-morph@15.0.0) (2022-12-14)
 
 
