@@ -6,13 +6,11 @@ export function ApplyTsMorphProject(project: Project, basePath: string = '', org
   return tree => {
 
     if (organizeImports) {
-      console.debug(`organize '${project.getSourceFiles().length}' ts files imports`);
       project
         .getSourceFiles()
         .forEach(sourceFile => sourceFile.organizeImports());
     }
 
-    console.debug(`write '${project.getSourceFiles().length}' ts files to tree`);
     let written = 0;
     project
       .getSourceFiles()
@@ -34,7 +32,6 @@ export function ApplyTsMorphProject(project: Project, basePath: string = '', org
 
       });
 
-    console.log('written: ' + written);
 
   };
 }
