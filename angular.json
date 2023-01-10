@@ -259,7 +259,7 @@
         "update-peer-dependencies": {
           "builder": "@rxap/plugin-library:update-peer-dependencies",
           "options": {
-            "ignore": []
+            "ignore": [ "@apidevtools/json-schema-ref-parser" ]
           }
         }
       },
