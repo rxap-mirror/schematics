@@ -24,7 +24,7 @@ export function GenerateParameterToOperationObjectWithMetadata(parameter: Genera
   }
   if (parameter.responses) {
     copy.responses = {};
-    for (const status of Object.keys(copy.responses).filter(status => Number(status) >= 200 && Number(status) < 300)) {
+    for (const status of Object.keys(parameter.responses).filter(status => Number(status) >= 200 && Number(status) < 300)) {
       copy.responses[status] = parameter.responses[status];
     }
   }
