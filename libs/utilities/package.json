@@ -32,5 +32,6 @@
       "@rxap/schematics-utilities"
     ],
     "migrations": "./migration.json"
-  }
+  },
+  "peerDependencies": {}
 }
