@@ -28,7 +28,7 @@ describe('AdapterElement', () => {
 
   it('should handle component without custom options', () => {
 
-    const adapterElement = ElementFactory(AdapterElement, {
+    const adapterElement = ElementFactory<AdapterElement>(AdapterElement, {
       factoryName: 'TableAdapterFactory',
       importFrom: '@digitaix/eurogard-table-system'
     });

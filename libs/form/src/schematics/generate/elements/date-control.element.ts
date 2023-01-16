@@ -12,7 +12,7 @@ export class DateControlElement extends ControlElement {
 
   public postParse() {
     if (!this.type) {
-      this.type = ElementFactory(TypeElement, { name: 'Date' });
+      this.type = ElementFactory<TypeElement>(TypeElement, { name: 'Date' });
     }
   }
 

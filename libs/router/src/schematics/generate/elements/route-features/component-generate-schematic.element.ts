@@ -38,11 +38,11 @@ export class ComponentGenerateSchematicElement extends RouteFeatureElement {
   public postValidate() {
     this.name = this.name.replace(/-?[cC]omponent$/, '');
     if (!this.__parent.component && this.name) {
-      this.__parent.component = ElementFactory(ComponentElement, {
+      this.__parent.component = ElementFactory<ComponentElement>(ComponentElement, {
         name: classify(this.name) + 'Component',
         from: './' + join(dasherize(this.name), dasherize(this.name) + '.component')
       });
-      this.__parent.module    = ElementFactory(ModuleElement, {
+      this.__parent.module    = ElementFactory<ModuleElement>(ModuleElement, {
         name: classify(this.name) + 'ComponentModule',
         from: './' + join(dasherize(this.name), dasherize(this.name) + '.component.module')
       });

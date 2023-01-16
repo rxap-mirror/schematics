@@ -154,10 +154,10 @@ export class ActionButtonsElement extends FeatureElement {
     // TODO : remove deprecated control actions concept
     if (this.actions?.length) {
       if (this.actions.some(action => action.__tag !== 'action')) {
-        this.__parent.columns.push(ElementFactory(ControlsColumnElement, {}));
+        this.__parent.columns.push(ElementFactory<ControlsColumnElement>(ControlsColumnElement, {}));
       }
       if (this.actions.some(action => action.__tag === 'action')) {
-        this.__parent.columns.push(ElementFactory(ActionsColumnElement, {
+        this.__parent.columns.push(ElementFactory<ActionsColumnElement>(ActionsColumnElement, {
           actions: this.actions.filter(action => action.__tag === 'action') as any,
           __parent: this.__parent,
         }))

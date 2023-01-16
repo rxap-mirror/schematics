@@ -34,7 +34,7 @@ export class TableGenerateSchematicElement extends RouteFeatureElement {
 
   public postValidate() {
     if (!this.__parent.component && this.name) {
-      this.__parent.component = ElementFactory(ComponentElement, {
+      this.__parent.component = ElementFactory<ComponentElement>(ComponentElement, {
         name: classify(this.name) + 'TableComponent',
         from:
           './' +
@@ -43,7 +43,7 @@ export class TableGenerateSchematicElement extends RouteFeatureElement {
             dasherize(this.name) + '-table.component'
           ),
       });
-      this.__parent.module = ElementFactory(ModuleElement, {
+      this.__parent.module = ElementFactory<ModuleElement>(ModuleElement, {
         name: classify(this.name) + 'TableComponentModule',
         from:
           './' +

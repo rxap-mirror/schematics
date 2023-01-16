@@ -15,7 +15,7 @@ export class CopyToClipboardColumnElement extends ColumnElement {
 
   public postParse() {
     if (!this.type) {
-      this.type = ElementFactory(TypeElement, { name: 'string' });
+      this.type = ElementFactory<TypeElement>(TypeElement, { name: 'string' });
     }
   }
 
