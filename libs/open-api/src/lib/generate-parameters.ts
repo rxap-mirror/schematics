@@ -71,7 +71,7 @@ export async function GenerateParameters(
 
     const generator = new TypescriptInterfaceGenerator(
       { ...parametersSchema, components },
-      { suffix: PARAMETER_FILE_SUFFIX, basePath: PARAMETER_BASE_PATH },
+      { suffix: PARAMETER_FILE_SUFFIX, basePath: PARAMETER_BASE_PATH, addImports: true },
       project
     );
 

@@ -18,7 +18,7 @@ export async function GenerateRequestBody(
 
     const generator = new TypescriptInterfaceGenerator(
       { ...requestBodySchema, components },
-      { suffix: REQUEST_BODY_FILE_SUFFIX, basePath: REQUEST_BODY_BASE_PATH },
+      { suffix: REQUEST_BODY_FILE_SUFFIX, basePath: REQUEST_BODY_BASE_PATH, addImports: true },
       project,
     );
 
