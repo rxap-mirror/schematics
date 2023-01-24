@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.1.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@14.1.2...@rxap/schematics-open-api@14.1.3) (2023-01-24)
+
+
+### Bug Fixes
+
+* **schematics:** pre generate interface imports ([fdd29d0](https://gitlab.com/rxap/packages/commit/fdd29d0c5ed7066de13357e13eda62696c508be8))
+
+
+
+
+
 ## [14.1.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@14.1.1...@rxap/schematics-open-api@14.1.2) (2023-01-16)
 
 
