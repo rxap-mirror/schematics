@@ -18,7 +18,7 @@ export async function GenerateResponse(
 
     const generator = new TypescriptInterfaceGenerator(
       { ...response, components },
-      { suffix: RESPONSE_FILE_SUFFIX, basePath: RESPONSE_BASE_PATH },
+      { suffix: RESPONSE_FILE_SUFFIX, basePath: RESPONSE_BASE_PATH, addImports: true },
       project,
     );
 

@@ -14,7 +14,7 @@ async function executeInterfaceBuild(
 
   const generator = new TypescriptInterfaceGenerator(
     { ...schema, components },
-    { basePath: COMPONENTS_BASE_PATH },
+    { basePath: COMPONENTS_BASE_PATH, addImports: true },
     project,
   );
 
