@@ -1,4 +1,16 @@
-import { apply, applyTemplates, chain, mergeWith, move, Rule, Tree, url } from '@angular-devkit/schematics';
+import {
+  apply,
+  applyTemplates,
+  chain,
+  DirEntry,
+  mergeWith,
+  move,
+  Rule,
+  SchematicsException,
+  Tree,
+  url,
+} from '@angular-devkit/schematics';
+import { GetProjectSourceRoot } from '@rxap/schematics-utilities';
 import { createDefaultPath, getWorkspace } from '@schematics/angular/utility/workspace';
 import { buildRelativePath } from '@schematics/angular/utility/find-module';
 import { join } from 'path';
@@ -7,21 +19,28 @@ import { ComponentThemeSchema } from './schema';
 
 const { dasherize } = strings;
 
+function searchForIndexScss(dir: DirEntry, history: string[] = []): string | null {
+  if (dir.subfiles.some(file => file === '_index.scss')) {
+    return join(dir.path, '_index.scss');
+  }
+  history.push(dir.path);
+  if (!dir.parent) {
+    console.log(`Could not find _index.scss in ${history[0]} or parent directories`);
+    return null;
+  }
+  return searchForIndexScss(dir.parent, history);
+}
+
 export function addThemeToProjectRoot(options: ComponentThemeSchema): Rule {
   return async (host: Tree) => {
 
-    const workspace = await getWorkspace(host);
-    const project   = workspace.projects.get(options.project);
+    const projectSourceRoot = GetProjectSourceRoot(host, options.project);
 
-    if (!project) {
-      throw new Error('[ComponentTheme] Specified project does not exist.');
-    }
+    let indexScssFilePath = searchForIndexScss(host.getDir(options.path));
 
-    const root = project.sourceRoot ? `/${project.sourceRoot}/` : `/${project.root}/src/`;
-
-    const indexScssFilePath = normalize(join(root, '_index.scss'));
-
-    if (!host.exists(indexScssFilePath)) {
+    if (indexScssFilePath === null) {
+      console.log('create new _index.scss in project source root');
+      indexScssFilePath = join(projectSourceRoot, '_index.scss');
       host.create(indexScssFilePath, `/* IMPORT */
 
 @mixin feature-${options.project}-theme($theme) {
@@ -35,7 +54,6 @@ export function addThemeToProjectRoot(options: ComponentThemeSchema): Rule {
   /* TYPOGRAPHY_INCLUDE */
 
 }`);
-      throw new Error(`The index scss for the project '${options.project}' does not exists.`);
     }
 
     let indexScssFile = host.read(indexScssFilePath)!.toString();
