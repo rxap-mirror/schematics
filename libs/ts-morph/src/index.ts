@@ -41,6 +41,7 @@ export * from './lib/add-dependency-injection';
 export * from './lib/coerce-class-method';
 export * from './lib/merge-ts-morph-project';
 export * from './lib/coerce-property-key';
+export * from './lib/add-class-method';
 
 // region nestjs
 
