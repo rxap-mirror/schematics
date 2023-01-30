@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-ts-morph",
-  "version": "14.0.3",
+  "version": "14.1.0-dev.0",
   "dependencies": {
     "tslib": "^2.3.1"
   },
