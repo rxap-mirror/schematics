@@ -38,7 +38,7 @@ export function AddNestProviderToArray(
         useExisting: providerObject.useExisting,
         useValue: providerObject.useValue,
         scope: providerObject.scope,
-        deps: providerObject.inject ? Array.isArray(providerObject.inject) ? `[ ${providerObject.inject.join(',')} ]` : providerObject.inject : undefined
+        inject: providerObject.inject ? Array.isArray(providerObject.inject) ? `[ ${providerObject.inject.join(',')} ]` : providerObject.inject : undefined
       })));
     }
 
