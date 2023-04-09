@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0-dev.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@14.1.0-dev.0...@rxap/schematics-ts-morph@14.1.0-dev.1) (2023-04-09)
+
+
+### Bug Fixes
+
+* **add-provider-to-array:** support custom compare logic ([7e78ba5](https://gitlab.com/rxap/packages/commit/7e78ba5a9a80030396ada770af46f96ade9379ea))
+
+
+
+
+
 # [14.1.0-dev.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@14.0.3...@rxap/schematics-ts-morph@14.1.0-dev.0) (2023-01-30)
 
 
