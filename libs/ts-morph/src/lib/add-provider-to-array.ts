@@ -1,11 +1,21 @@
-import { ProviderObject } from './provider-object';
-import { ArrayLiteralExpression, ObjectLiteralExpression, PropertyAssignment, Writers } from 'ts-morph';
 import { DeleteUndefinedProperties } from '@rxap/schematics-utilities';
+import { ArrayLiteralExpression, ObjectLiteralExpression, PropertyAssignment, Writers } from 'ts-morph';
+import { ProviderObject } from './provider-object';
 
 export function AddProviderToArray(
   providerObject: ProviderObject | string,
   providerArray: ArrayLiteralExpression,
-  overwrite: boolean = false
+  overwrite: boolean                                                     = false,
+  compare: (ole: ObjectLiteralExpression, po: ProviderObject) => boolean = (ole, po) => {
+    const provideProperty = ole.getProperty('provide');
+
+    if (provideProperty instanceof PropertyAssignment) {
+
+      return provideProperty.getInitializer()?.getFullText().trim() === po.provide;
+
+    }
+    return false;
+  },
 ) {
 
   if (typeof providerObject === 'string') {
@@ -19,15 +29,7 @@ export function AddProviderToArray(
     const index = providerArray.getElements().findIndex(element => {
 
       if (element instanceof ObjectLiteralExpression) {
-
-        const provideProperty = element.getProperty('provide');
-
-        if (provideProperty instanceof PropertyAssignment) {
-
-          return provideProperty.getInitializer()?.getFullText().trim() === providerObject.provide;
-
-        }
-
+        return compare(element, providerObject);
       }
 
       return false;
