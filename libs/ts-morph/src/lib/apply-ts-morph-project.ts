@@ -32,6 +32,5 @@ export function ApplyTsMorphProject(project: Project, basePath: string = '', org
 
       });
 
-
   };
 }
