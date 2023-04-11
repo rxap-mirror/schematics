@@ -18,6 +18,12 @@ describe('Utilities', () => {
 
       });
 
+      it('should only add a prefix of the suffix if the input has already a partial suffix', () => {
+
+        expect(CoerceSuffix('valueInfix', 'InfixSuffix')).toEqual('valueInfixSuffix');
+
+      });
+
     });
 
   });
