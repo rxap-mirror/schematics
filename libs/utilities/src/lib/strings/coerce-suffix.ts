@@ -1,9 +1,26 @@
-export function CoerceSuffix(str: string, suffix: string, regexp?: RegExp): string {
+export function CoerceSuffix(input: string, suffix: string, regexp?: RegExp): string {
 
-  if (!str.match(regexp ?? new RegExp(`${suffix}$`))) {
-    return str + suffix;
+  if (regexp) {
+
+    if (!input.match(regexp ?? new RegExp(`${suffix}$`))) {
+      return input + suffix;
+    }
+
+    return input;
+
   }
 
-  return str;
+  let overlapLength = 0;
+
+  for (let i = 1; i <= Math.min(input.length, suffix.length); i++) {
+    const inputSubstring = input.slice(-i);
+    const suffixSubstring = suffix.slice(0, i);
+
+    if (inputSubstring === suffixSubstring) {
+      overlapLength = i;
+    }
+  }
+
+  return input + suffix.slice(overlapLength);
 
 }
