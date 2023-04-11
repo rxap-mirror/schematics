@@ -35,7 +35,7 @@
     "migrations": "./migration.json"
   },
   "peerDependencies": {
-    "@rxap/schematics-utilities": "^14.0.4",
+    "@rxap/schematics-utilities": "^14.0.5-dev.0",
     "ts-morph": "^13.0.3"
   }
 }
