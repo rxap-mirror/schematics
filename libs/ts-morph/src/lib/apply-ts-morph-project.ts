@@ -1,36 +1,70 @@
 import { Rule } from '@angular-devkit/schematics';
 import { join } from 'path';
-import { Project } from 'ts-morph';
+import { Node, Project, SourceFile } from 'ts-morph';
+
+function areSame(sourceFile1: SourceFile, sourceFile2: SourceFile) {
+  const leafNodes1 = getLeafNodes(sourceFile1);
+  const leafNodes2 = getLeafNodes(sourceFile2);
+
+  while ( true ) {
+    const leaf1 = leafNodes1.next();
+    const leaf2 = leafNodes2.next();
+
+    if (leaf1.done && leaf2.done) {
+      return true;
+    }
+    if (leaf1.done || leaf2.done) {
+      return false;
+    }
+    if (leaf1.value.getText() !== leaf2.value.getText()) {
+      return false;
+    }
+  }
+
+  function* getLeafNodes(sourceFile: SourceFile): Iterator<Node> {
+    yield* searchNode(sourceFile);
+
+    // @ts-ignore
+    function* searchNode(node: Node) {
+      const children = node.getChildren();
+      if (children.length === 0) {
+        yield node;
+      } else {
+        for (const child of children) {
+          yield * searchNode(child);
+        }
+      }
+    }
+  }
+}
 
 export function ApplyTsMorphProject(project: Project, basePath: string = '', organizeImports: boolean = true): Rule {
   return tree => {
 
     if (organizeImports) {
       project
-        .getSourceFiles()
-        .forEach(sourceFile => sourceFile.organizeImports());
+      .getSourceFiles()
+      .forEach(sourceFile => sourceFile.organizeImports());
     }
 
-    let written = 0;
     project
-      .getSourceFiles()
-      .forEach(sourceFile => {
+    .getSourceFiles()
+    .forEach(sourceFile => {
 
-        const filePath = join(basePath, sourceFile.getFilePath());
+      const filePath = join(basePath, sourceFile.getFilePath());
 
-        if (tree.exists(filePath)) {
-          const currentContent = tree.read(filePath)!.toString('utf-8');
-          const newContent = sourceFile.getFullText();
-          if (currentContent.trim() !== newContent.trim()) {
-            written++;
-            tree.overwrite(filePath, newContent);
-          }
-        } else {
-          tree.create(filePath, sourceFile.getFullText());
-          written++;
+      if (tree.exists(filePath)) {
+        const currentContent = tree.read(filePath)!.toString('utf-8');
+        const tmpProject     = new Project();
+        const newContent     = sourceFile.getFullText();
+        if (!areSame(sourceFile, tmpProject.createSourceFile('/tmp.ts', currentContent))) {
+          tree.overwrite(filePath, newContent);
         }
+      } else {
+        tree.create(filePath, sourceFile.getFullText());
+      }
 
-      });
+    });
 
   };
 }
