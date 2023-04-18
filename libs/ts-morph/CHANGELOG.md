@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0-dev.3](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@14.1.0-dev.2...@rxap/schematics-ts-morph@14.1.0-dev.3) (2023-04-18)
+
+
+### Bug Fixes
+
+* add fixMissingImports option ([b9ae8ed](https://gitlab.com/rxap/packages/commit/b9ae8ed4b25d635b70844d083283057e3de73873))
+* only update changed files ([ae95f39](https://gitlab.com/rxap/packages/commit/ae95f390c06779bd5d275301580a69511bddca44))
+
+
+
+
+
 # [14.1.0-dev.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@14.1.0-dev.1...@rxap/schematics-ts-morph@14.1.0-dev.2) (2023-04-10)
 
 
