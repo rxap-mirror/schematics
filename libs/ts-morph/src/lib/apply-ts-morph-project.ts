@@ -1,6 +1,7 @@
 import { Rule } from '@angular-devkit/schematics';
 import { join } from 'path';
 import { Node, Project, SourceFile } from 'ts-morph';
+import { FixMissingImports } from './fix-missing-imports';
 
 function areSame(sourceFile1: SourceFile, sourceFile2: SourceFile) {
   const leafNodes1 = getLeafNodes(sourceFile1);
@@ -38,13 +39,20 @@ function areSame(sourceFile1: SourceFile, sourceFile2: SourceFile) {
   }
 }
 
-export function ApplyTsMorphProject(project: Project, basePath: string = '', organizeImports: boolean = true): Rule {
+export function ApplyTsMorphProject(project: Project, basePath: string = '', organizeImports: boolean = true, fixMissingImports: boolean = false): Rule {
   return tree => {
 
-    if (organizeImports) {
+    if (organizeImports || fixMissingImports) {
       project
       .getSourceFiles()
-      .forEach(sourceFile => sourceFile.organizeImports());
+      .forEach(sourceFile => {
+        if (fixMissingImports) {
+          sourceFile.fixMissingImports();
+        }
+        if (organizeImports) {
+          sourceFile.organizeImports()
+        }
+      });
     }
 
     project
