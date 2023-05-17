@@ -14,9 +14,16 @@ import {
   Tree,
   url,
 } from '@angular-devkit/schematics';
-import { formatFiles } from '@nrwl/workspace';
-import { ApplyTsMorphProject, FixMissingImports } from '@rxap/schematics-ts-morph';
-import { GetAngularJson, GetProjectRoot, GuessProjectName } from '@rxap/schematics-utilities';
+import { formatFiles } from '@nx/workspace';
+import {
+  ApplyTsMorphProject,
+  FixMissingImports,
+} from '@rxap/schematics-ts-morph';
+import {
+  GetAngularJson,
+  GetProjectRoot,
+  GuessProjectName,
+} from '@rxap/schematics-utilities';
 import { ParseTemplate } from '@rxap/schematics-xml-parser';
 import { existsSync } from 'fs';
 import { join } from 'path';
@@ -28,9 +35,8 @@ import { GenerateSchema } from './schema';
 const { dasherize } = strings;
 
 export default function (options: GenerateSchema): Rule {
-
   return async (host: Tree) => {
-    const projectName = options.project = GuessProjectName(host, options);
+    const projectName = (options.project = GuessProjectName(host, options));
     const projectRootPath = GetProjectRoot(host, projectName);
 
     const basePathList: string[] = [];
@@ -53,10 +59,10 @@ export default function (options: GenerateSchema): Rule {
       host,
       options.template,
       basePathList,
-      ...TableSystemElements,
+      ...TableSystemElements
     );
 
-    options.name    = options.name ?? tableElement.id;
+    options.name = options.name ?? tableElement.id;
     tableElement.id = options.name;
 
     if (!tableElement.id) {
@@ -75,7 +81,7 @@ export default function (options: GenerateSchema): Rule {
     if (!options.openApiModule) {
       const angularJson = GetAngularJson(host);
       if (!angularJson.projects) {
-        angularJson.projects = {}
+        angularJson.projects = {};
       }
       if (Object.keys(angularJson.projects).includes('open-api')) {
         options.openApiModule = `@${angularJson.projects['open-api'].prefix}/open-api`;
@@ -113,14 +119,14 @@ export default function (options: GenerateSchema): Rule {
       hasComponentModule
         ? noop()
         : externalSchematic('@rxap/schematics', 'component-module', {
-          path: options.path.replace(/^\//, ''),
-          project: projectName,
-          name: dasherize(options.name) + '-table',
-          theme: false,
-          flat: true,
-          stories: options.stories,
-          skipTests: options.skipTests,
-        }),
+            path: options.path.replace(/^\//, ''),
+            project: projectName,
+            name: dasherize(options.name) + '-table',
+            theme: false,
+            flat: true,
+            stories: options.stories,
+            skipTests: options.skipTests,
+          }),
       mergeWith(
         apply(url('./files'), [
           applyTemplates({
@@ -145,19 +151,19 @@ export default function (options: GenerateSchema): Rule {
       ),
       tableElement.hasFilter
         ? externalSchematic('@rxap/schematics-form', 'generate', {
-          path: path.replace(/^\//, ''),
-          formElement: tableElement.createFormElement(),
-          component: false,
-          project: projectName,
-          flat: true,
-          organizeImports: false,
-          fixImports: false,
-          format: false,
-          templateBasePath: options.templateBasePath,
-          overwrite: options.overwrite,
-          skipTsFiles: options.skipTsFiles,
-          tsMorphProject: () => project,
-        })
+            path: path.replace(/^\//, ''),
+            formElement: tableElement.createFormElement(),
+            component: false,
+            project: projectName,
+            flat: true,
+            organizeImports: false,
+            fixImports: false,
+            format: false,
+            templateBasePath: options.templateBasePath,
+            overwrite: options.overwrite,
+            skipTsFiles: options.skipTsFiles,
+            tsMorphProject: () => project,
+          })
         : noop(),
       tableElement.toValue({ project, options }),
       options.skipTsFiles

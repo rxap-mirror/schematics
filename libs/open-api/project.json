@@ -1,5 +1,6 @@
 {
   "name": "open-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/open-api/src",
   "prefix": "rxap",
@@ -14,7 +15,7 @@
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/libs/open-api",
         "tsConfig": "libs/open-api/tsconfig.lib.json",
@@ -26,7 +27,7 @@
       "outputs": ["{options.outputPath}"]
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/open-api/src/**/*.ts",
@@ -36,7 +37,7 @@
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/open-api"],
       "options": {
         "jestConfig": "libs/open-api/jest.config.ts",

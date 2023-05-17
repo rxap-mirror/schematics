@@ -11,7 +11,7 @@ export function AddBuildTarget(projectName: string): Rule {
 
     if (!project.targets.has('build')) {
       project.targets.add('build', {
-        builder: '@nrwl/js:tsc',
+        builder: '@nx/js:tsc',
         options: {
           outputPath: join('dist', project.root),
           tsConfig: join(project.root, 'tsconfig.lib.json'),

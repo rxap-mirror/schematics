@@ -1,5 +1,6 @@
 {
   "name": "utilities",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/utilities/src",
   "prefix": "rxap",
@@ -14,7 +15,7 @@
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "options": {
         "outputPath": "dist/libs/utilities",
         "tsConfig": "libs/utilities/tsconfig.lib.json",
@@ -26,7 +27,7 @@
       "outputs": ["{options.outputPath}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "options": {
         "jestConfig": "libs/utilities/jest.config.ts",
         "passWithNoTests": true

@@ -4,13 +4,13 @@
   "peerDependencies": {
     "@angular-devkit/core": "^15.0.3",
     "@angular-devkit/schematics": "^15.0.3",
-    "@nrwl/workspace": "^15.3.3",
     "@rxap/schematics-ts-morph": "^15.0.0",
     "@rxap/schematics-utilities": "^15.0.0",
     "@rxap/schematics-xml-parser": "^15.0.0",
     "@rxap/xml-parser": "^14.0.3",
     "@schematics/angular": "^15.0.3",
-    "ts-morph": "^13.0.3"
+    "ts-morph": "^13.0.3",
+    "@nx/workspace": "^15.3.3"
   },
   "dependencies": {
     "tslib": "^2.3.1"

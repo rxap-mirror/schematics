@@ -1,8 +1,23 @@
 import { strings } from '@angular-devkit/core';
-import { chain, externalSchematic, noop, Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
-import { formatFiles } from '@nrwl/workspace';
-import { ApplyTsMorphProject, FixMissingImports, MergeTsMorphProject } from '@rxap/schematics-ts-morph';
-import { GetAngularJson, GetProjectRoot, GuessProjectName } from '@rxap/schematics-utilities';
+import {
+  chain,
+  externalSchematic,
+  noop,
+  Rule,
+  SchematicsException,
+  Tree,
+} from '@angular-devkit/schematics';
+import { formatFiles } from '@nx/workspace';
+import {
+  ApplyTsMorphProject,
+  FixMissingImports,
+  MergeTsMorphProject,
+} from '@rxap/schematics-ts-morph';
+import {
+  GetAngularJson,
+  GetProjectRoot,
+  GuessProjectName,
+} from '@rxap/schematics-utilities';
 import { ParseTemplate } from '@rxap/schematics-xml-parser';
 import { join } from 'path';
 import { IndentationText, Project, QuoteKind } from 'ts-morph';
@@ -14,7 +29,7 @@ const { dasherize, classify, camelize, capitalize } = strings;
 
 export default function (options: GenerateSchema): Rule {
   return async (host: Tree, context) => {
-    const projectName     = options.project = GuessProjectName(host, options);
+    const projectName = (options.project = GuessProjectName(host, options));
     const projectRootPath = GetProjectRoot(host, projectName);
 
     let path: string = options.path ?? '';
@@ -56,7 +71,7 @@ export default function (options: GenerateSchema): Rule {
     if (!options.openApiModule) {
       const angularJson = GetAngularJson(host);
       if (!angularJson.projects) {
-        angularJson.projects = {}
+        angularJson.projects = {};
       }
       if (Object.keys(angularJson.projects).includes('open-api')) {
         options.openApiModule = `@${angularJson.projects['open-api'].prefix}/open-api`;
@@ -75,7 +90,7 @@ export default function (options: GenerateSchema): Rule {
       throw new Error('FATAL: the options name is not defined');
     }
 
-    const pathSuffix = dasherize(options.name) + '-form'
+    const pathSuffix = dasherize(options.name) + '-form';
     options.path = path = join(path, pathSuffix);
 
     console.log('@rxap/material-form-system base path: ', path);
@@ -97,30 +112,33 @@ export default function (options: GenerateSchema): Rule {
 
     return chain([
       hasComponentTemplate
-      ? noop()
-      : externalSchematic('@rxap/schematics', 'component-module', {
-        path:    options.path.replace(/^\//, ''),
-        project: projectName,
-        name:    dasherize(options.name) + '-form',
-        flat:    true,
-        theme:   false,
-      }),
+        ? noop()
+        : externalSchematic('@rxap/schematics', 'component-module', {
+            path: options.path.replace(/^\//, ''),
+            project: projectName,
+            name: dasherize(options.name) + '-form',
+            flat: true,
+            theme: false,
+          }),
       formElement.toValue({ host, project, options }),
       // if the parent schematic has a ts-morph project apply the changes to this project
-      options.tsMorphProject ? () => MergeTsMorphProject(options.tsMorphProject!(), project, pathSuffix) : noop(),
+      options.tsMorphProject
+        ? () =>
+            MergeTsMorphProject(options.tsMorphProject!(), project, pathSuffix)
+        : noop(),
       // only apply files to the ts-morph project if not already exists
       // else the changes made by previous steps are overwritten
       options.skipTsFiles || options.tsMorphProject
-      ? noop()
-      : ApplyTsMorphProject(project, options.path, options.organizeImports),
+        ? noop()
+        : ApplyTsMorphProject(project, options.path, options.organizeImports),
       options.fixImports ? FixMissingImports() : noop(),
       options.format ? formatFiles() : noop(),
       context.debug
         ? (tree) => {
-          console.log('\n==========================================');
-          console.log('path: ' + componentFilePath);
-          console.log('==========================================');
-          console.log(tree.read(componentFilePath)!.toString('utf-8'));
+            console.log('\n==========================================');
+            console.log('path: ' + componentFilePath);
+            console.log('==========================================');
+            console.log(tree.read(componentFilePath)!.toString('utf-8'));
             console.log('\n==========================================');
             console.log('path: ' + componentModuleFilePath);
             console.log('==========================================');

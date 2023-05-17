@@ -1,7 +1,18 @@
 import { strings } from '@angular-devkit/core';
-import { chain, noop, Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
-import { formatFiles } from '@nrwl/workspace';
-import { AddDir, ApplyTsMorphProject, FixMissingImports, MergeTsMorphProject } from '@rxap/schematics-ts-morph';
+import {
+  chain,
+  noop,
+  Rule,
+  SchematicsException,
+  Tree,
+} from '@angular-devkit/schematics';
+import { formatFiles } from '@nx/workspace';
+import {
+  AddDir,
+  ApplyTsMorphProject,
+  FixMissingImports,
+  MergeTsMorphProject,
+} from '@rxap/schematics-ts-morph';
 import { GetAngularJson } from '@rxap/schematics-utilities';
 import { createDefaultPath } from '@schematics/angular/utility/workspace';
 import { join } from 'path';
@@ -15,8 +26,8 @@ const { dasherize, classify, camelize } = strings;
 export default function (options: GenerateSchema): Rule {
   return async (host: Tree) => {
     const projectRootPath = options.project
-                            ? await createDefaultPath(host, options.project as string)
-                            : '/';
+      ? await createDefaultPath(host, options.project as string)
+      : '/';
 
     if (!options.path) {
       options.path = projectRootPath;
@@ -27,7 +38,7 @@ export default function (options: GenerateSchema): Rule {
     if (!options.openApiModule) {
       const angularJson = GetAngularJson(host);
       if (!angularJson.projects) {
-        angularJson.projects = {}
+        angularJson.projects = {};
       }
       if (Object.keys(angularJson.projects).includes('open-api')) {
         options.openApiModule = `@${angularJson.projects['open-api'].prefix}/open-api`;
@@ -45,7 +56,11 @@ export default function (options: GenerateSchema): Rule {
     let formElement: FormElement | undefined = options.formElement;
 
     if (!formElement) {
-      formElement = ParseFormElement(host, options.template, options.templateBasePath);
+      formElement = ParseFormElement(
+        host,
+        options.template,
+        options.templateBasePath
+      );
     }
 
     const project = new Project({
@@ -63,7 +78,7 @@ export default function (options: GenerateSchema): Rule {
     let pathSuffix = '';
 
     if (!options.flat) {
-      pathSuffix = dasherize(formElement.id) + '-form'
+      pathSuffix = dasherize(formElement.id) + '-form';
     }
     options.path = join(options.path!, pathSuffix);
 
@@ -83,7 +98,10 @@ export default function (options: GenerateSchema): Rule {
 
     return chain([
       // if the parent schematic has a ts-morph project apply the changes to this project
-      options.tsMorphProject ? () => MergeTsMorphProject(options.tsMorphProject!(), project, pathSuffix) : noop(),
+      options.tsMorphProject
+        ? () =>
+            MergeTsMorphProject(options.tsMorphProject!(), project, pathSuffix)
+        : noop(),
       // only apply files to the ts-morph project if not already exists
       // else the changes made by previous steps are overwritten
       options.skipTsFiles || options.tsMorphProject

@@ -1,5 +1,6 @@
 {
   "name": "schematics",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/schematics/src",
   "projectType": "library",
   "targets": {
@@ -13,7 +14,7 @@
       }
     },
     "build": {
-      "executor": "@nrwl/js:tsc",
+      "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/libs/schematics",
@@ -25,14 +26,14 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": ["libs/schematics/**/*.ts"]
       },
       "outputs": ["{options.outputFile}"]
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/schematics"],
       "options": {
         "jestConfig": "libs/schematics/jest.config.ts",
@@ -76,7 +77,7 @@
     "update-peer-dependencies": {
       "executor": "@rxap/plugin-library:update-peer-dependencies",
       "options": {
-        "ignore": [ "resolve" ]
+        "ignore": ["resolve"]
       }
     }
   },

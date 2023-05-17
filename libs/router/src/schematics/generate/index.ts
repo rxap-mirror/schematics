@@ -1,12 +1,22 @@
-import { chain, noop, Rule, SchematicsException, Tree } from '@angular-devkit/schematics';
-import { formatFiles } from '@nrwl/workspace';
+import {
+  chain,
+  noop,
+  Rule,
+  SchematicsException,
+  Tree,
+} from '@angular-devkit/schematics';
+import { formatFiles } from '@nx/workspace';
 import { strings } from '@angular-devkit/core';
 import { RoutingSchema } from './schema';
 import { HandelTemplate } from './elements/utils';
 import { Elements } from './elements/elements';
 import { FixMissingImports, OrganizeImports } from '@rxap/schematics-ts-morph';
 import { join } from 'path';
-import { GetAngularJson, GetProjectPrefix, GetProjectSourceRoot } from '@rxap/schematics-utilities';
+import {
+  GetAngularJson,
+  GetProjectPrefix,
+  GetProjectSourceRoot,
+} from '@rxap/schematics-utilities';
 
 const { dasherize, classify, camelize, capitalize } = strings;
 
@@ -21,7 +31,7 @@ export default function (options: RoutingSchema): Rule {
     if (!options.openApiModule) {
       const angularJson = GetAngularJson(host);
       if (!angularJson.projects) {
-        angularJson.projects = {}
+        angularJson.projects = {};
       }
       if (Object.keys(angularJson.projects).includes('open-api')) {
         options.openApiModule = `@${angularJson.projects['open-api'].prefix}/open-api`;
