@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@15.0.0...@rxap/schematics@15.1.0) (2023-05-17)
+
+
+### Features
+
+* **component-theme:** search for next best _index.scss file ([aef673b](https://gitlab.com/rxap/packages/commit/aef673b7c67de93af7b9fac54dbbca613bcfaa6c))
+
+
+
+
+
 # [15.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@14.0.2...@rxap/schematics@15.0.0) (2022-12-14)
 
 

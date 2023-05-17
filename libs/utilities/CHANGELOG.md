@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@15.0.0...@rxap/schematics-utilities@15.0.1) (2023-05-17)
+
+
+### Bug Fixes
+
+* check if substring is included ([9229a8e](https://gitlab.com/rxap/packages/commit/9229a8e9f1ca5648907f976c5859cdfdfe7c77bf))
+
+
+
+
+
 # [15.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@14.0.3...@rxap/schematics-utilities@15.0.0) (2022-12-14)
 
 

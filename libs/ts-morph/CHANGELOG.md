@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@15.0.1...@rxap/schematics-ts-morph@15.1.0) (2023-05-17)
+
+
+### Bug Fixes
+
+* add fixMissingImports option ([8afa5d7](https://gitlab.com/rxap/packages/commit/8afa5d734046d2a7ffb91451d102b5af7bca0015))
+* **add-provider-to-array:** support custom compare logic ([f4aae10](https://gitlab.com/rxap/packages/commit/f4aae10eb806dcc9736aa39a212c9d86055cc5f1))
+* **nest:** update inject obj generator to use inject instead of deps ([9641331](https://gitlab.com/rxap/packages/commit/9641331764ea72757afc152823fd170941e2fdc2))
+* only update changed files ([677b053](https://gitlab.com/rxap/packages/commit/677b053549d641bacc391700e8a89f5562c29fa6))
+* remove verbose logging ([24cb069](https://gitlab.com/rxap/packages/commit/24cb069a423ad59ac742c40a8159d3b4dc625b06))
+
+
+### Features
+
+* add AddClassMethod ([de71d5d](https://gitlab.com/rxap/packages/commit/de71d5dcd6079282d240471efcf9d424d571fd8b))
+
+
+
+
+
 ## [15.0.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@15.0.0...@rxap/schematics-ts-morph@15.0.1) (2022-12-27)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@15.0.0...@rxap/schematics-open-api@15.0.1) (2023-05-17)
+
+
+### Bug Fixes
+
+* cleanup serialized open api operation object ([f5322e0](https://gitlab.com/rxap/packages/commit/f5322e050f5077d4b4a3fe5fb6f41634bd17f8d7))
+* **schematics:** pre generate interface imports ([1b1cf87](https://gitlab.com/rxap/packages/commit/1b1cf8788e052dfd32c95be47e116aae7cae5caf))
+* **schematics:** update open api schematics package ([cc01087](https://gitlab.com/rxap/packages/commit/cc010878bf2eee788a0f61e3b2dbfa1a08b45bd8))
+* support open api projects with sub directories ([73c88f9](https://gitlab.com/rxap/packages/commit/73c88f9473770df4063b487d646f68243d011b1c))
+
+
+
+
+
 # [15.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-open-api@14.1.1...@rxap/schematics-open-api@15.0.0) (2022-12-14)
 
 
