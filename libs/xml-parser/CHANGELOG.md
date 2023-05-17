@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-dev.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-xml-parser@15.0.0...@rxap/schematics-xml-parser@16.0.0-dev.0) (2023-05-17)
+
+
+### chore
+
+* upgrade to 16.x.x ([81cd2ca](https://gitlab.com/rxap/packages/commit/81cd2cab02c29c81e50ebe1b5c699953dce528ee))
+
+
+### BREAKING CHANGES
+
+* upgrade to 16.x.x
+
+
+
+
+
 # [15.0.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics-xml-parser@14.0.2...@rxap/schematics-xml-parser@15.0.0) (2022-12-14)
 
 
