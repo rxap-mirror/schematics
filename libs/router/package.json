@@ -8,7 +8,7 @@
     "@rxap/schematics-ts-morph": "^16.0.0-dev.0",
     "@rxap/schematics-utilities": "^16.0.0-dev.0",
     "@rxap/schematics-xml-parser": "^16.0.0-dev.0",
-    "@rxap/xml-parser": "^14.0.3",
+    "@rxap/xml-parser": "^16.0.0-dev.0",
     "@schematics/angular": "^15.0.3",
     "ts-morph": "^13.0.3"
   },

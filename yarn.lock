@@ -4048,29 +4048,29 @@
   dependencies:
     esquery "^1.4.0"
 
-"@rxap/handlebars@^14.0.2":
-  version "14.0.2"
-  resolved "https://registry.yarnpkg.com/@rxap/handlebars/-/handlebars-14.0.2.tgz#febaf5104c3640f9f026b2b93a585ac4dc77fa9e"
-  integrity sha512-NbdTbdZw/tWZEP497+NsfBg7LO7PMGO55vWPAflkLjQA72ZR26HZtbcXM63McXnM4txM2WvE9UzclA4TCq5VaQ==
+"@rxap/handlebars@^16.0.0-dev.0":
+  version "16.0.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@rxap/handlebars/-/handlebars-16.0.0-dev.0.tgz#d82b706fe77d7ab8a67a755b8f9a85b99b1e7c59"
+  integrity sha512-C9TgAnwyCIQLgfm9aiCAKy9IvwPhAgvU1tZPIkkurpPwN1Xq5e05iM73XAN5oLLhk1cSFSmc6Y4MtftqB/ro9A==
   dependencies:
-    "@rxap/schematics-utilities" "^14.0.0"
+    "@rxap/schematics-utilities" "^16.0.0-dev.0"
     tslib "^2.3.1"
 
-"@rxap/json-schema-to-typescript@14.0.3":
-  version "14.0.3"
-  resolved "https://registry.yarnpkg.com/@rxap/json-schema-to-typescript/-/json-schema-to-typescript-14.0.3.tgz#51e46b91c0de205f0c94a1482caad6acf3027123"
-  integrity sha512-5gVjbVB+WGH0UpTc/1I8gDU+nhK4k23pzH/4JSAAgZh5WO9jWBrdT5b/LJ5W+fLto0ESY5Ra9wgKsQHre7Urqw==
+"@rxap/json-schema-to-typescript@16.0.0-dev.0":
+  version "16.0.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@rxap/json-schema-to-typescript/-/json-schema-to-typescript-16.0.0-dev.0.tgz#38a0b99e0644aca911835979c716f564b6158f00"
+  integrity sha512-kEmgcsvHGGy/thTsOOk1Fw4JGp+B+J5vDG/cPOwvoKEDVOIu5r5irIFFNQlf3mXU2mwBQHKrbGbW+RHfi31MAg==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
-    "@rxap/schematics-utilities" "^14.0.0"
+    "@rxap/schematics-utilities" "^16.0.0-dev.0"
     tslib "^2.3.1"
 
-"@rxap/mixin@14.0.2":
-  version "14.0.2"
-  resolved "https://registry.yarnpkg.com/@rxap/mixin/-/mixin-14.0.2.tgz#a91418d65a505c071757b69a4c5701d37f873146"
-  integrity sha512-jb7CLdglxGR/T+vcG/d0/xB6k60MrYgSNePVFFmnRRw88uf8+M3NX8wh8BIOf2+/9UbPVU4atZUu3YhYEjizSA==
+"@rxap/mixin@16.0.0-dev.0":
+  version "16.0.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@rxap/mixin/-/mixin-16.0.0-dev.0.tgz#3d5efb69e8ad48a8f1c40fea8eaba7f5a824b11b"
+  integrity sha512-b9tlUTr/Yq/e4pC756n0WJbrXnkKMw7+W3pbaenK5gha2N3QOOv4eJKj5K4xUJc6McmSKd8TM+uBNCw3KLjDsw==
   dependencies:
-    "@rxap/schematics-utilities" "^14.0.0"
+    "@rxap/schematics-utilities" "^16.0.0-dev.0"
     tslib "^2.3.1"
 
 "@rxap/plugin-library-schematics@16.0.0-dev.0":
@@ -4124,10 +4124,10 @@
     semver "^7.3.5"
     tslib "^2.3.1"
 
-"@rxap/schematics-utilities@^14.0.0":
-  version "14.0.0"
-  resolved "https://registry.yarnpkg.com/@rxap/schematics-utilities/-/schematics-utilities-14.0.0.tgz#d9f86e287b6eac9938d524d855744ac1d75de00e"
-  integrity sha512-OeVbZ6LopRSZTUEl/1HCqZfwFGWy0FvnF3Zg4E4FUeV+4Hc3hdaVA3c+haLQZZqP76V7RWm/GdOTYMvw9Ehb2Q==
+"@rxap/schematics-utilities@^16.0.0-dev.0":
+  version "16.0.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@rxap/schematics-utilities/-/schematics-utilities-16.0.0-dev.0.tgz#f5b8b50b238d2c9ee263d047fbc5eb6f03ebcc7c"
+  integrity sha512-F0fYKX0KfaA0SGbQ9y31a7Zb8OeChVd8wk+OzczblFTIuiM1x46mAEwFTirLmyAuOBFGRUvsjcd6KRHTdSi5Tw==
   dependencies:
     semver "^7.3.5"
     tslib "^2.3.1"
@@ -4141,13 +4141,13 @@
     semver "^7.3.5"
     tslib "^2.3.1"
 
-"@rxap/xml-parser@14.0.3":
-  version "14.0.3"
-  resolved "https://registry.yarnpkg.com/@rxap/xml-parser/-/xml-parser-14.0.3.tgz#81ac851af48be3aa37e590e005d3d6c15c883c09"
-  integrity sha512-jNSD3OL+ZHtwHtlV1zxlJfFniImdNr7DhUyfy4zegVC/+cmhwbtrwkZzek3yYbnsGtsBRvneyAn2RxcoRr+3+w==
+"@rxap/xml-parser@16.0.0-dev.0":
+  version "16.0.0-dev.0"
+  resolved "https://registry.yarnpkg.com/@rxap/xml-parser/-/xml-parser-16.0.0-dev.0.tgz#a4a6be17aac853a8f3897da6ddb0c8474d84a173"
+  integrity sha512-s+FBWhEeAveLoAW8ceAfIWj66SrqImndNu2QzMc5zE9bsW7RlJTuwKIq/RpLfK6CyKEp4ItDeCXCUIMiluZ4mw==
   dependencies:
-    "@rxap/handlebars" "^14.0.2"
-    "@rxap/schematics-utilities" "^14.0.0"
+    "@rxap/handlebars" "^16.0.0-dev.0"
+    "@rxap/schematics-utilities" "^16.0.0-dev.0"
     handlebars "^4.7.7"
     tslib "^2.3.1"
     xmldom "^0.6.0"

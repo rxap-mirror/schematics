@@ -39,7 +39,7 @@
   "peerDependencies": {
     "@angular-devkit/schematics": "^16.0.2",
     "@apidevtools/json-schema-ref-parser": "^9.1.0",
-    "@rxap/json-schema-to-typescript": "^14.0.3",
+    "@rxap/json-schema-to-typescript": "^16.0.0-dev.0",
     "@rxap/schematics-utilities": "^16.0.0-dev.0",
     "openapi-types": "^10.0.0",
     "ts-morph": "^13.0.3"
