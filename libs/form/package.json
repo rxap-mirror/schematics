@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics-form",
-  "version": "16.0.0-dev.0",
+  "version": "16.0.0-dev.1",
   "dependencies": {
     "tslib": "^2.3.1"
   },
@@ -46,7 +46,7 @@
     "@rxap/schematics-html": "^16.0.0-dev.0",
     "@rxap/schematics-ts-morph": "^16.0.0-dev.0",
     "@rxap/schematics-utilities": "^16.0.0-dev.0",
-    "@rxap/schematics-xml-parser": "^16.0.0-dev.0",
+    "@rxap/schematics-xml-parser": "^16.0.0-dev.1",
     "@rxap/xml-parser": "^16.0.0-dev.0",
     "@schematics/angular": "^15.0.3",
     "ts-morph": "^13.0.3"

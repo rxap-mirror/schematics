@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-dev.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-router@16.0.0-dev.0...@rxap/schematics-router@16.0.0-dev.1) (2023-05-18)
+
+
+### Bug Fixes
+
+* **deps:** update rxap packages to 16.x.x ([f9c2263](https://gitlab.com/rxap/schematics/commit/f9c226356bebe4b3ece8b80f4b08cb80582854a7))
+
+
+
+
+
 # [16.0.0-dev.0](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-router@15.0.0...@rxap/schematics-router@16.0.0-dev.0) (2023-05-17)
 
 
