@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-dev.1](https://gitlab.com/rxap/packages/compare/@rxap/schematics@16.0.0-dev.0...@rxap/schematics@16.0.0-dev.1) (2023-05-18)
+
+
+### Bug Fixes
+
+* remove deprecated pack target concept ([eeb3748](https://gitlab.com/rxap/packages/commit/eeb3748be1201fa7f5b3cd05771b95502376d4a3))
+
+
+
+
+
 # [16.0.0-dev.0](https://gitlab.com/rxap/packages/compare/@rxap/schematics@15.1.0...@rxap/schematics@16.0.0-dev.0) (2023-05-17)
 
 

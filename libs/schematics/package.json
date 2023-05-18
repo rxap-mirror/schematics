@@ -1,6 +1,6 @@
 {
   "name": "@rxap/schematics",
-  "version": "16.0.0-dev.0",
+  "version": "16.0.0-dev.1",
   "ng-update": {
     "migrations": "./migration.json",
     "packageGroup": [
@@ -37,8 +37,8 @@
     "@angular-devkit/core": "^16.0.2",
     "@angular-devkit/schematics": "^16.0.2",
     "@nx/storybook": "^16.2.1",
-    "@rxap/schematics-ts-morph": "^16.0.0-dev.0",
-    "@rxap/schematics-utilities": "^16.0.0-dev.0",
+    "@rxap/schematics-ts-morph": "^16.0.0-dev.1",
+    "@rxap/schematics-utilities": "^16.0.0-dev.1",
     "@schematics/angular": "^15.0.3",
     "depcheck": "^1.4.3",
     "parse5": "^6.0.1",
