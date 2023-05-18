@@ -9,7 +9,6 @@
       "options": {
         "cacheableOperations": [
           "build",
-          "pack",
           "test",
           "lint",
           "e2e",
@@ -20,7 +19,7 @@
           "update-package-group",
           "update-peer-dependencies"
         ],
-        "parallel": 5,
+        "parallel": 32,
         "accessToken": "M2RlZmY1ODYtMzk3My00NjJjLWJhNDAtZDMxMGU4NDE0ZWNhfHJlYWQtd3JpdGU="
       }
     }

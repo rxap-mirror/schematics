@@ -44,12 +44,6 @@
         "passWithNoTests": true
       }
     },
-    "pack": {
-      "executor": "@rxap/plugin-pack:build",
-      "options": {
-        "targets": ["ts-morph:build", "ts-morph:build-migrations"]
-      }
-    },
     "update-package-group": {
       "executor": "@rxap/plugin-library:update-package-group"
     },

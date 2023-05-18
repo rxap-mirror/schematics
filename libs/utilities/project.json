@@ -37,12 +37,6 @@
     "update-package-group": {
       "executor": "@rxap/plugin-library:update-package-group"
     },
-    "pack": {
-      "executor": "@rxap/plugin-pack:build",
-      "options": {
-        "targets": ["utilities:build", "utilities:build-migrations"]
-      }
-    },
     "publish": {
       "executor": "@rxap/plugin-library-publish:publish",
       "options": {
