@@ -15,6 +15,6 @@
 # Installation
 
 ```
-yarn add @rxap/schematics-ts-morph @rxap/schematics-utilities@^16.0.0-dev.0
+yarn add @rxap/schematics-ts-morph @rxap/schematics-utilities@^16.0.0-dev.1
 ```
 
