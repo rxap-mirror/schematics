@@ -4,14 +4,13 @@ export default {
   preset: '../../jest.preset.js',
   globals: {},
   transform: {
-    '^.+\\.[tj]sx?$': [
+    '^.+\\.[tj]s?$': [
       'ts-jest',
       {
         tsconfig: '<rootDir>/tsconfig.spec.json',
       },
     ],
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/schematics',
-  testEnvironment: 'node',
+  moduleFileExtensions: ['ts', 'js', 'html'],
+  coverageDirectory: '../../coverage/libs/schematics'
 };

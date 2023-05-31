@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@rxap/schematics": ["libs/schematics/src/index.ts"],
+      "@rxap/schematics/package.json": ["libs/schematics/package.json"],
       "@rxap/schematics-form": ["libs/form/src/index.ts"],
       "@rxap/schematics-html": ["libs/html/src/index.ts"],
       "@rxap/schematics-open-api": ["libs/open-api/src/index.ts"],
