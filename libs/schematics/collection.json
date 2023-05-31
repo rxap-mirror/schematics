@@ -220,6 +220,11 @@
       "description": "Init the project custom material theme support.",
       "factory": "./src/schematics/init-custom-material-theme/index",
       "schema": "./src/schematics/init-custom-material-theme/schema.json"
+    },
+    "index-export": {
+      "factory": "./src/schematics/index-export",
+      "schema": "./src/schematics/index-export/schema.json",
+      "description": "Generates a index file with all exports from each directory recursively."
     }
   }
 }
