@@ -3,17 +3,16 @@ import { ClassDeclaration, MethodDeclarationStructure, OptionalKind } from 'ts-m
 export function CoerceClassMethod(
   classDeclaration: ClassDeclaration,
   name: string,
-  structure: Omit<OptionalKind<MethodDeclarationStructure>, 'name'>
+  structure: Omit<OptionalKind<MethodDeclarationStructure>, 'name'> = {}
 ) {
 
   let methodDeclaration = classDeclaration.getMethod(name)
 
   if (!methodDeclaration) {
 
-    methodDeclaration = classDeclaration.addMethod({
-      ...structure,
-      name
-    });
+    methodDeclaration = classDeclaration.addMethod({ name });
+
+    methodDeclaration.set(structure);
 
   }
 
