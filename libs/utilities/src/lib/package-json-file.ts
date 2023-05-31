@@ -2,10 +2,10 @@ import { Rule, Tree } from '@angular-devkit/schematics';
 import { PackageJson } from './package-json';
 import { join } from 'path';
 import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
-import { CoerceProperty } from '@rxap/schematics-utilities';
 import { exec } from 'child_process';
 import gt from 'semver/functions/gt';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import {CoerceProperty} from "./object/coerce-property";
 
 export function GetPackageJson(host: Tree, basePath: string = ''): PackageJson {
   return GetJsonFile(host, join(basePath, 'package.json'));

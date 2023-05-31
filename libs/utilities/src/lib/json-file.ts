@@ -1,6 +1,7 @@
 import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
 import {CoerceFile} from './coerce-file';
-import {equals, IsFunction} from '@rxap/schematics-utilities';
+import {IsFunction} from "./function/is-function";
+import {equals} from "./equals";
 
 export function HasJsonFile(host: Tree, filePath: string): boolean {
   if (host.exists(filePath)) {
