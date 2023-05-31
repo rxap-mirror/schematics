@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-dev.2](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@16.0.0-dev.1...@rxap/schematics-table@16.0.0-dev.2) (2023-05-31)
+
+
+### Features
+
+* use the CoerceImports function for all imports ([901a68a](https://gitlab.com/rxap/schematics/commit/901a68a4fcb81d691573ea4ad20412b40cea3ec4))
+
+
+
+
+
 # [16.0.0-dev.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-table@16.0.0-dev.0...@rxap/schematics-table@16.0.0-dev.1) (2023-05-18)
 
 

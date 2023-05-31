@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-dev.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-ts-morph@16.0.0-dev.1...@rxap/schematics-ts-morph@16.0.0-dev.2) (2023-05-31)
+
+
+### Bug Fixes
+
+* **ts-morph:** generate index files for library export ([55b6cde](https://gitlab.com/rxap/packages/commit/55b6cde6208803b324f60d070dcff4c1afc1bf99))
+
+
+### Features
+
+* add a collection of utility functions ([fee2f1a](https://gitlab.com/rxap/packages/commit/fee2f1ac7a328c5cb610758d7113716ac8fbe226))
+* use the CoerceImports function for all imports ([901a68a](https://gitlab.com/rxap/packages/commit/901a68a4fcb81d691573ea4ad20412b40cea3ec4))
+
+
+
+
+
 # [16.0.0-dev.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-ts-morph@16.0.0-dev.0...@rxap/schematics-ts-morph@16.0.0-dev.1) (2023-05-18)
 
 

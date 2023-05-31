@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-dev.2](https://gitlab.com/rxap/packages/compare/@rxap/schematics-utilities@16.0.0-dev.1...@rxap/schematics-utilities@16.0.0-dev.2) (2023-05-31)
+
+
+### Features
+
+* add the HasJsonFile function ([c368a16](https://gitlab.com/rxap/packages/commit/c368a16c057c5acebc3c7478ae9254e4d1cb984c))
+* support non angular.json based workspaces ([e6beddb](https://gitlab.com/rxap/packages/commit/e6beddb13a404f181bc336fd907cb9574b41723b))
+
+
+
+
+
 # [16.0.0-dev.1](https://gitlab.com/rxap/schematics/compare/@rxap/schematics-utilities@16.0.0-dev.0...@rxap/schematics-utilities@16.0.0-dev.1) (2023-05-18)
 
 
