@@ -2,6 +2,20 @@ import {Rule, SchematicsException, Tree} from '@angular-devkit/schematics';
 import {CoerceFile} from './coerce-file';
 import {equals, IsFunction} from '@rxap/schematics-utilities';
 
+export function HasJsonFile(host: Tree, filePath: string): boolean {
+  if (host.exists(filePath)) {
+    const content = host.read(filePath)!.toString();
+
+    try {
+      JSON.parse(content);
+    } catch (e: any) {
+      return false;
+    }
+    return true;
+  }
+  return false;
+}
+
 export function GetJsonFile<T = any>(host: Tree, filePath: string, create: boolean = false): T {
 
   if (!host.exists(filePath)) {
