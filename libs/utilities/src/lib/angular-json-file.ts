@@ -6,7 +6,7 @@ import { Project } from './angular-json/project';
 import { SchematicOptions } from './angular-json/schematic-options';
 import { Target } from './angular-json/target';
 import { clone } from './clone';
-import { GetJsonFile, UpdateJsonFile, UpdateJsonFileOptions } from './json-file';
+import {GetJsonFile, HasJsonFile, UpdateJsonFile, UpdateJsonFileOptions} from './json-file';
 
 export function IsAngularJson(angularJson: AngularJson | FragmentedAngularJson): angularJson is AngularJson {
   return !!angularJson.projects && Object.values(angularJson.projects).every(project => typeof project === 'object');
@@ -40,7 +40,17 @@ export function IsFragmentedAngularJson(angularJson: AngularJson | FragmentedAng
 }
 
 export function GetAngularJson(host: Tree): AngularJson {
-  let content = GetJsonFile<AngularJson | FragmentedAngularJson>(host, 'angular.json');
+
+  let filePath = 'angular.json';
+
+  if (HasJsonFile(host, 'workspace.json')) {
+    console.warn('use workspace.json instead of angular.json');
+    filePath = 'workspace.json';
+  } else if (!HasJsonFile(host, filePath)) {
+    throw new SchematicsException('Could not find angular.json or workspace.json');
+  }
+
+  let content = GetJsonFile<AngularJson | FragmentedAngularJson>(host, filePath);
 
   if (IsFragmentedAngularJson(content)) {
     content = GetAngularJsonFragments(host, content);
