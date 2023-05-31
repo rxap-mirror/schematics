@@ -734,3 +734,18 @@ Option | Type | Default | Description
 --- | --- | --- | ---
 
 
+## index-export
+> Generates a index file with all exports from each directory recursively.
+
+```
+ng g @rxap/schematics:index-export
+```
+
+Option | Type | Default | Description
+--- | --- | --- | ---
+project | string |  | The target project where the index exports should be generated.
+
+| Required |
+| --- |
+| project |
+

@@ -1,26 +1,17 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
     "outDir": "../../dist/out-tsc",
     "declaration": true,
     "types": [
       "node"
-    ],
-    "paths": {
-      "@rxap/schematics-utilities": [
-        "dist/libs/utilities"
-      ]
-    }
+    ]
   },
+  "include": ["src/**/*.ts"],
   "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "src/schematics/**",
-    "src/migrations/**",
-    "jest.config.ts"
-  ],
-  "include": [
-    "**/*.ts"
+    "jest.config.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "**/files/**"
   ]
 }

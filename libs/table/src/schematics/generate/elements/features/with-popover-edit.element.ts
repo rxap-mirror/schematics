@@ -10,7 +10,7 @@ import { SourceFile } from 'ts-morph';
 import {
   AddComponentProvider,
   AddNgModuleImport,
-  CoerceMethodClass,
+  CoerceMethodClass, CoerceMethodClassLegacy,
   CoerceSourceFile,
   ToValueContext
 } from '@rxap/schematics-ts-morph';
@@ -66,7 +66,7 @@ export class WithPopoverEditElement extends FeatureElement {
   }
 
   public handleComponent({ sourceFile, project, options }: ToValueContext & { sourceFile: SourceFile }) {
-    CoerceMethodClass(CoerceSourceFile(project, join(sourceFile.getDirectoryPath(), this.formSubmitMethodModuleSpecifier + '.ts')), this.formSubmitMethodName)
+    CoerceMethodClassLegacy(CoerceSourceFile(project, join(sourceFile.getDirectoryPath(), this.formSubmitMethodModuleSpecifier + '.ts')), this.formSubmitMethodName)
     AddComponentProvider(
       sourceFile,
       {

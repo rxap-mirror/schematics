@@ -6,7 +6,7 @@ import {
   AddToFormProviders,
   AddVariableFakeProvider,
   AddVariableProvider,
-  CoerceMethodClass,
+  CoerceMethodClass, CoerceMethodClassLegacy,
   CoercePropertyKey,
   CoerceSourceFile,
   GetFormProvidersFile,
@@ -209,7 +209,7 @@ export abstract class FormHandleMethodElement implements ParsedElement<Rule>, Ha
       mockClassFileName + '.ts'
     );
     const methodSourceFile    = CoerceSourceFile(project, methodClassFilePath);
-    CoerceMethodClass(
+    CoerceMethodClassLegacy(
       methodSourceFile,
       mockClassName,
       {

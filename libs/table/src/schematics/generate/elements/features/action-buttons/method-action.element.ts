@@ -4,7 +4,7 @@ import { RouterLinkElement } from '../../router-link.element';
 import {
   AddComponentFakeProvider,
   AddComponentProvider,
-  CoerceMethodClass,
+  CoerceMethodClass, CoerceMethodClassLegacy,
   CoerceSourceFile,
   ProviderObject,
   ToValueContext
@@ -51,7 +51,7 @@ export abstract class MethodActionElement extends AbstractActionButtonElement {
           mockClassFileName + '.ts'
         );
         const methodSourceFile    = CoerceSourceFile(project, methodClassFilePath);
-        CoerceMethodClass(
+        CoerceMethodClassLegacy(
           methodSourceFile,
           mockClassName,
           {

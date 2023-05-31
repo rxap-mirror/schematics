@@ -12,7 +12,13 @@ export default function (options: IndexExportGeneratorSchema) {
     const filePathList: string[] = [];
 
     host.getDir(sourceRoot).visit((path, entry) => {
-      if (path.endsWith('.ts') && !path.endsWith('.spec.ts') && !path.endsWith('.d.ts') && !path.endsWith('index.ts')) {
+      if (
+        path.endsWith('.ts') &&
+        !path.endsWith('.spec.ts') &&
+        !path.endsWith('.d.ts') &&
+        !path.endsWith('index.ts') &&
+        path.startsWith('/' + join(sourceRoot, 'lib') + '/')
+      ) {
         const relativePath = relative('/' + sourceRoot, path);
         filePathList.push(relativePath);
       }

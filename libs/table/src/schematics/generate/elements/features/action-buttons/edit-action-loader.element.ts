@@ -10,7 +10,7 @@ import { ParsedElement } from '@rxap/xml-parser';
 import {
   AddComponentFakeProvider,
   AddComponentProvider,
-  CoerceMethodClass,
+  CoerceMethodClass, CoerceMethodClassLegacy,
   CoerceSourceFile,
   HandleComponent,
   HandleComponentModule,
@@ -85,7 +85,7 @@ export class EditActionLoaderElement implements ParsedElement<Rule>, HandleCompo
         mockClassFileName + '.ts'
       );
       const methodSourceFile = CoerceSourceFile(project, methodClassFilePath);
-      CoerceMethodClass(
+      CoerceMethodClassLegacy(
         methodSourceFile,
         mockClassName,
         {

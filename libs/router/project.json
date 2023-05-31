@@ -19,12 +19,20 @@
       "options": {
         "outputPath": "dist/libs/router",
         "tsConfig": "libs/router/tsconfig.lib.json",
-        "packageJson": "libs/router/package.json",
         "main": "libs/router/src/index.ts",
-        "srcRootForCompilationRoot": "libs/router",
         "assets": [
           "libs/router/*.md",
           "libs/router/LICENSE",
+          {
+            "input": "./libs/router/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/router/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
           {
             "input": "./libs/router",
             "glob": "collection.json",
@@ -60,24 +68,6 @@
     },
     "readme": {
       "executor": "@rxap/plugin-readme-generator:library"
-    },
-    "build-schematics": {
-      "executor": "@rxap/plugin-library:build-schematics",
-      "options": {
-        "outputPath": "dist/libs/router",
-        "tsConfig": "libs/router/tsconfig.schematics.json",
-        "assets": [],
-        "type": "schematics"
-      }
-    },
-    "build-migrations": {
-      "executor": "@rxap/plugin-library:build-schematics",
-      "options": {
-        "outputPath": "dist/libs/router",
-        "tsConfig": "libs/router/tsconfig.migrations.json",
-        "assets": [],
-        "type": "migrations"
-      }
     },
     "update-peer-dependencies": {
       "executor": "@rxap/plugin-library:update-peer-dependencies",

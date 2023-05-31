@@ -16,21 +16,23 @@
     },
     "build": {
       "executor": "@nx/js:tsc",
-      "dependsOn": [
-        {
-          "target": "build-schematics",
-          "projects": "dependencies"
-        }
-      ],
       "options": {
         "outputPath": "dist/libs/table",
         "tsConfig": "libs/table/tsconfig.lib.json",
-        "packageJson": "libs/table/package.json",
         "main": "libs/table/src/index.ts",
-        "srcRootForCompilationRoot": "libs/table",
         "assets": [
           "libs/table/*.md",
           "libs/table/LICENSE",
+          {
+            "input": "./libs/table/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/table/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
           {
             "input": "./libs/table",
             "glob": "collection.json",
@@ -66,24 +68,6 @@
     },
     "readme": {
       "executor": "@rxap/plugin-readme-generator:library"
-    },
-    "build-schematics": {
-      "executor": "@rxap/plugin-library:build-schematics",
-      "options": {
-        "outputPath": "dist/libs/table",
-        "tsConfig": "libs/table/tsconfig.schematics.json",
-        "assets": [],
-        "type": "schematics"
-      }
-    },
-    "build-migrations": {
-      "executor": "@rxap/plugin-library:build-schematics",
-      "options": {
-        "outputPath": "dist/libs/table",
-        "tsConfig": "libs/table/tsconfig.migrations.json",
-        "assets": [],
-        "type": "migrations"
-      }
     },
     "update-peer-dependencies": {
       "executor": "@rxap/plugin-library:update-peer-dependencies",

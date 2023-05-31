@@ -10,7 +10,7 @@ import { SourceFile } from 'ts-morph';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { CoerceSuffix } from '@rxap/schematics-utilities';
-import { AddMethodClassOptions, CoerceMethodClass, CoerceSourceFile, ToValueContext } from '@rxap/schematics-ts-morph';
+import { AddMethodClassOptions, CoerceMethodClassLegacy, CoerceSourceFile, ToValueContext } from '@rxap/schematics-ts-morph';
 import { TypeElement } from '../type.element';
 
 const { dasherize, classify, camelize } = strings;
@@ -52,7 +52,7 @@ export class MethodElement implements ParsedElement<string>, IMethodElement {
       if (this.parameterType) {
         methodOptions.parameterType = this.parameterType.toValue({ sourceFile: methodSourceFile });
       }
-      CoerceMethodClass(methodSourceFile, methodName, methodOptions);
+      CoerceMethodClassLegacy(methodSourceFile, methodName, methodOptions);
       return methodName;
     }
   }

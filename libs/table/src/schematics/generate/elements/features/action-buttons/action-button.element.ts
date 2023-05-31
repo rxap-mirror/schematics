@@ -5,7 +5,7 @@ import {
   AddComponentProvider,
   AddNgModuleImport,
   CoerceClassMethod,
-  CoerceMethodClass,
+  CoerceMethodClass, CoerceMethodClassLegacy,
   CoerceSourceFile,
   GetComponentClass,
   ToValueContext,
@@ -184,7 +184,7 @@ export class ActionButtonElement extends AbstractActionButtonElement {
     const methodName = this.methodName;
     const filename = this.methodModuleSpecifier;
     const methodSourceFile = CoerceSourceFile(project, join(sourceFile.getDirectoryPath(), 'methods', 'action', filename + '.ts'));
-    CoerceMethodClass(methodSourceFile, methodName, {
+    CoerceMethodClassLegacy(methodSourceFile, methodName, {
       returnType: 'any',
       parameterType: this.__parent.__parent.tableInterface,
       implements: [ `TableRowActionTypeMethod<${this.__parent.__parent.tableInterface}>` ],

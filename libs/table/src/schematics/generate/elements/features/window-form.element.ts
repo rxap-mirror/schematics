@@ -191,7 +191,7 @@ export class WindowFormElement implements ParsedElement {
           options.overwrite
         );
 
-        this.submit.handleComponent({ project, sourceFile, options });
+        this.submit.handleComponent({ project, sourceFile, options: options as any });
       },
     ]);
   }

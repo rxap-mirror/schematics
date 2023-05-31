@@ -15,7 +15,7 @@ import {
   AddComponentProvider,
   AddDir,
   AddNgModuleImport,
-  CoerceMethodClass,
+  CoerceMethodClass, CoerceMethodClassLegacy,
   CoercePropertyKey,
   CoerceSourceFile,
   FindComponentModuleSourceFile,
@@ -424,7 +424,7 @@ export class TableElement implements ParsedElement<Rule> {
           mockClassFileName + '.ts'
         );
         const methodSourceFile = CoerceSourceFile(project, methodClassFilePath);
-        CoerceMethodClass(methodSourceFile, mockClassName, {
+        CoerceMethodClassLegacy(methodSourceFile, mockClassName, {
           structures: [
             {
               namedImports: ['TableEvent'],

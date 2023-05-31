@@ -5,6 +5,7 @@ import { CoerceImports } from '../ts-morph/coerce-imports';
 import {CoerceSourceFile} from "../coerce-source-file";
 import {CoerceClass} from "../coerce-class";
 import {TsMorphAngularProjectTransform} from "../ts-morph-transform";
+import {AddMethodClass, AddMethodClassOptions} from "../add-method-class";
 
 export interface CoerceMethodClassOptions {
   name: string;
@@ -16,6 +17,22 @@ export interface CoerceMethodClassOptions {
     sourceFile: SourceFile,
     classDeclaration: ClassDeclaration,
   ) => Partial<Omit<OptionalKind<MethodDeclarationStructure>, 'name'>>;
+}
+
+export function CoerceMethodClassLegacy(
+  sourceFile: SourceFile,
+  name: string,
+  options: AddMethodClassOptions = {}
+) {
+
+  name = CoerceSuffix(name, 'Method');
+
+  const hasClass = !!sourceFile.getClass(name);
+
+  if (!hasClass) {
+    AddMethodClass(sourceFile, name, options);
+  }
+
 }
 
 export function CoerceMethodClass(options: CoerceMethodClassOptions) {

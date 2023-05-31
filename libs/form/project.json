@@ -5,17 +5,6 @@
   "sourceRoot": "libs/form/src",
   "prefix": "rxap",
   "targets": {
-    "index-export": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "yarn nx g @rxap/schematics:index-export --project $NX_TASK_TARGET_PROJECT"
-        ]
-      },
-      "configurations": {
-        "production": {}
-      }
-    },
     "version": {
       "executor": "nx:run-commands",
       "options": {
@@ -30,13 +19,21 @@
       "options": {
         "outputPath": "dist/libs/form",
         "tsConfig": "libs/form/tsconfig.lib.json",
-        "packageJson": "libs/form/package.json",
         "main": "libs/form/src/index.ts",
-        "srcRootForCompilationRoot": "libs/form",
         "buildableProjectDepsInPackageJsonType": "dependencies",
         "assets": [
           "libs/form/*.md",
           "libs/form/LICENSE",
+          {
+            "input": "./libs/form/src",
+            "glob": "**/!(*.ts)",
+            "output": "./src"
+          },
+          {
+            "input": "./libs/form/src",
+            "glob": "**/*.d.ts",
+            "output": "./src"
+          },
           {
             "input": "./libs/form",
             "glob": "collection.json",
@@ -71,24 +68,6 @@
     },
     "readme": {
       "executor": "@rxap/plugin-readme-generator:library"
-    },
-    "build-schematics": {
-      "executor": "@rxap/plugin-library:build-schematics",
-      "options": {
-        "outputPath": "dist/libs/form",
-        "tsConfig": "libs/form/tsconfig.schematics.json",
-        "assets": [],
-        "type": "schematics"
-      }
-    },
-    "build-migrations": {
-      "executor": "@rxap/plugin-library:build-schematics",
-      "options": {
-        "outputPath": "dist/libs/form",
-        "tsConfig": "libs/form/tsconfig.migrations.json",
-        "assets": [],
-        "type": "migrations"
-      }
     },
     "update-peer-dependencies": {
       "executor": "@rxap/plugin-library:update-peer-dependencies",
