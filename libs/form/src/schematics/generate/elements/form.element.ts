@@ -5,7 +5,7 @@ import {
   AddComponentProvider,
   AddToFormProviders,
   AddVariableFakeProvider,
-  AddVariableProvider,
+  AddVariableProvider, CoerceImports,
   CoerceMethodClass, CoerceMethodClassLegacy,
   CoercePropertyKey,
   CoerceSourceFile,
@@ -50,7 +50,7 @@ export class FormHandlerAdapterElement implements ParsedElement<Rule>, HandleFor
 
   public handleFormProviders({ options, project, sourceFile }: ToValueContext & { sourceFile: SourceFile }) {
     if (this.from) {
-      sourceFile.addImportDeclaration({
+      CoerceImports(sourceFile,{
         moduleSpecifier: this.from,
         namedImports:    [ this.name ]
       });
@@ -59,7 +59,7 @@ export class FormHandlerAdapterElement implements ParsedElement<Rule>, HandleFor
 
   public handleComponent({ project, sourceFile, options }: ToValueContext & { sourceFile: SourceFile }) {
     if (this.from) {
-      sourceFile.addImportDeclaration({
+      CoerceImports(sourceFile,{
         moduleSpecifier: this.from,
         namedImports:    [ this.name ]
       });
@@ -252,7 +252,7 @@ export class FormExtendsElement implements ParsedElement<Rule> {
 
   public handleFormDefinition({ sourceFile, classDeclaration }: { sourceFile: SourceFile, classDeclaration: ClassDeclaration }): void {
     classDeclaration.setExtends(this.name);
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       namedImports:    [ this.name ],
       moduleSpecifier: this.from
     });
@@ -333,7 +333,7 @@ export class FormElement implements ParsedElement<ClassDeclaration> {
 
     const formProviderSourceFile = AddToFormProviders(project, formName, overwrite);
 
-    formProviderSourceFile.addImportDeclaration({
+    CoerceImports(formProviderSourceFile, {
       moduleSpecifier: `./${dasherize(this.id)}.form`,
       namedImports:    namedImports
     });
@@ -494,7 +494,7 @@ export class FormElement implements ParsedElement<ClassDeclaration> {
           }
         ]
       });
-      sourceFile.addImportDeclarations([
+      CoerceImports(sourceFile,[
         {
           moduleSpecifier: '@angular/core',
           namedImports:    [ 'Injectable' ]

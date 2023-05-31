@@ -10,7 +10,7 @@ import { SourceFile } from 'ts-morph';
 import { join } from 'path';
 import { strings } from '@angular-devkit/core';
 import { CoerceSuffix } from '@rxap/schematics-utilities';
-import { AddMethodClassOptions, CoerceMethodClassLegacy, CoerceSourceFile, ToValueContext } from '@rxap/schematics-ts-morph';
+import { AddMethodClassOptions, CoerceImports, CoerceMethodClassLegacy, CoerceSourceFile, ToValueContext } from '@rxap/schematics-ts-morph';
 import { TypeElement } from '../type.element';
 
 const { dasherize, classify, camelize } = strings;
@@ -37,7 +37,7 @@ export class MethodElement implements ParsedElement<string>, IMethodElement {
 
   public toValue({ sourceFile, project }: { sourceFile: SourceFile } & ToValueContext): string {
     if (this.from) {
-      sourceFile.addImportDeclaration({
+      CoerceImports(sourceFile,{
         namedImports: [ this.name ],
         moduleSpecifier: this.from
       });

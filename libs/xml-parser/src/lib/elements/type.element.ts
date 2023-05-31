@@ -7,6 +7,7 @@ import {
 } from '@rxap/xml-parser/decorators';
 import { ParsedElement } from '@rxap/xml-parser';
 import { SourceFile } from 'ts-morph';
+import {CoerceImports} from "@rxap/schematics-ts-morph";
 
 @ElementDef('type')
 export class TypeElement implements ParsedElement {
@@ -30,7 +31,7 @@ export class TypeElement implements ParsedElement {
 
   public toValue({ sourceFile }: { sourceFile: SourceFile }): string {
     if (this.from) {
-      sourceFile.addImportDeclaration({
+      CoerceImports(sourceFile,{
         namedImports: [ this.name ],
         moduleSpecifier: this.from
       });

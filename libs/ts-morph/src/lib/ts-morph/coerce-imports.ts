@@ -13,7 +13,7 @@ export function CoerceImports(
     if (!moduleSpecifier ||
       !(Array.isArray(namedImports) && namedImports.every((named) => typeof named === 'string')) ||
       !sourceFile.getImportDeclaration(moduleSpecifier)) {
-      CoerceImports(sourceFile, [ structure ]);
+      sourceFile.addImportDeclaration(structure);
     } else {
       const importDeclaration = sourceFile.getImportDeclaration(moduleSpecifier)!;
       const existingImports   = importDeclaration.getNamedImports();

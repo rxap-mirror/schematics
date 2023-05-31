@@ -14,7 +14,7 @@ import {
   AddComponentInput,
   AddComponentProvider,
   AddDir,
-  AddNgModuleImport,
+  AddNgModuleImport, CoerceImports,
   CoerceMethodClass, CoerceMethodClassLegacy,
   CoercePropertyKey,
   CoerceSourceFile,
@@ -369,7 +369,7 @@ export class TableElement implements ParsedElement<Rule> {
     }
 
     sourceFile.addInterfaces(createInterface(_columns, this.tableInterface));
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       namedImports:    ['TableRowMetadata'],
       moduleSpecifier: '@rxap/material-table-system',
     });

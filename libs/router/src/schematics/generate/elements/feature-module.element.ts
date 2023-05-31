@@ -11,7 +11,7 @@ import {
   externalSchematic
 } from '@angular-devkit/schematics';
 import { RoutingSchema } from '../schema';
-import { ToValueContext } from '@rxap/schematics-ts-morph';
+import {CoerceImports, ToValueContext} from '@rxap/schematics-ts-morph';
 import {
   SourceFile,
   VariableDeclarationKind,
@@ -93,7 +93,7 @@ export class FeatureModuleElement implements ParsedElement<Rule> {
             ]
           });
 
-          sourceFile.addImportDeclarations([
+          CoerceImports(sourceFile,[
             {
               namedImports:    [ 'Routes', 'RouterModule' ],
               moduleSpecifier: '@angular/router'

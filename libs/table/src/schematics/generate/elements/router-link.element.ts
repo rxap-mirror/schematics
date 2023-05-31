@@ -2,7 +2,13 @@ import { ElementDef, ElementTextContent } from '@rxap/xml-parser/decorators';
 import { ParsedElement } from '@rxap/xml-parser';
 import { SourceFile, WriterFunction } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
-import { AddNgModuleImport, HandleComponentModule, ProviderObject, ToValueContext } from '@rxap/schematics-ts-morph';
+import {
+  AddNgModuleImport,
+  CoerceImports,
+  HandleComponentModule,
+  ProviderObject,
+  ToValueContext
+} from '@rxap/schematics-ts-morph';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -33,7 +39,7 @@ export class RouterLinkElement implements ParsedElement<Omit<ProviderObject, 'pr
         statements: [ this.buildStatements(sourceFile) ],
         returnType: 'Method'
       });
-      sourceFile.addImportDeclarations([
+      CoerceImports(sourceFile,[
         {
           namedImports:    [ 'Method' ],
           moduleSpecifier: '@rxap/utilities/rxjs'
@@ -42,7 +48,7 @@ export class RouterLinkElement implements ParsedElement<Omit<ProviderObject, 'pr
 
     }
 
-    sourceFile.addImportDeclarations([
+    CoerceImports(sourceFile,[
       {
         namedImports:    [ 'Router', 'ActivatedRoute' ],
         moduleSpecifier: '@angular/router'
@@ -57,7 +63,7 @@ export class RouterLinkElement implements ParsedElement<Omit<ProviderObject, 'pr
   }
 
   private buildStatements(sourceFile: SourceFile): WriterFunction {
-    sourceFile.addImportDeclarations([
+    CoerceImports(sourceFile,[
       {
         namedImports: [ 'getFromObject' ],
         moduleSpecifier: '@rxap/utilities'

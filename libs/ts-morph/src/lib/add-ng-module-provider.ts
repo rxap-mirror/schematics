@@ -7,6 +7,7 @@ import { ProviderObject } from './provider-object';
 import { GetNgModuleOptionsObject } from './get-ng-module-options-object';
 import { GetCoerceArrayLiteralFromObjectLiteral } from './get-coerce-array-literal-form-object-literal';
 import { AddProviderToArray } from './add-provider-to-array';
+import {CoerceImports} from "./ts-morph/index";
 
 export function AddNgModuleProvider(
   sourceFile: SourceFile,
@@ -15,7 +16,7 @@ export function AddNgModuleProvider(
   overwrite: boolean                                                  = false
 ) {
 
-  sourceFile.addImportDeclarations(structures);
+  CoerceImports(sourceFile,structures);
 
   const ngModuleOptions = GetNgModuleOptionsObject(sourceFile);
 

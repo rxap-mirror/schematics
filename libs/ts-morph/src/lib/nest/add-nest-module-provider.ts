@@ -3,6 +3,7 @@ import { GetCoerceArrayLiteralFromObjectLiteral } from '../get-coerce-array-lite
 import { GetNestModuleMetadata } from './get-nest-module-metadata';
 import { AddNestProviderToArray } from './add-nest-provider-to-array';
 import { NestProviderObject } from './nest-provider-object';
+import {CoerceImports} from "../ts-morph/index";
 
 export function AddNestModuleProvider(
   sourceFile: SourceFile,
@@ -11,7 +12,7 @@ export function AddNestModuleProvider(
   overwrite: boolean = false
 ) {
 
-  sourceFile.addImportDeclarations(structures);
+  CoerceImports(sourceFile,structures);
 
   const metadata = GetNestModuleMetadata(sourceFile);
 

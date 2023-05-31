@@ -8,7 +8,7 @@ import {
   WriterFunctionOrValue,
   SourceFile
 } from 'ts-morph';
-import { ToValueContext } from '@rxap/schematics-ts-morph';
+import {CoerceImports, ToValueContext} from '@rxap/schematics-ts-morph';
 import {
   Rule,
   noop
@@ -23,7 +23,7 @@ export class AuthGuardElement extends RouteFeatureElement {
   }
 
   public toValue({ project, options, sourceFile }: ToValueContext<RoutingSchema> & { sourceFile: SourceFile }): Rule {
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier: '@rxap/authentication',
       namedImports:    [ 'RxapAuthenticationGuard' ]
     });

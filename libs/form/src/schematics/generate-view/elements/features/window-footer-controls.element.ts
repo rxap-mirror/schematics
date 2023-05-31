@@ -1,7 +1,7 @@
 import { strings } from '@angular-devkit/core';
 import { Rule } from '@angular-devkit/schematics';
 import { NodeFactory } from '@rxap/schematics-html';
-import { AddComponentProvider, AddNgModuleImport, ToValueContext } from '@rxap/schematics-ts-morph';
+import {AddComponentProvider, AddNgModuleImport, CoerceImports, ToValueContext} from '@rxap/schematics-ts-morph';
 import { ElementAttribute, ElementChildTextContent, ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { Scope, SourceFile, Writers } from 'ts-morph';
 import { GenerateSchema } from '../../schema';
@@ -136,7 +136,7 @@ export class WindowFooterControlsElement extends FormFeatureElement {
             }
           ]
         });
-        sourceFile.addImportDeclarations([
+        CoerceImports(sourceFile,[
           {
             namedImports:    [ 'OpenFormWindowMethod', 'FormWindowService', 'FormWindowOptions', 'RXAP_FORM_WINDOW_SYSTEM_OPEN_FORM_DEFAULT_OPTIONS' ],
             moduleSpecifier: '@rxap/form-window-system'
@@ -154,7 +154,7 @@ export class WindowFooterControlsElement extends FormFeatureElement {
       const openFormMethodDirectiveFilePath = `open-${dasherize(options.name!)}-form-window.directive.ts`;
       if (!project.getSourceFile(openFormMethodDirectiveFilePath)) {
         const sourceFile = project.createSourceFile(openFormMethodDirectiveFilePath);
-        sourceFile.addImportDeclarations([
+        CoerceImports(sourceFile,[
           {
             namedImports: [ 'NgModule', 'Directive', 'Input', 'INJECTOR', 'Injector', 'Inject' ],
             moduleSpecifier: '@angular/core'

@@ -4,6 +4,7 @@ import { classify, CoerceSuffix, dasherize } from '@rxap/schematics-utilities';
 import { CoerceSourceFile } from '../coerce-source-file';
 import { FindNestModuleSourceFile } from './find-nest-module-source-file';
 import { AddNestModuleController } from './add-nest-module-controller';
+import {CoerceImports} from "../ts-morph/index";
 
 export interface AddNestControllerOptions {
   prefix?: string;
@@ -36,7 +37,7 @@ export function AddNestController(
     }
   );
 
-  sourceFile.addImportDeclaration({
+  CoerceImports(sourceFile,{
     namedImports: [ 'Controller' ],
     moduleSpecifier: '@nestjs/common'
   });

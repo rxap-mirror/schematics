@@ -11,6 +11,7 @@ import {
 } from 'ts-morph';
 import { addPackageJsonDependency, NodeDependencyType, } from '@schematics/angular/utility/dependencies';
 import { BrowserBuilderTarget, BuilderTarget, WorkspaceProject, } from '@schematics/angular/utility/workspace-models';
+import {CoerceImports} from "@rxap/schematics-ts-morph";
 
 function createHost(tree: Tree): workspaces.WorkspaceHost {
   return {
@@ -81,7 +82,7 @@ export function addImportsToSourceFile(sourceFile: SourceFile, importStructures:
       }
 
     } else {
-      sourceFile.addImportDeclaration(importStructure);
+      CoerceImports(sourceFile,importStructure);
     }
 
   }

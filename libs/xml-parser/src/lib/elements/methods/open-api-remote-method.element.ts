@@ -12,6 +12,7 @@ import {
   MethodElement,
   IMethodElement
 } from './method.element';
+import { CoerceImports } from '@rxap/schematics-ts-morph';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -34,7 +35,7 @@ export class OpenApiRemoteMethodElement implements ParsedElement<string>, IMetho
       throw new Error('The open api module is not defined!');
     }
 
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       namedImports:    [ openApiRemoteMethodName ],
       moduleSpecifier: `${options.openApiModule}/remote-methods/${dasherize(this.name)}.remote-method`
     });

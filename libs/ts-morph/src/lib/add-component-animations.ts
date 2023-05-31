@@ -1,10 +1,11 @@
 import { SourceFile } from 'ts-morph';
 import { GetComponentOptionsObject } from './get-component-options-object';
 import { GetCoerceArrayLiteralFromObjectLiteral } from './get-coerce-array-literal-form-object-literal';
+import {CoerceImports} from "./ts-morph/index";
 
 export function AddComponentAnimations(sourceFile: SourceFile, namedImport: string, moduleSpecifier: string) {
 
-  sourceFile.addImportDeclaration({
+  CoerceImports(sourceFile,{
     moduleSpecifier,
     namedImports: [ namedImport ]
   });

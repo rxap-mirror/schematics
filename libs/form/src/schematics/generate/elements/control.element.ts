@@ -10,7 +10,13 @@ import {
 import { ClassDeclaration, ObjectLiteralExpression, PropertyDeclaration, Scope, SourceFile, Writers } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
 import { ValidatorElement } from './validators/validator.element';
-import { AddControlValidator, CoercePropertyKey, OverwriteProperty, ToValueContext } from '@rxap/schematics-ts-morph';
+import {
+  AddControlValidator,
+  CoerceImports,
+  CoercePropertyKey,
+  OverwriteProperty,
+  ToValueContext
+} from '@rxap/schematics-ts-morph';
 import { GenerateSchema } from '../schema';
 import { FormElement } from './form.element';
 import { TypeElement } from '@rxap/schematics-xml-parser';
@@ -107,7 +113,7 @@ export class ControlElement implements ParsedElement<PropertyDeclaration> {
                 'Validators.required',
                 controlOptions
               );
-              sourceFile.addImportDeclaration({
+              CoerceImports(sourceFile,{
                 moduleSpecifier: '@angular/forms',
                 namedImports:    [ 'Validators' ]
               });
@@ -129,7 +135,7 @@ export class ControlElement implements ParsedElement<PropertyDeclaration> {
 
     }
 
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier: '@rxap/forms',
       namedImports:    [ 'UseFormControl', 'RxapFormControl' ]
     });

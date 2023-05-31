@@ -7,6 +7,7 @@ import {
 import { AddProviderToArray } from './add-provider-to-array';
 import { ProviderObject } from './provider-object';
 import { CoerceVariableDeclaration } from './coerce-variable-declaration';
+import {CoerceImports} from "./ts-morph/index";
 
 export function AddVariableProvider(
   sourceFile: SourceFile,
@@ -16,7 +17,7 @@ export function AddVariableProvider(
   overwrite: boolean                                                  = false
 ) {
 
-  sourceFile.addImportDeclarations(structures);
+  CoerceImports(sourceFile,structures);
 
   const variableDeclaration = CoerceVariableDeclaration(
     sourceFile,
@@ -27,7 +28,7 @@ export function AddVariableProvider(
     }
   );
 
-  sourceFile.addImportDeclaration({
+  CoerceImports(sourceFile,{
     namedImports:    [ 'Provider' ],
     moduleSpecifier: '@angular/core'
   });

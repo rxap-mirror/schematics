@@ -7,6 +7,7 @@ import {
   Writers
 } from 'ts-morph';
 import { CoerceClassConstructor } from './coerce-class-constructor';
+import {CoerceImports} from "./ts-morph/index";
 
 export enum Module {
   ANGULAR = '@angular/core',
@@ -67,7 +68,7 @@ export function AddDependencyInjection(
       definition.type ?? definition.injectionToken,
       'null'
     );
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       namedImports: [ 'Optional' ],
       moduleSpecifier: definition.module,
     });
@@ -75,10 +76,10 @@ export function AddDependencyInjection(
 
   constructorDeclaration.addParameter(constructorParameter);
 
-  sourceFile.addImportDeclaration({
+  CoerceImports(sourceFile,{
     namedImports: [ 'Inject' ],
     moduleSpecifier: definition.module,
   });
 
-  sourceFile.addImportDeclarations(structures);
+  CoerceImports(sourceFile,structures);
 }

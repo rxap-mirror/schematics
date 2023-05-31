@@ -1,6 +1,7 @@
 import { ValidatorElement, ValidatorToValueContext } from './validator.element';
 import { ElementChildTextContent, ElementRecord } from '@rxap/xml-parser/decorators';
 import { CodeBlockWriter, WriterFunctionOrValue, Writers } from 'ts-morph';
+import {CoerceImports} from "@rxap/schematics-ts-morph";
 
 function ToJavascriptObject(obj: any): string {
   const codeWriter = new CodeBlockWriter();
@@ -60,7 +61,7 @@ export abstract class RxapValidatorElement extends ValidatorElement {
   }
 
   public toValue({ controlOptions, project, options, sourceFile }: ValidatorToValueContext): any {
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier: '@rxap/forms',
       namedImports: [ 'RxapValidators' ]
     });

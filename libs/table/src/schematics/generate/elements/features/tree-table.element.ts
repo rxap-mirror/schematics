@@ -11,7 +11,13 @@ import { Scope, SourceFile } from 'ts-morph';
 import { ElementFactory, ParsedElement } from '@rxap/xml-parser';
 import { TableElement } from '../table.element';
 import { strings } from '@angular-devkit/core';
-import { AddComponentProvider, AddNgModuleImport, HandleComponent, ToValueContext } from '@rxap/schematics-ts-morph';
+import {
+  AddComponentProvider,
+  AddNgModuleImport,
+  CoerceImports,
+  HandleComponent,
+  ToValueContext
+} from '@rxap/schematics-ts-morph';
 import { GenerateSchema } from '../../schema';
 import { MethodElement } from '@rxap/schematics-xml-parser';
 
@@ -344,7 +350,7 @@ export class DataSourceElement implements ParsedElement<string> {
 
     }
 
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier: this.from,
       namedImports: [ this.name ]
     });

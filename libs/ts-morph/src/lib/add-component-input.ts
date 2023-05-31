@@ -1,5 +1,6 @@
 import { ImportDeclarationStructure, JSDocStructure, OptionalKind, Scope, SourceFile, WriterFunction } from 'ts-morph';
 import { GetComponentClass } from './get-component-class';
+import {CoerceImports} from "./ts-morph/index";
 
 export interface ComponentInputDefinition {
   name: string;
@@ -54,7 +55,7 @@ export function AddComponentInput(
             hasExclamationToken: !componentInputDefinition.initializer && componentInputDefinition.required,
           });
         }
-        sourceFile.addImportDeclaration({
+        CoerceImports(sourceFile,{
           namedImports:    ['Input'],
           moduleSpecifier: '@angular/core',
         });
@@ -76,7 +77,7 @@ export function AddComponentInput(
             },
           ],
         });
-        sourceFile.addImportDeclaration({
+        CoerceImports(sourceFile,{
           namedImports:    ['Input'],
           moduleSpecifier: '@angular/core',
         });
@@ -84,6 +85,6 @@ export function AddComponentInput(
     }
 
   }
-  sourceFile.addImportDeclarations(structures);
+  CoerceImports(sourceFile,structures);
 
 }

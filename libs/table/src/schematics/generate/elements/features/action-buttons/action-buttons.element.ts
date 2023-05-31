@@ -12,7 +12,7 @@ import {
 } from 'ts-morph';
 import {
   AddComponentProvider,
-  AddNgModuleImport,
+  AddNgModuleImport, CoerceImports,
   ToValueContext
 } from '@rxap/schematics-ts-morph';
 import {
@@ -113,12 +113,12 @@ export class ActionsColumnElement extends ColumnElement implements WithTemplate 
       ]
     });
     for (const action of this.actions) {
-      entrySourceFile.addImportDeclaration({
+      CoerceImports(entrySourceFile,{
         namedImports: [ action.methodName ],
         moduleSpecifier: './' + action.methodModuleSpecifier
       })
     }
-    entrySourceFile.addImportDeclaration({
+    CoerceImports(entrySourceFile, {
       namedImports: [ 'RXAP_TABLE_ROW_ACTION_METHOD' ],
       moduleSpecifier: '@rxap/material-table-system'
     });

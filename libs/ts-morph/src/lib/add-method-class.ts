@@ -10,6 +10,7 @@ import {
   WriterFunction
 } from 'ts-morph';
 import { CoerceSuffix } from '@rxap/schematics-utilities';
+import {CoerceImports} from "./ts-morph/index";
 
 export interface AddMethodClassOptions extends TypeParameteredNodeStructure {
   structures?: ReadonlyArray<OptionalKind<ImportDeclarationStructure>>;
@@ -74,7 +75,7 @@ export function AddMethodClass(
       }
     ]
   });
-  sourceFile.addImportDeclarations([
+  CoerceImports(sourceFile,[
     {
       namedImports:    [ 'Injectable' ],
       moduleSpecifier: '@angular/core'
@@ -84,6 +85,6 @@ export function AddMethodClass(
       moduleSpecifier: '@rxap/utilities/rxjs'
     }
   ]);
-  sourceFile.addImportDeclarations(parameters.structures);
+  CoerceImports(sourceFile,parameters.structures);
 
 }

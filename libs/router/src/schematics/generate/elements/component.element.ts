@@ -8,7 +8,7 @@ import {
   Rule,
   chain
 } from '@angular-devkit/schematics';
-import { ToValueContext } from '@rxap/schematics-ts-morph';
+import {CoerceImports, ToValueContext} from '@rxap/schematics-ts-morph';
 import { SourceFile } from 'ts-morph';
 
 @ElementDef('component')
@@ -23,7 +23,7 @@ export class ComponentElement implements ParsedElement<Rule> {
 
   public toValue({ project, options, sourceFile }: ToValueContext & { sourceFile: SourceFile }): Rule {
     if (this.from) {
-      sourceFile.addImportDeclaration({
+      CoerceImports(sourceFile,{
         namedImports:    [ this.name ],
         moduleSpecifier: this.from
       });

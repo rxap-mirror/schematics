@@ -14,7 +14,13 @@ import { OptionsElement } from '@rxap/xml-parser/elements';
 import { ElementFactory, ParsedElement } from '@rxap/xml-parser';
 import { Project, PropertyDeclaration, SourceFile, WriterFunction, Writers } from 'ts-morph';
 import { strings } from '@angular-devkit/core';
-import { AddToArray, AddToFormProviders, OverwriteDecorator, ToValueContext } from '@rxap/schematics-ts-morph';
+import {
+  AddToArray,
+  AddToFormProviders,
+  CoerceImports,
+  OverwriteDecorator,
+  ToValueContext
+} from '@rxap/schematics-ts-morph';
 import { GenerateSchema } from '../schema';
 import { TypeElement } from '@rxap/schematics-xml-parser';
 
@@ -37,7 +43,7 @@ export class DataSourceTransformerElement implements ParsedElement<string> {
 
   public toValue({ sourceFile }: ToValueContext & { sourceFile: SourceFile }): string {
 
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier: this.from,
       namedImports:    [ this.name ]
     });
@@ -69,7 +75,7 @@ export function OptionsProviderExport(project: Project, name: string, from: stri
 
   const formProviderSourceFile = AddToFormProviders(project, providersName, overwrite);
 
-  formProviderSourceFile.addImportDeclaration({
+  CoerceImports(formProviderSourceFile,{
     moduleSpecifier: `./${optionsProviderSourceFilePath}`,
     namedImports:    [ providersName ]
   });
@@ -153,7 +159,7 @@ export class DataSourceElement implements ParsedElement<Array<string | WriterFun
 
     }
 
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier: this.from,
       namedImports:    [ this.name ]
     });
@@ -172,7 +178,7 @@ export class DataSourceElement implements ParsedElement<Array<string | WriterFun
         args.push(Writers.object({
           transformer: 'ComposeOptionsTransformers(' + transformerFunction.join(', ') + ')'
         }));
-        sourceFile.addImportDeclaration({
+        CoerceImports(sourceFile,{
           namedImports:    [ 'ComposeOptionsTransformers' ],
           moduleSpecifier: '@rxap/form-system'
         });
@@ -211,7 +217,7 @@ export class ToOptionsWithObjectElement extends DataSourceTransformerElement {
     super.toValue({ sourceFile, project, options });
 
     if (this.display) {
-      sourceFile.addImportDeclaration({
+      CoerceImports(sourceFile,{
         moduleSpecifier: '@rxap/utilities',
         namedImports:    [ 'getFromObject' ]
       });
@@ -248,7 +254,7 @@ export class ToOptionsElement extends DataSourceTransformerElement {
     super.toValue({ sourceFile, project, options });
 
     if (this.display || this.value) {
-      sourceFile.addImportDeclaration({
+      CoerceImports(sourceFile,{
         moduleSpecifier: '@rxap/utilities',
         namedImports:    [ 'getFromObject' ]
       });
@@ -294,7 +300,7 @@ export class ToOptionsFromObjectElement extends DataSourceTransformerElement {
     super.toValue({ sourceFile, project, options });
 
     if (this.display) {
-      sourceFile.addImportDeclaration({
+      CoerceImports(sourceFile,{
         moduleSpecifier: '@rxap/utilities',
         namedImports:    [ 'getFromObject' ]
       });
@@ -424,7 +430,7 @@ export class SelectOptionsElement extends OptionsElement implements ParsedElemen
       }
     ]);
 
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier: `./${optionsFilePath}`,
       namedImports:    [ optionsDataSourceName ]
     });
@@ -466,7 +472,7 @@ export class SelectControlElement extends ControlElement {
       arguments: this.options.toValue({ sourceFile, project, options })
     });
 
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier: '@rxap/form-system',
       namedImports:    [ 'UseOptionsDataSource' ]
     });

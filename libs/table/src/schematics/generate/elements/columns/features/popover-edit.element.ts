@@ -2,7 +2,7 @@ import { ElementChildren, ElementDef, ElementExtends } from '@rxap/xml-parser/de
 import { FeatureElement } from './feature.element';
 import { strings } from '@angular-devkit/core';
 import { Scope, SourceFile } from 'ts-morph';
-import { ToValueContext } from '@rxap/schematics-ts-morph';
+import {CoerceImports, ToValueContext} from '@rxap/schematics-ts-morph';
 import { WithPopoverEditElement } from '../../features/with-popover-edit.element';
 import { SchematicsException } from '@angular-devkit/schematics';
 import { FormViewElements, NodeElement } from '@rxap/schematics-form';
@@ -88,7 +88,7 @@ export class PopoverEditElement extends FeatureElement {
         isReadonly: true,
         scope: Scope.Public,
       });
-      sourceFile.addImportDeclarations([
+      CoerceImports(sourceFile,[
         {
           namedImports: [ withPopoverEditElement.formInterfaceName ],
           moduleSpecifier: withPopoverEditElement.formInterfaceModuleSpecifier,

@@ -1,6 +1,7 @@
 import { ImportDeclarationStructure, OptionalKind, SourceFile, WriterFunction } from 'ts-morph';
 import { GetNestModuleMetadata } from './get-nest-module-metadata';
 import { GetCoerceArrayLiteralFromObjectLiteral } from '../get-coerce-array-literal-form-object-literal';
+import {CoerceImports} from "../ts-morph/index";
 
 export function AddNestModuleImport(
   sourceFile: SourceFile,
@@ -10,7 +11,7 @@ export function AddNestModuleImport(
   overwrite: boolean = false
 ) {
 
-  sourceFile.addImportDeclarations(structures);
+  CoerceImports(sourceFile,structures);
 
   const metadata = GetNestModuleMetadata(sourceFile);
 

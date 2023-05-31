@@ -3,6 +3,7 @@ import {
   SourceFile
 } from 'ts-morph';
 import { AddToArray } from './add-to-array';
+import {CoerceImports} from "./ts-morph/index";
 
 export function GetFormProvidersFile(project: Project): SourceFile {
   const formProviderSourceFilePath = 'form.providers';
@@ -11,7 +12,7 @@ export function GetFormProvidersFile(project: Project): SourceFile {
 
 export function AddToFormProviders(project: Project, value: string, overwrite: boolean = false): SourceFile {
   const sourceFile = GetFormProvidersFile(project);
-  sourceFile.addImportDeclaration({
+  CoerceImports(sourceFile,{
     moduleSpecifier: '@angular/core',
     namedImports:    [ 'Provider' ]
   });

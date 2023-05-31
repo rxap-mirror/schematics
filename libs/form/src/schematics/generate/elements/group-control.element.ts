@@ -3,7 +3,7 @@ import { ElementDef, ElementExtends } from '@rxap/xml-parser/decorators';
 import { PropertyDeclaration, Scope } from 'ts-morph';
 import { FormElement } from './form.element';
 import { strings } from '@angular-devkit/core';
-import { CoercePropertyKey } from '@rxap/schematics-ts-morph';
+import {CoerceImports, CoercePropertyKey} from '@rxap/schematics-ts-morph';
 
 const { dasherize, classify, camelize } = strings;
 
@@ -47,7 +47,7 @@ export class GroupControlElement extends FormElement {
       });
     }
 
-    sourceFile.addImportDeclarations([
+    CoerceImports(sourceFile,[
       {
         moduleSpecifier: '@rxap/forms',
         namedImports:    [ 'UseFormGroup' ]

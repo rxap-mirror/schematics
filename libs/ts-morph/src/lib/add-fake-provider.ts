@@ -6,6 +6,7 @@ import { AssertArrayLiteralExpression } from './is-array-literal-expression';
 import { SourceFile } from 'ts-morph';
 import { CoerceVariableDeclaration } from './coerce-variable-declaration';
 import { AddProviderToArray } from './add-provider-to-array';
+import {CoerceImports} from "./ts-morph/index";
 
 export function AddFakeProvider(
   sourceFile: SourceFile,
@@ -61,11 +62,11 @@ export function AddFakeProvider(
     );
   }
 
-  sourceFile.addImportDeclaration({
+  CoerceImports(sourceFile,{
     moduleSpecifier: '@angular/core',
     namedImports:    [ 'Provider' ]
   });
-  sourceFile.addImportDeclaration({
+  CoerceImports(sourceFile,{
     moduleSpecifier: '@rxap/fake',
     namedImports:    [ 'IsFaked' ]
   });

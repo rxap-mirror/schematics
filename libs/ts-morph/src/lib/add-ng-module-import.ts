@@ -1,11 +1,12 @@
 import { SourceFile } from 'ts-morph';
 import { GetNgModuleOptionsObject } from './get-ng-module-options-object';
 import { GetCoerceArrayLiteralFromObjectLiteral } from './get-coerce-array-literal-form-object-literal';
+import {CoerceImports} from "./ts-morph/index";
 
 export function AddNgModuleImport(sourceFile: SourceFile, namedImport: string, moduleSpecifier?: string) {
 
   if (moduleSpecifier) {
-    sourceFile.addImportDeclaration({
+    CoerceImports(sourceFile,{
       moduleSpecifier,
       namedImports: [ namedImport ]
     });

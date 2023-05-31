@@ -7,6 +7,7 @@ import { GetComponentOptionsObject } from './get-component-options-object';
 import { GetCoerceArrayLiteralFromObjectLiteral } from './get-coerce-array-literal-form-object-literal';
 import { ProviderObject } from './provider-object';
 import { AddProviderToArray } from './add-provider-to-array';
+import {CoerceImports} from "./ts-morph/index";
 
 export function AddComponentProvider(
   sourceFile: SourceFile,
@@ -15,7 +16,7 @@ export function AddComponentProvider(
   overwrite: boolean                                                  = false
 ) {
 
-  sourceFile.addImportDeclarations(structures);
+  CoerceImports(sourceFile,structures);
 
   const componentOptions = GetComponentOptionsObject(sourceFile);
 
