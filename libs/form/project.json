@@ -5,6 +5,17 @@
   "sourceRoot": "libs/form/src",
   "prefix": "rxap",
   "targets": {
+    "index-export": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "yarn nx g @rxap/schematics:index-export --project $NX_TASK_TARGET_PROJECT"
+        ]
+      },
+      "configurations": {
+        "production": {}
+      }
+    },
     "version": {
       "executor": "nx:run-commands",
       "options": {

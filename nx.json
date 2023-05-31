@@ -74,6 +74,10 @@
         {
           "target": "update-peer-dependencies",
           "projects": "self"
+        },
+        {
+          "target": "index-export",
+          "projects": "self"
         }
       ],
       "inputs": ["production", "^production"]
